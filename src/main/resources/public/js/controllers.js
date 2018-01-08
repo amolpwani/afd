@@ -1,34 +1,81 @@
-angular.module('app.controllers', []).controller('ShipwreckListController', function($scope, $state, popupService, $window, Shipwreck) {
-  $scope.shipwrecks = Shipwreck.query(); //fetch all shipwrecks. Issues a GET to /api/vi/shipwrecks
-
-  $scope.deleteShipwreck = function(shipwreck) { // Delete a Shipwreck. Issues a DELETE to /api/v1/shipwrecks/:id
-    if (popupService.showPopup('Really delete this?')) {
-      shipwreck.$delete(function() {
-        $scope.shipwrecks = Shipwreck.query(); 
-        $state.go('shipwrecks');
+angular.module('app.controllers', []).controller('DirectListController', function($scope,$http,$rootScope,$state,$timeout, popupService, $window, ListData,ListDataItems) {
+  $scope.newlists = ListData.query();
+  //$scope.newitem = ListDataItems.query();
+}).controller('newlist',function($scope, $state, $stateParams, ListData) {
+      $scope.newlists = ListData.query();
+      $scope.listdata = new ListData();
+      $scope.createListData = function() {
+      $scope.listdata.$save(function() {
+      $state.go('directlists');
       });
-    }
-  };
-}).controller('ShipwreckViewController', function($scope, $stateParams, Shipwreck) {
-  $scope.shipwreck = Shipwreck.get({ id: $stateParams.id }); //Get a single shipwreck.Issues a GET to /api/v1/shipwrecks/:id
-}).controller('ShipwreckCreateController', function($scope, $state, $stateParams, Shipwreck) {
-  $scope.shipwreck = new Shipwreck();  //create new shipwreck instance. Properties will be set via ng-model on UI
+   };
+  }).controller('newlistitem',function($scope,$http,$rootScope,$state,$timeout,$stateParams,popupService,ListDataItems,ListData) {
+      var listid=$stateParams.id;
 
-  $scope.addShipwreck = function() { //create a new shipwreck. Issues a POST to /api/v1/shipwrecks
-    $scope.shipwreck.$save(function() {
-      $state.go('shipwrecks'); // on success go back to the list i.e. shipwrecks state.
+      if(listid !=null)
+      {
+        $rootScope.listId=$stateParams.id;
+      }
+
+      var url = "listdata/getList/"+$rootScope.listId;
+       $http.get(url).then( function(response) {
+             $scope.title=response.data['name'];
+       });
+
+      $scope.newitem=[];
+      var url = "listdataitems/getListId/"+$rootScope.listId;
+      $http.get(url).then( function(response) {
+             $scope.newitem=response.data;
+      });
+      //$scope.newitem = ListDataItems.query();
+      $scope.listitem = new ListDataItems();
+      $scope.listitem.listId=$rootScope.listId;
+      console.log($scope.listitem);
+      $scope.createListDataItems = function() {
+      $scope.listitem.$save(function() {
+      $state.go('newitem');
+      }); };
+    $scope.deleteListDataItemsById = function(listId) {
+        if (popupService.showPopup('Do want to delete this?')) {
+              console.log("Id  :"+listId.id);
+              var deleteurl = "listdataitems/deleteListDataItemsById/"+listId.id;
+              $http.delete(deleteurl).then( function(response) {
+                 console.log(response.data);
+              });
+              var listurl = "listdataitems/getListId/"+$rootScope.listId;
+               $timeout(function(){$http.get(listurl).then( function(response) {
+                  console.log(response.data);
+                  $scope.newitem=response.data;});
+               },500);
+              $state.go('newitem');
+        }};
+      }).controller('NewItemViewController', function($scope, $stateParams, ListDataItems) {
+      $scope.newitem = ListDataItems.get({ id: $stateParams.id });
+  }).controller('homecontroller',function($scope, $state, $stateParams, ListData) {
+           $scope.title = "Volvo";
+           $scope.getTitle = function (title) {
+             console.log("success");
+                $scope.title = title;
+           }
+   }).controller('updatelistitem', function($scope, $state, $stateParams, ListDataItems) {
+    $scope.updateListDataItems = function() {
+      $scope.newitem.$update(function() {
+      $state.go('newitem');
     });
   };
-}).controller('ShipwreckEditController', function($scope, $state, $stateParams, Shipwreck) {
-  $scope.updateShipwreck = function() { //Update the edited shipwreck. Issues a PUT to /api/v1/shipwrecks/:id
-    $scope.shipwreck.$update(function() {
-      $state.go('shipwrecks'); // on success go back to the list i.e. shipwrecks state.
-    });
-  };
 
-  $scope.loadShipwreck = function() { //Issues a GET request to /api/v1/shipwrecks/:id to get a shipwreck to update
-    $scope.shipwreck = Shipwreck.get({ id: $stateParams.id });
+  $scope.loadlistitem = function() {
+    $scope.newitem = ListDataItems.get({ id: $stateParams.id });
   };
-
-  $scope.loadShipwreck(); // Load a shipwreck which can be edited on UI
-});
+  $scope.loadlistitem();
+}).controller('updatenewlist', function($scope, $state, $stateParams, ListData) {
+       $scope.updateListData = function() {
+         $scope.newlists.$update(function() {
+         $state.go('directlists');
+       });
+     };
+     $scope.loadnewlist = function() {
+       $scope.newlists = ListData.get({ id: $stateParams.id });
+     };
+     $scope.loadnewlist();
+   });

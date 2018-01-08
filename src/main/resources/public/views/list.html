@@ -1,0 +1,22 @@
+ <br>
+ <a ui-sref="newlist" ng-controller="newlist" class="btn-primary btn-lg nodecoration">Create New List</a>
+    <br>
+    <table width="200" border="1" align="center">
+        <tbody>
+        <tr align="center">
+            <td>
+            &nbsp;<input type="text" ng-model="listsea" align="center" class="inputText" placeholder="Search">
+            </td>
+        </tr>
+        <tr>
+            <td align="center"><label>Lists</label></td>
+            <td align="center"><label>Action</label></td>
+        </tr>
+        <tr ng-repeat="list in newlists | filter:listsea">
+            <td align="center">&nbsp;<a ui-sref ="newitem({id:list.id})"  role="tab" aria-controls="Criteria">{{list.name}}</a>
+            </td>
+            <td align="center">&nbsp;<a class="btn btn-primary" ui-sref="viewNewlist({id:list.id})">View</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <h4 align="center"></h4>

@@ -4,12 +4,6 @@ angular.module('app.services', []).factory('ListData', function($resource) {
       method: 'PUT'
     }
   });
-}).service('ListDataItems', function($resource) {
-   return $resource('/listdataitems/getItems/:id', { id: '@id' }, {
-   update: {
-       method: 'PUT'
-   }
-   });
 }).service('popupService',function($window){
     this.showPopup=function(message){
         return $window.confirm(message);

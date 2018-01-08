@@ -1,0 +1,39 @@
+<div id="tabContent1" class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active">
+        <h1>{{title}}</h1>
+        <br>
+        <a ui-sref="newlistitem" role="tab" aria-controls="Criteria" class="btn-primary btn-lg nodecoration">Create New Item</a>
+        <br>
+        <br>
+        <br>
+        <table width="90%" border="0" align="center" >
+            <tbody>
+            <tr>
+                <td align="center">&nbsp;</td>
+                <td align="center">&nbsp;</td>
+                <td align="center">&nbsp;</td>
+                <td align="center">&nbsp;<input type="text" ng-model="curPlace" class="inputText" placeholder="Search"></td>
+            </tr>
+            <tr>
+                <td align="center"><label>&nbsp;List Item Name</label></td>
+                <td align="center"><label>&nbsp;List Item Description</label></td>
+                <td align="center"><label>&nbsp;Active/Incative</label></td>
+                <td align="center"><label>&nbsp;Action</label></td>
+            </tr>
+
+                <!-- <td width="1" rowspan="6"  bgcolor="#ffffff " >&nbsp;</td>-->
+            <tr ng-repeat="list in newitem | filter:curPlace">
+                <div ng-if="2 === 1">
+                <td align="center">&nbsp;{{list.code}}</td>
+                <td align="center">&nbsp;{{list.description}}</td>
+                <td align="center">&nbsp;{{list.status}}</td>
+                <td align="center">
+                    &nbsp;<a class="btn btn-primary" ui-sref="viewNewitem({id:list.id})">View</a>
+                    &nbsp;<a class="btn btn-danger"  ng-click="deleteListDataItemsById({id:list.id})">Delete</a>
+                </td>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
