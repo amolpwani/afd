@@ -45,23 +45,39 @@
 					pageTitle: 'Home'
 				}
 			})
-			.state('shipwrecks',{
-	        url:'/shipwrecks',
-	        templateUrl: viewsPrefix + 'shipwrecks.html',
-	        controller:'ShipwreckListController'
-	    }).state('viewShipwreck',{
-	       url:'/shipwrecks/:id/view',
-	       templateUrl: viewsPrefix + 'shipwreck-view.html',
-	       controller:'ShipwreckViewController'
-	    }).state('newShipwreck',{
-	        url:'/shipwrecks/new',
-	        templateUrl: viewsPrefix + 'shipwreck-add.html',
-	        controller:'ShipwreckCreateController'
-	    }).state('editShipwreck',{
-	        url:'/shipwrecks/:id/edit',
-	        templateUrl: viewsPrefix + 'shipwreck-edit.html',
-	        controller:'ShipwreckEditController'
-	    })
+			.state('directlists',{
+	        url:'/LIST',
+	        templateUrl: viewsPrefix + 'list.html',
+	        controller:'newlist'
+	    }).state('newlist',{
+           url:'/LIST/newlist',
+           templateUrl: viewsPrefix + 'newlist.html',
+           controller:'newlist'
+        }).state('newitem',{
+           url:'/LIST/newitem?id',
+           templateUrl: viewsPrefix + 'newitem.html',
+           controller:'newlistitem'
+        }).state('newlistitem',{
+            url:'/LIST/newitem/newlistitem',
+            templateUrl: viewsPrefix + 'newlistitem.html',
+            controller:'newlistitem'
+       }).state('viewNewitem',{
+           url:'/LIST/newitem:id/view',
+           templateUrl: viewsPrefix + 'newitem-view.html',
+           controller:'NewItemViewController'
+       }).state('editNewItem',{
+            url:'/LIST/newitem:id/edit',
+         	templateUrl: viewsPrefix + 'newitem-edit.html',
+         	controller:'updatelistitem'
+       }).state('viewNewlist',{
+           url:'/LIST/newlist:id/view',
+           templateUrl: viewsPrefix + 'newlist-view.html',
+           controller:'updatenewlist'
+       }).state('editNewlist',{
+            url:'/LIST/newlist:id/edit',
+            templateUrl: viewsPrefix + 'newlist-edit.html',
+            controller:'updatenewlist'
+       })
 	})
 	.directive('updateTitle', ['$rootScope', '$timeout',
 		function($rootScope, $timeout) {

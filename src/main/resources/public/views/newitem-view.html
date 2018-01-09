@@ -1,0 +1,23 @@
+<div class="container pad-top">
+    <table class="table shipwrecktable">
+        <tr>
+            <td><h3>Details for {{newitem.code}}</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Code</td>
+            <td>{{newitem.code}}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{newitem.description}}</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>{{newitem.status}}</td>
+        </tr>
+    </table>
+    <div>
+        <a class="btn btn-primary" ui-sref="editNewItem({id:newitem.id})">Edit</a>
+    </div>
+</div>

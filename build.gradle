@@ -6,13 +6,10 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
-		maven {
-			url 'http://www.nexus.ford.com/content/groups/public'
-		}
+		maven { url 'http://repo1.maven.org/maven2' }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:1.2'
 	}
 }
 
@@ -47,9 +44,10 @@ dependencies {
 	testCompile('org.assertj:assertj-core:3.8.0')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
-
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR6"
 	}
 }
+
+

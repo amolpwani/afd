@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/aurora-foundational-data.iml" filepath="$PROJECT_DIR$/aurora-foundational-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aurora-foundational-data_main.iml" filepath="$PROJECT_DIR$/.idea/modules/aurora-foundational-data_main.iml" group="aurora-foundational-data" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aurora-foundational-data_test.iml" filepath="$PROJECT_DIR$/.idea/modules/aurora-foundational-data_test.iml" group="aurora-foundational-data" />
+    </modules>
+  </component>
+</project>

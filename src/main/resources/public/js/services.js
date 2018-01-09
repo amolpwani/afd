@@ -1,9 +1,15 @@
-angular.module('app.services', []).factory('Shipwreck', function($resource) {
-  return $resource('/api/v1/shipwrecks/:id', { id: '@id' }, {
+angular.module('app.services', []).factory('ListData', function($resource) {
+  return $resource('/listdata/getList/:id', { id: '@id' }, {
     update: {
       method: 'PUT'
     }
   });
+}).service('ListDataItems', function($resource) {
+   return $resource('/listdataitems/getItems/:id', { id: '@id' }, {
+   update: {
+       method: 'PUT'
+   }
+   });
 }).service('popupService',function($window){
     this.showPopup=function(message){
         return $window.confirm(message);

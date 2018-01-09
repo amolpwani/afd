@@ -8,7 +8,6 @@ public class AfdApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AfdApplication.class, args);
-
         //System.out.println("Hello World!");
 	}
 
