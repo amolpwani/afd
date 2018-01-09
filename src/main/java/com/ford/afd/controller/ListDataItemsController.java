@@ -10,7 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+<<<<<<< HEAD
  * Created by dchiruma on 12/26/2017.
+=======
+ * Created by dudekula.abedin on 12/26/2017.
+>>>>>>> origin/master
  */
 
 @RestController
