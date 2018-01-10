@@ -1,0 +1,208 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+/* Nav Bar styles
+-------------------------------------------------- */
+button.nav-global-skip {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  & :focus,
+  & :active {
+    position: absolute;
+    height: auto;
+    width: auto;
+    overflow: hidden;
+    padding: 0;
+    font-size: 1em;
+    z-index: 999;
+  }
+}
+.navbar {
+  min-height: 0;
+}
+
+.navbar-default {
+  background-color: inherit;
+  border: none;
+  margin: 0 1em .5em;
+  & .navbar-brand {
+    height: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  & .media-body a {
+    font-family: Antenna, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: @navbar-media-body-color;
+    text-decoration: none;
+  }
+  & .media-heading {
+    & :hover,
+    & :focus {
+      text-decoration: underline;
+    }
+  }
+  & .navbar-toggle {
+    background-color: @navbar-default-bg;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: -49px;
+    & .icon-bar {
+      background-color: @navbar-default-toggle-icon-bar-bg;
+    }
+  }
+  & .navbar-nav {
+    background-color: @navbar-default-bg;
+     & > li > a,
+     & .open .dropdown-menu > .active > a,
+     & > li > a:hover,
+     & > li > a:focus,
+     & > .open > a,
+     & > .open > a:hover,
+     & > .open > a:focus,
+     & > .active > a,
+     & > .active > a:hover,
+     & > .active > a:focus {
+      color: @navbar-default-color;
+    }
+    & > li > a:hover,
+    & > li > a:focus,
+    & > .open > a,
+    & > .open > a:hover,
+    & > .open > a:focus {
+      background-color: @navbar-default-link-hover-bg;
+    }
+    & > .active > a,
+    & > .active > a:hover,
+    & > .active > a:focus {
+      background-color: @navbar-default-link-active-bg;
+    }
+    & .dropdown-menu {
+      background-color: @navbar-default-dropdown-bg;
+    }
+    & .dropdown-menu > li > a,
+    & .open .dropdown-menu > li > a {
+      color:@navbar-default-dropdown-border-color;
+      border-top: 1px solid @navbar-default-dropdown-border-top;
+    }
+    & .dropdown-menu > li > a:hover,
+    & .dropdown-menu > li > a:focus,
+    & .open .dropdown-menu > li > a:hover,
+    & .open .dropdown-menu > li > a:focus {
+      color: @navbar-default-dropdown-hover-color;
+      background-color: @navbar-default-dropdown-hover-bg;
+    }
+    & .dropdown-menu > .active > a,
+    & .dropdown-menu > .active > a:hover,
+    & .dropdown-menu > .active > a:focus {
+      text-decoration: none;
+      background-color: @navbar-default-dropdown-active-bg !important;
+    }
+  }
+  & .navbar-nav a {
+    font-family: AntennaCond, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 1.166rem;
+    text-decoration: none;
+  }
+
+  & .navbar-nav .dropdown-menu li li {
+      margin-left: 20px;
+  }
+}
+.line-height20 {
+  line-height: 20px;
+}
+
+.navbar-default .media .logo {
+  /* Set the total left and right margin of the image to the tagline to be 1/3 of the height of the image */
+  margin-right: 0.5em;
+  max-width: 5rem;
+  height: auto;
+}
+.navbar-brand {
+  float: left;
+  padding: 15px 15px;
+  font-size: 30px;
+  line-height: 34px;
+  height: 50px;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: @navbar-default-toggle-hover-bg;
+}
+.navbar-collapse,
+.navbar-default .navbar-nav .dropdown-menu > li:first-child > a {
+  border-top: none;
+}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: @nav-link-bg;
+  color: @nav-link-color !important;
+}
+@media (min-width: 0) and (max-width: @screen-sm-min) {
+  .navbar-toggle {
+    display: block !important;
+  }
+  .navbar-default {
+    margin: 0;
+    & .navbar-nav .dropdown-menu > li {
+      width: 100%;
+    }
+  }
+  .navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    padding-left: 0;
+    border-top: none;
+  }
+  .navbar-collapse.collapse {
+    display: none!important;
+  }
+  .navbar-collapse.collapse.in {
+    display: block!important;
+  }
+  .navbar-nav > li {
+    float: none !important;
+  }
+  .navbar-nav .open .dropdown-menu > li > a,
+  .navbar-nav .open .dropdown-menu .dropdown-header {
+    padding: 5px 15px 5px 25px;
+  }
+
+}
+@media (min-width: 992px) {
+  .navbar-default {
+    background-color: @navbar-default-bg;
+  }
+  .navbar-default .navbar-nav > li > a,
+  .navbar-default .navbar-nav > li > a:hover,
+  .navbar-default .navbar-nav > li > a:focus {
+    border-right: 2px groove @navbar-default-link-border-right;
+  }
+  .navbar-default .navbar-nav > li:first-child > a,
+  .navbar-default .navbar-nav > li:first-child > a:hover,
+  .navbar-default .navbar-nav > li:first-child > a:focus {
+    border-left: 2px groove @navbar-default-link-hover-border-left;
+  }
+  .navbar-default .media-body a {
+    font-size: 2rem;
+  }
+}
+.navbar-collapse .navbar-nav {
+  width: 100%;
+  margin: 0;
+}
+@media (max-width: 306px) {
+  .navbar-default .navbar-toggle {
+    margin-top: 0;
+  }
+}

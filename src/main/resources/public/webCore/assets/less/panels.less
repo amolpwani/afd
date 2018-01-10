@@ -1,0 +1,65 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+/* Panel Styles
+-------------------------------------------------- */
+
+.panel-default {
+  border-color: @panel-default-border;
+}
+.panel-body {
+  padding: 10px 10px 0;
+}
+
+.panel-title {
+  font-size: 2rem;
+}
+
+.panel {
+  .panel-heading {
+    background-color: @panel-heading-bg;
+  }
+  .panel-heading button.btn-link span {
+    text-decoration: underline;
+  }
+  .panel-opened {
+    display: inherit;
+  }
+  .collapsed {
+    & .panel-opened {
+      display: none;
+    }
+    & .panel-closed {
+      display: inherit;
+    }
+  }
+  .panel-closed {
+    display: none;
+  }
+  .dl-horizontal {
+    & dt {
+      width: 48%;
+    }
+    & dd {
+      margin-left: 50%;
+    }
+  }
+  .panel-footer {
+    background-color: @panel-footer-bg;
+    & a {
+      display: block;
+      float: left;
+    }
+    & span {
+      padding: 0.5em;
+    }
+  }
+  & a {
+    color: @panel-color;
+  }
+  & .nav a:hover {
+    background: transparent;
+  }
+}
+
+
+

@@ -1,0 +1,48 @@
+@import (reference)"../../../../node_modules/bootstrap/less/mixins/buttons.less";
+@import (reference)"variable.less";
+//global
+
+.make-realtive{ position:relative;}
+
+.make-absolute{ position:absolute;}
+
+.webcore-font-normal{
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+//datable mixins
+
+.datatable-pagination-property{
+  .make-absolute;
+  top: 25%;
+  display: block;
+  font-family: @font-family-icon;
+  line-height: 1;
+  .webcore-font-normal;
+  color: @welcome-text-color;
+}
+
+/* Base Layout styles
+-------------------------------------------------- */
+
+
+@media (min-width: 992px) {
+  body {
+    line-height: 1.375;
+  }
+}
+@media (min-width: 1200px) {}
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 21pt;
+  }
+}
+select& {
+  height: @input-height;
+  line-height: @input-height;
+}

@@ -1,0 +1,44 @@
+/* Grid Styles
+-------------------------------------------------- */
+
+.align-middle {
+    display: table-row;
+    margin-bottom: 0;
+    & > [class^="col"] {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+.align-bottom {
+    display: table-row;
+    margin-bottom: 0;
+    & > [class^="col"] {
+        display: table-cell;
+        vertical-align: bottom;
+    }
+}
+.row {
+    margin-bottom: 0.25em;
+    & .align-middle{
+        margin-bottom: 0;
+        & > [class^="col"] {
+            display: table-cell;
+            vertical-align: middle;
+            float: none;
+        }
+    }
+    & .align-bottom {
+        margin-bottom: 0;
+        & > [class^="col"] {
+            display: table-cell;
+            vertical-align: bottom;
+            float: none;
+        }
+    }
+}
+/* make column centered*/
+
+.col-centered {
+    float: none;
+    margin: auto;
+}

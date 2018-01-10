@@ -1,0 +1,40 @@
+@import (reference)"variable.less";
+/* adding loading indicator */
+
+.wc-table-loading-cover, #loading-cover {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.33);
+  z-index: 99999999;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.wc-table-loading-indicator, #loading-indicator {
+  position: absolute;
+  background: @loding-indicator-bg url('../image/loading-anim.gif') no-repeat center;
+  background-size: 100px 100px;
+  text-align: center;
+  height: 200px !important;
+  width: 200px !important;
+  z-index: 10000000000;
+  border-radius: 6px;
+  top: 200px;
+  left: 50%;
+  margin-top: 178px;
+  margin-left: -100px;
+}
+
+.wc-table-loading-indicator span, #loading-indicator span {
+  text-align: center;
+  position: absolute;
+  display: block;
+  /* margin-top: 25px; */
+  margin-left: 11px;
+  font-size: 1.3em;
+  font-weight: 800;
+  bottom: 10px;
+  padding: 5px 60px;
+}

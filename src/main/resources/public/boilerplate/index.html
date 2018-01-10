@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <base href=""/>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"/>
+
+        <link rel="stylesheet" href="../webCore/assets/css/FRF-Vendor.v1.3.0.min.css">
+
+        <link rel="stylesheet" href="../webCore/assets/css/FRF-webCore.v1.3.0.min.css">
+
+        <!-- build:css newUiApp/assets/css/newUiApp.min.css -->
+        <link rel="stylesheet" href="newUiApp/assets/css/app.css">
+        <!-- endbuild -->
+
+
+        <link rel="shortcut icon" href="../ford_icon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="../ford_icon.ico">
+        <meta name="msapplication-square150x150logo" content="../ford_icon.ico">
+        <meta name="msapplication-square70x70logo" content="../ford_icon.ico">
+        <meta name="msapplication-square310x310logo" content="../ford_icon.ico">
+        <meta name="msapplication-TileColor" content="#003e7d">
+        <meta name="format-detection" content="telephone=no">
+
+        <title>FRF Boilerplate</title>
+
+    </head>
+
+    <body>
+
+        <div ng-app="NewUiAppModule" class="container-fluid" id="ng-app">
+            <div wc-loading-indicator></div>
+            <div ui-view wc-page-title></div>
+        </div>
+
+        <script src="../webCore/FRF-Vendor.v1.3.0.min.js"></script>
+
+        <script src="../webCore/FRF-webCore.v1.3.0.min.js"></script>
+
+        <script src="../../node_modules/angular-mocks/angular-mocks.js"></script>
+
+
+        <!-- build:js newUiApp/newUiApp.min.js -->
+        <!-- insert application script tags here  -->
+        <script src="newUiApp/NewUiAppModule.js"></script>
+        <script src="newUiApp/NewUiAppController.js"></script>
+        <script src="newUiApp/components/NewUiAppComponentsModule.js"></script>
+        <script src="newUiApp/states/home/HomeController.js"></script>
+
+        <script src="newUiApp/modules/newTaxonomyModule/NewUiAppNewTaxonomyModule.js"></script>
+        <script src="newUiApp/modules/newTaxonomyModule/components/NewUiAppNewTaxonomyComponentsModule.js"></script>
+        <script src="newUiApp/modules/newTaxonomyModule/states/newScreen/NewScreenController.js"></script>
+        <!-- endbuild -->
+
+
+    </body>
+</html>

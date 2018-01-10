@@ -1,0 +1,11 @@
+{
+  "offlineIndicator": {
+	"retryConnection": "Check your connection.C",
+	"offlineMessage": "Because your application is offline, some functions may not be available.C",
+	"unavailableMessage": "This function is not available while offline.C"
+  },
+  "unauthIndicator": {
+	"wslLogin": "Log in to WSL.C",
+	"unauthMessage": "Your WSL authentication cookie is missing or has expired.C"
+  }
+}

@@ -1,0 +1,242 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+/* Form Styles
+-------------------------------------------------- */
+
+form.well {
+    background-color: @white;
+    padding-bottom: 0;
+}
+.form-actions {
+    width: auto;
+    border: 1px solid @form-actions-border;
+    background-color: @form-actions-bg;
+    padding: 1em;
+    margin: 0 -5px 5px -5px;
+    & button {
+       // margin-left: 1em;
+        margin-right: 1em;
+        & :first-child {
+            //margin-left: inherit;
+        }
+        & :last-child {
+            //margin-right: inherit;
+        }
+    }
+    & .glyphicon-arrow-left {
+        padding-right: 0.25em;
+    }
+    & .glyphicon-arrow-right {
+        padding-left: 0.25em;
+    }
+}
+
+.modal-dialog .form-actions{
+    margin: auto;
+}
+
+.form-group legend {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1em;
+    border: 0;
+}
+.required-legend {
+    position: relative;
+}
+//TODO: Is this rule used?
+.required-legend-new {
+    position: relative;
+    top: -15px;
+    margin-bottom: 10px;
+}
+.required-text {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    z-index: 10;
+    display: block;
+    padding: 5px 8px;
+    font-size: 12px;
+    color: @required-text-color;
+    background-color: @white;
+    border: 1px solid @required-text-border;
+    border-radius: 0 4px 0 4px;
+}
+.well-sm .required-text {
+    top: -10px;
+    right: -10px;
+}
+//TODO: Is this rule used?
+.required-text-new {
+    background-color: @white;
+    border: 1px solid @required-text-new-border;
+    border-radius: 0 4px 0 4px;
+    color: @required-text-new-color;
+    font-size: 12px;
+    padding: 5px 8px;
+}
+abbr.required {
+    color: @abbr-required-color;
+    cursor: default;
+    border: 0;
+}
+.invisible {
+    visibility: hidden;
+}
+fieldset {
+    & .form-group {
+        margin-bottom: 0;
+    }
+    & .panel legend.panel-heading {
+        font-size: 1.25em;
+        padding: 5px 15px;
+    }
+    & > legend.text-right {
+        @media only screen and (max-width: @screen-sm-min) {
+            text-align: left;
+        }
+    }
+}
+
+/* Override Bootstrap weirdness on small breakpoint text does not align left with rest of form */
+
+.modal-footer.form-actions {
+    text-align: center;
+}
+.modal-dialog {
+    & .form-group {
+      & #year-required,
+      & #year-invalid,
+      & #level-required,
+      & #level-invalid {
+            margin-left: 21.5em;
+        }
+    }
+}
+.form-group {
+    & .label {
+        background-color: @white;
+        color: inherit;
+        font-size: 1em;
+        margin-top: 0.25em;
+        display: table;
+    }
+    & .label-text {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    & .label-danger {
+        border: 1px solid @form-group-danger-bg;
+        padding: 0.5em;
+    }
+    & .label-danger .glyphicon {
+        color: @form-group-glyphicon-color;
+        padding-right: 0.25em;
+        font-size: 1.5em;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    & .label-warning {
+        border: 1px solid @form-group-warning-border;
+        padding: 0.5em;
+    }
+    & .label-warning .glyphicon {
+        color: @form-group-warning-glyphicon-color;
+        padding-right: 0.25em;
+        font-size: 1.5em;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    & .label-success {
+        border: 1px solid @form-group-success-border;
+        padding: 0.5em;
+    }
+    & .label-success .glyphicon {
+        color: @form-group-success-color;
+        padding-right: 0.25em;
+        font-size: 1.5em;
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+.dropdown-menu > li > a {
+    text-decoration: none;
+}
+.ui-select-bootstrap{
+    & .ui-select-choices-row > a {
+        text-decoration: none;
+    }
+    & .btn {
+        text-align: left;
+    }
+}
+
+/* override the ui-select being set to a pixel width for some reason. */
+
+div.ui-select-container input.ui-select-search {
+    width: 100% !important;
+}
+dl {
+    overflow: hidden;
+    margin: 0 0 .5em !important;
+    overflow-wrap: break-word;
+}
+.dl-horizontal {
+    & dt {
+        width: 45% !important;
+        float: left;
+        text-align: right;
+        clear: left;
+    }
+    & dd {
+        margin-left: 48% !important;
+    }
+}
+.input-small {
+    width: 100px;
+}
+.form-horizontal .radio {
+    padding-top: 0;
+    min-height: 22px;
+}
+
+/* Equal Height Column Styles
+-------------------------------------------------- */
+
+.row-xs-height {
+    display: table-row;
+}
+.col-xs-height {
+    display: table-cell;
+    float: none;
+}
+input[type="file"] {
+    display: block;
+}
+p {
+    margin: 0 0 10px;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: @form-control-color;
+    background: @form-control-bg none;
+    border: 1px solid @form-control-border;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.row-action-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}

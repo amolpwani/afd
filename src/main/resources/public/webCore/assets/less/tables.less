@@ -1,0 +1,29 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+
+/* Table Styles
+-------------------------------------------------- */
+
+.table-actions {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+table.table-default {
+  width: 100%;
+  margin: 1em 0;
+  text-align: center;
+}
+table.table-default thead {
+  background-color:  @table-default-thead-bg;
+  color: @table-default-thead-color;
+}
+table.table-default thead > tr > th {
+  text-align: center;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: @white;
+}
+
+table th .form-group{
+  margin-bottom: 0;
+}

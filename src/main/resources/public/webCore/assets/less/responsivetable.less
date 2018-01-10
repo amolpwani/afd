@@ -1,0 +1,288 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+
+/* Responsive Table Styles
+-------------------------------------------------- */
+
+.table-responsive-view{
+    width:100%;
+}
+/* Adopted from demo: http://elvery.net/demo/responsive-tables/ */
+
+@media screen and (max-width: @screen-sm-min) {
+    .wc-table.table-responsive {
+        border: none;
+        padding: 0;
+    }
+
+    .well .wc-table.table-responsive {
+        padding: 0 6px 0 6px;
+    }
+}
+
+
+/*Media query
+    when the max-width of the display is 768px i.e. mobile browsers & devices
+    then the CSS rules written inside the media query scope will be applied to
+    specified selectors
+*/
+@media only screen and (max-width: @screen-sm-min) {
+    .action-dropdown {
+        display: block !important;
+        visibility: visible !important;
+        padding-right: 0;
+    }
+    /* Force table to not be like tables anymore */
+    .table-mobile-stack table,
+    .table-mobile-stack thead,
+    .table-mobile-stack tbody {
+        display: block;
+        /*Show table, thead and tbody tags as block elements*/
+    }
+    .table-mobile-stack > table > thead > tr {
+        display: none;
+        /* Hide the tr element inside the thead section of table whose parent is having class table-mobile-stack*/
+        /*flex-direction: row;*/
+    }
+    .table-mobile-stack > table > thead > tr > th:nth-child(n-3) {
+        /*hide the 3rd heading from the last in the table*/
+        display: none;
+        /*align-self: stretch;*/
+    }
+    .table-mobile-stack > table > tbody > tr {
+        /*display the rows of table as flex rows i.e. one under another*/
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border:1px solid black;
+        background-color: #f4f4f4;
+        /*wrap the row if size is small for contents*/
+    }
+    .table-mobile-stack > table > tbody > tr > th:nth-child(n-3) {
+        align-self: baseline;
+    }
+    /* Hide table headers except for the first three (but not display: none;, for accessibility) */
+    .table-mobile-stack > table > thead > tr > th:nth-child(n+4) {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    .table-mobile-stack > table > tbody > tr > td:nth-child(n+4) {
+        text-align: center;
+        background-color: @navbar-bg-color;
+        font-weight: bold;
+        border: none;
+    }
+    .table-mobile-stack > table > tbody > tr:before {
+        content: attr(data-title);
+        /*display the header inside the columns to look in blocks when shown as list view
+          this will make the column content and heading appear vertically stacked instead of
+          horizontally stacked
+        */
+        display: block;
+        color: @white;
+        line-height: 2em;
+    }
+    /* Behave  like a "row" */
+    .table-mobile-stack > table > tbody > tr:nth-of-type(odd) > td:nth-child(n+4) {
+        background: white;
+        border: none;
+        position: relative;
+        white-space: normal;
+        text-align: left;
+        width: auto;
+        font-weight: normal;
+        word-break: break-all;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+        line-height: 2.1em;
+    }
+    .table-mobile-stack > table > tbody > tr:nth-of-type(even) > td:nth-child(n+4) {
+        background: #f4f4f4;
+        border: none;
+        position: relative;
+        white-space: normal;
+        text-align: left;
+        width: auto;
+        font-weight: normal;
+        word-break: break-all;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+        line-height: 2.1em;
+    }
+    .table-mobile-stack > table > tbody > tr > td > a {
+        padding: 10px;
+    }
+    .table-mobile-stack > table > tbody > tr > td > a:first-child {
+        padding-left: 0;
+    }
+    .table-mobile-stack > table > tbody > tr > td {
+        /*Now like a table header */
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .dropdown {
+        display:inline;
+    }
+
+    .dropdown-menu {
+        font-size: 12px;
+        padding-left: 10px;
+        text-align: left;
+        top: 100%;
+        left: 0;
+    }
+
+    .wc-list-view-col-hide {
+        display:none !important;
+    }
+
+    .table-mobile-stack > table > tbody > tr:nth-of-type(odd) > td:nth-child(2) {
+        background-color: #fff;
+        border: none;
+        line-height: 2.0em;
+        padding-left: 8px;
+    }
+
+    .table-mobile-stack > table > tbody > tr:nth-of-type(even) > td:nth-child(2) {
+        background-color: #f4f4f4;
+        //padding-right:0;
+        border:none;
+        line-height: 2.0em;
+        padding-top:8px;
+    }
+
+    .table-mobile-stack > table > tbody > tr:nth-of-type(odd) > td:nth-child(3) {
+        //padding-left:43px;
+        padding-top:8px;
+        background-color: @white;
+        border:none;
+        line-height: 2.0em;
+    }
+
+    .table-mobile-stack > table > tbody > tr:nth-of-type(even) > td:nth-child(3) {
+        //padding-left:43px;
+        padding-top:8px;
+        background-color: #f4f4f4;
+        border:none;
+        line-height: 2.0em;
+    }
+
+    select.form-control {
+        padding: 0 !important;
+        width: 100%;
+    }
+    select.active-dropdown {
+       position :relative;
+    }
+
+    .table-mobile-stack > table > tbody > tr > td.wc-highlight-row {
+        background-color: #5BC0DE !important;
+    }
+    /*Label the data*/
+    .table-mobile-stack > table > tbody > tr > td:before {
+        content: attr(data-title);
+        display: block;
+        font-weight: bold;
+    }
+
+    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header:before {
+        content: "";
+        display: block;
+        font-weight: bold;
+    }
+
+    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header {
+        width:90%;
+        padding-left:0;
+        display: inline !important;
+    }
+
+    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header .wc-list-view-header-text {
+        float: left;
+        width: 50%;
+    }
+
+    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header .wc-list-view-header-btn-group {
+        float: right;
+        text-align: right;
+        width: 50%;
+        display: inline !important;
+    }
+
+    .table-mobile-stack .default-message {
+        padding-left: 0;
+        text-align: center;
+    }
+    .filter-visibility-toggle,
+    .active-filters {
+        display: none;
+    }
+
+    .action-control-box {
+        visibility: visible !important;
+        display: inline !important;
+        float: right;
+    }
+
+    .no-border {
+        border: none !important;
+    }
+
+    .result-page-count{
+        display: none !important;
+    }
+
+    .pagination-control{
+        width: @width-100;
+    }
+
+    input[type="checkbox"]{
+        transform: scale(1.5);
+    }
+
+    .widgets{
+        padding: 0;
+    }
+
+    .custom-radio{
+        float: left;
+    }
+
+}
+
+.currentPageText{
+    margin-bottom: 0;
+}
+.input-sm {
+    //height: @input-height;
+    //padding: 5px 10px !important;
+    //font-size: 12px !important;
+    //line-height: 1.5;
+    //border-radius: 3px;
+}
+select.input-sm {
+    height: @input-height;
+    line-height: @input-height;
+}
+.scroll-table-wrapper, .ratchet-table-wrapper {
+    overflow-x: auto;
+    clear: left;
+}
+.column-toggle .filter-visibility-toggle {
+    position: absolute;
+}
+
+
+@media screen and (max-width: 400px) {
+    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header .wc-list-view-header-text {
+        padding-left: .5rem;
+    }
+    select.form-control {
+        width: 130%;
+    }
+}

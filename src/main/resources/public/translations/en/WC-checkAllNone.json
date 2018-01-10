@@ -1,0 +1,7 @@
+{
+  "actions": {
+	"selectAll": "Select All",
+    "selectNone": "Select None"
+  }
+}
+

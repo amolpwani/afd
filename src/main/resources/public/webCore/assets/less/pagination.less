@@ -1,0 +1,383 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+@import (reference)"../../../../node_modules/bootstrap/less/variables.less";
+/* Content Pagination Styles
+-------------------------------------------------- */
+
+.pagination {
+    margin: 0;
+}
+.pagination li button {
+    margin: 0;
+    font-family: 'Glyphicons Halflings', sans-serif;
+}
+
+/* Header Fix for All Browsers
+-------------------------------------------------- */
+
+.clearfix:after,
+.container:after,
+.container-fluid:after,
+.row:after,
+.form-horizontal .form-group:after,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after,
+.pager:after,
+.panel-body:after,
+.modal-footer:after {
+    width: 1px;
+}
+.pagination-results-per-page {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+.results-data {
+    padding-top: .6em;
+}
+.wc-table thead > tr > th {
+    background-color: @table-thead-bg;
+    color: @white;
+    text-align: center;
+    touch-action: manipulation;
+    vertical-align: top;
+}
+.wc-table thead > tr > td {
+    display: none !important;
+    width: 0;
+}
+div[wc-responsive-table] table tbody td.wc-table-column-highlight {
+    background-color: @responsive-table-tbody-bg;
+}
+div[wc-responsive-table] table thead th.wc-table-column-highlight {
+    background-color: @responsive-table-thead-bg;
+}
+.table-bordered thead > tr > th,
+.table-bordered tbody > tr > td {
+    border-color: @table-bordered-bg;
+}
+table.table-bordered {
+    border-top: none;
+}
+.wc-highlight-row {
+    background-color: @highlight-row-bg !important;
+}
+
+.wc-highlight-row,
+.wc-highlight-row .btn-link,
+.wc-highlight-row a{
+    color: @white;
+}
+
+.wc-table-column-sort-heading .header-text, .wc-table-column-sort-heading .header-icons {
+    cursor: pointer;
+}
+
+.wc-table-column-sort-heading .header-icons .glyphicon-filter{
+    cursor: default;
+}
+
+.wc-table-column-sort-heading .header-icons .glyphicon{
+   margin-left: 5px;
+}
+.wc-table-sort-icon {
+    padding-right: 1px;
+}
+wc-row-select-header-checkbox {
+    text-align: center;
+    width: 100% !important;
+}
+div[wc-responsive-table] {
+    position: relative;
+    & .filter-visibility-toggle {
+        color: @responsive-visibility-toogle-color;
+        font-weight: bold;
+        background-color: @responsive-visibility-toogle-bg;
+        border-radius: 5px 5px 0 0;
+        border: 1px solid @responsive-visibility-toogle-border;
+        border-bottom: none;
+        min-width: 130px;
+        margin-left: 1px;
+        text-align: center;
+        cursor: pointer;
+        float: left;
+        padding: 5px 15px;
+    }
+    & .column-toggle {
+        color: @white;
+        font-weight: bold;
+        background-color: @responsive-column-toogle-bg;
+        border-radius: 5px 5px 0 0;
+        border: 1px solid @responsive-column-toogle-border;
+        border-bottom: none;
+        margin-right: 10px;
+        text-align: center;
+        padding-top: 3px;
+        cursor: pointer;
+        float: right;
+        padding: 5px 15px;
+    }
+    & .dropdown-menu {
+        color: #000000;
+        /* padding: inherit; */
+        padding-left: 6px;
+        margin-top: 0;
+        line-height: 1.2em;
+        font-size: 16px;
+    }
+    ul.dropdown-open{
+        padding-left: 0;
+        margin-top: 10px;
+        margin-left: -195px;
+        right: -1px;
+    }
+    & .column-toggle li {
+        color: #000;
+        padding-left: 5px;
+    }
+    & .column-toggle span:first-child {
+        margin-right: 4px;
+    }
+    & .active-filters {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px 10px 5px;
+        margin-bottom: 10px;
+        clear: both;
+    }
+    & .active-filters button.btn-active-filter {
+        background: #feffd3;
+        border:1px solid #e2e0a1;
+        margin: 0 5px 5px 0;
+        white-space: normal;
+        text-align: left;
+    }
+    & .active-filters button span {
+        color: @black;
+        & :last-child {
+            margin-left: 4px;
+        }
+    }
+    & .filter-visibility-toggle span:first-child {
+        margin-right: 4px;
+    }
+    & th span {
+        //float: right;
+        //margin-right: 10px;
+    }
+    & .table-responsive {
+        padding-left: 136px;
+        border: none;
+        -webkit-overflow-scrolling: touch;
+        & .filter-visibility-toggle {
+            position: absolute;
+            left: 15px;
+        }
+    }
+    & .table-ratchet {
+        overflow-x: hidden;
+        @media (min-width: @screen-lg-min) {
+            overflow-x: auto;
+        }
+        & .ratchet-indicator {
+            height: 90%;
+            width: 30px;
+            position: absolute;
+            right: 0;
+            top: 30px;
+            background: @table-ratchet-indicator-bg;
+            color: @white;
+        }
+        & .ratchet-indicator span {
+            display: block;
+            font-size: 4em;
+            overflow-wrap: break-word;
+            line-height: 0.25;
+            text-align: center;
+            height: 100%;
+            width: 100%;
+        }
+    }
+    & .table-ratchet table {
+        width: 1150px;
+        @media (min-width: @screen-lg-min) {
+            width: 100%;
+
+        }
+    }
+
+    & .wc-table-buttons {
+        //margin-right: 15px;
+    }
+}
+
+.header-text-wrapper {
+    display: block;
+    text-align: left;
+}
+.header-text{
+    display: inline-block;
+    white-space: initial;
+    padding-bottom: 10px;
+}
+.math-dropdown {
+    padding-right:0;
+}
+.math-dropdown + div {
+    padding-left:5px;
+}
+/* adding loading indicator */
+
+.wc-table-loading-cover, #loading-cover {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.33);
+    z-index: 99999999;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.wc-table-loading-indicator, #loading-indicator {
+    position: absolute;
+    background: @loading-indicator-bg url('../image/loading-anim.gif') no-repeat center;
+    background-size: 100px 100px;
+    text-align: center;
+    height: 200px !important;
+    width: 200px !important;
+    z-index: 10000000000;
+    border-radius: 6px;
+    top: 200px;
+    left: 50%;
+    margin-top: 178px;
+    margin-left: -100px;
+}
+.wc-table-loading-indicator span, #loading-indicator span {
+    text-align: center;
+    position: absolute;
+    display: block;
+    /* margin-top: 25px; */
+    margin-left: 11px;
+    font-size: 1.3em;
+    font-weight: 800;
+    bottom: 10px;
+    padding: 5px 60px;
+}
+/*Custom Pagination styles*/
+
+.pagination {
+    & > .active {
+        & > button,
+        & > button:hover,
+        & > button:focus {
+            z-index: 2;
+            color: @pagination-active-button-color;
+            cursor: default;
+            background-color: @pagination-active-button-bg;
+            border-color: @pagination-active-button-border-color;
+        }
+    }
+    & > .disabled {
+        & > button,
+        & > button:hover,
+        & > button:focus {
+            color: @pagination-disabled-button-color;
+            cursor: not-allowed;
+            background-color: @white;
+            border-color: @pagination-disabled-button-border-color;
+        }
+    }
+    & > li {
+        & > button {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: @pagination-button-color;
+            text-decoration: none;
+            background-color: @pagination-button-bg;
+            border: 1px solid @pagination-button-border;
+        }
+        & :first-child > button {
+            margin-left: 0;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+        & :last-child > button {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+        & > button {
+            :hover, :focus {
+                color: @pagination-button-hover-color;
+                background-color: @pagination-button-hover-bg;
+                border-color: @pagination-button-hover-border;
+            }
+        }
+    }
+}
+.pagination-lg > li {
+    & > button {
+        padding: 10px 16px;
+        font-size: 18px;
+    }
+    & :first-child > button {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+    & :last-child > button {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+}
+.pagination-sm > li {
+    & > button {
+        padding: 5px 10px;
+        font-size: 0.875em;
+    }
+    & :first-child > button {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    & :last-child > button {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+    & > input {
+        float: left;
+        padding: 5px 10px;
+        font-size: 0.875em;
+        width: 106px;
+        border:1px solid @pagination-sm-norder;
+        line-height: 1.42857143;
+        margin-left: -1px;
+        text-align: center;
+    }
+}
+
+.table-responsive th.wc-table-column-0,
+.table-responsive th.wc-table-column-1 {
+    border-bottom: 1px solid @table-responsive-table-border-bottom;
+}
+.wc-table-selection-info {
+    display: block;
+}
+.wc-table-current-sorted-column {
+    background-color: purple !important;
+}
+
+
+
+
+
+
+
+
+
+
+

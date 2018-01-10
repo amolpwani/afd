@@ -1,0 +1,11 @@
+{
+	"offlineIndicator": {
+		"retryConnection": "Check your connection.",
+		"offlineMessage": "Because your application is offline, some functions may not be available.",
+	  	"unavailableMessage": "This function is not available while offline."
+	},
+	"unauthIndicator": {
+		"wslLogin": "Log in to WSL.",
+		"unauthMessage": "Your WSL authentication cookie is missing or has expired."
+	}
+}

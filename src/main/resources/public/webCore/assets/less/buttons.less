@@ -1,0 +1,130 @@
+@import (reference)"mixins.less";
+@import (reference)"variable.less";
+@import (reference)"../../../../node_modules/bootstrap/less/mixins/buttons.less";
+/* Button & Link Styles
+-------------------------------------------------- */
+
+a.btn {
+//    text-decoration: none;
+}
+.btn, .btn-sm {
+    font-family: AntennaCond, Arial, Helvetica, sans-serif;
+    font-weight: bold !important;
+}
+.btn-sm, .btn-group-sm > {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    border-radius: 3px !important;
+    font-weight: bold !important;
+}
+.action-group{
+    color:#428bca;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+.action-group.btn-group-sm>.btn{
+    padding: 5px 7px;
+}
+.action-group .btn-xs{
+    background-color: #fff;
+}
+.action-group .btn-top{
+    padding: 5px 9px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.action-group.btn-group .btn+.btn{
+    margin-left: 0;
+}
+
+.btn-primary-default {
+    .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border;);
+}
+
+.btn-primary {
+    .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+}
+
+.btn-tertiary {
+    .button-variant(@btn-tertiary-color; @btn-tertiary-bg; @btn-tertiary-border);
+}
+
+.btn-secondary {
+    .button-variant(@btn-secondary-color; @btn-secondary-bg; @btn-secondary-border);
+}
+
+a.icon .fa,
+.btn.icon {
+    border: @icon-border;
+    font-size: @icon-font-size;
+    background-color: @icon-background-color;
+    border-radius: @icon-border-radius;
+    padding: @icon-padding;
+    margin: @icon-margin;
+}
+
+.icon span {
+    color: @text-color;
+    margin-left: 4px;
+}
+
+a.icon-link .fa {
+    margin-right: 10px;
+}
+
+a.icon-powerpoint .fa,
+.btn.icon-powerpoint {
+    .button-variant(@icon-ppt-color; @icon-background-color; @icon-border-color);
+}
+a.icon-rss .fa,
+.btn.icon-rss {
+    .button-variant(@icon-rss-color; @icon-background-color; @icon-border-color);
+}
+a.icon-print .fa,
+.btn.icon-print {
+    .button-variant(@btn-primary-bg; @icon-background-color; @icon-border-color);
+}
+a.icon-external-link .fa,
+.btn.icon-external-link {
+     .button-variant(@btn-primary-bg; @icon-background-color; @icon-border-color);
+}
+a.icon-envelope-standard .fa,
+.btn.icon-envelope-standard {
+    .button-variant(@btn-primary-bg; @icon-background-color; @icon-border-color);
+}
+a.icon-chrome .fa,
+.btn.icon-chrome {
+    .button-variant(@icon-chrome-color; @icon-background-color; @icon-border-color);
+}
+a.icon-firefox .fa,
+.btn.icon-firefox {
+    .button-variant(@icon-firefox-color; @icon-background-color; @icon-border-color);
+}
+a.icon-edge .fa,
+.btn.icon-edge {
+    .button-variant(@icon-edge-color; @icon-background-color; @icon-border-color);
+}
+a.icon-safari .fa,
+.btn.icon-safari {
+    .button-variant(@icon-safari-color; @icon-background-color; @icon-border-color);
+}
+a.icon-pdf .fa,
+.btn.icon-pdf{
+    .button-variant(@icon-pdf-color; @icon-background-color; @icon-border-color);
+}
+a.icon-pdf-standard .fa,
+.btn.icon-pdf-standard {
+    .button-variant(@icon-pdf-color; @icon-background-color; @icon-border-color);
+}
+a.icon-excel .fa,
+.btn.icon-excel {
+    .button-variant(@icon-excel-color; @icon-background-color; @icon-border-color);
+}
+a.icon-excel-standard .fa,
+.btn.icon-excel-standard {
+    .button-variant(@icon-excel-color; @icon-background-color; @icon-border-color);
+}
+a.icon-word .fa,
+.btn.icon-word {
+    .button-variant(@icon-word-color; @icon-background-color; @icon-border-color);
+}

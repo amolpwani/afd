@@ -1,0 +1,59 @@
+{
+	"application": {
+		"title": "Aurora Foundational Data",
+		"shortTitle": "Aurora Foundational Data",
+		"navigation": {
+			"links": {
+				"home": "Home",
+				"newModule": {
+					"main": "Parent Menu",
+					"childItem": "Child Menu Item"
+				}
+			}
+		},
+		"header": {
+			"logo": "Ford Oval",
+			"buttons": {
+				"skipToContent": "Skip to Content"
+			}
+		},
+		"footer": {
+			"copyright": "© 2017 Ford Motor Company. All rights reserved."
+		},
+		"home": {
+			"title": "Welcome to the Aurora!",
+			"instructions": "This is the landing page of your new application."
+		}
+	},
+	"newTaxonomy": {
+		"newScreen": {
+			"title": "New Screen 1",
+			"instructions": "Add components to this screen to do X and Y",
+			"buttons": {
+				"submit": "Add New"
+			},
+			"links": {
+				"edit": "@:actions.edit",
+				"cancel": "@:actions.cancel"
+			}
+		}
+	},
+	"entities": {
+	},
+	"defaults": {
+		"select": "Select One"
+	},
+	"actions": {
+		"title": "Actions",
+		"selectAll": "Select All",
+		"selectNone": "Select None",
+		"show": "Show",
+		"hide": "Hide",
+		"delete": "Delete",
+		"cancel": "Cancel",
+		"save": "Save",
+		"edit": "Edit",
+		"yes": "Yes",
+		"no": "No"
+	}
+}

@@ -1,0 +1,149 @@
+@import (reference)"variable.less";
+/* Alert Styles
+-------------------------------------------------- */
+
+.form-group
+{
+  .label-success {
+    border: 1px solid @alert-success;
+    padding: 0.5em;
+    .glyphicon {
+      color: @alert-success;
+      padding-right: 0.25em;
+      font-size: 1.5em;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+div[wc-alert-console], div[wc-offline-indicator]{
+  float: none;
+  clear: both;
+}
+.alert {
+  border-width: 2px;
+  background-color: @white;
+  color: inherit;
+  display: table;
+  width: 100%;
+  padding: 0.75em;
+  margin-bottom: 0;
+  .glyphicon {
+    font-size: 2em;
+    padding-right: 0.25em;
+    display: table-cell;
+    vertical-align: middle;
+    width: 1.25em;
+  }
+}
+.alert-text {
+  display: table-cell;
+  vertical-align: middle;
+  font-weight: bold;
+}
+.alert-success {
+  border-color: @alert-success;
+  .glyphicon-ok-circle {
+    padding-right: 0.25em;
+    font-size: 1.5em;
+    float: left;
+    vertical-align: middle;
+    margin-top: -.09em;
+  }
+  .glyphicon {
+    color: @alert-success;
+  }
+}
+
+.alert-warning {
+  border-color: @alert-warning;
+  .glyphicon {
+    color: @alert-warning;
+  }
+}
+.alert-info {
+  border-color: @alert-info;
+  .glyphicon {
+    color: @alert-info;
+  }
+}
+
+.glyphicon-refresh-animate {
+  transform-origin: 34% 48%;
+  padding-right: 0;
+  animation: spin 2s infinite linear;
+  -webkit-animation: spin2 2s infinite linear;
+}
+@-webkit-keyframes spin2 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}
+@-webkit-keyframes zoom {
+  from {
+    /*-webkit-transform: scale(1,1);*/
+    /*transform: scale(1,1);*/
+  }
+  to {
+    /*-webkit-transform: scale(0,0);*/
+    /*transform: scale(0,0);*/
+    -webkit-transform: translate(100%, 0);
+    /* Safari */
+    transform: translate(100%, 0);
+  }
+}
+.alert.zoom-out-animate {
+  animation: zoom 0.35s 1 ease-in;
+  -webkit-animation: zoom 0.35s 1 ease-in;
+}
+#alert-console {
+  overflow: hidden;
+  .progress-striped {
+    float: right;
+    width: 20%;
+    margin: 9px 0;
+    height: 4px;
+    @media only screen and (max-width: 499px) {
+      float: none;
+      width: 100%;
+      margin-bottom: 0;
+      margin-left: 0;
+    }
+  }
+}
+
+.alert-danger {
+  border-color: @alert-danger;
+  .glyphicon {
+    color: @alert-danger;
+  }
+}
+.alert-dismissable {
+  padding-right: 35px;
+  line-height: 2em;
+  @media only screen and (max-width: 499px) {
+    line-height: 1.25em;
+  }
+  .close {
+    top: -1px;
+  }
+}
+
+/* Alert Console Directive */
+
+.fade-out {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s ease-out;
+}

@@ -1,0 +1,382 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+@import (reference)"../../../../node_modules/bootstrap/less/variables.less";
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-family:  AntennaCond, Arial, Helvetica, sans-serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-icon:       'Glyphicons Halflings';
+@font-family-base:        @font-family-sans-serif;
+
+@font-size-base:          24px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+@font-color-base:         #000000;
+
+@font-size-h1:            (2.4rem); // ~24px
+@font-size-h2:            ceil((@font-size-base - 4)); // ~20px
+@font-size-h3:            ceil((@font-size-base - 8)); // ~16px
+@font-size-h4:            ceil((@font-size-base - 11)); // ~13px
+@font-size-h5:            ceil((@font-size-base - 13)); // ~11px
+@font-size-h6:            ceil((@font-size-base - 14)); // ~10px
+
+// @url //
+
+@images : "../image/icons_sprite.png";
+
+@line-height-base:        1.428571429; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+//** By default, this inherits from the `<body>`.
+
+@headings-font-family:    AntennaCond, Arial, Helvetica, sans-serif;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+
+/* Colour Palette
+-------------------------------------------------- */
+/*Primary Colours*/
+
+@ford-blue :               #003478;
+
+@nav-custom-link-padding : 20px 15px;
+
+@slate :                    #425968;
+
+@slate-screen :             #91a4b1;
+
+@fourty-black :             #7f7c7c;
+
+@white :                    #fff;
+
+@black :                    #000000;
+
+@welcome-text-color:        #336ca2;
+
+@navbar-bg-color:           #215A8F;
+
+
+@alert-success:             #3c763d;
+
+@alert-info:                #31708f;
+
+@alert-warning:             #F90;
+
+@alert-danger:              #a94442;
+
+@alert-base-padding:        25em;
+
+
+.ford-blue {
+  color:                    @ford-blue;
+}
+.slate {
+  color:                    @slate;
+}
+.slate-screen {
+  color:                    @slate-screen;
+}
+.fourty-black {
+  color:                    @fourty-black;
+}
+.white {
+  color:                    @white;
+}
+
+/*Secondary Colours*/
+@light-grey :               #b3b3b3;
+@dark-grey :                #333;
+@highlight :                #2d96cd;
+
+.light-grey {
+  color:                    @light-grey;
+}
+.dark-grey {
+  color:                    @dark-grey;
+}
+.highlight {
+  color:                    @highlight;
+}
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+@btn-font-weight:     normal;
+
+@btn-default-color:    @white;
+@btn-default-bg:       #5cb85c;
+@btn-default-border:   #398439;
+
+@btn-primary-color:    @white;
+@btn-primary-bg:       #428bca;
+@btn-primary-border:   #285e8e;
+
+@btn-tertiary-color:   @white;
+@btn-tertiary-bg:      #5bc0de;
+@btn-tertiary-border:  #269abc;
+
+@btn-secondary-color:  @dark-grey;
+@btn-secondary-bg:     #ebebeb;
+@btn-secondary-border: #adadad;
+
+@btn-link-disabled-color: @gray-light;
+
+@icon-link-url:        "@images/icons_sprite.png" ;
+
+@icon-link-base-position: -40px ;
+
+@btn-pdf-color: #851924;
+@btn-excel-color: #1f7246;
+@btn-pdf-right: 80px;
+@btn-excel-right: 38px;
+
+@btn-font-size:    large;
+@btn-border-color: #ddd;
+@btn-float:right;
+@btn-margin-top: -6px;
+@btn-margin-right: 4px;
+@btn-background-color: #ffffff;
+@btn-border-radius: 5px;
+@btn-border-width: 1px;
+@btn-padding: 3px 7px 3px 7px;
+
+
+
+//Icon Properties
+@icon-background-color: #ffffff;
+@icon-border-color: #ddd;
+@icon-font-size: 1.025em;
+@icon-padding: 4px 8px;
+@icon-border: 1px solid @icon-border-color;
+@icon-margin: 0 0 5px 10px;
+@icon-border-radius: 5px;
+
+//Icon Colors
+@icon-primary-bg: #428bca;
+@icon-ppt-color: #DD755C;
+@icon-word-color: #6081B3;
+@icon-rss-color: #F28A37;
+@icon-chrome-color: #4285F4;
+@icon-firefox-color: #E66000;
+@icon-edge-color: #0078D7;
+@icon-safari-color: #086CDA;
+@icon-pdf-color: #851924;
+@icon-excel-color: #1f7246;
+
+
+
+
+
+// DataTable
+
+@tables-legend:                       datatables-legend;
+@datatables-wrapper:                  dataTables_wrapper;
+@tables-wrapper-pagination-color:     #999;
+@tables-wrapper-table-bordered-color: #aaa;
+@tables-wrapper-table-striped-color:  #eee;
+@tables-wrapper-table-sorting-bg:     #0d73b0;
+@tables-wrapper-table-sorting-disabled-bg: #EAEBFF;
+@tables-wrapper-table-sorting_1-bg:   #D3D6FF;
+@tables-wrapper-selected-bg:          #ffff99;
+@tables-wrapper-selected-border:      #ffe799;
+@tables-legend-glyphicon-color:       #3c763d;
+@tables-legend-glyphicon-warning-color: #8a6d3b;
+
+@tables-legend-glyphicon-stop-bg:      @tables-wrapper-selected-bg;
+@tables-legend-glyphicon-stop-border:  @tables-wrapper-selected-border;
+@tables-legend-glyphicon-stop-color:   #428bca;
+
+@tables-legend-border:                 #ccc;
+
+@datatable-pagination--horizontal-padding: 18px;
+
+//Datepicker
+@datepicker-dropdown-bg:            #ccc;
+
+//Dropdowns
+
+@dropdown-menu-btn-link-color:       #333;
+@dropdown-menu-btn-link-hover-color: #262626;
+@dropdown-menu-btn-link-hover-bg:    #f5f5f5;
+
+@dropdown-Submenu:                 dropdown-submenu;
+
+//Forms
+
+@form-actions-border:              #e5e5e5;
+@form-actions-bg:                  #f5f5f5;
+
+@required-text-color:              #777;
+@required-text-border:             #e1e1e8;
+
+@required-text-new-color:          @required-text-color;
+@required-text-new-border:         @required-text-border;
+
+@abbr-required-color:               #a94442;
+
+@form-group-danger-bg:              @abbr-required-color;
+
+@form-group-glyphicon-color:        @form-group-danger-bg;
+
+@form-group-warning-border:          #8a6d3b;
+@form-group-warning-glyphicon-color: @form-group-warning-border;
+
+@form-group-success-border:          #3c763d;
+@form-group-success-color:           @form-group-success-border;
+
+@form-control-color:                 #555;
+@form-control-bg:                    #fff;
+@form-control-border:                #ccc;
+
+//Headers
+
+@body-bg:                            #f4f4f4;
+@text-color:                         #333;
+
+@app-branding-color:                 #036;
+
+@dropdown-menu-btn-color:            #333;
+
+@dropdown-menu-btn-hover-color:      #262626;
+@dropdown-menu-btn-hover-bg:         #f5f5f5;
+
+//Loading indicator
+
+@loding-indicator-bg:                 rgba(255,255,255,0.9);
+
+//Nav Bar
+
+@navbar-media-body-color:              #036;
+@navbar-default-toggle-hover-bg:       #333;
+@navbar-default-toggle-icon-bar-bg:    #fff;
+@navbar-default-bg:                    #215A8F;
+@navbar-default-color:                 @navbar-default-toggle-icon-bar-bg;
+@navbar-default-link-hover-bg:         @navbar-default-toggle-hover-bg;
+@navbar-default-link-active-bg:        #024;
+@navbar-default-dropdown-bg:           @navbar-default-toggle-hover-bg;
+@navbar-default-dropdown-border-color: #aaa;
+@navbar-default-dropdown-border-top:   #666;
+@navbar-default-dropdown-hover-color:  @navbar-default-toggle-icon-bar-bg;
+@navbar-default-dropdown-hover-bg:     @navbar-default-dropdown-border-top;
+@navbar-default-dropdown-active-bg:    #428bca;
+@nav-link-color:                       @navbar-default-toggle-icon-bar-bg;
+@nav-link-bg:                          @navbar-default-dropdown-active-bg;
+@navbar-default-link-border-right:     #999999;
+@navbar-default-link-hover-border-left: @navbar-default-link-border-right;
+
+@navbar-default-toogle-bg:              @navbar-default-bg;
+
+//Pagination
+
+@table-thead-bg:                      #215A8F;
+
+@responsive-table-tbody-bg:           #D3D6FF;
+
+@responsive-table-thead-bg:           #0d73b0;
+
+@highlight-row-bg:                    #5BC0DE;
+
+@responsive-visibility-toogle-color:  #fff;
+@responsive-visibility-toogle-bg:     #3276b1;
+@responsive-visibility-toogle-border: #285e8e;
+
+@responsive-column-toogle-bg:         @responsive-visibility-toogle-bg;
+@responsive-column-toogle-border:     @responsive-visibility-toogle-border;
+
+@responsive-table-td-bg:               #eee;
+
+@responsive-acive-filter-color:        @responsive-column-toogle-bg;
+
+@pagination-button-color:              #428bca;
+@pagination-button-bg:                 @responsive-visibility-toogle-color;
+@pagination-button-border:             #ddd;
+
+@pagination-button-hover-color:        #2a6496;
+@pagination-button-hover-bg:           @responsive-table-td-bg;
+@pagination-button-hover-border:       @pagination-button-border;
+
+@pagination-sm-norder:                 @pagination-button-hover-border;
+
+@pagination-active-button-color:       #fff;
+@pagination-active-button-bg:          #428bca;
+@pagination-active-button-border-color: @pagination-active-button-bg;
+
+@pagination-disabled-button-color:        #999;
+@pagination-disabled-button-border-color: #ddd;
+
+@table-bordered-bg:                       #aaa;
+@table-responsive-table-border-bottom:    #aaa;
+@table-ratchet-indicator-bg: linear-gradient(to right, rgba(33, 90, 143, 0.1), rgba(33, 90, 143, 0.95));
+@loading-indicator-bg:                   rgba(255,255,255,0.9);
+
+//Panels
+
+@panel-default-border:                   #A6D3FB;
+
+@panel-heading-bg:                       @panel-default-border;
+
+@panel-footer-bg:                        #E3F2FF;
+
+@panel-color:                            #336ca2;
+
+//Responsive utilities
+
+@list-view-panel-footer-border:           #428bca;
+
+//scrollable box
+
+@scrollable-border:                       #ebebeb;
+
+//Tables
+
+@table-default-thead-color:               #fff;
+@table-default-thead-bg:                  #215a8f;
+
+/* Screen Width
+-------------------------------------------------- */
+
+@mobile:   ~"only screen and (min-width: 460px)";
+
+@tablet:   ~"only screen and (min-width: 530px)";
+
+@screen-xxs-max: 529px;
+
+/* Select button height
+-------------------------------------------------- */
+@input-height:34px;
+
+/*  Width in percentage
+-------------------------------------------------- */
+@width-10: 10%;
+
+@width-50: 50%;
+
+@width-90: 90%;
+
+@width-100: 100%;
+
+/* Base Layout styles
+-------------------------------------------------- */
+
+@media (min-width: @screen-md-min) {
+  body {
+    line-height: 1.375;
+  }
+}
+@media (min-width: @screen-lg-min) {}
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 21pt;
+  }
+}

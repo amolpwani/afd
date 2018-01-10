@@ -1,0 +1,99 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+/* Typography styles
+-------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: AntennaCond, Arial, Helvetica, sans-serif;
+  //font-weight: 700;
+  margin-top: 0;
+}
+h5,
+h6,
+.h5,
+.h6 {
+  font-family: Antenna, Arial, Helvetica, sans-serif;
+}
+h1,
+.h1 {
+  font-weight: 500;
+  font-size: 2.4rem;
+}
+h1{
+  margin-bottom:10px;
+  @media @tablet {
+    font-size: 2.666rem;
+  }
+}
+#content {
+    padding: 1.5em;
+}
+
+h2,
+.h2 {
+  margin-bottom:10px;
+  //color: #336CA2;
+}
+h3,
+.h3 {
+  color: #777;
+}
+h4,
+.h4 {
+  color: #444;
+}
+h5,
+.h5 {
+  color: #666;
+}
+h6,
+.h6 {
+}
+.heading-bordered {
+  border-bottom: 1px solid;
+}
+
+a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+hr {
+  margin-top: 0;
+}
+#footer {
+  height: 10em;
+  width: 100%;
+  background-color: #dddddd;
+  background-image: -moz-linear-gradient(top, #dddddd 0%, #ffffff 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(top, #dddddd 0%, #ffffff 100%);
+  background-image: -o-linear-gradient(top, #dddddd 0%, #ffffff 100%);
+  background-image: -ms-linear-gradient(top, #dddddd 0%, #ffffff 100%);
+  background-image: linear-gradient(to bottom, #dddddd 0%, #ffffff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DDDDDD', endColorstr='#FFFFFF', GradientType=0);
+}
+#footer footer {
+  padding-top: 2em;
+}
+
+//ul, ul li {
+//  margin: 0;
+//  padding: 0;
+//}
+
+@media screen and (max-width: @screen-sm-min) {
+  #content {
+    padding: 0;
+  }
+}

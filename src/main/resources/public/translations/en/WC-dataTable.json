@@ -1,0 +1,35 @@
+{
+  "loading" : "Loading...",
+  "tableSelectionRequired" : "Please select a row.",
+  "noRecordFound": "No record(s) found",
+  "columnFilter": {
+    "toggleFilter": "{{toggle}} Filters",
+    "showFilters": "Show Filters",
+    "hideFilters": "Hide Filters",
+    "show": "Show",
+    "hide": "Hide",
+    "selectDefaultText": "Select an option"
+  },
+  "manageColumns" : "Manage Columns",
+  "exportTo": {
+    "excelButtonAriaLabel": "Export to Excel",
+    "excelButtonTitle": "Export to Excel",
+    "excelButtonText": "Export to Excel",
+    "pdfButtonAriaLabel": "Export to PDF",
+    "pdfButtonTitle": "Export to PDF",
+    "pdfButtonText": "Export to PDF"
+  },
+  "pagination": {
+    "resultsPerPage": "Results Per Page",
+    "paginationLegend" : "Displaying {{pageStart + 1}} - {{pageEnd}} of {{totalItems}}",
+    "paginationNoRecordLegend" : "Displaying {{pageStart}} - {{pageEnd}} of {{totalItems}}",
+    "paginationLegendMobile" : "Page {{currentPage}} of {{totalPages}}",
+    "rowActions": "Row Actions",
+    "select" : "--Select--",
+    "delete" : "Delete",
+    "submit" : "Submit",
+    "jumpTo" : "Jump to Page"
+  },
+  "rowsCurrentlySelected" : "rows currently selected."
+}
+

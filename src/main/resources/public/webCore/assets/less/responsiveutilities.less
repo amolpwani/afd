@@ -1,0 +1,117 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+@import (reference)"../../../../node_modules/bootstrap/less/variables.less";
+@import (reference)"../../../../node_modules/bootstrap/less/mixins/responsive-visibility.less";
+
+/*Responsive Utilities*/
+.visible-xxs {
+  .responsive-invisibility();
+}
+
+.visible-xxs-block,
+.visible-xxs-inline,
+.visible-xxs-inline-block {
+  display: none !important;
+}
+
+.visible-xxs {
+    @media (max-width: @screen-xxs-max) {
+      .responsive-visibility();
+    }
+}
+.visible-xxs-block {
+    @media (max-width: @screen-xxs-max) {
+      display: block !important;
+    }
+}
+.visible-xxs-inline {
+    @media (max-width: @screen-xxs-max) {
+      display: inline !important;
+    }
+}
+.visible-xxs-inline-block {
+    @media (max-width: @screen-xxs-max) {
+      display: inline-block !important;
+    }
+}
+
+.hidden-xxs {
+  @media (max-width: @screen-xxs-max) {
+    .responsive-invisibility();
+  }
+}
+
+
+
+@media (max-width: @screen-xxs-max) {
+
+  button.nav-global-skip:focus,
+  button.nav-global-skip:active {
+    left: 5%;
+    top: 78%;
+  }
+}
+
+
+/* List View Styles
+-------------------------------------------------- */
+
+.list-view .panel .panel-heading {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.list-view .panel .panel-body {
+  padding: 1em;
+}
+.list-view .panel .panel-title.row {
+  margin: 0;
+}
+.list-view .panel .panel-title input[type="checkbox"] {
+  margin: 0;
+}
+.list-view .panel .panel-title label {
+  margin: 0;
+}
+.list-view .panel .panel-title span[class*="col-"]:first-child {
+  padding-left: 0;
+}
+.list-view .panel .panel-title span[class*="col-"]:last-child {
+  padding-right: 0;
+}
+.list-view .panel .panel-footer {
+  padding: 0;
+}
+.list-view .panel .panel-footer .nav li {
+  border-left: 1px solid @list-view-panel-footer-border;
+}
+.list-view .panel .panel-footer .nav li:first-child {
+  border-left: none;
+}
+.list-view .panel .panel-footer .nav > li > a,
+.list-view .panel .panel-footer .nav > li > button.btn-link {
+  padding: 0.5em;
+}
+.list-view h3 {
+  font-size: 1rem;
+}
+@media (min-width: @screen-sm-min) {
+  .list-view h3 {
+    font-size: 1.4rem;
+  }
+}
+@media (min-width: @screen-md-min) {
+  .list-view h3 {
+    font-size: 1.6rem;
+  }
+}
+@media (min-width: @screen-lg-min) {
+  .list-view h3 {
+    font-size: 1.666rem;
+  }
+}
+@media (min-width: 0px) and (max-width: 400px) {
+  .uib-datepicker .btn {
+    padding: 4px 6px;
+  }
+}
+

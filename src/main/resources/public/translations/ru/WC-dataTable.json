@@ -1,0 +1,35 @@
+{
+  "loading" : "Loading... - R",
+  "tableSelectionRequired" : "Please select a row. - R",
+  "noRecordFound": "No record(s) found - R",
+  "columnFilter": {
+    "toggleFilter": "{{toggle}} Filters - R",
+    "showFilters": "Show Filters - R",
+    "hideFilters": "Hide Filters - R",
+    "show": "Show - R",
+    "hide": "Hide - R",
+    "selectDefaultText": "Select an option - R"
+  },
+  "manageColumns" : "Manage Columns - R",
+  "exportTo": {
+    "excelButtonAriaLabel": "Export to Excel - R",
+    "excelButtonTitle": "Export to Excel - R",
+    "excelButtonText": "Export to Excel - R",
+    "pdfButtonAriaLabel": "Export to PDF - R",
+    "pdfButtonTitle": "Export to PDF - R",
+    "pdfButtonText": "Export to PDF - R"
+  },
+  "pagination": {
+    "resultsPerPage": "Results Per Page - R",
+    "paginationLegend" : "Displaying {{pageStart + 1}} - {{pageEnd}} of {{totalItems}} - R",
+    "paginationNoRecordLegend" : "Displaying {{pageStart}} - {{pageEnd}} of {{totalItems}} - R",
+    "paginationLegendMobile" : "Page {{currentPage}} of {{totalPages}} - R",
+    "rowActions": "Row Actions - R",
+    "select" : "--Select-- - R",
+    "delete" : "Delete - R",
+    "submit" : "Submit - R",
+    "jumpTo" : "Jump to Page - R"
+  },
+  "rowsCurrentlySelected" : "rows currently selected. - R"
+}
+
