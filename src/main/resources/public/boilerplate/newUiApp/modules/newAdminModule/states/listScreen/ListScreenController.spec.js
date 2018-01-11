@@ -1,28 +1,28 @@
 'use strict';
 
-describe('NewUiAppNewTaxonomyModule NewScreenController:', function() {
+describe('NewUiAppNewAdminModule ListScreenController:', function() {
 	var scope, $controller;
 
-	var newScreenController = function() {
-		var controller = $controller('NewScreenController as newScreenController', {
+	var ListScreenController = function() {
+		var controller = $controller('ListScreenController as ListScreenController', {
 			$scope: scope
 		});
 		return controller;
 	};
 
 	beforeEach(function() {
-		module('NewUiAppNewTaxonomyModule');
+		module('NewUiAppNewAdminModule');
 
 		inject(function($rootScope, $injector) {
 			scope = $rootScope.$new();
 			$controller = $injector.get('$controller');				
 		});
 
-		newScreenController();
+		ListScreenController();
 	});
 
 	it('should be registered', function() {
-		expect(newScreenController).toBeDefined();
+		expect(ListScreenController).toBeDefined();
 	});
 
 	it('should have a Scope', function() {

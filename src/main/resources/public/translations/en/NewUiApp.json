@@ -8,6 +8,10 @@
 				"newModule": {
 					"main": "Parent Menu",
 					"childItem": "Child Menu Item"
+				},
+				"newModule1": {
+					"main": "Admin",
+					"childItem": "Manage List"
 				}
 			}
 		},
@@ -29,6 +33,19 @@
 		"newScreen": {
 			"title": "New Screen 1",
 			"instructions": "Add components to this screen to do X and Y",
+			"buttons": {
+				"submit": "Add New"
+			},
+			"links": {
+				"edit": "@:actions.edit",
+				"cancel": "@:actions.cancel"
+			}
+		}
+	},
+	"newAdmin": {
+		"listScreen": {
+			"title": "Manage List",
+			"createNewList": "Create New List",
 			"buttons": {
 				"submit": "Add New"
 			},

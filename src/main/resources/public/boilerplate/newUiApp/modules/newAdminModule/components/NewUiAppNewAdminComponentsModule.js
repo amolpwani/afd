@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc module
- * @name NewUiAppNewTaxonomyComponentsModule
+ * @name NewUiAppNewAdminComponentsModule
  * @description components module
  * @requires WebCoreModule
  * @requires NewUiAppComponentsModule
  */
-angular.module('NewUiAppNewTaxonomyComponentsModule', [
+angular.module('NewUiAppNewAdminComponentsModule', [
 	'WebCoreModule',
 	'NewUiAppComponentsModule'
 ]);
