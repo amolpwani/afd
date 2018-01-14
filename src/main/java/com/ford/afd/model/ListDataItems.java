@@ -8,9 +8,9 @@ public class ListDataItems {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
+    private String code;
     private String description;
-    private String status;
+    private boolean active;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="listData_id",nullable = false)
@@ -27,11 +27,11 @@ public class ListDataItems {
     }
 
     public String getName() {
-        return name;
+        return code;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.code = name;
     }
 
     public String getDescription() {
@@ -42,12 +42,12 @@ public class ListDataItems {
         this.description = description;
     }
 
-    public String getStatus() {
-        return status;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
 	public ListData getListData() {

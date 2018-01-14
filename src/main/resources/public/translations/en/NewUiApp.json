@@ -214,7 +214,7 @@
 		"type": "List Item",
 		"types": "List Items",
 		"selectedTypes": "Selected Lists",
-		"list": {
+		"listItem": {
 			"title": "Manage List Item",
 			"instructions": "The existing bookings are listed below. You may create new bookings or search for existing ones.",
 			"customerTitle": "Bookings for {{email}} ({{lastName}}, {{firstName}})",
@@ -306,7 +306,7 @@
 			"search": "Search",
 			"noResultsFoundMessage": "No results matched your criteria.  Please adjust your criteria and try again."
 		},
-		"createList": {
+		"createListItem": {
 			"title": "Create List Item",
 			"previous": "Previous",
 			"cancel": "Cancel",
@@ -333,7 +333,7 @@
 			"adventureQueuedLocally": "{{customerEmailId}}'s {{adventureType}} adventure beginning on {{startDay}} queued for save locally."
 		},
 		"actions": "Actions",
-		"name": "List Item Name",
+		"code": "List Item Code",
 		"description": "List Item Description",
 		"active": "Active/Inactive"
 	}	

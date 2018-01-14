@@ -35,14 +35,14 @@ public class ListDataItemsRepositoryTest {
         ListDataItems listDataItems = new ListDataItems();
         listDataItems.setName("listItem1");
         listDataItems.setDescription("TestingBusiness");
-        listDataItems.setStatus("Active");
+        listDataItems.setActive(true);;
         listDataItems.setParentlistId(68);
         entityManager.persist(listDataItems);
         entityManager.flush();
         ListDataItems listDataItems1 = new ListDataItems();
         listDataItems1.setName("");
         listDataItems1.setDescription("TestingBusiness");
-        listDataItems1.setStatus("Active");
+        listDataItems1.setActive(true);;
         listDataItems1.setParentlistId(69);
         entityManager.persist(listDataItems1);
         entityManager.flush();
@@ -69,7 +69,7 @@ public class ListDataItemsRepositoryTest {
         ListDataItems listDataItems = new ListDataItems();
         listDataItems.setName("listItem1");
         listDataItems.setDescription("TestingBusiness");
-        listDataItems.setStatus("Active");
+        listDataItems.setActive(true);;
         listDataItems.setParentlistId(67);
         entityManager.persist(listDataItems);
         entityManager.flush();
@@ -89,7 +89,7 @@ public class ListDataItemsRepositoryTest {
         ListDataItems listDataItems = new ListDataItems();
         listDataItems.setName("listItem1");
         listDataItems.setDescription("TestingBusiness");
-        listDataItems.setStatus("Active");
+        listDataItems.setActive(true);;
         listDataItems.setParentlistId(67);
         entityManager.persist(listDataItems);
         entityManager.flush();
@@ -101,7 +101,7 @@ public class ListDataItemsRepositoryTest {
                 ListDataItems listDataItems1 = new ListDataItems();
                 listDataItems1.setName("listItem1");
                 listDataItems1.setDescription("TestingBusinessUpdate");
-                listDataItems1.setStatus("Active");
+                listDataItems1.setActive(true);;
                 listDataItems1.setParentlistId(67);
                 BeanUtils.copyProperties(listDataItems1, listDatas);
                 assertThat(listDatas.getParentlistId()).isEqualTo(listDataItems1.getParentlistId());
@@ -115,7 +115,7 @@ public class ListDataItemsRepositoryTest {
         ListDataItems listDataItems1 = new ListDataItems();
         listDataItems1.setName("listItem1");
         listDataItems1.setDescription("TestingBusinessUpdate");
-        listDataItems1.setStatus("Active");
+        listDataItems1.setActive(true);;
         listDataItems1.setParentlistId(67);
         entityManager.persist(listDataItems1);
         entityManager.flush();
@@ -132,7 +132,7 @@ public class ListDataItemsRepositoryTest {
         ListDataItems listDataItems = new ListDataItems();
         listDataItems.setName("listItem1");
         listDataItems.setDescription("TestingBusiness");
-        listDataItems.setStatus("Active");
+        listDataItems.setActive(true);;
         listDataItems.setParentlistId(67);
         entityManager.persist(listDataItems);
         entityManager.flush();

@@ -24,16 +24,9 @@ angular.module('AfdUiAppListModule')
 		.when('/', '/list');
 
 		$stateProvider
-			.state('child-menu-item', {
-				url: '/child-menu-item',
-				templateUrl: 'afdUiApp/modules/listmodule/states/newScreen/listView.html',
-				controller: 'NewScreenController',
-				controllerAs: 'newScreenController',
-				parent: 'new-ui-app'
-			})
 			.state('list', {
 				url: '/list',
-				templateUrl: 'afdUiApp/modules/listModule/states/list/listTemplate.html',
+				templateUrl: 'afdUiApp/modules/listModule/states/listState/list/listTemplate.html',
 				controller: 'ListController',
 				controllerAs: 'listController',
 				parent: 'new-ui-app',
@@ -50,9 +43,33 @@ angular.module('AfdUiAppListModule')
 			})
 			.state('create-list', {
 				url: '/create-list',
-				templateUrl: 'afdUiApp/modules/listModule/states/createList/createListTemplate.html',
+				templateUrl: 'afdUiApp/modules/listModule/states/listState/createList/createListTemplate.html',
 				controller: 'CreateListController',
 				controllerAs: 'createListController',
+				parent: 'new-ui-app'
+			})
+			.state('listItem', {
+				url: '/listItem',
+				templateUrl: 'afdUiApp/modules/listModule/states/listItemState/listItem/listItemTemplate.html',
+				controller: 'ListItemController',
+				controllerAs: 'listItemController',
+				parent: 'new-ui-app',
+				resolve: {
+					listItems: ['ListItemService', function(ListItemService) {
+						return ListItemService.getListItems();
+					}]
+				},
+				onEnter: ['$state', function($state) {
+					if($state.params.processResultsFn) {
+						$state.params.processResultsFn($state.params.deleteResults);
+					}
+				}]
+			})
+			.state('create-listItem', {
+				url: '/create-listItem',
+				templateUrl: 'afdUiApp/modules/listModule/states/listItemState/createListItem/createListItemTemplate.html',
+				controller: 'CreateListItemController',
+				controllerAs: 'createListItemController',
 				parent: 'new-ui-app'
 			});
 		}
