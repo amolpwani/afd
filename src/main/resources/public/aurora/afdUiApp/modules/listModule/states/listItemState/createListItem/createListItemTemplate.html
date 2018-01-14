@@ -1,0 +1,48 @@
+<form class="well" role="form" name="createListItemForm" id="createListItemForm" novalidate wc-form-submi>
+	<h2 translate>listItem.createListItem.title</h2>
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="code" class="control-label" translate>listItem.createListItem.name </label>
+				<input ng-model="createListItemController.listItem.code" id="code"
+					   name="name" type="text" placeholder="" class="form-control"
+					   wc-validation-indicator="{{'listItem.createListItem.code' | translate}}" required/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="description" class="control-label" translate>listItem.createListItem.description </label>
+				<input ng-model="createListItemController.listItem.description" id="description"
+					   name="description" type="text" placeholder="" class="form-control"
+					   wc-validation-indicator="{{'listItem.createListItem.description' | translate}}" required/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="active" translate>	listItem.createListItem.active
+				</label>
+				<input type="checkbox" name="checkbox" id="active"
+					   ng-model="createListItemController.listItem.active" required/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row form-actions">
+		<div class="col-xs-6 text-center">
+			<button type="button" id="cancel" ng-click="createListItemController.cancel()" class="btn btn-secondary" translate>
+				listItem.createListItem.cancel
+			</button>
+		</div>
+		<div class="col-xs-6 text-center">
+			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" ng-click="createListItemController.submitList()" translate>
+				listItem.createListItem.save
+			</button>
+		</div>
+	</div>
+</form>
