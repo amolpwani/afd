@@ -9,12 +9,12 @@
 'use strict';
 
 angular.module('NewUiAppNewAdminModule')
-	.controller('ListScreenController',function($scope, $state, $stateParams, ListData) {
-	      $scope.newlists = ListData.query();
-	      $scope.listdata = new ListData();
+	.controller('ListScreenController',function($scope, $state, $stateParams, ListDataItems) {
+	      $scope.newlists = [{"name":"List1", "active" : true}, {"name":"List2", "active" : false}];//ListData.query();
+	      $scope.listdata = new ListDataItems();
 	      $scope.createListData = function() {
 	      $scope.listdata.$save(function() {
-	      $state.go('directlists');
-	      });
-	   };
+		      $state.go('admin-menu-item');
+		      });
+	      };
 	  });

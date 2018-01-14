@@ -16,7 +16,7 @@
     }
   }
 }
-div[wc-alert-console], div[wc-offline-indicator]{
+div[wc-alert-console] {
   float: none;
   clear: both;
 }
@@ -67,7 +67,28 @@ div[wc-alert-console], div[wc-offline-indicator]{
     color: @alert-info;
   }
 }
-
+#offline-indicator{
+  .pulse {
+    -webkit-animation: pulsate 2s ease-out;
+    -webkit-animation-iteration-count: 1;
+  }
+  .glyphicon-warning-sign,
+  .alert-warning .glyphicon-refresh {
+    padding-right: 1.45em;
+    font-size: 1.5em;
+    float: left;
+    vertical-align: middle;
+    margin-top: -.09em;
+  }
+  @-webkit-keyframes pulsate {
+    0% {
+      background-color: @alert-warning;
+    }
+    100% {
+      background-color: @white;
+    }
+  }
+}
 .glyphicon-refresh-animate {
   transform-origin: 34% 48%;
   padding-right: 0;

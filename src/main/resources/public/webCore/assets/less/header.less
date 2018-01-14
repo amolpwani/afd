@@ -12,27 +12,24 @@ html {
   position: relative;
   min-height: 100%;
   font-size: 12px;
-  height:100%;
 }
 body {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   background-color: @body-bg;
   font-size: 16px;
   line-height: 1.5;
-  height:100%;
 }
 
 body .container-fluid{
   padding-left: 0;
   padding-right: 0;
-  height:100%;
 }
 
 .container-fluid > div > .row{
   margin-right: 0;
   margin-left: 0;
 }
-#header, div[wc-offline-indicator], div[wc-alert-console], #alert-console, #content, #footer footer {
+div#header, div#offline-indicator, div[wc-alert-console], div#alert-console, div#content, div#footer footer {
   max-width: 1440px;
   margin: auto;
 }
@@ -69,10 +66,10 @@ body .container-fluid{
     @media @tablet {
         font-size: 1.750rem;
       }
-    @media (min-width: @screen-md-min) {
+    @media (min-width: @screen-desktop) {
         font-size: 2.000rem;
       }
-    @media (min-width: @screen-lg-min) {
+    @media (min-width: @screen-lg-desktop) {
         font-size: 2.250rem;
       }
     @media print {
@@ -88,10 +85,10 @@ body .container-fluid{
     @media @tablet {
         max-width: 7rem;
       }
-    @media (min-width: @screen-md-min) {
+    @media (min-width: @screen-desktop) {
         max-width: 9rem;
       }
-    @media (min-width: @screen-lg-min) {
+    @media (min-width: @screen-lg-desktop) {
         max-width: 11rem;
       }
     @media print {
@@ -100,7 +97,7 @@ body .container-fluid{
       }
   }
   & .media:first-child {
-    @media (min-width: @screen-md-min) {
+    @media (min-width: @screen-desktop) {
       margin-top: 0;
     }
   }
@@ -136,11 +133,11 @@ body .container-fluid{
       left: 3%;
       top: 80%;
     }
-      @media (min-width: @screen-md-min) {
+      @media (min-width: @screen-desktop) {
         left: 19%;
         top: 84%;
       }
-      @media (min-width: @screen-lg-min) {
+      @media (min-width: @screen-lg-desktop) {
         left: 17%;
       }
   }
@@ -166,19 +163,4 @@ button.btn-link {
     text-decoration: none;
     background-color: @dropdown-menu-btn-hover-bg;
   }
-}
-
-[ui-view] {
-  height:100%;
-}
-
-#stickyFooter {
-  min-height: 100%;
-  margin: 0;
-  padding: 0.1rem 1.3rem 14rem 1.3rem;
-  overflow: visible;
-}
-
-#footer {
-  margin-top: -13rem;
 }

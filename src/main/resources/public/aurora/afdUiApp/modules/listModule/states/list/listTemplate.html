@@ -1,0 +1,73 @@
+<!--<h2 translate="list.listlist.subTitle"></h2>-->
+<h2 translate>list.list.title</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <a id="create-list" ui-sref="create-list" class="btn btn-primary btn-sm">
+            <span translate>application.buttons.create </span><span class="hidden-xs" translate>list.type</span>
+        </a>
+        
+        <a id="search-list" ui-sref="search-list-criteria" class="btn btn-primary btn-sm">
+            <span translate>application.buttons.search </span><span class="hidden-xs" translate>list.types</span>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div wc-responsive-table data="listController.lists" data-table-name="lists" row-key="id"
+         exporttopdf-enabled exporttoexcel-enabled pagination-enabled responsive-view="list" id="list-table"
+         class="col-xs-12 wc-table" ng-model="listController.listsToDelete">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th translate>list.actions</th>
+                <th wc-protected-resource="DeleteList:execute" class="text-center">
+                    <wc-row-select-header-checkbox></wc-row-select-header-checkbox>
+                </th>
+                <th wc-column-sort="name">{{'list.name' | translate}}
+                    <label for="name" class="sr-only">{{'list.name' | translate}}</label>
+                    <input id="name" class="form-control input-sm" type="text" wc-column-filter="name" title="{{'list.name' | translate}}"/></th>
+                <th wc-column-sort="description">{{'list.description' | translate}}
+                    <label for="description" class="sr-only">{{'list.description' | translate}}</label>
+                    <input id="description" class="form-control input-sm" type="text" wc-column-filter="description" title="{{'list.description' | translate}}"/></th>
+                <th wc-column-sort="active">{{'list.active' | translate}}
+                    <label for="active" class="sr-only">{{'list.active' | translate}}</label>
+                    <input id="active" class="form-control input-sm" type="text" wc-column-filter="active" title="{{'list.active' | translate}}"/></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="col-hide text-center">
+                    <span class="show-now hidden-xs"><a href="" wc-row-action-single="view-list({id:list.id})">View Details </a>  </span>
+                    <span wc-protected-resource="CreateList:execute">
+                        |</span>
+                </td>
+                <td class="text-center width-10" wc-protected-resource="DeleteList:execute">
+                    <wc-row-select-checkbox></wc-row-select-checkbox>
+                </td>
+                <td ng-class="$parent.columnData.column1.class">
+                    {{::row.name}}
+                </td>
+                <td>{{::row.description}}</td>
+                <td>
+                	<div ng-show={{::row.active}}>Y</div>
+                	<div ng-show=!{{::row.active}}>N</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+		<div class="row" wc-protected-resource="DeleteList:execute">
+			<div class="col-xs-12">
+				<wc-check-all-none target-container-id="list-list-table"></wc-check-all-none>
+			</div>
+			<div class="col-xs-12 table-actions">
+				<button type="button" id="delete-lists" class="btn btn-primary btn-sm" wc-row-action-multiple="delete-lists"
+						wc-protected-resource="DeleteList:execute">
+					<span translate>application.buttons.delete</span><span class="hidden-xs"
+																		   translate>list.selectedTypes</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+

@@ -94,7 +94,7 @@ fieldset {
         padding: 5px 15px;
     }
     & > legend.text-right {
-        @media only screen and (max-width: @screen-sm-min) {
+        @media only screen and (max-width: 768px) {
             text-align: left;
         }
     }
@@ -181,7 +181,7 @@ div.ui-select-container input.ui-select-search {
 dl {
     overflow: hidden;
     margin: 0 0 .5em !important;
-    overflow-wrap: break-word;
+    word-break: break-word;
 }
 .dl-horizontal {
     & dt {
@@ -235,7 +235,7 @@ p {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.row-action-control {
+.form-inline .form-control {
     display: inline-block;
     width: auto;
     vertical-align: middle;

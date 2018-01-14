@@ -8,6 +8,6 @@
  * @requires NewUiAppComponentsModule
  */
 angular.module('NewUiAppNewAdminComponentsModule', [
-	'WebCoreModule',
-	'NewUiAppComponentsModule'
+	'NewUiAppComponentsModule',
+	'WebCoreModule'
 ]);

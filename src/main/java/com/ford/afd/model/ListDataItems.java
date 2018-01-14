@@ -8,14 +8,15 @@ public class ListDataItems {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private Integer code;
+    private String name;
     private String description;
     private String status;
 
-    /*@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="LISTID",nullable = false)
-    private ListData listData;*/
-    private Integer listId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="listData_id",nullable = false)
+    private ListData listData;
+    
+    private Integer parentlistId;
 
     public long getId() {
         return id;
@@ -25,12 +26,12 @@ public class ListDataItems {
         this.id = id;
     }
 
-    public Integer getCode() {
-        return code;
+    public String getName() {
+        return name;
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -49,11 +50,19 @@ public class ListDataItems {
         this.status = status;
     }
 
-    public Integer getListId() {
-        return listId;
-    }
+	public ListData getListData() {
+		return listData;
+	}
 
-    public void setListId(Integer listId) {
-        this.listId = listId;
-    }
+	public void setListData(ListData listData) {
+		this.listData = listData;
+	}
+
+	public Integer getParentlistId() {
+		return parentlistId;
+	}
+
+	public void setParentlistId(Integer parentlistId) {
+		this.parentlistId = parentlistId;
+	}
 }

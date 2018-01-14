@@ -47,7 +47,7 @@ angular.module('NewUiAppModule')
     .run(['WcHttpRequestService', 'WcWebtrendsService', 'WcTranslateConfiguratorService',
         function(WcHttpRequestService, WcWebtrendsService, WcTranslateConfiguratorService) {
 
-            WcHttpRequestService.configureDefaults({baseUrl: '/NewAppWeb/api/'});
+            WcHttpRequestService.configureDefaults({baseUrl: '/'});
 
             WcTranslateConfiguratorService.loadPartAndRefresh('NewUiApp');
 

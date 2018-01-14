@@ -1,0 +1,185 @@
+@import (reference)"variable.less";
+@import (reference)"mixins.less";
+/* Datatables Styles
+-------------------------------------------------- */
+
+.@{datatables-wrapper}{
+  & .table {
+    margin: 0.25em;
+      & >tbody {
+        & > tr {
+          & > td.sorting_1 {
+            background-color: @tables-wrapper-table-sorting_1-bg;
+          }
+            & .selected{
+              & >th, &>td{
+                background-color: @tables-wrapper-selected-bg;
+                border-color: @tables-wrapper-selected-border;
+            }
+          }
+        }
+      }
+       & >thead {
+         & > tr {
+          & td.sorting_1 {
+             background-color:@tables-wrapper-table-sorting_1-bg;
+           }
+           & > th {
+             position: relative;
+             background-image: none !important;
+             text-align: center;
+             background-color:@navbar-bg-color ;
+             &.sorting &.sorting_asc, &.sorting_desc{
+               & :after {
+                 position: absolute;
+                 top: 9px;
+                 right: 5px;
+                 display: block;
+                 /*noinspection CssNoGenericFontName*/
+                 font-family: 'Glyphicons Halflings';
+                 line-height: 1;
+                 color: @white;
+                 .webcore-font-normal;
+               }
+             }
+             &.sorting {
+               color: @white;
+               & :after {
+                 content: "\e150";
+               }
+               &.sorting_asc{
+                 background-color: @tables-wrapper-table-sorting-bg;
+                 & :after {
+                   content: "\e151";
+                 }
+               }
+               &.sorting_desc{
+                 background-color: @tables-wrapper-table-sorting-bg;
+                 & :after {
+                   content: "\e152";
+               }
+             }
+           }
+             & .sorting_asc_disabled, & .sorting_desc_disabled{
+               background-color: @tables-wrapper-table-sorting-disabled-bg;
+           }
+         }
+       }
+     }
+  }
+  & .table-bordered {
+    & >tbody,& >tfoot,& >thead{
+      & >tr{
+        & >th,& >td {
+          border-color: @tables-wrapper-table-bordered-color;
+          text-align: center;
+        }
+      }
+    }
+  }
+  & .table-striped {
+    & > tbody {
+      & > tr:nth-child(odd) {
+        & > td, & > th {
+          background-color: @tables-wrapper-table-striped-color;
+        }
+      }
+      & > tr:nth-child(even) {
+        & > td, & > th {
+          background-color: @white;
+        }
+      }
+    }
+  }
+
+  & .table-condensed:not(.table-toggle-check-all)> thead > tr > th {
+       padding-top: 9px;
+  }
+
+  .dataTables_info {
+    padding-top: 0.6em;
+  }
+  .pagination {
+    margin: 0;
+    & > li {
+
+      &.first {
+        & a:before{content: "\e069";}
+      };
+
+      &.previous {
+        & a:before{content: "\e071";}
+      };
+
+      &.next {
+        & a:after{content: "\e075";}
+      };
+
+      &.last {
+        & a:after{content: "\e077";}
+      };
+
+      &.first a:before,&.previous a:before,
+      &.next a:after,&.last a:after
+      {
+        .datatable-pagination-property;
+      }
+
+      &.first,&.previous {
+        .make-realtive;
+        &.disabled{
+          & a{&:before{color:@tables-wrapper-pagination-color;}}
+        }
+        & a{
+          padding-left: @datatable-pagination--horizontal-padding;
+          &:before{ left: 3px;}
+          &.no-text{&:before{left:25%;}}
+        }
+      }
+
+      &.next,&.last{
+        .make-realtive;
+        &.disabled{
+          & a{&:after{color:@tables-wrapper-pagination-color;}}
+        }
+        & a{
+          padding-right: @datatable-pagination--horizontal-padding;
+          &:after{right: 3px;}
+          &.no-text{&:after{right:25%;}}
+        }
+      }
+      & a{
+        & span {
+          font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        }
+      }
+    }
+  }
+}
+
+.@{tables-legend} {
+  margin: 7px 0 5px 0;
+  padding: 5px 0 3px 0;
+  border-radius: 4px;
+  border: 1px solid @tables-legend-border;
+  min-height: 25px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  float: right;
+  & li{
+    & .new-row{
+     & .glyphicon-star {
+       color: @tables-legend-glyphicon-color;
+    }
+  }
+    .status .glyphicon-warning-sign {
+      color: @tables-legend-glyphicon-warning-color;
+    }
+    .selected .glyphicon-stop {
+      color: @tables-legend-glyphicon-stop-bg;
+      border:1px solid @tables-legend-glyphicon-stop-border;
+    }
+    .updated .glyphicon-stop {
+      color: @tables-legend-glyphicon-stop-color;
+    }
+  }
+}

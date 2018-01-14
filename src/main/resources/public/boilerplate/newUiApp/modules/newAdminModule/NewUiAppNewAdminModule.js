@@ -10,7 +10,9 @@
 angular.module('NewUiAppNewAdminModule', [
 	'WebCoreModule',
 	'NewUiAppNewAdminComponentsModule',
-	'ngResource'
+	'ngResource',
+	'WcResponsiveTableModule'
+	
 ]);
 
 /*

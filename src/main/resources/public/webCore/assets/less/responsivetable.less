@@ -9,7 +9,7 @@
 }
 /* Adopted from demo: http://elvery.net/demo/responsive-tables/ */
 
-@media screen and (max-width: @screen-sm-min) {
+@media screen and (max-width: 767px) {
     .wc-table.table-responsive {
         border: none;
         padding: 0;
@@ -22,11 +22,11 @@
 
 
 /*Media query
-    when the max-width of the display is 768px i.e. mobile browsers & devices
+    when the max-width of the display is 600px i.e. mobile browsers & devices
     then the CSS rules written inside the media query scope will be applied to
     specified selectors
 */
-@media only screen and (max-width: @screen-sm-min) {
+@media only screen and (max-width: 680px) {
     .action-dropdown {
         display: block !important;
         visibility: visible !important;
@@ -125,6 +125,11 @@
         flex-wrap: wrap;
     }
 
+    .pt-10 {
+        position: relative;
+        top:6px;
+    }
+
     .dropdown {
         display:inline;
     }
@@ -137,9 +142,22 @@
         left: 0;
     }
 
-    .wc-list-view-col-hide {
+    .col-hide {
         display:none !important;
     }
+
+    .width-10 {
+        width: @width-10;
+    }
+
+    .width-90 {
+        width: @width-90;
+    }
+
+    .width-auto {
+        width: auto !important;
+    }
+
 
     .table-mobile-stack > table > tbody > tr:nth-of-type(odd) > td:nth-child(2) {
         background-color: #fff;
@@ -157,7 +175,7 @@
     }
 
     .table-mobile-stack > table > tbody > tr:nth-of-type(odd) > td:nth-child(3) {
-        //padding-left:43px;
+        padding-left:43px;
         padding-top:8px;
         background-color: @white;
         border:none;
@@ -165,7 +183,7 @@
     }
 
     .table-mobile-stack > table > tbody > tr:nth-of-type(even) > td:nth-child(3) {
-        //padding-left:43px;
+        padding-left:43px;
         padding-top:8px;
         background-color: #f4f4f4;
         border:none;
@@ -174,7 +192,7 @@
 
     select.form-control {
         padding: 0 !important;
-        width: 100%;
+        width: auto;
     }
     select.active-dropdown {
        position :relative;
@@ -190,28 +208,10 @@
         font-weight: bold;
     }
 
-    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header:before {
+    .table-mobile-stack > table > tbody > tr > td.no-col-header:before {
         content: "";
         display: block;
         font-weight: bold;
-    }
-
-    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header {
-        width:90%;
-        padding-left:0;
-        display: inline !important;
-    }
-
-    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header .wc-list-view-header-text {
-        float: left;
-        width: 50%;
-    }
-
-    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header .wc-list-view-header-btn-group {
-        float: right;
-        text-align: right;
-        width: 50%;
-        display: inline !important;
     }
 
     .table-mobile-stack .default-message {
@@ -226,19 +226,43 @@
     .action-control-box {
         visibility: visible !important;
         display: inline !important;
-        float: right;
+    }
+
+    .inline {
+        display: inline !important;
     }
 
     .no-border {
         border: none !important;
     }
 
+    .ml-5{
+        margin-left: 4px;
+    }
+
     .result-page-count{
         display: none !important;
     }
 
+    .mt-neg-3{
+        margin-top: -3px;
+        padding-top: 5px;
+    }
+
     .pagination-control{
         width: @width-100;
+    }
+
+    .pl-0{
+        padding-left:0;
+    }
+
+    .mt-6{
+        padding-left: 0;
+    }
+
+    .float-right{
+        float:right;
     }
 
     input[type="checkbox"]{
@@ -268,21 +292,4 @@
 select.input-sm {
     height: @input-height;
     line-height: @input-height;
-}
-.scroll-table-wrapper, .ratchet-table-wrapper {
-    overflow-x: auto;
-    clear: left;
-}
-.column-toggle .filter-visibility-toggle {
-    position: absolute;
-}
-
-
-@media screen and (max-width: 400px) {
-    .table-mobile-stack > table > tbody > tr > td.wc-list-view-header .wc-list-view-header-text {
-        padding-left: .5rem;
-    }
-    select.form-control {
-        width: 130%;
-    }
 }

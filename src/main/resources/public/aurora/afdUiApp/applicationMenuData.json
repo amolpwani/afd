@@ -1,0 +1,10 @@
+[
+	{"label": "{{'application.navigation.links.home' | translate}}", "state":"home", "protected":""},
+	{"label": "{{'application.navigation.links.list' | translate}}", "state":"home", "protected":""},
+	{"label": "{{'application.navigation.links.mapping' | translate}}","state":"child-menu-item", "protected":""},
+	{"label": "{{'application.navigation.links.newModule2.main' | translate}}", "subMenu": [
+		{"label": "{{'application.navigation.links.newModule2.manageList' | translate}}", "state":"list", "protected":""},
+		{"label": "{{'application.navigation.links.newModule2.manageMapping' | translate}}", "state":"child-menu-item", "protected":""}
+	]}
+
+]

@@ -11,10 +11,11 @@ public class ListData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
+    private String description;
     private boolean active;
 
-    /*@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "listdata")
-    private Set<ListDataItems> listDataItems = new HashSet<>();*/
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "listData")
+    private Set<ListDataItems> listDataItems = new HashSet<>();
 
     public long getId() {
         return id;
@@ -40,12 +41,20 @@ public class ListData {
         this.active = active;
     }
 
-    /*public Set<ListDataItems> getListDataItems() {
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+    public Set<ListDataItems> getListDataItems() {
         return listDataItems;
     }
 
     public void setListDataItems(Set<ListDataItems> listDataItems) {
         this.listDataItems = listDataItems;
-    }*/
+    }
 }
 
