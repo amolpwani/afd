@@ -1,8 +1,9 @@
 package com.ford.afd.model;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class ListData {
@@ -13,9 +14,9 @@ public class ListData {
     private String name;
     private String description;
     private boolean active;
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "listData")
-    private Set<ListDataItems> listDataItems = new HashSet<>();
+//
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "listData")
+//    private List<ListDataItems> listDataItems;
 
     public long getId() {
         return id;
@@ -48,13 +49,5 @@ public class ListData {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-    public Set<ListDataItems> getListDataItems() {
-        return listDataItems;
-    }
-
-    public void setListDataItems(Set<ListDataItems> listDataItems) {
-        this.listDataItems = listDataItems;
-    }
 }
 

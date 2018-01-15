@@ -33,14 +33,14 @@ public class ListDataItemsRepositoryTest {
     public void directList() {
 
         ListDataItems listDataItems = new ListDataItems();
-        listDataItems.setName("listItem1");
+        listDataItems.setCode("listItem1");
         listDataItems.setDescription("TestingBusiness");
         listDataItems.setActive(true);;
         listDataItems.setParentlistId(68);
         entityManager.persist(listDataItems);
         entityManager.flush();
         ListDataItems listDataItems1 = new ListDataItems();
-        listDataItems1.setName("");
+        listDataItems1.setCode("");
         listDataItems1.setDescription("TestingBusiness");
         listDataItems1.setActive(true);;
         listDataItems1.setParentlistId(69);
@@ -50,12 +50,12 @@ public class ListDataItemsRepositoryTest {
         List<ListDataItems> listDataItemss = listDataItemsRepository.findAll();
         //then
         for(ListDataItems listDataItems2:listDataItemss){
-            if(listDataItems2.getName().equals(listDataItems.getName()))
+            if(listDataItems2.getCode().equals(listDataItems.getCode()))
             {
                 ListDataItems listDatas = listDataItemsRepository.findOne(listDataItems2.getId());
                 assertThat(listDatas.getParentlistId()).isEqualTo(listDataItems.getParentlistId());
             }
-            else if(listDataItems2.getName().equals(listDataItems1.getName()))
+            else if(listDataItems2.getCode().equals(listDataItems1.getCode()))
             {
                 ListDataItems listDatas = listDataItemsRepository.findOne(listDataItems2.getId());
                 assertThat(listDatas.getParentlistId()).isEqualTo(listDataItems1.getParentlistId());
@@ -67,7 +67,7 @@ public class ListDataItemsRepositoryTest {
     public void listDataItemsById() {
 
         ListDataItems listDataItems = new ListDataItems();
-        listDataItems.setName("listItem1");
+        listDataItems.setCode("listItem1");
         listDataItems.setDescription("TestingBusiness");
         listDataItems.setActive(true);;
         listDataItems.setParentlistId(67);
@@ -75,10 +75,10 @@ public class ListDataItemsRepositoryTest {
         entityManager.flush();
         List<ListDataItems> listDataItemss = listDataItemsRepository.findAll();
         for(ListDataItems listDataItems2:listDataItemss){
-            if(listDataItems2.getName().equals(listDataItems.getName()))
+            if(listDataItems2.getCode().equals(listDataItems.getCode()))
             {
                 ListDataItems listDatas = listDataItemsRepository.findOne(listDataItems2.getId());
-                assertThat(listDatas.getName()).isEqualTo(listDataItems.getName());
+                assertThat(listDatas.getCode()).isEqualTo(listDataItems.getCode());
             }
         }
 
@@ -87,7 +87,7 @@ public class ListDataItemsRepositoryTest {
     public void updateListDataItems() {
 
         ListDataItems listDataItems = new ListDataItems();
-        listDataItems.setName("listItem1");
+        listDataItems.setCode("listItem1");
         listDataItems.setDescription("TestingBusiness");
         listDataItems.setActive(true);;
         listDataItems.setParentlistId(67);
@@ -95,11 +95,11 @@ public class ListDataItemsRepositoryTest {
         entityManager.flush();
         List<ListDataItems> listDataItemss=listDataItemsRepository.findAll();
         for(ListDataItems listDataItems2:listDataItemss){
-            if(listDataItems2.getName().equals(listDataItems.getName()))
+            if(listDataItems2.getCode().equals(listDataItems.getCode()))
             {
                 ListDataItems listDatas = listDataItemsRepository.findOne(listDataItems2.getId());
                 ListDataItems listDataItems1 = new ListDataItems();
-                listDataItems1.setName("listItem1");
+                listDataItems1.setCode("listItem1");
                 listDataItems1.setDescription("TestingBusinessUpdate");
                 listDataItems1.setActive(true);;
                 listDataItems1.setParentlistId(67);
@@ -113,7 +113,7 @@ public class ListDataItemsRepositoryTest {
     public void deleteListDataItemsById() {
 
         ListDataItems listDataItems1 = new ListDataItems();
-        listDataItems1.setName("listItem1");
+        listDataItems1.setCode("listItem1");
         listDataItems1.setDescription("TestingBusinessUpdate");
         listDataItems1.setActive(true);;
         listDataItems1.setParentlistId(67);
@@ -123,14 +123,14 @@ public class ListDataItemsRepositoryTest {
         ListDataItems listData=listDataItemss.get(0);
         listDataItemsRepository.delete(listData);
         //then
-        assertThat(listData.getName()).isEqualTo(listData.getName());
+        assertThat(listData.getCode()).isEqualTo(listData.getCode());
 
     }
     @Test
     public void createListDataItems() {
 
         ListDataItems listDataItems = new ListDataItems();
-        listDataItems.setName("listItem1");
+        listDataItems.setCode("listItem1");
         listDataItems.setDescription("TestingBusiness");
         listDataItems.setActive(true);;
         listDataItems.setParentlistId(67);
@@ -138,7 +138,7 @@ public class ListDataItemsRepositoryTest {
         entityManager.flush();
         List<ListDataItems> listDataItemss = listDataItemsRepository.findAll();
         for(ListDataItems listDataItems2:listDataItemss){
-            if(listDataItems2.getName().equals(listDataItems.getName()))
+            if(listDataItems2.getCode().equals(listDataItems.getCode()))
             {
                 ListDataItems listDatas = listDataItemsRepository.findOne(listDataItems2.getId());
                 assertThat(listDatas.getParentlistId()).isEqualTo(listDataItems.getParentlistId());

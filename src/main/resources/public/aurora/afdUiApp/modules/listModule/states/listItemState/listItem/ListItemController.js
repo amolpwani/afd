@@ -17,8 +17,8 @@
 			 * @requires $timeout
 			 * */
 angular.module('AfdUiAppListModule')
-	.controller('ListItemController', ['ListItemService', 'listItems', '$scope', 'WcAlertConsoleService', '$translate', '$state',
-		function(ListItemService, listItems, $scope, WcAlertConsoleService, $translate, $state) {
+	.controller('ListItemController', ['ListItemService', 'listItems', '$scope', 'WcAlertConsoleService', '$translate', '$state', '$stateParams',
+		function(ListItemService, listItems, $scope, WcAlertConsoleService, $translate, $state, $stateParams) {
 
 			//noinspection JSValidateJSDoc
             /**
@@ -29,7 +29,6 @@ angular.module('AfdUiAppListModule')
 			 * @description This property holds the list of listItems.
 			 */
 			this.listItems = listItems;
-
 
 			/**
 			 * @ngdoc method
@@ -68,7 +67,7 @@ angular.module('AfdUiAppListModule')
 
 			$scope.$on("delete-listItems", angular.bind(this, function(event, data) { // jshint ignore:line
 
-				this.deleteLists(this.getSelectedListObjects(data));
+				this.deleteListItems(this.getSelectedListObjects(data));
 			}));
 
 			/**
@@ -107,21 +106,63 @@ angular.module('AfdUiAppListModule')
 					$state.go('update-list.select-departing-flight', param);
 				}
 			};
+			
+			/**
+			 * @ngdoc method
+			 * @name deleteListItems
+			 * @methodOf ListItemController
+			 * @params {object} lists
+			 * @description This method is for delete the list from database
+			 */
+			this.deleteListItems = function(lists) {
+				return this.deleteListItemsAndProcessResults(lists).then(angular.bind(this, function(results) {
+
+					$scope.$parent.newUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+				}));
+				return null;
+			};
 
 			/**
 			 * @ngdoc method
-			 * @name deleteLists
-			 * @methodOf ListItemController
-			 * @params {object} listItems
-			 * @description This method is for delete the list from database
+			 * @name deleteListItemsAndProcessResults
+			 * @methodOf ListItemService
+			 * @params {object} listItemsToDelete
+			 * @description This method is to delete the bookings and processed deleted results
 			 */
-			this.deleteLists = function(listItems) {
-//				return DeleteBookingModalService.openDeleteModal(listItems).then(angular.bind(this, function(results) {
-//
-//					$scope.$parent.jabUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
-//				}));
-				return null;
+			this.deleteListItemsAndProcessResults = function(listItemsToDelete) {
+				return ListItemService.deleteListItems(listItemsToDelete).then(angular.bind(this, function(results) {
+
+					return this.processResultsForDisplay(results);
+				}));
 			};
+			
+			/**
+			 * @ngdoc method
+			 * @name processResultsForDisplay
+			 * @methodOf DeleteBookingModalService
+			 * @params {object} results
+			 * @description This method is to process the results for display
+			 */
+			this.processResultsForDisplay = function(results) {
+				//take the results array and process it into an object with a collection of successes, queued requests and failures
+				var successfulResults = [];
+				var queuedResults = [];
+				var failedResults = [];
+
+				for(var i=0; i<results.length; i++){
+					if(results[i].success === true){
+						successfulResults.push(results[i]);
+					}
+					else if(results[i].success === 'queue') {
+						queuedResults.push(results[i]);
+					}
+					else {
+						failedResults.push(results[i]);
+					}
+				}
+				return {'successfulResults': successfulResults, 'queuedResults': queuedResults, 'failedResults': failedResults};
+			};
+
 			/**
 			 * @ngdoc method
 			 * @name processAndDisplayDeletionResults

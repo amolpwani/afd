@@ -12,9 +12,9 @@ public class ListDataItems {
     private String description;
     private boolean active;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="listData_id",nullable = false)
-    private ListData listData;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name="list_data_id",nullable = false)
+//    private ListData listData;
     
     private Integer parentlistId;
 
@@ -26,11 +26,11 @@ public class ListDataItems {
         this.id = id;
     }
 
-    public String getName() {
+    public String getCode() {
         return code;
     }
 
-    public void setName(String name) {
+    public void setCode(String name) {
         this.code = name;
     }
 
@@ -49,14 +49,6 @@ public class ListDataItems {
     public void setActive(boolean active) {
         this.active = active;
     }
-
-	public ListData getListData() {
-		return listData;
-	}
-
-	public void setListData(ListData listData) {
-		this.listData = listData;
-	}
 
 	public Integer getParentlistId() {
 		return parentlistId;

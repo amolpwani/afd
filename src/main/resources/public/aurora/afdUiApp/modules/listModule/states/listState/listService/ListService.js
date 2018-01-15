@@ -71,14 +71,14 @@ angular.module('AfdUiAppListModule').service('ListService', ['$q', '$state', '$t
 			var addResultToArray = function (index, success) {
 				//replace the initial promise with a new one that resolves with the data we just created
 				deleteResults[index] = {
-					'listId': listsToDelete[index].listId,
+					'id': listsToDelete[index].id,
 					'success': success
 				};
 			};
 
 			var doDeleteForIndex = angular.bind(this, function (index) {
 
-				deletePromises[index] = this.listEndpoint.delete(listsToDelete[index].listId, {offline: 'queue'}).then(function (response) {
+				deletePromises[index] = this.listEndpoint.delete(listsToDelete[index].id, {offline: 'queue'}).then(function (response) {
 					if (response.status == 'queue') {
 						addResultToArray(index, 'queue');
 					}
@@ -120,7 +120,7 @@ angular.module('AfdUiAppListModule').service('ListService', ['$q', '$state', '$t
 				else {
 					WcAlertConsoleService.addMessage({
 						message: $translate.instant('list.createList.createSuccess', {
-							id: response.data
+							id: response.data.name
 						}),
 						type: 'success',
 						multiple: false

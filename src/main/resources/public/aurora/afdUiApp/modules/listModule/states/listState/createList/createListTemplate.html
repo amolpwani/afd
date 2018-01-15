@@ -5,7 +5,7 @@
 			<div class="form-group">
 				<label for="name" class="control-label" translate>list.createList.name </label>
 				<input ng-model="createListController.list.name" id="name"
-					   name="name" type="text" placeholder="" class="form-control"
+					   name="name" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
 					   wc-validation-indicator="{{'list.createList.name' | translate}}" required/>
 			</div>
 		</div>
@@ -16,7 +16,7 @@
 			<div class="form-group">
 				<label for="description" class="control-label" translate>list.createList.description </label>
 				<input ng-model="createListController.list.description" id="description"
-					   name="description" type="text" placeholder="" class="form-control"
+					   name="description" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
 					   wc-validation-indicator="{{'list.createList.description' | translate}}" required/>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 				<label for="active" translate>	list.createList.active
 				</label>
 				<input type="checkbox" name="checkbox" id="active"
-					   ng-model="createListController.list.active" required/>
+					   ng-model="createListController.list.active"/>
 			</div>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
 			</button>
 		</div>
 		<div class="col-xs-6 text-center">
-			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" ng-click="createListController.submitList()" translate>
+			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" ng-click="createListController.submitList(createListForm)" translate>
 				list.createList.save
 			</button>
 		</div>

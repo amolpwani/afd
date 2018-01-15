@@ -25,6 +25,7 @@ angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state',
 		 * @description This property holds the object for Http end point.
 		 */
 		this.listItemEndpoint = new WcHttpEndpointPrototype('listdataitems/getItems');
+		this.listItemListIdEndpoint = new WcHttpEndpointPrototype('listdataitems/getListId');
 
 		/**
 		 * @ngdoc method
@@ -35,6 +36,22 @@ angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state',
 		 */
 		this.getListItems = function () {
 			return this.listItemEndpoint.get({cache: 'localStorage', alwaysRefresh: true}).then(function (response) {
+				return response.data;
+			}, function(error) {
+				return $q.reject(error);
+			});
+		};
+		
+		/**
+		 * @ngdoc method
+		 * @name getListItemItems
+		 * @methodOf ListItemService
+		 * @params {integer} listId
+		 * @returns {*} response object representing the offersEndpoint GET response
+		 * @description The method get the list details from the list end point.
+		 */
+		this.getListItemsWithListId = function (listId) {
+			return this.listItemListIdEndpoint.subRoute(listId).get({cache: 'localStorage', alwaysRefresh: true}).then(function (response) {
 				return response.data;
 			}, function(error) {
 				return $q.reject(error);
@@ -58,12 +75,12 @@ angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state',
 
 		/**
 		 * @ngdoc method
-		 * @name deleteLists
+		 * @name deleteListItems
 		 * @methodOf ListItemService
 		 * @params {array} listItemsToDelete
 		 * @description The method deletes the lists based on the lists index supplied.
 		 */
-		this.deleteLists = function (listItemsToDelete) {
+		this.deleteListItems = function (listItemsToDelete) {
 			//since sending a body on DELETE is frowned upon, iterate through and send separate requests for each list to delete
 			var deletePromises = [];
 			var deleteResults = [];
@@ -71,14 +88,14 @@ angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state',
 			var addResultToArray = function (index, success) {
 				//replace the initial promise with a new one that resolves with the data we just created
 				deleteResults[index] = {
-					'listId': listItemsToDelete[index].listId,
+					'id': listItemsToDelete[index].id,
 					'success': success
 				};
 			};
 
 			var doDeleteForIndex = angular.bind(this, function (index) {
 
-				deletePromises[index] = this.listItemEndpoint.delete(listItemsToDelete[index].listId, {offline: 'queue'}).then(function (response) {
+				deletePromises[index] = this.listItemEndpoint.delete(listItemsToDelete[index].id, {offline: 'queue'}).then(function (response) {
 					if (response.status == 'queue') {
 						addResultToArray(index, 'queue');
 					}
@@ -102,25 +119,25 @@ angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state',
 
 		/**
 		 * @ngdoc method
-		 * @name createList
+		 * @name createListItem
 		 * @methodOf ListItemService
 		 * @description The method creates the list by send a POST request to list Endpoint.
 		 */
-		this.createList = function (list) {
+		this.createListItem = function (listItem) {
 
-			return this.listItemEndpoint.post(list, {offline: 'queue'}).then(angular.bind(this, function (response) {
+			return this.listItemEndpoint.post(listItem, {offline: 'queue'}).then(angular.bind(this, function (response) {
 
 				if (response.status == 'queue') {
 					WcAlertConsoleService.addMessage({
-						message: $translate.instant('list.createList.createQueued'),
+						message: $translate.instant('list.createListItem.createQueued'),
 						type: 'success',
 						multiple: false
 					});
 				}
 				else {
 					WcAlertConsoleService.addMessage({
-						message: $translate.instant('list.createList.createSuccess', {
-							id: response.data
+						message: $translate.instant('listItem.createListItem.createSuccess', {
+							id: response.data.code
 						}),
 						type: 'success',
 						multiple: false
@@ -131,7 +148,7 @@ angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state',
 				
 				if (errorMsg.status != 422) {
 					WcAlertConsoleService.addMessage({
-						message: $translate.instant('list.createList.createFailed', {
+						message: $translate.instant('listItem.createListItem.createFailed', {
 							error: errorMsg.statusText
 						}),
 						type: 'danger',
@@ -140,7 +157,7 @@ angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state',
 				} else {			
 					angular.forEach(errorMsg.data.failureList, function(failure) {
 						WcAlertConsoleService.addMessage({
-							message: $translate.instant('list.createList.createFailed', {
+							message: $translate.instant('listItem.createListItem.createFailed', {
 								error: failure.message
 							}),
 							type: 'danger',

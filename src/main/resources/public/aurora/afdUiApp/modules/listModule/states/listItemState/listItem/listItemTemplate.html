@@ -1,13 +1,8 @@
-<!--<h2 translate="listItem.listlistItem.subTitle"></h2>-->
 <h2 translate>listItem.listItem.title</h2>
 <div class="row">
     <div class="col-xs-12">
-        <a id="create-list-item" ui-sref="create-list-item" class="btn btn-primary btn-sm">
+        <a id="create-listItem" ui-sref="create-listItem({id:{{listItemController.listId}}})" class="btn btn-primary btn-sm">
             <span translate>application.buttons.create </span><span class="hidden-xs" translate>listItem.type</span>
-        </a>
-        
-        <a id="search-list-item" ui-sref="search-list-item-criteria" class="btn btn-primary btn-sm">
-            <span translate>application.buttons.search </span><span class="hidden-xs" translate>listItem.types</span>
         </a>
     </div>
 </div>
@@ -20,9 +15,6 @@
             <thead>
             <tr>
                 <th translate>listItem.actions</th>
-                <th wc-protected-resource="DeleteList:execute" class="text-center">
-                    <wc-row-select-header-checkbox></wc-row-select-header-checkbox>
-                </th>
                 <th wc-column-sort="code">{{'listItem.code' | translate}}
                     <label for="code" class="sr-only">{{'listItem.code' | translate}}</label>
                     <input id="code" class="form-control input-sm" type="text" wc-column-filter="code" title="{{'listItem.code' | translate}}"/></th>
@@ -37,12 +29,12 @@
             <tbody>
             <tr>
                 <td class="col-hide text-center">
-                    <span class="show-now hidden-xs"><a href="" wc-row-action-single="view-list">View Details </a>  </span>
-                    <span wc-protected-resource="CreateList:execute">
-                        |</span>
-                </td>
-                <td class="text-center width-10" wc-protected-resource="DeleteList:execute">
-                    <wc-row-select-checkbox></wc-row-select-checkbox>
+        			<a href=''>
+        				<span class="glyphicon glyphicon-pencil" style='font-size: 17px'></span>
+        			</a>
+        			<a wc-row-action-single="delete-listItems">
+        				<span class="glyphicon glyphicon-trash" style='font-size: 17px'></span>
+        			</a>
                 </td>
                 <td ng-class="$parent.columnData.column1.class">
                     {{::row.code}}
@@ -55,18 +47,6 @@
             </tr>
             </tbody>
         </table>
-		<div class="row" wc-protected-resource="DeleteList:execute">
-			<div class="col-xs-12">
-				<wc-check-all-none target-container-id="list-list-table"></wc-check-all-none>
-			</div>
-			<div class="col-xs-12 table-actions">
-				<button type="button" id="delete-listItems" class="btn btn-primary btn-sm" wc-row-action-multiple="delete-listItems"
-						wc-protected-resource="DeleteList:execute">
-					<span translate>application.buttons.delete</span><span class="hidden-xs"
-																		   translate>listItem.selectedTypes</span>
-				</button>
-			</div>
-		</div>
 	</div>
 </div>
 

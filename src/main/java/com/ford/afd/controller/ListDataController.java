@@ -34,7 +34,7 @@ public class ListDataController {
 		return listDataRepository.saveAndFlush(existingListData);
 	}
 
-	@RequestMapping(value = "deleteListDataById/{id}",method = RequestMethod.DELETE)
+	@RequestMapping(value = "getList/{id}",method = RequestMethod.DELETE)
 	public ListData deleteListDataById(@PathVariable long id ){
 		ListData listData = listDataRepository.findOne(id);
 		listDataRepository.delete(id);

@@ -30,7 +30,6 @@ angular.module('AfdUiAppListModule')
 			 */
 			this.lists = lists;
 
-
 			/**
 			 * @ngdoc method
 			 * @name getSelectedListObjects
@@ -69,11 +68,6 @@ angular.module('AfdUiAppListModule')
 			$scope.$on("update-list-options", angular.bind(this, function(event, data) { // jshint ignore:line
 
 				this.updateList("options", this.getSelectedListObjects(data)[0]);
-			}));
-
-			$scope.$on("update-list-flight", angular.bind(this, function(event, data) { // jshint ignore:line
-
-				this.updateList("flight", this.getSelectedListObjects(data)[0]);
 			}));
 
 			$scope.$on("delete-lists", angular.bind(this, function(event, data) { // jshint ignore:line
@@ -117,6 +111,47 @@ angular.module('AfdUiAppListModule')
 					$state.go('update-list.select-departing-flight', param);
 				}
 			};
+			
+			/**
+			 * @ngdoc method
+			 * @name deleteListsAndProcessResults
+			 * @methodOf ListService
+			 * @params {object} listsToDelete
+			 * @description This method is to delete the bookings and processed deleted results
+			 */
+			this.deleteListsAndProcessResults = function(listsToDelete) {
+				return ListService.deleteLists(listsToDelete).then(angular.bind(this, function(results) {
+
+					return this.processResultsForDisplay(results);
+				}));
+			};
+			
+			/**
+			 * @ngdoc method
+			 * @name processResultsForDisplay
+			 * @methodOf DeleteBookingModalService
+			 * @params {object} results
+			 * @description This method is to process the results for display
+			 */
+			this.processResultsForDisplay = function(results) {
+				//take the results array and process it into an object with a collection of successes, queued requests and failures
+				var successfulResults = [];
+				var queuedResults = [];
+				var failedResults = [];
+
+				for(var i=0; i<results.length; i++){
+					if(results[i].success === true){
+						successfulResults.push(results[i]);
+					}
+					else if(results[i].success === 'queue') {
+						queuedResults.push(results[i]);
+					}
+					else {
+						failedResults.push(results[i]);
+					}
+				}
+				return {'successfulResults': successfulResults, 'queuedResults': queuedResults, 'failedResults': failedResults};
+			};
 
 			/**
 			 * @ngdoc method
@@ -126,10 +161,10 @@ angular.module('AfdUiAppListModule')
 			 * @description This method is for delete the list from database
 			 */
 			this.deleteLists = function(lists) {
-//				return DeleteBookingModalService.openDeleteModal(lists).then(angular.bind(this, function(results) {
-//
-//					$scope.$parent.jabUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
-//				}));
+				return this.deleteListsAndProcessResults(lists).then(angular.bind(this, function(results) {
+
+					$scope.$parent.newUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+				}));
 				return null;
 			};
 			/**

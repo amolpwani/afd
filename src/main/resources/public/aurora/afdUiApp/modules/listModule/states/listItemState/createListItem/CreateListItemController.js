@@ -11,7 +11,7 @@
 		 * @requires $stateParams
 		 * */
 angular.module('AfdUiAppListModule')
-	.controller('createListItemController', ['$state', 'ListItemService', 'ListItemPrototype', function($state, ListItemService, ListItemPrototype) {
+	.controller('CreateListItemController', ['$state', '$stateParams', '$location', 'ListItemService', 'ListItemPrototype', function($state, $stateParams, $location, ListItemService, ListItemPrototype) {
 
 		/**
 		 * @ngdoc property
@@ -31,7 +31,7 @@ angular.module('AfdUiAppListModule')
 		 * @description This property holds the object for ListItemPrototype service.
 		 */
 		this.listItem = new ListItemPrototype();
-
+		
 		/**
 		 * @ngdoc property
 		 * @name isEditing
@@ -96,7 +96,7 @@ angular.module('AfdUiAppListModule')
 			}
 			else {
 				//noinspection JSCheckFunctionSignatures
-				$state.go('listItem');
+				$location.path("/aurora/index.html#/listItem" + $stateParams.id);
 			}
 		};
 
@@ -115,38 +115,42 @@ angular.module('AfdUiAppListModule')
 		 * @methodOf createListItemController
 		 * @description The method submit the list details to database.
 		 */
-		this.submitListItem = function() {
-			this.submitInProgress = true;
-			if(this.isEditing) {
-				var param = {
-					id: this.list.id
-				};
-
-				ListItemService.updateList(this.list).then(angular.bind(this, function() {
-					if(this.isEditFromView) {
-						//noinspection JSCheckFunctionSignatures
-						$state.go('view-list', param);
-						this.isEditFromView = false;
-					}
-					else {
-						//noinspection JSCheckFunctionSignatures
-						$state.go('listItem');
-					}
-				}), angular.bind(this, function(errorObj) {
-					if(errorObj.updatedListItem) {
-						this.list = errorObj.updatedListItem;
-					}
-
-					this.submitInProgress = false;
-				}));
-			} else {
-				ListItemService.createListItem(this.listItem).then(function() {
-						//noinspection JSCheckFunctionSignatures
-					$state.go('listItem');
-				}, angular.bind(this, function() {
-
-					this.submitInProgress = false;
-				}));
+		this.submitListItem = function(createListItemForm) {
+			if (createListItemForm.$valid) {
+				this.submitInProgress = true;
+				this.success = false;
+				if(this.isEditing) {
+					var param = {
+						id: this.list.id
+					};
+	
+					ListItemService.updateList(this.list).then(angular.bind(this, function() {
+						if(this.isEditFromView) {
+							//noinspection JSCheckFunctionSignatures
+							$state.go('view-list', param);
+							this.isEditFromView = false;
+						}
+						else {
+							//noinspection JSCheckFunctionSignatures
+							$location.path("/aurora/index.html#/listItem" + $stateParams.id);
+						}
+					}), angular.bind(this, function(errorObj) {
+						if(errorObj.updatedListItem) {
+							this.list = errorObj.updatedListItem;
+						}
+	
+						this.submitInProgress = false;
+					}));
+				} else {
+					this.listItem.parentlistId = $stateParams.id;
+					ListItemService.createListItem(this.listItem).then(function() {
+							//noinspection JSCheckFunctionSignatures
+						$state.go('listItem', {id : $stateParams.id});
+					}, angular.bind(this, function() {
+	
+						this.submitInProgress = false;
+					}));
+				}
 			}
 		};
 

@@ -3,9 +3,9 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<div class="form-group">
-				<label for="code" class="control-label" translate>listItem.createListItem.name </label>
+				<label for="code" class="control-label" translate>listItem.createListItem.code </label>
 				<input ng-model="createListItemController.listItem.code" id="code"
-					   name="name" type="text" placeholder="" class="form-control"
+					   name="name" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
 					   wc-validation-indicator="{{'listItem.createListItem.code' | translate}}" required/>
 			</div>
 		</div>
@@ -16,7 +16,7 @@
 			<div class="form-group">
 				<label for="description" class="control-label" translate>listItem.createListItem.description </label>
 				<input ng-model="createListItemController.listItem.description" id="description"
-					   name="description" type="text" placeholder="" class="form-control"
+					   name="description" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
 					   wc-validation-indicator="{{'listItem.createListItem.description' | translate}}" required/>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 				<label for="active" translate>	listItem.createListItem.active
 				</label>
 				<input type="checkbox" name="checkbox" id="active"
-					   ng-model="createListItemController.listItem.active" required/>
+					   ng-model="createListItemController.listItem.active"/>
 			</div>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
 			</button>
 		</div>
 		<div class="col-xs-6 text-center">
-			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" ng-click="createListItemController.submitList()" translate>
+			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" ng-click="createListItemController.submitListItem(createListItemForm)" translate>
 				listItem.createListItem.save
 			</button>
 		</div>

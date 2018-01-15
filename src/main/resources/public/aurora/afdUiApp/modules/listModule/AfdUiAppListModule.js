@@ -41,22 +41,15 @@ angular.module('AfdUiAppListModule')
 					}
 				}]
 			})
-			.state('create-list', {
-				url: '/create-list',
-				templateUrl: 'afdUiApp/modules/listModule/states/listState/createList/createListTemplate.html',
-				controller: 'CreateListController',
-				controllerAs: 'createListController',
-				parent: 'new-ui-app'
-			})
-			.state('listItem', {
-				url: '/listItem',
-				templateUrl: 'afdUiApp/modules/listModule/states/listItemState/listItem/listItemTemplate.html',
-				controller: 'ListItemController',
-				controllerAs: 'listItemController',
+			.state('active-list', {
+				url: '/active-list',
+				templateUrl: 'afdUiApp/modules/listModule/states/listState/activeList/activeListTemplate.html',
+				controller: 'ActiveListController',
+				controllerAs: 'activeListController',
 				parent: 'new-ui-app',
 				resolve: {
-					listItems: ['ListItemService', function(ListItemService) {
-						return ListItemService.getListItems();
+					lists: ['ListService', function(ListService) {
+						return ListService.getLists();
 					}]
 				},
 				onEnter: ['$state', function($state) {
@@ -65,8 +58,27 @@ angular.module('AfdUiAppListModule')
 					}
 				}]
 			})
+			.state('create-list', {
+				url: '/create-list',
+				templateUrl: 'afdUiApp/modules/listModule/states/listState/createList/createListTemplate.html',
+				controller: 'CreateListController',
+				controllerAs: 'createListController',
+				parent: 'new-ui-app'
+			})
+			.state('listItem', {
+				url: '/listItem:id',
+				templateUrl: 'afdUiApp/modules/listModule/states/listItemState/listItem/listItemTemplate.html',
+				controller: 'ListItemController',
+				controllerAs: 'listItemController',
+				parent: 'new-ui-app',
+				resolve: {
+					listItems: ['ListItemService', '$stateParams', function(ListItemService, $stateParams) {
+						return ListItemService.getListItemsWithListId($stateParams.id);
+					}]
+				}
+			})
 			.state('create-listItem', {
-				url: '/create-listItem',
+				url: '/create-listItem:id',
 				templateUrl: 'afdUiApp/modules/listModule/states/listItemState/createListItem/createListItemTemplate.html',
 				controller: 'CreateListItemController',
 				controllerAs: 'createListItemController',

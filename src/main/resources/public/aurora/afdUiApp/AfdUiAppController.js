@@ -12,8 +12,8 @@
  */
 
 angular.module('NewUiAppModule')
-	.controller('NewUiAppController', ['WcConstants', '$anchorScroll', '$timeout',
-        function (WcConstants, $anchorScroll, $timeout) {
+	.controller('NewUiAppController', ['WcConstants', '$anchorScroll', '$timeout', '$state',
+        function (WcConstants, $anchorScroll, $timeout, $state) {
 
 		this.version = angular.version;
 		this.webCoreVersion = WcConstants.version;
@@ -35,5 +35,24 @@ angular.module('NewUiAppModule')
 			$timeout(function () {
 				angular.element('#content input, #content textarea, #content select, #content button, #content a')[0].focus();
 			}, 0);
+		};
+		
+		/**
+		 * @ngdoc method
+		 * @name reloadState
+		 * @methodOf JabUiAppController
+		 * @params {object} processResultsFn
+		 * @params {array} deleteResults
+		 * @description The method reloads all the closed states based on the delete results value.
+		 */
+		this.reloadState = function(processResultsFn, deleteResults) {
+			if(processResultsFn) {
+				$state.params.processResultsFn = processResultsFn;
+				$state.params.deleteResults = deleteResults;
+			}
+			//noinspection JSCheckFunctionSignatures
+            $state.go($state.current.name, $state.params, {
+				reload: true
+			});
 		};
 	}]);

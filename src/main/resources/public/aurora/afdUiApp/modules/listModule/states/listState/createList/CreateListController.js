@@ -115,38 +115,40 @@ angular.module('AfdUiAppListModule')
 		 * @methodOf CreateListController
 		 * @description The method submit the list details to database.
 		 */
-		this.submitList = function() {
-			this.submitInProgress = true;
-			if(this.isEditing) {
-				var param = {
-					id: this.list.id
-				};
-
-				ListService.updateList(this.list).then(angular.bind(this, function() {
-					if(this.isEditFromView) {
-						//noinspection JSCheckFunctionSignatures
-						$state.go('view-list', param);
-						this.isEditFromView = false;
-					}
-					else {
-						//noinspection JSCheckFunctionSignatures
+		this.submitList = function(createListForm) {
+			if (createListForm.$valid) {
+				this.submitInProgress = true;
+				if(this.isEditing) {
+					var param = {
+						id: this.list.id
+					};
+	
+					ListService.updateList(this.list).then(angular.bind(this, function() {
+						if(this.isEditFromView) {
+							//noinspection JSCheckFunctionSignatures
+							$state.go('view-list', param);
+							this.isEditFromView = false;
+						}
+						else {
+							//noinspection JSCheckFunctionSignatures
+							$state.go('list');
+						}
+					}), angular.bind(this, function(errorObj) {
+						if(errorObj.updatedList) {
+							this.list = errorObj.updatedList;
+						}
+	
+						this.submitInProgress = false;
+					}));
+				} else {
+					ListService.createList(this.list).then(function() {
+							//noinspection JSCheckFunctionSignatures
 						$state.go('list');
-					}
-				}), angular.bind(this, function(errorObj) {
-					if(errorObj.updatedList) {
-						this.list = errorObj.updatedList;
-					}
-
-					this.submitInProgress = false;
-				}));
-			} else {
-				ListService.createList(this.list).then(function() {
-						//noinspection JSCheckFunctionSignatures
-					$state.go('list');
-				}, angular.bind(this, function() {
-
-					this.submitInProgress = false;
-				}));
+					}, angular.bind(this, function() {
+	
+						this.submitInProgress = false;
+					}));
+				}
 			}
 		};
 
