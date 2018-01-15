@@ -29,6 +29,7 @@ angular.module('AfdUiAppListModule')
 			 * @description This property holds the list of listItems.
 			 */
 			this.listItems = listItems;
+			this.listId = $stateParams.id;
 
 			/**
 			 * @ngdoc method
