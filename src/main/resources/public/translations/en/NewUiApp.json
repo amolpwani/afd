@@ -5,17 +5,13 @@
 		"navigation": {
 			"links": {
 				"home": "Home",
-				"list": "List",
-				"mapping": "Mapping",
-				"newModule2": {
+				"list": "Master Source Data",
+				"admin": {
 					"main": "Admin",
 					"manageList": "Manage List",
 					"manageMapping": "Manage Mapping"
 				},
-				"newModule1": {
-					"main": "Admin",
-					"childItem": "Manage List"
-				}
+				"mapping": "Foundational Data"
 			}
 		},
 		"header": {
@@ -37,19 +33,6 @@
 			"delete": "Delete ",
 			"yes": "Yes",
 			"no": "No"
-		}
-	},
-	"newTaxonomy": {
-		"newScreen": {
-			"title": "New Screen 1",
-			"instructions": "Add components to this screen to do X and Y",
-			"buttons": {
-				"submit": "Add New"
-			},
-			"links": {
-				"edit": "@:actions.edit",
-				"cancel": "@:actions.cancel"
-			}
 		}
 	},
 	"newAdmin": {
@@ -90,10 +73,7 @@
 		"list": {
 			"title": "Managge Lists",
 			"instructions": "The existing bookings are listed below. You may create new bookings or search for existing ones.",
-			"customerTitle": "Bookings for {{email}} ({{lastName}}, {{firstName}})",
-			"customerInstructions": "Your bookings are listed below. Please contact your agent for information about updating or canceling your bookings.",
-			"subTitle": "Lists",
-			"bookingsFailed": "Failed to get bookings: {{error}}"
+			"subTitle": "Lists"
 		},
 		"activeList": {
 			"title": "Active Lists",
@@ -106,14 +86,29 @@
 			"continue": "Continue",
 			"saveAndContinue": "Save and Continue",
 			"save": "Save",
-			"bookAdventure": "Book Adventure",
 			"pleaseWait": "Please wait...",
 			"name": "List Name",
 			"description": "List Description",
 			"active": "Active/InActive",
-			"createSuccess": "List {{id}} has been successfully created.",
+			"createSuccess": "{{name}} has been successfully created.",
 			"createQueued": "List creation has been queued for later processing due to being offline.",
 			"createFailed": "Failed to create List: {{error}}",
+			"validationErrors": "Errors found on this page. Please see below for details."
+		},
+		"editList": {
+			"title": "Edit List",
+			"previous": "Previous",
+			"cancel": "Cancel",
+			"continue": "Continue",
+			"saveAndContinue": "Save and Continue",
+			"save": "Save",
+			"pleaseWait": "Please wait...",
+			"name": "List Name",
+			"description": "List Description",
+			"active": "Active/InActive",
+			"updateSuccess": "{{name}} has been successfully edited.",
+			"updateQueued": "List creation has been queued for later processing due to being offline.",
+			"updateFailed": "Failed to edit List: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
 		"actions": "Actions",
@@ -127,11 +122,7 @@
 		"selectedTypes": "Selected Lists",
 		"listItem": {
 			"title": "Manage List Item",
-			"instructions": "The existing bookings are listed below. You may create new bookings or search for existing ones.",
-			"customerTitle": "Bookings for {{email}} ({{lastName}}, {{firstName}})",
-			"customerInstructions": "Your bookings are listed below. Please contact your agent for information about updating or canceling your bookings.",
-			"subTitle": "Lists",
-			"bookingsFailed": "Failed to get bookings: {{error}}"
+			"subTitle": "Lists"
 		},
 		"createListItem": {
 			"title": "Create List Item",
@@ -144,9 +135,25 @@
 			"code": "List Item Code",
 			"description": "List Item Description",
 			"active": "Active/InActive",
-			"createSuccess": "List Item {{id}} has been successfully created.",
+			"createSuccess": "{{name}} has been successfully created.",
 			"createQueued": "List Item creation has been queued for later processing due to being offline.",
 			"createFailed": "Failed to create List Item: {{error}}",
+			"validationErrors": "Errors found on this page. Please see below for details."
+		},
+		"editListItem": {
+			"title": "Edit List Item",
+			"previous": "Previous",
+			"cancel": "Cancel",
+			"continue": "Continue",
+			"saveAndContinue": "Save and Continue",
+			"save": "Save",
+			"pleaseWait": "Please wait...",
+			"code": "List Item Code",
+			"description": "List Item Description",
+			"active": "Active/InActive",
+			"updateSuccess": "{{name}} has been successfully created.",
+			"updateQueued": "List Item creation has been queued for later processing due to being offline.",
+			"updateFailed": "Failed to create List Item: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
 		"actions": "Actions",

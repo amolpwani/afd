@@ -33,13 +33,13 @@ angular.module('AfdUiAppListModule')
 
 			/**
 			 * @ngdoc method
-			 * @name getSelectedListObjects
+			 * @name getselectedListItemObjects
 			 * @methodOf ListItemController
 			 * @params {integer} id
-			 * @returns {object} selectedLists
+			 * @returns {object} selectedListItems
 			 * @description Helper function to use in tandem with the datatable selection api.
 			 */
-			this.getSelectedListObjects = function(id) {
+			this.getselectedListItemObjects = function(id) {
 				var selectedId = id;
 				if(selectedId === undefined) {
 					selectedId = this.listItemsToDelete;
@@ -49,64 +49,41 @@ angular.module('AfdUiAppListModule')
                                         selectedId = [].concat(selectedId);
                                     }
 				}
-				var selectedLists = [];
+				var selectedListItems = [];
 				angular.forEach(this.listItems, function(list) {
 					for(var i = 0; i < selectedId.length; i++) {
 						if(list.id === selectedId[i]) {
-							selectedLists.push(list);
+							selectedListItems.push(list);
 						}
 					}
 				});
 
-				return selectedLists;
+				return selectedListItems;
 			};
 
-			$scope.$on("view-list", angular.bind(this, function(event, data) { // jshint ignore:line
+            $scope.$on("update-listItem", angular.bind(this, function(event, data) { // jshint ignore:line
 
-				this.viewBooking(this.getSelectedListObjects(data)[0]);
-			}));
+                this.updateListItem(this.getselectedListItemObjects(data)[0]);
+            }));
 
 			$scope.$on("delete-listItems", angular.bind(this, function(event, data) { // jshint ignore:line
 
-				this.deleteListItems(this.getSelectedListObjects(data));
+				this.deleteListItems(this.getselectedListItemObjects(data));
 			}));
 
-			/**
-			 * @ngdoc method
-			 * @name viewBooking
-			 * @methodOf ListItemController
-			 * @params {object} data
-			 * @description This method is for view the list informations
-			 */
-			this.viewBooking = function(data) {
-				var param = {
-					confirmationNumber: data.confirmationNumber
-				};
-				//noinspection JSCheckFunctionSignatures
-				$state.go('view-list', param);
-			};
-
-			/**
-			 * @ngdoc method
-			 * @name getSelectedListObjects
-			 * @methodOf ListItemController
-			 * @params {string} updateType
-			 * @params {string} selectedBooking
-			 * @description The method updates the list details to database based on updateType and selectedBooking.
-			 */
-			this.updateList = function(updateType, selectedBooking) {
-				var param = {
-					confirmationNumber: selectedBooking.confirmationNumber
-				};
-				ListItemService.isEditing = true;
-				if(updateType == 'options') {
-					//noinspection JSCheckFunctionSignatures
-					$state.go('update-list.select-list-options', param);
-				} else {
-					//noinspection JSCheckFunctionSignatures
-					$state.go('update-list.select-departing-flight', param);
-				}
-			};
+            /**
+             * @ngdoc method
+             * @name getselectedListItemObjects
+             * @methodOf ListItemController
+             * @params {string} updateType
+             * @params {string} selectedListItem
+             * @description The method updates the list details to database based on updateType and selectedListItem.
+             */
+            this.updateListItem = function(selectedListItem) {
+                ListItemService.isEditing = true;
+                ListItemService.listItem = selectedListItem;
+                $state.go('create-listItem', {id:$stateParams.id});
+            };
 			
 			/**
 			 * @ngdoc method

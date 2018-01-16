@@ -26,6 +26,8 @@ angular.module('AfdUiAppListModule').service('ListService', ['$q', '$state', '$t
 		 */
 		this.listEndpoint = new WcHttpEndpointPrototype('listdata/getList');
 
+		this.isEditing = false;
+
 		/**
 		 * @ngdoc method
 		 * @name getLists
@@ -120,7 +122,7 @@ angular.module('AfdUiAppListModule').service('ListService', ['$q', '$state', '$t
 				else {
 					WcAlertConsoleService.addMessage({
 						message: $translate.instant('list.createList.createSuccess', {
-							id: response.data.name
+							name: response.data.name
 						}),
 						type: 'success',
 						multiple: false
@@ -150,5 +152,67 @@ angular.module('AfdUiAppListModule').service('ListService', ['$q', '$state', '$t
 				}
 				return $q.reject(errorMsg);
 			});
+		};
+		
+		/**
+		 * @ngdoc method
+		 * @name updateList
+		 * @methodOf ListService
+		 * @description The method updates the lists information to database.
+		 */
+		this.updateList = function (list) {
+			var id = list.id;
+			
+			return this.listEndpoint.put(id, list, {offline: 'queue'}).then(angular.bind(this, function (response) {
+
+				if (response.status == 'queue') {
+					WcAlertConsoleService.addMessage({
+						message: $translate.instant('list.editList.updateQueued', {
+							name: list.name
+						}),
+						type: 'success',
+						multiple: false
+					});
+				}
+				else {
+					WcAlertConsoleService.addMessage({
+						message: $translate.instant('list.editList.updateSuccess', {
+                            name: list.name
+						}),
+						type: 'success',
+						multiple: false
+					});
+				}
+				return $q.when(response.data);
+			}), angular.bind(this, function (error) {
+
+				if (error.status === 409) {
+
+					//TODO
+
+				} else if (error.status === 422) {
+					
+					angular.forEach(error.data.failureList, function(failure) {
+						WcAlertConsoleService.addMessage({
+							message: $translate.instant('list.editList.updateFailed', {
+								error: failure.message
+							}),
+							type: 'danger',
+							multiple: false
+						});
+					});
+					return $q.reject(error);
+					
+				} else {
+
+					WcAlertConsoleService.addMessage({
+						message: $translate.instant('list.editList.updateFailed'),
+						type: 'danger',
+						multiple: false
+					});
+					return $q.reject(error);
+
+				}
+			}));
 		};
 	}]);

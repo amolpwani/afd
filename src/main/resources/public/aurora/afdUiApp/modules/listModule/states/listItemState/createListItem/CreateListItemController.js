@@ -31,46 +31,20 @@ angular.module('AfdUiAppListModule')
 		 * @description This property holds the object for ListItemPrototype service.
 		 */
 		this.listItem = new ListItemPrototype();
-		
-		/**
-		 * @ngdoc property
-		 * @name isEditing
-		 * @propertyOf ListItemService
-		 * @type {boolean}
-		 * @description This property holds the boolean value, by default it is set to false.
-		 */
-		this.isEditing = false;
 
-		/**
-		 * @ngdoc property
-		 * @name isEditFromView
-		 * @propertyOf ListItemService
-		 * @type {boolean}
-		 * @description This property holds the boolean value, by default it is set to false.
-		 */
-		this.isEditFromView = false;
-		/**
-		 * @ngdoc property
-		 * @name isEditFromSearchResults
-		 * @propertyOf ListItemService
-		 * @type {boolean}
-		 * @description This property holds the boolean value, by default it is set to false.
-		 */
-		this.isEditFromSearchResults = false;
+        /**
+         * @ngdoc property
+         * @name isEditing
+         * @propertyOf ListService
+         * @type {boolean}
+         * @description This property holds the boolean value, by default it is set to false.
+         */
+        this.isEditing = ListItemService.isEditing;
 
-		//after refactor from using the service we're now getting the previous state as a stateParam. Set up vars from it here
-		if($state.params.previousState == 'search-list-results') {
-			this.isEditFromSearchResults = true;
-			this.isEditFromView = false;
-		}
-		else if($state.params.previousState == 'view-list') {
-			this.isEditFromSearchResults = false;
-			this.isEditFromView = true;
-		}
-		else {
-			this.isEditFromSearchResults = false;
-			this.isEditFromView = false;
-		}
+        if (this.isEditing) {
+            this.listItem = ListItemService.listItem;
+            ListItemService.isEditing = false;
+        }
 
 		/**
 		 * @ngdoc method
@@ -79,25 +53,7 @@ angular.module('AfdUiAppListModule')
 		 * @description The method cancels the list from the database.
 		 */
 		this.cancel = function() {
-			var param = {
-				id: this.listItem.id
-			};
-
-			if(this.isEditFromView) {
-				//noinspection JSCheckFunctionSignatures
-				$state.go('view-list', param);
-				this.isEditFromView = false;
-			}
-			else if (this.isEditFromSearchResults) {
-				//noinspection JSCheckFunctionSignatures
-				$state.go('search-list-results', param);
-				this.isEditFromSearchResults = false;
-
-			}
-			else {
-				//noinspection JSCheckFunctionSignatures
-				$location.path("/aurora/index.html#/listItem" + $stateParams.id);
-			}
+			$state.go('listItem', {id : $stateParams.id});
 		};
 
 		/**
@@ -119,24 +75,14 @@ angular.module('AfdUiAppListModule')
 			if (createListItemForm.$valid) {
 				this.submitInProgress = true;
 				this.success = false;
+
 				if(this.isEditing) {
-					var param = {
-						id: this.list.id
-					};
-	
-					ListItemService.updateList(this.list).then(angular.bind(this, function() {
-						if(this.isEditFromView) {
-							//noinspection JSCheckFunctionSignatures
-							$state.go('view-list', param);
-							this.isEditFromView = false;
-						}
-						else {
-							//noinspection JSCheckFunctionSignatures
-							$location.path("/aurora/index.html#/listItem" + $stateParams.id);
-						}
+					ListItemService.updateListItem(this.listItem).then(angular.bind(this, function() {
+						//noinspection JSCheckFunctionSignatures
+						$state.go('listItem', {id : $stateParams.id});
 					}), angular.bind(this, function(errorObj) {
 						if(errorObj.updatedListItem) {
-							this.list = errorObj.updatedListItem;
+							this.listItem = errorObj.updatedListItem;
 						}
 	
 						this.submitInProgress = false;

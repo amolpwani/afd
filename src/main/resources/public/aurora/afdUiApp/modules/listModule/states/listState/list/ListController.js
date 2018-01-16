@@ -60,14 +60,9 @@ angular.module('AfdUiAppListModule')
 				return selectedLists;
 			};
 
-			$scope.$on("view-list", angular.bind(this, function(event, data) { // jshint ignore:line
+			$scope.$on("update-list", angular.bind(this, function(event, data) { // jshint ignore:line
 
-				this.viewBooking(this.getSelectedListObjects(data)[0]);
-			}));
-
-			$scope.$on("update-list-options", angular.bind(this, function(event, data) { // jshint ignore:line
-
-				this.updateList("options", this.getSelectedListObjects(data)[0]);
+				this.updateList(this.getSelectedListObjects(data)[0]);
 			}));
 
 			$scope.$on("delete-lists", angular.bind(this, function(event, data) { // jshint ignore:line
@@ -77,39 +72,16 @@ angular.module('AfdUiAppListModule')
 
 			/**
 			 * @ngdoc method
-			 * @name viewBooking
-			 * @methodOf ListController
-			 * @params {object} data
-			 * @description This method is for view the list informations
-			 */
-			this.viewBooking = function(data) {
-				var param = {
-					confirmationNumber: data.confirmationNumber
-				};
-				//noinspection JSCheckFunctionSignatures
-				$state.go('view-list', param);
-			};
-
-			/**
-			 * @ngdoc method
 			 * @name getSelectedListObjects
 			 * @methodOf ListController
 			 * @params {string} updateType
-			 * @params {string} selectedBooking
-			 * @description The method updates the list details to database based on updateType and selectedBooking.
+			 * @params {string} selectedList
+			 * @description The method updates the list details to database based on updateType and selectedList.
 			 */
-			this.updateList = function(updateType, selectedBooking) {
-				var param = {
-					confirmationNumber: selectedBooking.confirmationNumber
-				};
+			this.updateList = function(selectedList) {
 				ListService.isEditing = true;
-				if(updateType == 'options') {
-					//noinspection JSCheckFunctionSignatures
-					$state.go('update-list.select-list-options', param);
-				} else {
-					//noinspection JSCheckFunctionSignatures
-					$state.go('update-list.select-departing-flight', param);
-				}
+                ListService.list = selectedList;
+				$state.go('create-list');
 			};
 			
 			/**

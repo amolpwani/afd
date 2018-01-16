@@ -1,6 +1,0 @@
-[
-	{"label": "{{'application.navigation.links.home' | translate}}", "state":"home", "protected":""},
-	{"label": "{{'application.navigation.links.newModule1.main' | translate}}", "subMenu": [
-		{"label": "{{'application.navigation.links.newModule1.childItem' | translate}}", "state":"admin-menu-item", "protected":""}
-	]}
-]

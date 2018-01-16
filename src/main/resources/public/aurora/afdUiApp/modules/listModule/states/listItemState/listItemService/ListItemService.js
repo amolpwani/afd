@@ -137,7 +137,7 @@ angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state',
 				else {
 					WcAlertConsoleService.addMessage({
 						message: $translate.instant('listItem.createListItem.createSuccess', {
-							id: response.data.code
+							name: response.data.code
 						}),
 						type: 'success',
 						multiple: false
@@ -168,4 +168,67 @@ angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state',
 				return $q.reject(errorMsg);
 			});
 		};
+
+        /**
+         * @ngdoc method
+         * @name updateListItem
+         * @methodOf ListItemService
+         * @description The method updates the lists information to database.
+         */
+        this.updateListItem = function (listItem) {
+            var id = listItem.id;
+
+            return this.listItemEndpoint.put(id, listItem, {offline: 'queue'}).then(angular.bind(this, function (response) {
+
+                if (response.status == 'queue') {
+                    WcAlertConsoleService.addMessage({
+                        message: $translate.instant('listItem.editListItem.updateQueued', {
+                            name: listItem.code
+                        }),
+                        type: 'success',
+                        multiple: false
+                    });
+                }
+                else {
+                    WcAlertConsoleService.addMessage({
+                        message: $translate.instant('listItem.editListItem.updateSuccess', {
+                            name: listItem.code
+                        }),
+                        type: 'success',
+                        multiple: false
+                    });
+                }
+                return $q.when(response.data);
+            }), angular.bind(this, function (error) {
+
+                if (error.status === 409) {
+
+                    //TODO
+
+                } else if (error.status === 422) {
+
+                    angular.forEach(error.data.failureList, function(failure) {
+                        WcAlertConsoleService.addMessage({
+                            message: $translate.instant('listItem.editListItem.updateFailed', {
+                                error: failure.message
+                            }),
+                            type: 'danger',
+                            multiple: false
+                        });
+                    });
+                    return $q.reject(error);
+
+                } else {
+
+                    WcAlertConsoleService.addMessage({
+                        message: $translate.instant('listItem.editListItem.updateFailed'),
+                        type: 'danger',
+                        multiple: false
+                    });
+                    return $q.reject(error);
+
+                }
+            }));
+        };
+		
 	}]);

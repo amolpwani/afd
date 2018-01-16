@@ -1,5 +1,6 @@
 <form class="well" role="form" name="createListForm" id="createListForm" novalidate wc-form-submi>
-	<h2 translate>list.createList.title</h2>
+	<h2 ng-hide="createListController.isEditing" translate>list.createList.title</h2>
+	<h2 ng-show="createListController.isEditing" translate>list.editList.title</h2>
 	<div class="row">
 		<div class="col-sm-4">
 			<div class="form-group">

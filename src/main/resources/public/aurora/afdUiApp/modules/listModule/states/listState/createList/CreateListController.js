@@ -39,7 +39,12 @@ angular.module('AfdUiAppListModule')
 		 * @type {boolean}
 		 * @description This property holds the boolean value, by default it is set to false.
 		 */
-		this.isEditing = false;
+		this.isEditing = ListService.isEditing;
+
+		if (this.isEditing) {
+            this.list = ListService.list;
+            ListService.isEditing = false;
+		}
 
 		/**
 		 * @ngdoc property
@@ -58,20 +63,6 @@ angular.module('AfdUiAppListModule')
 		 */
 		this.isEditFromSearchResults = false;
 
-		//after refactor from using the service we're now getting the previous state as a stateParam. Set up vars from it here
-		if($state.params.previousState == 'search-list-results') {
-			this.isEditFromSearchResults = true;
-			this.isEditFromView = false;
-		}
-		else if($state.params.previousState == 'view-list') {
-			this.isEditFromSearchResults = false;
-			this.isEditFromView = true;
-		}
-		else {
-			this.isEditFromSearchResults = false;
-			this.isEditFromView = false;
-		}
-
 		/**
 		 * @ngdoc method
 		 * @name cancel
@@ -79,25 +70,9 @@ angular.module('AfdUiAppListModule')
 		 * @description The method cancels the list from the database.
 		 */
 		this.cancel = function() {
-			var param = {
-				confirmationNumber: this.list.confirmationNumber
-			};
 
-			if(this.isEditFromView) {
-				//noinspection JSCheckFunctionSignatures
-				$state.go('view-list', param);
-				this.isEditFromView = false;
-			}
-			else if (this.isEditFromSearchResults) {
-				//noinspection JSCheckFunctionSignatures
-				$state.go('search-list-results', param);
-				this.isEditFromSearchResults = false;
-
-			}
-			else {
-				//noinspection JSCheckFunctionSignatures
-				$state.go('list');
-			}
+			//noinspection JSCheckFunctionSignatures
+			$state.go('list');
 		};
 
 		/**
@@ -119,20 +94,9 @@ angular.module('AfdUiAppListModule')
 			if (createListForm.$valid) {
 				this.submitInProgress = true;
 				if(this.isEditing) {
-					var param = {
-						id: this.list.id
-					};
 	
 					ListService.updateList(this.list).then(angular.bind(this, function() {
-						if(this.isEditFromView) {
-							//noinspection JSCheckFunctionSignatures
-							$state.go('view-list', param);
-							this.isEditFromView = false;
-						}
-						else {
-							//noinspection JSCheckFunctionSignatures
-							$state.go('list');
-						}
+						$state.go('list');
 					}), angular.bind(this, function(errorObj) {
 						if(errorObj.updatedList) {
 							this.list = errorObj.updatedList;

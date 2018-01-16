@@ -16,7 +16,10 @@
             <column name="NAME" type="varchar(2000)">
                 <constraints nullable="false"/>
             </column>
-            <column name="STATUS" type="BOOLEAN">
+            <column name="DESCRIPTION" type="varchar(2000)">
+                <constraints nullable="false"/>
+            </column>            
+            <column name="ACTIVE" type="BOOLEAN">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -30,7 +33,13 @@
             <column name="NAME" type="varchar(2000)">
                 <constraints nullable="false"/>
             </column>
-            <column name="STATUS" type="BOOLEAN">
+            <column name="DESCRIPTION" type="varchar(2000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACTIVE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PARENT_LIST_ID" type="int(20)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
