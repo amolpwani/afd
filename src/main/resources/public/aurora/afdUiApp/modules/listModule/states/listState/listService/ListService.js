@@ -73,7 +73,7 @@ angular.module('AfdUiAppListModule').service('ListService', ['$q', '$state', '$t
 			var addResultToArray = function (index, success) {
 				//replace the initial promise with a new one that resolves with the data we just created
 				deleteResults[index] = {
-					'id': listsToDelete[index].id,
+					'name': listsToDelete[index].code,
 					'success': success
 				};
 			};

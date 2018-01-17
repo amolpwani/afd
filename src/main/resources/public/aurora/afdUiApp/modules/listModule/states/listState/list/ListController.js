@@ -86,20 +86,6 @@ angular.module('AfdUiAppListModule')
 			
 			/**
 			 * @ngdoc method
-			 * @name deleteListsAndProcessResults
-			 * @methodOf ListService
-			 * @params {object} listsToDelete
-			 * @description This method is to delete the bookings and processed deleted results
-			 */
-			this.deleteListsAndProcessResults = function(listsToDelete) {
-				return ListService.deleteLists(listsToDelete).then(angular.bind(this, function(results) {
-
-					return this.processResultsForDisplay(results);
-				}));
-			};
-			
-			/**
-			 * @ngdoc method
 			 * @name processResultsForDisplay
 			 * @methodOf DeleteBookingModalService
 			 * @params {object} results
@@ -123,6 +109,20 @@ angular.module('AfdUiAppListModule')
 					}
 				}
 				return {'successfulResults': successfulResults, 'queuedResults': queuedResults, 'failedResults': failedResults};
+			};
+			
+			/**
+			 * @ngdoc method
+			 * @name deleteListsAndProcessResults
+			 * @methodOf ListService
+			 * @params {object} listsToDelete
+			 * @description This method is to delete the bookings and processed deleted results
+			 */
+			this.deleteListsAndProcessResults = function(listsToDelete) {
+				return ListService.deleteLists(listsToDelete).then(angular.bind(this, function(results) {
+
+					return this.processResultsForDisplay(results);
+				}));
 			};
 
 			/**
@@ -150,7 +150,7 @@ angular.module('AfdUiAppListModule')
 				var createDisplayStr = function(array) {
 					var displayStr = '';
 					for(var i = 0; i < array.length; i++) {
-						displayStr += array[i].confirmationNumber;
+						displayStr += array[i].name;
 						if(i != array.length - 1) {
 							displayStr += ', ';
 						}

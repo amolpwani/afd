@@ -92,8 +92,8 @@ angular.module('AfdUiAppListModule')
 			 * @params {object} lists
 			 * @description This method is for delete the list from database
 			 */
-			this.deleteListItems = function(lists) {
-				return this.deleteListItemsAndProcessResults(lists).then(angular.bind(this, function(results) {
+			this.deleteListItems = function(deleteListItems) {
+				return this.deleteListItemsAndProcessResults(deleteListItems).then(angular.bind(this, function(results) {
 
 					$scope.$parent.newUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
 				}));
@@ -109,7 +109,6 @@ angular.module('AfdUiAppListModule')
 			 */
 			this.deleteListItemsAndProcessResults = function(listItemsToDelete) {
 				return ListItemService.deleteListItems(listItemsToDelete).then(angular.bind(this, function(results) {
-
 					return this.processResultsForDisplay(results);
 				}));
 			};
@@ -152,7 +151,7 @@ angular.module('AfdUiAppListModule')
 				var createDisplayStr = function(array) {
 					var displayStr = '';
 					for(var i = 0; i < array.length; i++) {
-						displayStr += array[i].confirmationNumber;
+						displayStr += array[i].name;
 						if(i != array.length - 1) {
 							displayStr += ', ';
 						}

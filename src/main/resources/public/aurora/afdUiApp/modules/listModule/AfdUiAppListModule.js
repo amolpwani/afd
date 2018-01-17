@@ -18,10 +18,6 @@ angular.module('AfdUiAppListModule', [
 angular.module('AfdUiAppListModule')
 	.config(['$urlRouterProvider', '$stateProvider',
 		function($urlRouterProvider, $stateProvider) {
-		
-		$urlRouterProvider
-		.when('', '/list')
-		.when('/', '/list');
 
 		$stateProvider
 			.state('list', {

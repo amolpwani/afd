@@ -39,6 +39,7 @@ public class ListDataItemsRepositoryTest {
         listDataItems.setParentlistId(68);
         entityManager.persist(listDataItems);
         entityManager.flush();
+        
         ListDataItems listDataItems1 = new ListDataItems();
         listDataItems1.setCode("");
         listDataItems1.setDescription("TestingBusiness");
@@ -46,6 +47,7 @@ public class ListDataItemsRepositoryTest {
         listDataItems1.setParentlistId(69);
         entityManager.persist(listDataItems1);
         entityManager.flush();
+        
         //given
         List<ListDataItems> listDataItemss = listDataItemsRepository.findAll();
         //then

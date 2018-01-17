@@ -107,9 +107,12 @@
 			"description": "List Description",
 			"active": "Active/InActive",
 			"updateSuccess": "{{name}} has been successfully edited.",
-			"updateQueued": "List creation has been queued for later processing due to being offline.",
+			"updateQueued": "List edition has been queued for later processing due to being offline.",
 			"updateFailed": "Failed to edit List: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
+		},
+		"deleteList": {
+			"deleteSuccess": "{{name}} has been successfully deleted."
 		},
 		"actions": "Actions",
 		"name": "List Name",
@@ -151,10 +154,13 @@
 			"code": "List Item Code",
 			"description": "List Item Description",
 			"active": "Active/InActive",
-			"updateSuccess": "{{name}} has been successfully created.",
-			"updateQueued": "List Item creation has been queued for later processing due to being offline.",
-			"updateFailed": "Failed to create List Item: {{error}}",
+			"updateSuccess": "{{name}} has been successfully edited.",
+			"updateQueued": "List Item edition has been queued for later processing due to being offline.",
+			"updateFailed": "Failed to edit List Item: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
+		},
+		"deleteListItem": {
+			"deleteSuccess": "{{name}} has been successfully deleted."
 		},
 		"actions": "Actions",
 		"code": "List Item Code",
