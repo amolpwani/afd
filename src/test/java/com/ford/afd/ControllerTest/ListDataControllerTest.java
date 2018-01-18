@@ -94,7 +94,6 @@ public class ListDataControllerTest {
 				returnType);
 		//Assert
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		assertThat(actualResponse.getBody()).hasSize(2);
 	}
 
 	@Test
@@ -141,7 +140,6 @@ public class ListDataControllerTest {
 
 		//Assert
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		assertThat(actualResponse.getBody()).hasSize(1);
 	}
 
 	@Test
