@@ -39,7 +39,7 @@
             <column name="ACTIVE" type="BOOLEAN">
                 <constraints nullable="false"/>
             </column>
-            <column name="PARENT_LIST_ID" type="int(20)">
+            <column name="PARENTLIST_ID" type="int(20)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

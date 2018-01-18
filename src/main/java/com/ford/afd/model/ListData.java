@@ -14,9 +14,15 @@ public class ListData {
     private String name;
     private String description;
     private boolean active;
-//
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "listData")
-//    private List<ListDataItems> listDataItems;
+
+    public ListData(String name, String description, boolean active) {
+        this.name = name;
+        this.description = description;
+        this.active = active;
+    }
+
+    public ListData() {
+    }
 
     public long getId() {
         return id;

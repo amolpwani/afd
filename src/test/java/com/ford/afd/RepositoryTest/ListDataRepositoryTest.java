@@ -27,127 +27,113 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
 public class ListDataRepositoryTest {
-    @Autowired
-    private TestEntityManager entityManager;
-    @Autowired
-    private ListDataRepository listDataRepository;
-    @Test
-    public void directList() {
+	@Autowired
+	private TestEntityManager entityManager;
+	@Autowired
+	private ListDataRepository listDataRepository;
+	@Test
+	public void directList() {
 
-        ListData listData1 = new ListData();
-        listData1.setName("JunitTesting");
-        listData1.setActive(true);
-        entityManager.persist(listData1);
-        entityManager.flush();
-        ListData listData2 = new ListData();
-        listData2.setName("JunitTesting1");
-        listData2.setActive(true);
-        entityManager.persist(listData2);
-        entityManager.flush();
-        //given
-        List<ListData> listDatas = listDataRepository.findAll();
-        for(ListData listData:listDatas)
-        {
-            if(listData.getName().equals(listData1.getName()))
-            {
-                //then
-                ListData listDatatemp=listDataRepository.findOne(listData.getId());
-                assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
-            }else if(listData.getName().equals(listData2.getName()))
-            {
-                //then
-                ListData listDatatemp=listDataRepository.findOne(listData.getId());
-                assertThat(listDatatemp.getName()).isEqualTo(listData2.getName());
-            }
-        }
+		ListData listData1 = new ListData();
+		listData1.setName("JunitTesting");
+		listData1.setActive(true);
+		entityManager.persist(listData1);
+		entityManager.flush();
+		ListData listData2 = new ListData();
+		listData2.setName("JunitTesting1");
+		listData2.setActive(true);
+		entityManager.persist(listData2);
+		entityManager.flush();
+		//given
+		List<ListData> listDatas = listDataRepository.findAll();
+		for (ListData listData : listDatas) {
+			if (listData.getName().equals(listData1.getName())) {
+				//then
+				ListData listDatatemp=listDataRepository.findOne(listData.getId());
+				assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
+			} else if(listData.getName().equals(listData2.getName())) {
+				//then
+				ListData listDatatemp=listDataRepository.findOne(listData.getId());
+				assertThat(listDatatemp.getName()).isEqualTo(listData2.getName());
+			}
+		}
+	}
 
-    }
+	@Test
+	public void listDataById() {
+		ListData listData1 = new ListData();
+		listData1.setName("JunitTesting");
+		listData1.setActive(true);
+		entityManager.persist(listData1);
+		entityManager.flush();
+		
+		List<ListData> listDatas = listDataRepository.findAll();
+		for (ListData listData : listDatas) {
+			if(listData.getName().equals(listData1.getName())) {
+				//then
+				ListData listDatatemp=listDataRepository.findOne(listData.getId());
+				assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
+			}
+		}
+	}
+	
+	@Test
+	public void updateListData() {
 
-    @Test
-    public void listDataById() {
+		ListData listData1 = new ListData();
+		listData1.setName("JunitTesting");
+		listData1.setActive(true);
+		entityManager.persist(listData1);
+		entityManager.flush();
 
-        ListData listData1 = new ListData();
-        listData1.setName("JunitTesting");
-        listData1.setActive(true);
-        entityManager.persist(listData1);
-        entityManager.flush();
-        List<ListData> listDatas = listDataRepository.findAll();
-        for(ListData listData:listDatas)
-        {
-            if(listData.getName().equals(listData1.getName()))
-            {
-                //then
-                ListData listDatatemp=listDataRepository.findOne(listData.getId());
-                assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
-            }
-        }
-
-    }
-    @Test
-    public void updateListData() {
-
-        ListData listData1 = new ListData();
-        listData1.setName("JunitTesting");
-        listData1.setActive(true);
-        entityManager.persist(listData1);
-        entityManager.flush();
-
-        List<ListData> listDatas = listDataRepository.findAll();
-        for(ListData listData:listDatas)
-        {
-            if(listData.getName().equals(listData1.getName()))
-            {
-                //then
-                ListData listDatatemp=listDataRepository.findOne(listData.getId());
-                ListData listData2 = new ListData();
-                listData2.setName("JunitTestingupadeted");
-                listData2.setActive(true);
-                BeanUtils.copyProperties(listData2, listDatas);
-                assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
-            }
-        }
-
-    }
-    @Test
-    public void deleteListDataById() {
-
-        ListData listData1 = new ListData();
-        listData1.setName("JunitTesting");
-        listData1.setActive(true);
-        entityManager.persist(listData1);
-        entityManager.flush();
-        List<ListData> listDatas = listDataRepository.findAll();
-        for(ListData listData:listDatas)
-        {
-            if(listData.getName().equals(listData1.getName()))
-            {
-                //then
-                ListData listDatatemp=listDataRepository.findOne(listData.getId());
-                listDataRepository.delete(listData);
-                assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
-            }
-        }
-
-    }
-    @Test
-    public void createListData() {
-
-        ListData listData1 = new ListData();
-        listData1.setName("JunitTesting");
-        listData1.setActive(true);
-        entityManager.persist(listData1);
-        entityManager.flush();
-        List<ListData> listDatas = listDataRepository.findAll();
-        for(ListData listData:listDatas)
-        {
-            if(listData.getName().equals(listData1.getName()))
-            {
-                //then
-                ListData listDatatemp=listDataRepository.findOne(listData.getId());
-                assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
-            }
-        }
-
-    }
-
+		List<ListData> listDatas = listDataRepository.findAll();
+		for (ListData listData : listDatas) {
+			if (listData.getName().equals(listData1.getName())) {
+				//then
+				ListData listDatatemp=listDataRepository.findOne(listData.getId());
+				ListData listData2 = new ListData();
+				listData2.setName("JunitTestingupadeted");
+				listData2.setActive(true);
+				BeanUtils.copyProperties(listData2, listDatas);
+				assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
+			}
+		}
+	}
+	
+	@Test
+	public void deleteListDataById() {
+		ListData listData1 = new ListData();
+		listData1.setName("JunitTesting");
+		listData1.setActive(true);
+		entityManager.persist(listData1);
+		entityManager.flush();
+		List<ListData> listDatas = listDataRepository.findAll();
+		
+		for (ListData listData : listDatas) {
+			if (listData.getName().equals(listData1.getName())) {
+				//then
+				ListData listDatatemp = listDataRepository.findOne(listData.getId());
+				listDataRepository.delete(listData);
+				assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
+			}
+		}
+	}
+	
+	@Test
+	public void createListData() {
+		ListData listData1 = new ListData();
+		listData1.setName("JunitTesting");
+		listData1.setActive(true);
+		entityManager.persist(listData1);
+		entityManager.flush();
+		List<ListData> listDatas = listDataRepository.findAll();
+		
+		for (ListData listData : listDatas) {
+			if(listData.getName().equals(listData1.getName())) {
+				//then
+				ListData listDatatemp = listDataRepository.findOne(listData.getId());
+				assertThat(listDatatemp.getName()).isEqualTo(listData1.getName());
+			}
+		}
+	}
 }
