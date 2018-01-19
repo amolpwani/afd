@@ -3,7 +3,6 @@
 /**
  * @ngdoc module
  * @name AfdUiAppListModule
- * @description The new taxonomy module
  * @requires WebCoreModule
  * @requires AfdUiAppListComponentsModule
  */

@@ -5,11 +5,12 @@
 		"navigation": {
 			"links": {
 				"home": "Home",
-				"list": "Master Source Data",
+				"list": "Master Data",
 				"admin": {
 					"main": "Admin",
-					"manageList": "Manage List",
-					"manageMapping": "Manage Mapping"
+					"manageMasterData": "Manage Master Data",
+					"manageFoundationData": "Manage Foundational Data",
+					"manageFoundationDataColumns": "Manage Foundational Data-Columns"
 				},
 				"mapping": "Foundational Data"
 			}
@@ -24,7 +25,7 @@
 			"copyright": "© 2017 Ford Motor Company. All rights reserved."
 		},
 		"home": {
-			"title": "Welcome to the Aurora!",
+			"title": "Welcome to the Aurora Foundational Data!",
 			"instructions": "This is the landing page of your new application."
 		},
 		"buttons": {
@@ -33,19 +34,6 @@
 			"delete": "Delete ",
 			"yes": "Yes",
 			"no": "No"
-		}
-	},
-	"newAdmin": {
-		"listScreen": {
-			"title": "Manage List",
-			"createNewList": "Create New List",
-			"buttons": {
-				"submit": "Add New"
-			},
-			"links": {
-				"edit": "@:actions.edit",
-				"cancel": "@:actions.cancel"
-			}
 		}
 	},
 	"entities": {
@@ -71,13 +59,13 @@
 		"types": "Lists",
 		"selectedTypes": "Selected Lists",
 		"list": {
-			"title": "Managge Lists",
+			"title": "Manage Master Data",
 			"instructions": "The existing bookings are listed below. You may create new bookings or search for existing ones.",
 			"subTitle": "Lists"
 		},
 		"activeList": {
-			"title": "Active Lists",
-			"subTitle": "Please select List to enter List Items."
+			"title": "Master Data Lists",
+			"subTitle": "Please select the master data list you want to manage "
 		},
 		"createList": {
 			"title": "Create List",
@@ -87,9 +75,9 @@
 			"saveAndContinue": "Save and Continue",
 			"save": "Save",
 			"pleaseWait": "Please wait...",
-			"name": "List Name",
-			"description": "List Description",
-			"active": "Active/InActive",
+			"name": "Name",
+			"description": "Description",
+			"active": "Active?",
 			"createSuccess": "{{name}} has been successfully created.",
 			"createQueued": "List creation has been queued for later processing due to being offline.",
 			"createFailed": "Failed to create List: {{error}}",
@@ -105,7 +93,7 @@
 			"pleaseWait": "Please wait...",
 			"name": "List Name",
 			"description": "List Description",
-			"active": "Active/InActive",
+			"active": "Active?",
 			"updateSuccess": "{{name}} has been successfully edited.",
 			"updateQueued": "List edition has been queued for later processing due to being offline.",
 			"updateFailed": "Failed to edit List: {{error}}",
@@ -117,7 +105,7 @@
 		"actions": "Actions",
 		"name": "List Name",
 		"description": "List description",
-		"active": "Active/Inactive"
+		"active": "Active?"
 	},
 	"listItem": {
 		"type": "List Item",
@@ -137,7 +125,7 @@
 			"pleaseWait": "Please wait...",
 			"code": "List Item Code",
 			"description": "List Item Description",
-			"active": "Active/InActive",
+			"active": "Active?",
 			"createSuccess": "{{name}} has been successfully created.",
 			"createQueued": "List Item creation has been queued for later processing due to being offline.",
 			"createFailed": "Failed to create List Item: {{error}}",
@@ -153,7 +141,7 @@
 			"pleaseWait": "Please wait...",
 			"code": "List Item Code",
 			"description": "List Item Description",
-			"active": "Active/InActive",
+			"active": "Active?",
 			"updateSuccess": "{{name}} has been successfully edited.",
 			"updateQueued": "List Item edition has been queued for later processing due to being offline.",
 			"updateFailed": "Failed to edit List Item: {{error}}",
@@ -165,6 +153,65 @@
 		"actions": "Actions",
 		"code": "List Item Code",
 		"description": "List Item Description",
-		"active": "Active/Inactive"
-	}	
+		"active": "Active?"
+	},
+	"foundationDataColumn": {
+		"title": "Foundational Data Column",
+		"type": "Foundational Data Column",
+		"selectedFoundationDataColumn": "Selected Foundational Data Column",
+		"createFoundationDataColumn": {
+			"title": "Create Foundation Data Column",
+			"previous": "Previous",
+			"cancel": "Cancel",
+			"continue": "Continue",
+			"saveAndContinue": "Save and Continue",
+			"save": "Save",
+			"pleaseWait": "Please wait...",
+		    "uiColumnName" : "UI Column Name",
+			"hoverHelp" : "Hover Help",
+			"uniqueColumn" : "Unique?",
+			"inputType" : "Input Type",
+			"selectedList" : "Select List",
+			"listDisplayType" : "Display Type",
+		    "value" : "Value",
+		    "mandatory" : "Mandatory?",
+		    "sortOrder" : "Sort Order",
+		    "editable" : "Editable",
+		    "length" : "Length",
+			"createSuccess": "{{name}} has been successfully created.",
+			"createQueued": "List creation has been queued for later processing due to being offline.",
+			"createFailed": "Failed to create List: {{error}}",
+			"validationErrors": "Errors found on this page. Please see below for details."
+		},
+		"editFoundationDataColumn": {
+			"title": "Edit List",
+			"previous": "Previous",
+			"cancel": "Cancel",
+			"continue": "Continue",
+			"saveAndContinue": "Save and Continue",
+			"save": "Save",
+			"pleaseWait": "Please wait...",
+			"name": "List Name",
+			"description": "List Description",
+			"active": "Active?",
+			"updateSuccess": "{{name}} has been successfully edited.",
+			"updateQueued": "List edition has been queued for later processing due to being offline.",
+			"updateFailed": "Failed to edit List: {{error}}",
+			"validationErrors": "Errors found on this page. Please see below for details."
+		},
+		"deleteList": {
+			"deleteSuccess": "{{name}} has been successfully deleted."
+		},
+	    "uiColumnName" : "UI Column Name",
+		"hoverHelp" : "Hover Help",
+		"uniqueColumn" : "Unique?",
+		"inputType" : "Input Type",
+		"selectedList" : "Select List",
+		"listDisplayType" : "Display Type",
+	    "value" : "Value",
+	    "mandatory" : "Mandatory?",
+	    "sortOrder" : "Sort Order",
+	    "editable" : "Editable",
+	    "length" : "Length"
+	}
 }

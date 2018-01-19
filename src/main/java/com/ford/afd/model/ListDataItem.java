@@ -11,12 +11,12 @@ public class ListDataItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private int code;
+    private String code;
     private String description;
     private boolean active;
     private long parentlistId;
 
-    public ListDataItem(int code, String description, boolean active, long parentlistId) {
+    public ListDataItem(String code, String description, boolean active, long parentlistId) {
         this.code = code;
         this.description = description;
         this.setActive(active);
@@ -39,11 +39,11 @@ public class ListDataItem {
         this.id = id;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

@@ -44,6 +44,8 @@ angular.module('AfdUiAppListModule')
 		if (this.isEditing) {
             this.list = ListService.list;
             ListService.isEditing = false;
+		} else {
+			this.list.active = true;
 		}
 
 		/**

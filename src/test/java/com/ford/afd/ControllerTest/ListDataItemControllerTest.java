@@ -44,8 +44,8 @@ public class ListDataItemControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		ListDataItem listDataItem1 = listDataItemService.saveListDataItem(buildListDataItem(1, "description 1", 100));
-		ListDataItem listDataItem2 = listDataItemService.saveListDataItem(buildListDataItem(2, "description 2", 100));
+		ListDataItem listDataItem1 = listDataItemService.saveListDataItem(buildListDataItem("BU1", "description 1", 100));
+		ListDataItem listDataItem2 = listDataItemService.saveListDataItem(buildListDataItem("BU2", "description 2", 100));
 		testEntitiesId.add(listDataItem1.getId());
 		testEntitiesId.add(listDataItem2.getId());
 		this.base = new URL("http://localhost:" + port);
@@ -58,7 +58,7 @@ public class ListDataItemControllerTest {
 		}
 	}
 
-	private ListDataItem buildListDataItem(int code, String description, long listId) {
+	private ListDataItem buildListDataItem(String code, String description, long listId) {
 		return new ListDataItem(code, description, true, listId);
 	}
 
@@ -75,7 +75,7 @@ public class ListDataItemControllerTest {
 
 		//Assert
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		ListDataItem expectedListData = new ListDataItem(1, "description 1", true, 100);
+		ListDataItem expectedListData = new ListDataItem("BU1", "description 1", true, 100);
 
 		expectedListData.setId(testEntitiesId.get(0));
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedListData);
@@ -102,7 +102,7 @@ public class ListDataItemControllerTest {
 		ParameterizedTypeReference<ListDataItem> returnType = new ParameterizedTypeReference<ListDataItem>() {
 		};
 
-		ListDataItem updateListDataItem = new ListDataItem(2, "updated description 1", false, 100);
+		ListDataItem updateListDataItem = new ListDataItem("BU2", "updated description 1", false, 100);
 		updateListDataItem.setId(testEntitiesId.get(0));
 
 		ResponseEntity<ListDataItem> actualResponse =  template.exchange(
@@ -115,7 +115,7 @@ public class ListDataItemControllerTest {
 		//Assert
 		ListDataItem actualBody = actualResponse.getBody();
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		ListDataItem expectedListData = new ListDataItem(2, "updated description 1", false, 100);
+		ListDataItem expectedListData = new ListDataItem("BU2", "updated description 1", false, 100);
 		expectedListData.setId(testEntitiesId.get(0));
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedListData);
 		assertThat(listDataItemService.findListDataItemById(actualBody.getId())).isEqualToComparingFieldByField(expectedListData);
@@ -148,7 +148,7 @@ public class ListDataItemControllerTest {
 		ParameterizedTypeReference<ListDataItem> returnType = new ParameterizedTypeReference<ListDataItem>() {
 		};
 
-		ListDataItem createListData = new ListDataItem(3, "description 3", false, 100);
+		ListDataItem createListData = new ListDataItem("BU3", "description 3", false, 100);
 
 		ResponseEntity<ListDataItem> actualResponse =  template.exchange(
 				base.toString() + "/listdataitems/getItems",
@@ -161,7 +161,7 @@ public class ListDataItemControllerTest {
 		ListDataItem actualBody = actualResponse.getBody();
 		testEntitiesId.add(actualBody.getId());
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		ListDataItem expectedListData = new ListDataItem(3, "description 3", false, 100);
+		ListDataItem expectedListData = new ListDataItem("BU3", "description 3", false, 100);
 		expectedListData.setId(actualBody.getId());
 		assertThat(actualBody).isEqualToComparingFieldByField(expectedListData);
 		assertThat(listDataItemService.findListDataItemById(actualBody.getId())).isEqualToComparingFieldByField(expectedListData);

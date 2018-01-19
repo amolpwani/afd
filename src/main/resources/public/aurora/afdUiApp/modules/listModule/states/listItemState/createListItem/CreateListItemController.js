@@ -44,7 +44,9 @@ angular.module('AfdUiAppListModule')
         if (this.isEditing) {
             this.listItem = ListItemService.listItem;
             ListItemService.isEditing = false;
-        }
+        } else {
+			this.listItem.active = true;
+		}
 
 		/**
 		 * @ngdoc method

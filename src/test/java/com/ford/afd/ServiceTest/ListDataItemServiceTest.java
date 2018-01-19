@@ -88,7 +88,7 @@ public class ListDataItemServiceTest {
 	}
 
 	private ListDataItem buildListDataItem() {
-		ListDataItem entity = new ListDataItem(100, "TestingBusiness", true, 1 );
+		ListDataItem entity = new ListDataItem("BU1", "TestingBusiness", true, 1 );
 		entity.setId(1);
 		return entity;
 	}

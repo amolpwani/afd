@@ -5,13 +5,17 @@
  * @name NewUiAppModule
  * @description The root application module
  * @requires WebCoreModule
- * @requires NewUiAppComponentsModule
+ * @requires AfdUiAppComponentsModule
+ * @requires AfdUiAppListModule
+ * @requires AfdUiAppListComponentsModule
+ * @requires AfdUiAppFoundationDataColumnModule
+ * @requires AfdUiAppFoundationDataColumnComponentsModule
  */
 angular.module('NewUiAppModule', [
     'WebCoreModule', 
     'AfdUiAppComponentsModule',
     'AfdUiAppListModule',
-    'AfdUiAppListComponentsModule'
+    'AfdUiAppFoundationDataColumnModule'
 ]);
 
 /*

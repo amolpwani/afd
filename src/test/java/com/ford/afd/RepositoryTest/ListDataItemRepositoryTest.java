@@ -26,8 +26,8 @@ public class ListDataItemRepositoryTest {
     @Test
     public void directList() {
         // Arrange
-        ListDataItem listDataItem1 = listDataItemRepository.save(new ListDataItem(100, "TestingBusiness", true , 1));
-        ListDataItem listDataItem2 = listDataItemRepository.save(new ListDataItem(101, "TestingBusiness", false, 2));
+        ListDataItem listDataItem1 = listDataItemRepository.save(new ListDataItem("BU1", "TestingBusiness", true , 1));
+        ListDataItem listDataItem2 = listDataItemRepository.save(new ListDataItem("BU2", "TestingBusiness", false, 2));
         //Act
         List<ListDataItem> actualListDataItems = listDataItemRepository.findAll();
         //Assert
@@ -37,7 +37,7 @@ public class ListDataItemRepositoryTest {
     @Test
     public void listDataItemsById() {
         // Arrange
-        ListDataItem testListDataItem = listDataItemRepository.save(new ListDataItem(100, "TestingBusiness", true , 1));
+        ListDataItem testListDataItem = listDataItemRepository.save(new ListDataItem("BU1", "TestingBusiness", true , 1));
         // Act
         ListDataItem actualListDataItem = listDataItemRepository.findOne(testListDataItem.getId());
         // Assert
@@ -47,7 +47,7 @@ public class ListDataItemRepositoryTest {
     @Test
     public void updateListDataItems() {
         // Arrange
-        ListDataItem testListDataItem = listDataItemRepository.save(new ListDataItem(100, "TestingBusiness", true, 1 ));
+        ListDataItem testListDataItem = listDataItemRepository.save(new ListDataItem("BU1", "TestingBusiness", true, 1 ));
         testListDataItem.setDescription("Updated Testing Business");
         //Act
         ListDataItem actualListDataItem = listDataItemRepository.save(testListDataItem);
@@ -59,7 +59,7 @@ public class ListDataItemRepositoryTest {
     @Test
     public void deleteListDataItemsById() {
         // Arrange
-        ListDataItem testListDataItem = listDataItemRepository.save(new ListDataItem(100, "TestingBusiness", true, 1 ));
+        ListDataItem testListDataItem = listDataItemRepository.save(new ListDataItem("BU1", "TestingBusiness", true, 1 ));
         //Act
         listDataItemRepository.delete(testListDataItem);
         //Assert
