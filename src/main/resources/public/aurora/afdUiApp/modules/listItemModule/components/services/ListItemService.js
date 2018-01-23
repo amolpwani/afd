@@ -3,7 +3,7 @@
 //noinspection JSValidateJSDoc
 /**
  * @ngdoc controller
- * @module AfdUiAppListComponentsModule
+ * @module AfdUiAppListItemComponentsModule
  * @name ListItemService
  * @description This service holds all the list related properties and methods.
  * @requires $q
@@ -13,7 +13,7 @@
  * @requires WcAlertConsoleService
  * @requires ConflictNotificationModalService
  * */
-angular.module('AfdUiAppListModule').service('ListItemService', ['$q', '$state', '$translate', 'WcHttpEndpointPrototype', 'WcAlertConsoleService',
+angular.module('AfdUiAppListItemComponentsModule').service('ListItemService', ['$q', '$state', '$translate', 'WcHttpEndpointPrototype', 'WcAlertConsoleService',
 	function ($q, $state, $translate, WcHttpEndpointPrototype, WcAlertConsoleService) {
 
 		//noinspection JSValidateJSDoc

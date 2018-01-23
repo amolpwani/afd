@@ -3,7 +3,7 @@
 //noinspection JSValidateJSDoc
 /**
  * @ngdoc service
- * @module AfdUiAppListComponentsModule
+ * @module AfdUiAppListItemComponentsModule
  * @name ListItemPrototype
  * @description
  * This service holds all the booking information
@@ -12,7 +12,7 @@
  * @requires FlightPrototype
  * @requires $filter
  */
-angular.module('AfdUiAppListModule')
+angular.module('AfdUiAppListItemComponentsModule')
     .factory('ListItemPrototype', ['$filter', function ($filter) {
 
         /**

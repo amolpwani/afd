@@ -47,7 +47,7 @@
                 <td ng-bind="row.description" >{{::row.description}}</td>
                 <td >
                 	<div ng-show={{::row.active}}>Y</div>
-                	<div ng-show=!{{::row.active}}>N</div>
+                	<div ng-hide={{::row.active}}>N</div>
                 </td>
             </tr>
             </tbody>

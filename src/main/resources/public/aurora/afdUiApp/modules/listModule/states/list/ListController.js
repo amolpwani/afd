@@ -135,7 +135,7 @@ angular.module('AfdUiAppListModule')
 			this.deleteLists = function(lists) {
 				return this.deleteListsAndProcessResults(lists).then(angular.bind(this, function(results) {
 
-					$scope.$parent.newUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+					$scope.$parent.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
 				}));
 				return null;
 			};

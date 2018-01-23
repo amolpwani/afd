@@ -17,8 +17,8 @@
 			 * @requires $timeout
 			 * */
 angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('FoundationDataColumnController', ['foundationDataColumns', '$scope', 'WcAlertConsoleService', '$translate', '$state',
-		function(foundationDataColumns, $scope, WcAlertConsoleService, $translate, $state) {
+	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', '$scope', 'WcAlertConsoleService', '$translate', '$state',
+		function(FoundationDataColumnService, foundationDataColumns, $scope, WcAlertConsoleService, $translate, $state) {
 
 			//noinspection JSValidateJSDoc
             /**
@@ -135,7 +135,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			this.deleteFoundationDataColumns = function(foundationDataColumns) {
 				return this.deleteFoundationDataColumnsAndProcessResults(foundationDataColumns).then(angular.bind(this, function(results) {
 
-					$scope.$parent.newUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+					$scope.$parent.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
 				}));
 				return null;
 			};

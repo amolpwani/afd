@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc controller
- * @module NewUiAppModule
- * @name NewUiAppController
+ * @module AfdUiAppModule
+ * @name AfdUiAppController
  * @requires WcConstants
  * @requires $anchorScroll
  * @requires $timeout
  * @description
- * The NewUiAppController loads the angular version, webcore version and the templates for the application
+ * The AfdUiAppController loads the angular version, webcore version and the templates for the application
  */
 
-angular.module('NewUiAppModule')
-	.controller('NewUiAppController', ['WcConstants', '$anchorScroll', '$timeout', '$state',
+angular.module('AfdUiAppModule')
+	.controller('AfdUiAppController', ['WcConstants', '$anchorScroll', '$timeout', '$state',
         function (WcConstants, $anchorScroll, $timeout, $state) {
 
 		this.version = angular.version;
@@ -24,7 +24,7 @@ angular.module('NewUiAppModule')
 		/*/!**
 		 * @ngdoc method
 		 * @name scrollToContent
-		 * @methodOf AfdUiAppModule.controller:NewUiAppController
+		 * @methodOf AfdUiAppModule.controller:AfdUiAppController
 		 * @description
 		 * The method provides scroll option across all the pages based on HTML element id.
 		 * Needed by the skip to content link to properly scroll to an id in an angular app

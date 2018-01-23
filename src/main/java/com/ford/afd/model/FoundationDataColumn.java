@@ -20,7 +20,10 @@ public class FoundationDataColumn {
     private int sortOrder;
     private boolean editable;
     private int length;
-
+    
+    private long selectedListId;
+    private String listDisplayType;
+    
     public FoundationDataColumn(String uiColumnName, String hoverHelp, boolean unique, String inputType, String value,
 			boolean mandatory, int sortOrder, boolean editable, int length) {
 		this.uiColumnName = uiColumnName;
@@ -32,6 +35,21 @@ public class FoundationDataColumn {
 		this.sortOrder = sortOrder;
 		this.editable = editable;
 		this.length = length;
+	}
+
+    public FoundationDataColumn(String uiColumnName, String hoverHelp, boolean unique, String inputType, String value,
+			boolean mandatory, int sortOrder, boolean editable, int length, long selectedListId, String listDisplayType) {
+		this.uiColumnName = uiColumnName;
+		this.hoverHelp = hoverHelp;
+		this.uniqueColumn = unique;
+		this.inputType = inputType;
+		this.value = value;
+		this.mandatory = mandatory;
+		this.sortOrder = sortOrder;
+		this.editable = editable;
+		this.length = length;
+		this.selectedListId = selectedListId;
+		this.listDisplayType = listDisplayType;
 	}
 
 	public FoundationDataColumn() {
@@ -116,5 +134,22 @@ public class FoundationDataColumn {
 	public void setInputType(String inputType) {
 		this.inputType = inputType;
 	}
+
+	public long getSelectedListId() {
+		return selectedListId;
+	}
+
+	public void setSelectedListId(long selectedListId) {
+		this.selectedListId = selectedListId;
+	}
+
+	public String getListDisplayType() {
+		return listDisplayType;
+	}
+
+	public void setListDisplayType(String listDisplayType) {
+		this.listDisplayType = listDisplayType;
+	}
+
 }
 

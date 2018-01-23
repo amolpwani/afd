@@ -5,7 +5,7 @@
  * @name AfdUiAppListComponentsModule
  * @description components module
  * @requires WebCoreModule
- * @requires NewUiAppComponentsModule
+ * @requires AfdUiAppComponentsModule
  */
 angular.module('AfdUiAppListComponentsModule', [
 	'AfdUiAppComponentsModule',

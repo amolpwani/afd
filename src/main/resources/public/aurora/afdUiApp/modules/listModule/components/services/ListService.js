@@ -13,7 +13,7 @@
  * @requires WcAlertConsoleService
  * @requires ConflictNotificationModalService
  * */
-angular.module('AfdUiAppListModule').service('ListService', ['$q', '$state', '$translate', 'WcHttpEndpointPrototype', 'WcAlertConsoleService',
+angular.module('AfdUiAppListComponentsModule').service('ListService', ['$q', '$state', '$translate', 'WcHttpEndpointPrototype', 'WcAlertConsoleService',
 	function ($q, $state, $translate, WcHttpEndpointPrototype, WcAlertConsoleService) {
 
 		//noinspection JSValidateJSDoc

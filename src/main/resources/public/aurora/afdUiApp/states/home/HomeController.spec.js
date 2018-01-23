@@ -11,7 +11,7 @@ describe('AfdUiApp Module HomeController:', function() {
 	};
 
 	beforeEach(function() {
-		module('NewUiAppModule');
+		module('AfdUiAppModule');
 
 		inject(function($rootScope, $injector) {
 			scope = $rootScope.$new();

@@ -21,9 +21,9 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				templateUrl: 'afdUiApp/modules/foundationDataColumnModule/states/foundationDataColumn/foundationDataColumnTemplate.html',
 				controller: 'FoundationDataColumnController',
 				controllerAs: 'foundationDataColumnController',
-				parent: 'new-ui-app',
+				parent: 'afd-ui-app',
 				resolve: {
-					lists: ['FoundationDataColumnService', function(FoundationDataColumnService) {
+					foundationDataColumns: ['FoundationDataColumnService', function(FoundationDataColumnService) {
 						return FoundationDataColumnService.getFoundationDataColumns();
 					}]
 				},
@@ -38,7 +38,12 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				templateUrl: 'afdUiApp/modules/foundationDataColumnModule/states/createFoundationDataColumn/createFoundationDataColumnTemplate.html',
 				controller: 'CreateFoundationDataColumnController',
 				controllerAs: 'createFoundationDataColumnController',
-				parent: 'new-ui-app'
+				parent: 'afd-ui-app',
+				resolve: {
+					lists: ['ListService', function(ListService) {
+						return ListService.getLists();
+					}]
+				}
 			});
 		}
 	]);

@@ -4,8 +4,8 @@ describe('NewUiAppModule NewUiAppController:', function() {
 	var scope = null,
 		$httpBackend, $controller, $q;
 
-	var newUiAppController = function() {
-		var controller = $controller('NewUiAppController as newUiAppController', {
+	var afdUiAppController = function() {
+		var controller = $controller('NewUiAppController as afdUiAppController', {
 			$scope: scope
 		});
 		return controller;
@@ -21,13 +21,13 @@ describe('NewUiAppModule NewUiAppController:', function() {
 			$q = $injector.get('$q');
 		});
 
-		newUiAppController();
+		afdUiAppController();
 
 		$httpBackend.when('GET', '').respond(200);
 	});
 
 	it('should be registered', function() {
-		expect(newUiAppController).toBeDefined();
+		expect(afdUiAppController).toBeDefined();
 	});
 
 	it('should have a Scope', function() {

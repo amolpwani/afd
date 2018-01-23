@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc module
- * @name NewUiAppModule
+ * @name AfdUiAppModule
  * @description The root application module
  * @requires WebCoreModule
  * @requires AfdUiAppComponentsModule
@@ -11,34 +11,35 @@
  * @requires AfdUiAppFoundationDataColumnModule
  * @requires AfdUiAppFoundationDataColumnComponentsModule
  */
-angular.module('NewUiAppModule', [
+angular.module('AfdUiAppModule', [
     'WebCoreModule', 
     'AfdUiAppComponentsModule',
     'AfdUiAppListModule',
+    'AfdUiAppListItemModule',
     'AfdUiAppFoundationDataColumnModule'
 ]);
 
 /*
  * Application module configuration
  */
-angular.module('NewUiAppModule')
+angular.module('AfdUiAppModule')
     .config(['WcTranslateConfiguratorServiceProvider', '$urlRouterProvider', '$stateProvider',
         function (WcTranslateConfiguratorServiceProvider, $urlRouterProvider, $stateProvider) {
 
             $stateProvider
-                .state('new-ui-app', {
+                .state('afd-ui-app', {
                     'abstract': true,
                     url: '',
                     templateUrl: 'afdUiApp/afdUiAppTemplate.html',
-                    controller: 'NewUiAppController',
-                    controllerAs: 'newUiAppController'
+                    controller: 'AfdUiAppController',
+                    controllerAs: 'afdUiAppController'
                 })
                 .state('home', {
                     url: '/home',
                     templateUrl: 'afdUiApp/states/home/homeTemplate.html',
                     controller: 'HomeController',
                     controllerAs: 'homeController',
-                    parent: 'new-ui-app'
+                    parent: 'afd-ui-app'
                 });
 
             
@@ -54,7 +55,7 @@ angular.module('NewUiAppModule')
 
             WcHttpRequestService.configureDefaults({baseUrl: '/'});
 
-            WcTranslateConfiguratorService.loadPartAndRefresh('NewUiApp');
+            WcTranslateConfiguratorService.loadPartAndRefresh('AfdUiApp');
 
             // Enable Webtrends for App
             WcWebtrendsService.enable();

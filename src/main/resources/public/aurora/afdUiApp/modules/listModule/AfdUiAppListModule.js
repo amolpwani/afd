@@ -11,9 +11,6 @@ angular.module('AfdUiAppListModule', [
 	'AfdUiAppListComponentsModule'
 ]);
 
-/*
- * New Taxonomy module configuration
- */
 angular.module('AfdUiAppListModule')
 	.config(['$urlRouterProvider', '$stateProvider',
 		function($urlRouterProvider, $stateProvider) {
@@ -21,10 +18,10 @@ angular.module('AfdUiAppListModule')
 		$stateProvider
 			.state('list', {
 				url: '/list',
-				templateUrl: 'afdUiApp/modules/listModule/states/listState/list/listTemplate.html',
+				templateUrl: 'afdUiApp/modules/listModule/states/list/listTemplate.html',
 				controller: 'ListController',
 				controllerAs: 'listController',
-				parent: 'new-ui-app',
+				parent: 'afd-ui-app',
 				resolve: {
 					lists: ['ListService', function(ListService) {
 						return ListService.getLists();
@@ -38,10 +35,10 @@ angular.module('AfdUiAppListModule')
 			})
 			.state('active-list', {
 				url: '/active-list',
-				templateUrl: 'afdUiApp/modules/listModule/states/listState/activeList/activeListTemplate.html',
+				templateUrl: 'afdUiApp/modules/listModule/states/activeList/activeListTemplate.html',
 				controller: 'ActiveListController',
 				controllerAs: 'activeListController',
-				parent: 'new-ui-app',
+				parent: 'afd-ui-app',
 				resolve: {
 					lists: ['ListService', function(ListService) {
 						return ListService.getLists();
@@ -55,29 +52,10 @@ angular.module('AfdUiAppListModule')
 			})
 			.state('create-list', {
 				url: '/create-list',
-				templateUrl: 'afdUiApp/modules/listModule/states/listState/createList/createListTemplate.html',
+				templateUrl: 'afdUiApp/modules/listModule/states/createList/createListTemplate.html',
 				controller: 'CreateListController',
 				controllerAs: 'createListController',
-				parent: 'new-ui-app'
-			})
-			.state('listItem', {
-				url: '/listItem:id',
-				templateUrl: 'afdUiApp/modules/listModule/states/listItemState/listItem/listItemTemplate.html',
-				controller: 'ListItemController',
-				controllerAs: 'listItemController',
-				parent: 'new-ui-app',
-				resolve: {
-					listItems: ['ListItemService', '$stateParams', function(ListItemService, $stateParams) {
-						return ListItemService.getListItemsWithListId($stateParams.id);
-					}]
-				}
-			})
-			.state('create-listItem', {
-				url: '/create-listItem:id',
-				templateUrl: 'afdUiApp/modules/listModule/states/listItemState/createListItem/createListItemTemplate.html',
-				controller: 'CreateListItemController',
-				controllerAs: 'createListItemController',
-				parent: 'new-ui-app'
+				parent: 'afd-ui-app'
 			});
 		}
 	]);

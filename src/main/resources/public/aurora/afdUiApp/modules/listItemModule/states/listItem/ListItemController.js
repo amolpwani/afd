@@ -3,7 +3,7 @@
 //noinspection JSValidateJSDoc
 /**
 			 * @ngdoc controller
-			 * @module AfdUiAppListModule
+			 * @module AfdUiAppListItemModule
 			 * @name ListItemController
 			 * @description This controller holds the methods and properties for list listItems.
 			 * @requires ListItemService
@@ -16,7 +16,7 @@
 			 * @requires WcDataTableService
 			 * @requires $timeout
 			 * */
-angular.module('AfdUiAppListModule')
+angular.module('AfdUiAppListItemModule')
 	.controller('ListItemController', ['ListItemService', 'listItems', '$scope', 'WcAlertConsoleService', '$translate', '$state', '$stateParams',
 		function(ListItemService, listItems, $scope, WcAlertConsoleService, $translate, $state, $stateParams) {
 
@@ -95,7 +95,7 @@ angular.module('AfdUiAppListModule')
 			this.deleteListItems = function(deleteListItems) {
 				return this.deleteListItemsAndProcessResults(deleteListItems).then(angular.bind(this, function(results) {
 
-					$scope.$parent.newUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+					$scope.$parent.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
 				}));
 				return null;
 			};

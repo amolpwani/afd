@@ -12,7 +12,7 @@
  * @requires FlightPrototype
  * @requires $filter
  */
-angular.module('AfdUiAppListModule')
+angular.module('AfdUiAppListComponentsModule')
     .factory('ListPrototype', ['$filter', function ($filter) {
 
         /**

@@ -3,9 +3,9 @@
 //noinspection JSValidateJSDoc
 /**
  * @ngdoc controller
- * @module AfdUiAppFoundationDataColumnComponentsComponentsModule
- * @name FoundationDataColumnService
- * @description This service holds all the foundationDataColumn related properties and methods.
+ * @module AfdUiAppFoundationDataComponentsModule
+ * @name FoundationDataService
+ * @description This service holds all the foundationData related properties and methods.
  * @requires $q
  * @requires $state
  * @requires $translate
@@ -13,14 +13,14 @@
  * @requires WcAlertConsoleService
  * @requires ConflictNotificationModalService
  * */
-angular.module('AfdUiAppFoundationDataColumnComponentsModule').service('FoundationDataColumnService', ['$q', '$state', '$translate', 'WcHttpEndpointPrototype', 'WcAlertConsoleService',
+angular.module('AfdUiAppFoundationDataComponentsModule').service('FoundationDataService', ['$q', '$state', '$translate', 'WcHttpEndpointPrototype', 'WcAlertConsoleService',
 	function ($q, $state, $translate, WcHttpEndpointPrototype, WcAlertConsoleService) {
 
 		//noinspection JSValidateJSDoc
 		/**
 		 * @ngdoc property
 		 * @name foundationDataColumnEndPoint
-		 * @propertyOf FoundationDataColumnService
+		 * @propertyOf FoundationDataService
 		 * @type {WcHttpEndpointPrototype|*}
 		 * @description This property holds the object for Http end point.
 		 */
@@ -31,7 +31,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule').service('Foundati
 		/**
 		 * @ngdoc method
 		 * @name getFoundationDataColumns
-		 * @methodOf FoundationDataColumnService
+		 * @methodOf FoundationDataService
 		 * @returns {*} response object representing the offersEndpoint GET response
 		 * @description The method get the foundationDataColumn details from the foundationDataColumn end point.
 		 */
@@ -46,7 +46,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule').service('Foundati
 		/**
 		 * @ngdoc method
 		 * @name getFoundationDataColumn
-		 * @methodOf FoundationDataColumnService
+		 * @methodOf FoundationDataService
 		 * @params {integer} foundationDataColumnId
 		 * @description The method gets the foundationDataColumn information using GET request to foundationDataColumn Endpoint.
 		 */
@@ -61,7 +61,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule').service('Foundati
 		/**
 		 * @ngdoc method
 		 * @name deleteFoundationDataColumns
-		 * @methodOf FoundationDataColumnService
+		 * @methodOf FoundationDataService
 		 * @params {array} FoundationDataColumnsToDelete
 		 * @description The method deletes the FoundationDataColumns based on the FoundationDataColumns index supplied.
 		 */
@@ -105,7 +105,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule').service('Foundati
 		/**
 		 * @ngdoc method
 		 * @name createFoundationDataColumn
-		 * @methodOf FoundationDataColumnService
+		 * @methodOf FoundationDataService
 		 * @description The method creates the foundationDataColumn by send a POST request to foundationDataColumn Endpoint.
 		 */
 		this.createFoundationDataColumn = function (foundationDataColumn) {
@@ -157,7 +157,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule').service('Foundati
 		/**
 		 * @ngdoc method
 		 * @name updateFoundationDataColumn
-		 * @methodOf FoundationDataColumnService
+		 * @methodOf FoundationDataService
 		 * @description The method updates the FoundationDataColumns information to database.
 		 */
 		this.updateFoundationDataColumn = function (foundationDataColumn) {

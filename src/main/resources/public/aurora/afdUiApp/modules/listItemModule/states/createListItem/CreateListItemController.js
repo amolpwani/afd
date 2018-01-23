@@ -3,14 +3,14 @@
 //noinspection JSValidateJSDoc
 /**
 		 * @ngdoc controller
-		 * @module AfdUiAppListModule
+		 * @module AfdUiAppListItemModule
 		 * @name createListItemController
 		 * @description This controller mainly holds the methods and properties for list.
 		 * @requires $state
 		 * @requires ListItemService
 		 * @requires $stateParams
 		 * */
-angular.module('AfdUiAppListModule')
+angular.module('AfdUiAppListItemModule')
 	.controller('CreateListItemController', ['$state', '$stateParams', '$location', 'ListItemService', 'ListItemPrototype', function($state, $stateParams, $location, ListItemService, ListItemPrototype) {
 
 		/**

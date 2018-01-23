@@ -21,8 +21,8 @@ public class FoundationDataColumnService {
         return foundationDataColumnRepository.findOne(id);
     }
 
-    public FoundationDataColumn saveFoundationDataColumn(FoundationDataColumn listData) {
-        return foundationDataColumnRepository.save(listData);
+    public FoundationDataColumn saveFoundationDataColumn(FoundationDataColumn foundationDataColumn) {
+        return foundationDataColumnRepository.save(foundationDataColumn);
     }
 
     public void deleteFoundationDataColumn(FoundationDataColumn listData) {

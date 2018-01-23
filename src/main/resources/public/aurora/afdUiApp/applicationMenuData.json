@@ -4,7 +4,7 @@
 	{"label": "{{'application.navigation.links.mapping' | translate}}", "state":"", "protected":""},
 	{"label": "{{'application.navigation.links.admin.main' | translate}}", "subMenu": [
 		{"label": "{{'application.navigation.links.admin.manageMasterData' | translate}}", "state":"list", "protected":""},
-		{"label": "{{'application.navigation.links.admin.manageFoundationData' | translate}}", "state":"home", "protected":""},
-		{"label": "{{'application.navigation.links.admin.manageFoundationDataColumns' | translate}}", "state":"home", "protected":""}
+		{"label": "{{'application.navigation.links.admin.manageFoundationData' | translate}}", "state":"", "protected":""},
+		{"label": "{{'application.navigation.links.admin.manageFoundationDataColumns' | translate}}", "state":"foundationDataColumn", "protected":""}
 	]}
 ]

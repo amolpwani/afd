@@ -34,7 +34,7 @@
 
     <body>
 
-        <div ng-app="NewUiAppModule" class="container-fluid" id="ng-app">
+        <div ng-app="AfdUiAppModule" class="container-fluid" id="ng-app">
             <div wc-loading-indicator></div>
             <div ui-view wc-page-title></div>
         </div>
@@ -55,27 +55,28 @@
         <script src="afdUiApp/AfdUiAppController.js"></script>
         <script src="afdUiApp/components/AfdUiAppComponentsModule.js"></script>
         <script src="afdUiApp/states/home/HomeController.js"></script>
-        <script src="afdUiApp/modules/listModule/AfdUiAppListModule.js"></script>
         
-        <script src="afdUiApp/modules/listModule/states/listState/activeList/ActiveListController.js"></script>
-        
-        <script src="afdUiApp/modules/listModule/states/listState/listPrototype/ListPrototype.js"></script>
-        <script src="afdUiApp/modules/listModule/states/listState/list/ListController.js"></script>
-        <script src="afdUiApp/modules/listModule/states/listState/createList/CreateListController.js"></script>
-        <script src="afdUiApp/modules/listModule/states/listState/listService/ListService.js"></script>
-        
+		<script src="afdUiApp/modules/foundationDataColumnModule/components/AfdUiAppFoundationDataColumnComponentsModule.js"></script>
+ 	    <script src="afdUiApp/modules/foundationDataColumnModule/components/services/FoundationDataColumnService.js"></script>
+ 	    <script src="afdUiApp/modules/foundationDataColumnModule/components/prototypes/FoundationDataColumnPrototype.js"></script>
+        <script src="afdUiApp/modules/foundationDataColumnModule/AfdUiAppFoundationDataColumnModule.js"></script>
         <script src="afdUiApp/modules/foundationDataColumnModule/states/foundationDataColumn/FoundationDataColumnController.js"></script>
         <script src="afdUiApp/modules/foundationDataColumnModule/states/createFoundationDataColumn/CreateFoundationDataColumnController.js"></script>
-        <script src="afdUiApp/modules/foundationDataColumnModule/components/services/FoundationDataColumnService.js"></script>
-        <script src="afdUiApp/modules/foundationDataColumnModule/components/AfdUiAppFoundationDataColumnComponentsModule.js"></script>
-         <script src="afdUiApp/modules/foundationDataColumnModule/AfdUiAppFoundationDataColumnModule.js"></script>
         
-        <script src="afdUiApp/modules/listModule/states/listItemState/listItemPrototype/ListItemPrototype.js"></script>
-        <script src="afdUiApp/modules/listModule/states/listItemState/listItem/ListItemController.js"></script>
-        <script src="afdUiApp/modules/listModule/states/listItemState/createListItem/CreateListItemController.js"></script>
-        <script src="afdUiApp/modules/listModule/states/listItemState/listItemService/ListItemService.js"></script>
+        <script src="afdUiApp/modules/listItemModule/components/AfdUiAppListItemComponentsModule.js"></script>
+ 	    <script src="afdUiApp/modules/listItemModule/components/services/ListItemService.js"></script>
+ 	    <script src="afdUiApp/modules/listItemModule/components/prototypes/ListItemPrototype.js"></script>
+        <script src="afdUiApp/modules/listItemModule/AfdUiAppListItemModule.js"></script>
+        <script src="afdUiApp/modules/listItemModule/states/listItem/ListItemController.js"></script>
+        <script src="afdUiApp/modules/listItemModule/states/createListItem/CreateListItemController.js"></script>
         
         <script src="afdUiApp/modules/listModule/components/AfdUiAppListComponentsModule.js"></script>
+ 	    <script src="afdUiApp/modules/listModule/components/services/ListService.js"></script>
+ 	    <script src="afdUiApp/modules/listModule/components/prototypes/ListPrototype.js"></script>
+        <script src="afdUiApp/modules/listModule/AfdUiAppListModule.js"></script>
+        <script src="afdUiApp/modules/listModule/states/list/ListController.js"></script>
+        <script src="afdUiApp/modules/listModule/states/createList/CreateListController.js"></script>
+        <script src="afdUiApp/modules/listModule/states/activeList/ActiveListController.js"></script>
         <!-- endbuild -->
     </body>
 </html>

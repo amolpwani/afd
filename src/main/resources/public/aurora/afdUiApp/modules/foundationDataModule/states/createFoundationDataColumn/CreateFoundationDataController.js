@@ -3,37 +3,37 @@
 //noinspection JSValidateJSDoc
 /**
 		 * @ngdoc controller
-		 * @module AfdUiAppFoundationDataColumnModule
-		 * @name CreateFoundationDataColumnController
-		 * @description This controller mainly holds the methods and properties for foundationDataColumn.
+		 * @module AfdUiAppFoundationDataModule
+		 * @name AfdUiAppFoundationDataModule
+		 * @description This controller mainly holds the methods and properties for foundationData.
 		 * @requires $state
-		 * @requires FoundationDataColumnService
-		 * @requires FoundationDataColumnPrototype
+		 * @requires FoundationDataService
+		 * @requires FoundationDataPrototype
 		 * @requires ListService
 		 * @requires $stateParams
 		 * */
-angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('CreateFoundationDataColumnController', ['$state', 'FoundationDataColumnService', 'ListService', 'lists', 'FoundationDataColumnPrototype',
-		function($state, FoundationDataColumnService, ListService, lists, FoundationDataColumnPrototype) {
+angular.module('AfdUiAppFoundationDataModule')
+	.controller('AfdUiAppFoundationDataModule', ['$state', 'FoundationDataService', 'ListService', 'lists', 'FoundationDataPrototype',
+		function($state, FoundationDataService, ListService, lists, FoundationDataPrototype) {
 
 		/**
 		 * @ngdoc property
-		 * @name FoundationDataColumnService
-		 * @name FoundationDataColumnPrototype
-		 * @propertyOf CreateFoundationDataColumnController
+		 * @name FoundationDataService
+		 * @name FoundationDataPrototype
+		 * @propertyOf AfdUiAppFoundationDataModule
 		 * @type {object}
 		 * @description This property holds the returning flights information.
 		 */
-		this.FoundationDataColumnService = FoundationDataColumnService;
+		this.FoundationDataService = FoundationDataService;
 
 		/**
 		 * @ngdoc property
 		 * @name foundationDataColumn
-		 * @propertyOf FoundationDataColumnService
+		 * @propertyOf FoundationDataService
 		 * @type {object}
-		 * @description This property holds the object for FoundationDataColumnPrototype service.
+		 * @description This property holds the object for FoundationDataPrototype service.
 		 */
-		this.foundationDataColumn = new FoundationDataColumnPrototype();
+		this.foundationDataColumn = new FoundationDataPrototype();
 		
 		/**
 		 * Input types which will used for creation of Foundational column.
@@ -47,15 +47,15 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		/**
 		 * @ngdoc property
 		 * @name isEditing
-		 * @propertyOf FoundationDataColumnService
+		 * @propertyOf FoundationDataService
 		 * @type {boolean}
 		 * @description This property holds the boolean value, by default it is set to false.
 		 */
-		this.isEditing = FoundationDataColumnService.isEditing;
+		this.isEditing = FoundationDataService.isEditing;
 
 		if (this.isEditing) {
-            this.foundationDataColumn = FoundationDataColumnService.foundationDataColumn;
-            FoundationDataColumnService.isEditing = false;
+            this.foundationDataColumn = FoundationDataService.foundationDataColumn;
+            FoundationDataService.isEditing = false;
 		} else {
 			this.foundationDataColumn.active = true;
 		}
@@ -63,7 +63,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		/**
 		 * @ngdoc property
 		 * @name isEditFromView
-		 * @propertyOf FoundationDataColumnService
+		 * @propertyOf FoundationDataService
 		 * @type {boolean}
 		 * @description This property holds the boolean value, by default it is set to false.
 		 */
@@ -71,7 +71,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		/**
 		 * @ngdoc property
 		 * @name isEditFromSearchResults
-		 * @propertyOf FoundationDataColumnService
+		 * @propertyOf FoundationDataService
 		 * @type {boolean}
 		 * @description This property holds the boolean value, by default it is set to false.
 		 */
@@ -84,7 +84,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		/**
 		 * @ngdoc method
 		 * @name cancel
-		 * @methodOf CreateFoundationDataColumnController
+		 * @methodOf AfdUiAppFoundationDataModule
 		 * @description The method cancels the foundationDataColumn from the database.
 		 */
 		this.cancel = function() {
@@ -96,7 +96,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		/**
 		 * @ngdoc property
 		 * @name submitInProgress
-		 * @propertyOf CreateFoundationDataColumnController
+		 * @propertyOf AfdUiAppFoundationDataModule
 		 * @type {boolean}
 		 * @description This property holds the boolean value, the default value will be set to false.
 		 */
@@ -105,7 +105,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		/**
 		 * @ngdoc method
 		 * @name submitFoundationDataColumn
-		 * @methodOf CreateFoundationDataColumnController
+		 * @methodOf AfdUiAppFoundationDataModule
 		 * @description The method submit the foundationDataColumn details to database.
 		 */
 		this.submitFoundationDataColumn = function(createFoundationDataColumnForm) {
@@ -113,7 +113,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				this.submitInProgress = true;
 				if(this.isEditing) {
 	
-					FoundationDataColumnService.updateFoundationDataColumn(this.foundationDataColumn).then(angular.bind(this, function() {
+					FoundationDataService.updateFoundationDataColumn(this.foundationDataColumn).then(angular.bind(this, function() {
 						$state.go('foundationDataColumn');
 					}), angular.bind(this, function(errorObj) {
 						if(errorObj.updatedFoundationDataColumn) {
@@ -123,7 +123,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 						this.submitInProgress = false;
 					}));
 				} else {
-					FoundationDataColumnService.createFoundationDataColumn(this.foundationDataColumn).then(function() {
+					FoundationDataService.createFoundationDataColumn(this.foundationDataColumn).then(function() {
 							//noinspection JSCheckFunctionSignatures
 						$state.go('foundationDataColumn');
 					}, angular.bind(this, function() {

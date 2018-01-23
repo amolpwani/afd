@@ -178,13 +178,15 @@
 		    "sortOrder" : "Sort Order",
 		    "editable" : "Editable",
 		    "length" : "Length",
+		    "code" : "Code",
+		    "description" : "Description",
 			"createSuccess": "{{name}} has been successfully created.",
-			"createQueued": "List creation has been queued for later processing due to being offline.",
-			"createFailed": "Failed to create List: {{error}}",
+			"createQueued": "Foundational Data Column creation has been queued for later processing due to being offline.",
+			"createFailed": "Failed to create Foundational Data Column: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
 		"editFoundationDataColumn": {
-			"title": "Edit List",
+			"title": "Edit Foundational Data Column",
 			"previous": "Previous",
 			"cancel": "Cancel",
 			"continue": "Continue",
@@ -195,13 +197,14 @@
 			"description": "List Description",
 			"active": "Active?",
 			"updateSuccess": "{{name}} has been successfully edited.",
-			"updateQueued": "List edition has been queued for later processing due to being offline.",
-			"updateFailed": "Failed to edit List: {{error}}",
+			"updateQueued": "Foundational Data Column edition has been queued for later processing due to being offline.",
+			"updateFailed": "Failed to edit Foundational Data Column: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
 		"deleteList": {
 			"deleteSuccess": "{{name}} has been successfully deleted."
 		},
+		"actions": "Actions",
 	    "uiColumnName" : "UI Column Name",
 		"hoverHelp" : "Hover Help",
 		"uniqueColumn" : "Unique?",

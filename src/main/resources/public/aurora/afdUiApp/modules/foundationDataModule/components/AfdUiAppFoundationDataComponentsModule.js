@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc module
- * @name AfdUiAppFoundationDataColumnComponentsModule
+ * @name AfdUiAppFoundationDataComponentsModule
  * @description components module
  * @requires WebCoreModule
  * @requires AfdUiAppComponentsModule
  */
-angular.module('AfdUiAppFoundationDataColumnComponentsModule', [
+angular.module('AfdUiAppFoundationDataComponentsModule', [
 	'AfdUiAppComponentsModule',
 	'WebCoreModule'
 ]);
