@@ -13,8 +13,8 @@ module.exports = function(config) {
 			'../node_modules/angular-mocks/angular-mocks.js',
 
 			'test/lib/test-helpers.js',
-			'boilerplate/afdUiApp/**/*Module.js',
-			'boilerplate/afdUiApp/**/*.js'
+			'aurora/afdUiApp/**/*Module.js',
+			'aurora/afdUiApp/**/*.js'
 		],
 
 		exclude: [
@@ -55,7 +55,7 @@ module.exports = function(config) {
 		reporters: ['progress', 'html', 'coverage'],
 
 		preprocessors: {
-			'boilerplate/afdUiApp/**/!(*spec).js': ['coverage']
+			'aurora/afdUiApp/**/!(*spec).js': ['coverage']
 		},
 
 		htmlReporter: {

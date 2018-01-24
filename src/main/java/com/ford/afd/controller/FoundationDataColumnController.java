@@ -25,18 +25,18 @@ public class FoundationDataColumnController {
     private FoundationDataColumnService foundationDataColumnService;
 
 	@RequestMapping(value = "getFoundationColumn",method = RequestMethod.GET)
-	public List<FoundationDataColumn> directList(){
+	public List<FoundationDataColumn> directFoundationDataColumnList(){
 		return foundationDataColumnService.allFoundationDataColumn();
 	}
 
 	@RequestMapping(value = "getFoundationColumn/{id}",method = RequestMethod.GET)
-	public FoundationDataColumn listDataById(@PathVariable long id ) {
+	public FoundationDataColumn foundationDataColumnById(@PathVariable long id ) {
 		return foundationDataColumnService.findFoundationDataColumnById(id);
 	}
 
 	@RequestMapping(value="getFoundationColumn/{id}",method=RequestMethod.PUT)
-	public FoundationDataColumn updateFoundationDataColumn(@PathVariable long id, @RequestBody FoundationDataColumn listData){
-		return foundationDataColumnService.saveFoundationDataColumn(listData);
+	public FoundationDataColumn updateFoundationDataColumn(@PathVariable long id, @RequestBody FoundationDataColumn foundationDataColumn){
+		return foundationDataColumnService.saveFoundationDataColumn(foundationDataColumn);
 	}
 
 	@RequestMapping(value = "getFoundationColumn/{id}",method = RequestMethod.DELETE)
@@ -45,8 +45,8 @@ public class FoundationDataColumnController {
 	}
 
 	@RequestMapping(value="getFoundationColumn",method=RequestMethod.POST)
-	public FoundationDataColumn createFoundationDataColumn(@RequestBody FoundationDataColumn listData) {
-		return foundationDataColumnService.saveFoundationDataColumn(listData);
+	public FoundationDataColumn createFoundationDataColumn(@RequestBody FoundationDataColumn foundationDataColumn) {
+		return foundationDataColumnService.saveFoundationDataColumn(foundationDataColumn);
 	}
 
 }

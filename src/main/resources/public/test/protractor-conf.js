@@ -21,7 +21,7 @@ exports.config = {
 	},
 
 	// update to match your localhost server port 
-	baseUrl: 'http://localhost:9500/src/boilerplate/index.html',
+	baseUrl: 'http://localhost:8081/aurora/index.html',
     rootElement: '#ng-app',
 
     framework: 'jasmine2',

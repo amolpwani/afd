@@ -1,8 +1,15 @@
 package com.ford.afd.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ford.afd.model.FoundationData;
 
-public interface FoundationDataRepository extends JpaRepository<FoundationData, Long> {
+public interface FoundationDataRepository extends CrudRepository<FoundationData, Long> {
+	List<FoundationData> findByRowId(long rowId);
+	
+	@Transactional
+	void removeByRowId(long rowId);
 }
