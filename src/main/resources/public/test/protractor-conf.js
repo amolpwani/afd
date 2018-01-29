@@ -3,8 +3,8 @@
  * SEE: http://karma-runner.github.io/1.0/config/configuration-file.html
  */
 exports.config = {
-	seleniumServerJar: '../../node_modules/protractor/selenium/selenium-server-standalone-3.4.0.jar',
-	chromeDriver: '../../node_modules/protractor/selenium/chromedriver.exe',
+	seleniumServerJar: '../node_modules/protractor/selenium/selenium-server-standalone-3.4.0.jar',
+	chromeDriver: '../node_modules/protractor/selenium/chromedriver.exe',
 
 	allScriptsTimeout: 11000,
 

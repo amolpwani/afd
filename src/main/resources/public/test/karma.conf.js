@@ -8,11 +8,11 @@ module.exports = function(config) {
 		basePath: '../',
 
 		files: [
-			'webCore/FRF-Vendor*.min.js',
-			'webCore/FRF-webCore*.min.js',
-			'../node_modules/angular-mocks/angular-mocks.js',
+			'webCore/FRF-Vendor.v1.2.2.min.js',
+			'webCore/FRF-webCore.v1.2.2.min.js',
+			'node_modules/angular-mocks/angular-mocks.js',
 
-			'test/lib/test-helpers.js',
+			//'test/lib/test-helpers.js',
 			'aurora/afdUiApp/**/*Module.js',
 			'aurora/afdUiApp/**/*.js'
 		],
@@ -64,7 +64,7 @@ module.exports = function(config) {
 
 		coverageReporter: {
 			instrumenters: {
-				istanbul : require('../../node_modules/istanbul')
+				istanbul : require('../node_modules/istanbul')
 			},
 			instrumenter: {
 				'**/*.js': 'istanbul'
