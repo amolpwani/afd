@@ -92,29 +92,28 @@ angular.module('AfdUiAppListModule')
 		 * @methodOf CreateListController
 		 * @description The method submit the list details to database.
 		 */
-		this.submitList = function(createListForm) {
-			if (createListForm.$valid) {
-				this.submitInProgress = true;
-				if(this.isEditing) {
-	
-					ListService.updateList(this.list).then(angular.bind(this, function() {
-						$state.go('list');
-					}), angular.bind(this, function(errorObj) {
-						if(errorObj.updatedList) {
-							this.list = errorObj.updatedList;
-						}
-	
-						this.submitInProgress = false;
-					}));
-				} else {
-					ListService.createList(this.list).then(function() {
-							//noinspection JSCheckFunctionSignatures
-						$state.go('list');
-					}, angular.bind(this, function() {
-	
-						this.submitInProgress = false;
-					}));
-				}
+		this.submitList = function() {
+			this.submitInProgress = true;
+			
+			if(this.isEditing) {
+
+				ListService.updateList(this.list).then(angular.bind(this, function() {
+					$state.go('list');
+				}), angular.bind(this, function(errorObj) {
+					if(errorObj.updatedList) {
+						this.list = errorObj.updatedList;
+					}
+
+					this.submitInProgress = false;
+				}));
+			} else {
+				ListService.createList(this.list).then(function() {
+						//noinspection JSCheckFunctionSignatures
+					$state.go('list');
+				}, angular.bind(this, function() {
+
+					this.submitInProgress = false;
+				}));
 			}
 		};
 

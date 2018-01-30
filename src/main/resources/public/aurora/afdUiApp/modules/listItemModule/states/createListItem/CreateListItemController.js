@@ -73,32 +73,30 @@ angular.module('AfdUiAppListItemModule')
 		 * @methodOf createListItemController
 		 * @description The method submit the list details to database.
 		 */
-		this.submitListItem = function(createListItemForm) {
-			if (createListItemForm.$valid) {
-				this.submitInProgress = true;
-				this.success = false;
+		this.submitListItem = function() {
+			this.submitInProgress = true;
+			this.success = false;
 
-				if(this.isEditing) {
-					ListItemService.updateListItem(this.listItem).then(angular.bind(this, function() {
+			if(this.isEditing) {
+				ListItemService.updateListItem(this.listItem).then(angular.bind(this, function() {
+					//noinspection JSCheckFunctionSignatures
+					$state.go('listItem', {id : $stateParams.id});
+				}), angular.bind(this, function(errorObj) {
+					if(errorObj.updatedListItem) {
+						this.listItem = errorObj.updatedListItem;
+					}
+
+					this.submitInProgress = false;
+				}));
+			} else {
+				this.listItem.parentlistId = $stateParams.id;
+				ListItemService.createListItem(this.listItem).then(function() {
 						//noinspection JSCheckFunctionSignatures
-						$state.go('listItem', {id : $stateParams.id});
-					}), angular.bind(this, function(errorObj) {
-						if(errorObj.updatedListItem) {
-							this.listItem = errorObj.updatedListItem;
-						}
-	
-						this.submitInProgress = false;
-					}));
-				} else {
-					this.listItem.parentlistId = $stateParams.id;
-					ListItemService.createListItem(this.listItem).then(function() {
-							//noinspection JSCheckFunctionSignatures
-						$state.go('listItem', {id : $stateParams.id});
-					}, angular.bind(this, function() {
-	
-						this.submitInProgress = false;
-					}));
-				}
+					$state.go('listItem', {id : $stateParams.id});
+				}, angular.bind(this, function() {
+
+					this.submitInProgress = false;
+				}));
 			}
 		};
 

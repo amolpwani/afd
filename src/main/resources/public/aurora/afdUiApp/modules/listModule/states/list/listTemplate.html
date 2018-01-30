@@ -9,8 +9,9 @@
 </div>
 
 <div class="row">
-    <wc-responsive-table data="listController.lists"
-         exporttopdf-enabled exporttoexcel-enabled pagination-enabled responsive-view="list" id="list-table">
+    <div wc-responsive-table data="listController.lists" data-table-name="lists" row-key="id"
+         exporttopdf-enabled exporttoexcel-enabled pagination-enabled responsive-view="list" id="list-table"
+         class="col-xs-12 wc-table" ng-model="listController.listsToDelete">
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
@@ -36,7 +37,7 @@
         				<span class="glyphicon glyphicon-pencil" style='font-size: 17px'></span>
         			</a>
         			
-        			<a wc-row-action-single="delete-lists">
+ 					<a wc-row-action-single="delete-lists">
         				<span class="glyphicon glyphicon-trash" style='font-size: 17px'></span>
         			</a>
                 </td>
@@ -51,7 +52,5 @@
             </tr>
             </tbody>
         </table>
-	</wc-responsive-table>
+	</div>
 </div>
-
-

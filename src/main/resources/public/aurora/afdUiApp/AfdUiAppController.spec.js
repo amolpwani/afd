@@ -1,18 +1,18 @@
 'use strict';
 
-describe('NewUiAppModule NewUiAppController:', function() {
+describe('AfdUiAppModule AfdUiAppController:', function() {
 	var scope = null,
 		$httpBackend, $controller, $q;
 
 	var afdUiAppController = function() {
-		var controller = $controller('NewUiAppController as afdUiAppController', {
+		var controller = $controller('AfdUiAppController as afdUiAppController', {
 			$scope: scope
 		});
 		return controller;
 	};
 
 	beforeEach(function() {
-		module('NewUiAppModule');
+		module('AfdUiAppModule');
 
 		inject(function($rootScope, $injector) {
 			scope = $rootScope.$new();

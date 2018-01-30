@@ -1,4 +1,4 @@
-<form class="well" role="form" name="createListItemForm" id="createListItemForm" novalidate wc-form-submi>
+<form class="well" role="form" name="createListItemForm" ng-submit="createListItemForm.$valid && createListItemController.submitListItem()" id="createListItemForm" novalidate wc-form-submit>
 	<h2 ng-hide="createListItemController.isEditing" translate>listItem.createListItem.title</h2>
 	<h2 ng-show="createListItemController.isEditing" translate>listItem.editListItem.title</h2>
 
@@ -42,7 +42,7 @@
 			</button>
 		</div>
 		<div class="col-xs-6 text-center">
-			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" ng-click="createListItemController.submitListItem(createListItemForm)" translate>
+			<button type="submit" id="save" class="btn btn-primary-default" wc-click-once wc-continue-if-valid translate>
 				listItem.createListItem.save
 			</button>
 		</div>

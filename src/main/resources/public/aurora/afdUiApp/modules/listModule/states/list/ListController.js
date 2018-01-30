@@ -17,8 +17,8 @@
 			 * @requires $timeout
 			 * */
 angular.module('AfdUiAppListModule')
-	.controller('ListController', ['ListService', 'lists', '$scope', 'WcAlertConsoleService', '$translate', '$state',
-		function(ListService, lists, $scope, WcAlertConsoleService, $translate, $state) {
+	.controller('ListController', ['ListService', 'lists', 'DeleteListModalService', '$scope', 'WcAlertConsoleService', '$translate', '$state',
+		function(ListService, lists, DeleteListModalService, $scope, WcAlertConsoleService, $translate, $state) {
 
 			//noinspection JSValidateJSDoc
             /**
@@ -67,7 +67,10 @@ angular.module('AfdUiAppListModule')
 
 			$scope.$on("delete-lists", angular.bind(this, function(event, data) { // jshint ignore:line
 
-				this.deleteLists(this.getSelectedListObjects(data));
+				//this.deleteLists(this.getSelectedListObjects(data));
+				return DeleteListModalService.openDeleteModal(this.getSelectedListObjects(data)).then(angular.bind(this, function(results) {
+					$scope.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+				}));
 			}));
 
 			/**
@@ -84,10 +87,24 @@ angular.module('AfdUiAppListModule')
 				$state.go('create-list');
 			};
 			
+			
+			
+			/**
+			 * @ngdoc method
+			 * @name deleteLists
+			 * @params {array} bookingConfirmationNumbers
+			 * @description The method is for delete the bookings from the database.
+			 */
+			this.deleteSelectedList = function(ids) {
+				return DeleteListModalService.openDeleteModal(this.getSelectedListObjects(ids)).then(angular.bind(this, function(results) {
+					$scope.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+				}));
+			};
+			
 			/**
 			 * @ngdoc method
 			 * @name processResultsForDisplay
-			 * @methodOf DeleteBookingModalService
+			 * @methodOf DeleteListModalService
 			 * @params {object} results
 			 * @description This method is to process the results for display
 			 */

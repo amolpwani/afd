@@ -1,34 +1,23 @@
 'use strict';
 
-describe('JabUiAppBookingModule CrupdateBookingController:', function() {
+describe('AfdUiAppListItemModule CreateListItemController:', function() {
 
 	// Dependencies
-	var scope, $rootScope, $controller, CrupdateBookingController, createBookingForm, $compile, $state, BookingService, BookingPrototype, $q, $httpBackend, $templateCache;
+	var scope, $rootScope, $stateParams, $controller, CreateListItemController, createListItemForm, $compile, $state, ListItemService, ListItemPrototype, $q, $httpBackend, $templateCache;
 
-	var createCrupdateController;
-
-	var previousStateSearchMock = {
-		params: {
-			previousState: 'search-booking-results'
-		}
-	};
-
-	var previousStateViewMock = {
-		params: {
-			previousState: 'view-booking'
-		}
-	};
+	var createListItemController;
 
 	beforeEach(function(){
-		module('JabUiAppBookingModule');
+		module('AfdUiAppListItemModule');
 
 		inject(function($injector) {
 			$rootScope = $injector.get('$rootScope');
 			$controller = $injector.get('$controller');
 			$compile = $injector.get('$compile');
 			$state = $injector.get('$state');
-			BookingService = $injector.get('BookingService');
-			BookingPrototype = $injector.get('BookingPrototype');
+			$stateParams = $injector.get('$stateParams');
+			ListItemService = $injector.get('ListItemService');
+			ListItemPrototype = $injector.get('ListItemPrototype');
 			$q = $injector.get('$q');
 			$httpBackend = $injector.get('$httpBackend');
 			$templateCache = $injector.get('$templateCache');
@@ -36,66 +25,56 @@ describe('JabUiAppBookingModule CrupdateBookingController:', function() {
 
 
 		scope = $rootScope.$new();
+		$stateParams.id = '100';
 
-		createCrupdateController = function(stateMock) {
+		createListItemController = function(stateMock) {
 			if(!stateMock) {
-				CrupdateBookingController = $controller(
-					'CrupdateBookingController as crupdateBookingController', {
+				CreateListItemController = $controller(
+					'CreateListItemController as createListItemController', {
 						$scope : scope
 					});
 			}
 			else {
-				CrupdateBookingController = $controller(
-					'CrupdateBookingController as crupdateBookingController', {
+				CreateListItemController = $controller(
+					'CreateListItemController as createListItemController', {
 						$scope : scope,
 						$state : stateMock
 					});
 			}
 		};
 
-		createCrupdateController();
+		createListItemController();
 
 		var element = angular.element(
-			'<form name="createBookingForm">' +
+			'<form name="createListItemForm">' +
 			'</form>'
 		);
 
 		$compile(element)(scope);
 
-		createBookingForm = scope.createBookingForm;
+		createListItemForm = scope.createListItemForm;
 
-		$httpBackend.when('GET','bookings').respond(200);
-		$httpBackend.when('GET','jabUiApp/modules/bookingModule/states/listBooking/listBookingTemplate.html').respond(200);
-		$templateCache.put('jabUiApp/modules/bookingModule/states/listBooking/listBookingTemplate.html');
+		$httpBackend.when('GET','listdataitems/getItems').respond(200);
+		$httpBackend.when('GET','afdUiApp/modules/listItemModule/states/listItem/listItemTemplate.html').respond(200);
+		$templateCache.put('afdUiApp/modules/listItemModule/states/listItem/listItemTemplate.html');
 
 	});
 
 	it('should be registered', function() {
-		expect(CrupdateBookingController).toBeDefined();
+		expect(CreateListItemController).toBeDefined();
 	});
 
 
-	describe('booking selection storage and state management:', function() {
+	describe('listItem selection storage and state management:', function() {
 		it('should have an object to store values in', function() {
-			expect(scope.crupdateBookingController.booking).toBeDefined();
+			expect(scope.createListItemController.listItem).toBeDefined();
 		});
 
-		it('should initialize the booking object to a new Booking', function() {
-			var emptyBooking = new BookingPrototype();
-			expect(scope.crupdateBookingController.booking).toEqual(emptyBooking);
-		});
-
-		it('should set the isEditFrom variables according to the passed in previous state:', function() {
-			expect(scope.crupdateBookingController.isEditFromView).toBeFalsy();
-			expect(scope.crupdateBookingController.isEditFromSearchResults).toBeFalsy();
-
-			createCrupdateController(previousStateSearchMock);
-			expect(scope.crupdateBookingController.isEditFromView).toBeFalsy();
-			expect(scope.crupdateBookingController.isEditFromSearchResults).toBeTruthy();
-
-			createCrupdateController(previousStateViewMock);
-			expect(scope.crupdateBookingController.isEditFromView).toBeTruthy();
-			expect(scope.crupdateBookingController.isEditFromSearchResults).toBeFalsy();
+		it('should initialize the list object to a new listItem', function() {
+			scope.createListItemController.isEditing = false;
+			var emptyListItem = new ListItemPrototype();
+			emptyListItem.active = true;
+			expect(scope.createListItemController.listItem).toEqual(emptyListItem);
 		});
 	});
 
@@ -104,147 +83,95 @@ describe('JabUiAppBookingModule CrupdateBookingController:', function() {
 			spyOn($state, 'go');
 		});
 
-		it('should navigate back to list-booking if booking creation is cancelled', function(){
-			scope.crupdateBookingController.cancel();
+		it('should navigate back to list table view if list creation is cancelled', function(){
+			scope.createListItemController.cancel();
 
-			expect($state.go).toHaveBeenCalledWith('list-booking');
+			expect($state.go).toHaveBeenCalledWith('listItem', ({id:'100'}));
 		});
-
-		it('should and navigate back to view-booking', function(){
-			var confirmationNumber = '';
-			var param = {
-				confirmationNumber: confirmationNumber
-			};
-			scope.crupdateBookingController.isEditFromView = true;
-
-			scope.crupdateBookingController.cancel();
-
-			expect($state.go).toHaveBeenCalledWith('view-booking', param);
-		});
-
-		it('should navigate back to search-booking-results', function(){
-			var confirmationNumber = '';
-			var param = {
-				confirmationNumber: confirmationNumber
-			};
-			scope.crupdateBookingController.isEditFromSearchResults = true;
-
-			scope.crupdateBookingController.cancel();
-
-			expect($state.go).toHaveBeenCalledWith('search-booking-results', param);
-		});
-
 	});
 
-	describe('submitBooking():', function(){
+	describe('submitListItem():', function(){
 
-		it('should call createBooking and navigate to list-booking if the creation is successful', function(){
+		it('should call createListItem and navigate to list if the creation is successful', function(){
 
 			spyOn($state,'go').and.callFake(function(){
 				return true;
 			});
+			
+			scope.createListItemController.isEditing = false;
 
-			spyOn(BookingService,'createBooking').and.callFake(function(){
+			spyOn(ListItemService,'createListItem').and.callFake(function(createListItemForm){
 				return $q.when('success');
 			});
 
-			scope.crupdateBookingController.isEditing = false;
-
-			scope.crupdateBookingController.submitBooking();
+			scope.createListItemController.submitListItem();
 
 			scope.$apply();
 
 			expect($state.go).toHaveBeenCalled();
-			expect(BookingService.createBooking).toHaveBeenCalled();
-
+			expect(ListItemService.createListItem).toHaveBeenCalled();
 		});
 
-		it('should call updateBooking and navigate to list-booking if the update is successful and we came from list-booking', function(){
+		it('should call updateListItem and navigate to list if the update is successful and we came from list', function(){
 
 			spyOn($state,'go').and.callFake(function(){
 				return true;
 			});
 
-			spyOn(BookingService,'updateBooking').and.callFake(function(){
+			spyOn(ListItemService,'updateListItem').and.callFake(function(){
 				return $q.when('success');
 			});
 
-			scope.crupdateBookingController.isEditing = true;
-			scope.crupdateBookingController.isEditFromView = false;
+			scope.createListItemController.isEditing = true;
 
-			scope.crupdateBookingController.submitBooking();
+			scope.createListItemController.submitListItem();
 
-			expect(BookingService.updateBooking).toHaveBeenCalled();
-
-			scope.$apply();
-
-			expect($state.go).toHaveBeenCalledWith('list-booking');
-
-
-		});
-
-		it('should call updateBooking and navigate to view-booking with the appropriate parameter if the update is successful and we came from view-booking', function(){
-
-			spyOn($state,'go').and.callFake(function(){
-				return true;
-			});
-
-			spyOn(BookingService,'updateBooking').and.callFake(function(){
-				return $q.when('success');
-			});
-
-			scope.crupdateBookingController.isEditing = true;
-			scope.crupdateBookingController.isEditFromView = true;
-
-			scope.crupdateBookingController.submitBooking();
-
-			expect(BookingService.updateBooking).toHaveBeenCalled();
+			expect(ListItemService.updateListItem).toHaveBeenCalled();
 
 			scope.$apply();
 
-			expect($state.go).toHaveBeenCalledWith('view-booking', {confirmationNumber: scope.crupdateBookingController.booking.confirmationNumber});
-			expect(scope.crupdateBookingController.isEditFromView).toEqual(false);
+			expect($state.go).toHaveBeenCalledWith('listItem', ({id:'100'}));
 		});
 
 		it('should not transition states if the creation is unsuccessful and should set submitInProgess to false', function(){
 
-			spyOn(BookingService,'createBooking').and.callFake(function(){return $q.reject('test');});
+			spyOn(ListItemService,'createListItem').and.callFake(function(){return $q.reject('test');});
 			spyOn($state, 'go').and.returnValue(true);
 
-			scope.crupdateBookingController.submitBooking();
+			scope.createListItemController.submitListItem();
 
 			scope.$apply();
 
 			expect($state.go).not.toHaveBeenCalled();
-			expect(scope.crupdateBookingController.submitInProgress).toEqual(false);
+			expect(scope.createListItemController.submitInProgress).toEqual(false);
 		});
 
 		it('should not transition states if the update is unsuccessful and should set submitInProgess to false', function(){
 
-			spyOn(BookingService,'updateBooking').and.callFake(function(){return $q.reject('test');});
+			spyOn(ListItemService,'updateListItem').and.callFake(function(){return $q.reject('test');});
 			spyOn($state, 'go').and.returnValue(true);
-			scope.crupdateBookingController.isEditing = true;
+			scope.createListItemController.isEditing = true;
 
-			scope.crupdateBookingController.submitBooking();
+			scope.createListItemController.submitListItem();
 
 			scope.$apply();
 
 			expect($state.go).not.toHaveBeenCalled();
-			expect(scope.crupdateBookingController.submitInProgress).toEqual(false);
+			expect(scope.createListItemController.submitInProgress).toEqual(false);
 		});
 
-		it('in update error case, it should set the booking object to the updated booking if one is available', function(){
+		it('in update error case, it should set the list object to the updated list if one is available', function(){
 
-			spyOn(BookingService,'updateBooking').and.callFake(function(){
-				return $q.reject({error: 'test', updatedBooking: 'thing'});
+			spyOn(ListItemService,'updateListItem').and.callFake(function(){
+				return $q.reject({error: 'test', updatedListItem: 'thing'});
 			});
 			spyOn($state, 'go').and.returnValue(true);
-			scope.crupdateBookingController.isEditing = true;
+			scope.createListItemController.isEditing = true;
 
-			scope.crupdateBookingController.submitBooking();
+			scope.createListItemController.submitListItem();
 
 			scope.$apply();
-			expect(scope.crupdateBookingController.booking).toEqual('thing');
+			expect(scope.createListItemController.listItem).toEqual('thing', ({id:'100'}));
 		});
 	});
 

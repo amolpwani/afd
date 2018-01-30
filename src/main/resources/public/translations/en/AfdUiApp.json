@@ -100,6 +100,8 @@
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
 		"deleteList": {
+			"title": "Delete Lists",
+			"instructions": "The following lists will be deleted. This action cannot be undone. Are you sure you wish to continue?",
 			"deleteSuccess": "{{name}} has been successfully deleted."
 		},
 		"actions": "Actions",
@@ -148,6 +150,8 @@
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
 		"deleteListItem": {
+			"title": "Delete List Items",
+			"instructions": "The following listItems will be deleted. This action cannot be undone. Are you sure you wish to continue?",
 			"deleteSuccess": "{{name}} has been successfully deleted."
 		},
 		"actions": "Actions",
@@ -201,7 +205,9 @@
 			"updateFailed": "Failed to edit Foundational Data Column: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
-		"deleteList": {
+		"deleteFoundationDataColumn": {
+			"title": "Delete Foundation Data Columns",
+			"instructions": "The following foundation data columns will be deleted. This action cannot be undone. Are you sure you wish to continue?",
 			"deleteSuccess": "{{name}} has been successfully deleted."
 		},
 		"actions": "Actions",

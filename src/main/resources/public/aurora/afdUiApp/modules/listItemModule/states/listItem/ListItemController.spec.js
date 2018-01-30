@@ -1,44 +1,36 @@
 'use strict';
 
-describe('AfdUiAppListModule ListController:', function() {
+describe('AfdUiAppListItemModule ListItemController:', function() {
 
 	// Dependencies
-	var listController, $timeout, WcDataTableService, scope, $rootScope, $controller, WcHttpEndpointPrototype, ApplicationPolicyService, BookingService, $translate, DeleteBookingModalService, WcAlertConsoleService, $q, $httpBackend, $templateCache, $state, BookingPrototype;
+	var listItemController, $timeout, WcDataTableService, scope, $rootScope, $controller, WcHttpEndpointPrototype, ListItemService, 
+	$translate, WcAlertConsoleService, $q, $httpBackend, $templateCache, $state, ListItemPrototype;
 
 	// Test data
-	var bookingsData = [
+	var listItemData = [
 			{
-				uuid: '1',
-				confirmationNumber: '1',
-				customer: {
-					lastName: 'Smith',
-					firstName: 'John'
-				}
+				id: '1',
+				code: 'ListItem1',
+				description: 'Organization Unit 1',
+				active: true
 			},
 			{
-				uuid: '2',
-				confirmationNumber: '2',
-				customer: {
-					lastName: 'Doe',
-					firstName: 'Steve'
-				}
+				id: '2',
+				code: 'ListItem2',
+				description: 'Organization Unit 2',
+				active: false
 			}
-		],
-		userInfoMock = {
-			'userInformation': 'test'
-		};
+		];
 
 	beforeEach(function() {
-		module('AfdUiAppListModule');
+		module('AfdUiAppListItemModule');
 
 		inject(function($injector) {
 			$rootScope = $injector.get('$rootScope');
 			$controller = $injector.get('$controller');
 			WcHttpEndpointPrototype = $injector.get('WcHttpEndpointPrototype');
-			ApplicationPolicyService = $injector.get('ApplicationPolicyService');
-			BookingService = $injector.get('BookingService');
+			ListItemService = $injector.get('ListItemService');
 			$translate = $injector.get('$translate');
-			DeleteBookingModalService = $injector.get('DeleteBookingModalService');
 			WcAlertConsoleService = $injector.get('WcAlertConsoleService');
 			$q = $injector.get('$q');
 			$httpBackend = $injector.get('$httpBackend');
@@ -46,16 +38,15 @@ describe('AfdUiAppListModule ListController:', function() {
 			$state = $injector.get('$state');
 			WcDataTableService = $injector.get('WcDataTableService');
 			$timeout = $injector.get('$timeout');
-			BookingPrototype = $injector.get('BookingPrototype');
+			ListItemPrototype = $injector.get('ListItemPrototype');
 		});
 
 		scope = $rootScope.$new();
 
 		//we do not have the actual application controller available in this instance. mock out the objects and functions
 		//we need on it for the tests to succeed.
-		scope.$parent.jabUiAppController = {};
-		scope.$parent.jabUiAppController.userInformation = userInfoMock;
-		scope.$parent.jabUiAppController.reloadState = function() {
+		scope.$parent.afdUiAppController = {};
+		scope.$parent.afdUiAppController.reloadState = function() {
 			//noinspection JSCheckFunctionSignatures
             $state.go($state.current.name, $state.params, {
 				reload: true
@@ -63,90 +54,63 @@ describe('AfdUiAppListModule ListController:', function() {
 		};
 
 		//even though we don't use these directly, since we are calling a rootScope apply for promise resolution they are needed.
-		$templateCache.put('jabUiApp/modules/bookingModule/states/listBooking/listBookingTemplate.html', '');
-		$httpBackend.when('GET', 'bookings').respond(200);
+		$templateCache.put('afdUiApp/modules/listItemModule/states/listItem/listItemTemplate.html', '');
+		$httpBackend.when('GET', 'listdataitems/getItems').respond(200);
+		$httpBackend.when('GET', 'listdataitems/getListId').respond(200);
 		$httpBackend.when('GET', 'ping/index.html').respond(200);
 
 
-		listController = function() {
+		listItemController = function() {
 			$controller(
-				'ListController as listController', {
+				'ListItemController as listItemController', {
 					$scope: scope,
-					bookings: bookingsData
+					listItems: listItemData
 				});
 		};
 
-		listController();
+		listItemController();
 	});
 
 	it('should be registered', function() {
-		expect(scope.listController).toBeDefined();
+		expect(scope.listItemController).toBeDefined();
 	});
 
-	it('should have bookings data', function() {
-		expect(scope.listController.bookings).toEqual(bookingsData);
+	it('should have listItems data', function() {
+		expect(scope.listItemController.listItems).toEqual(listItemData);
 	});
 
-	it('should add a fullName property to each of the booking in the list', function(){
-		expect(scope.listController.bookings[0].customer.fullName).toEqual('Smith, John');
-		expect(scope.listController.bookings[1].customer.fullName).toEqual('Doe, Steve');
+	it('should add a name property to each of the listItemData in the list', function(){
+		expect(scope.listItemController.listItems[0].code).toEqual('ListItem1');
+		expect(scope.listItemController.listItems[1].code).toEqual('ListItem2');
 	});
 
-	it('should set the appropriate headerText and instructionsText for the default user role', function(){
-		expect(scope.listController.headerText).toEqual('booking.listBooking.title');
-		expect(scope.listController.instructionsText).toEqual('booking.listBooking.instructions');
-	});
-
-	it('should set the appropriate headerText when the role is changed and the userInformation is in a promise', function(){
-		ApplicationPolicyService.userInformation.role = 'notAgent';
-
-		scope.$parent.jabUiAppController.userInformation = $q.when(userInfoMock);
-
-		listController();
-
-		$rootScope.$apply();
-
-		expect(scope.listController.headerText).toEqual('booking.listBooking.customerTitle');
-		expect(scope.listController.instructionsText).toEqual('booking.listBooking.customerInstructions');
-	});
-
-	it('should set the appropriate headerText when the role is changed and the userInformation is not in a promise', function(){
-		ApplicationPolicyService.userInformation.role = 'notAgent';
-
-		listController();
-
-		expect(scope.listController.headerText).toEqual('booking.listBooking.customerTitle');
-		expect(scope.listController.instructionsText).toEqual('booking.listBooking.customerInstructions');
-	});
-
-	it('should have processAndDisplayDeletionResults, deleteBookings, viewBoking, updateBooking and getSelectedBookingObjects functions', function() {
-		expect(scope.listController.processAndDisplayDeletionResults).toBeDefined();
-		expect(scope.listController.deleteBookings).toBeDefined();
-		expect(scope.listController.viewBooking).toBeDefined();
-		expect(scope.listController.updateBooking).toBeDefined();
-		expect(scope.listController.getSelectedBookingObjects).toBeDefined();
+	it('should have processAndDisplayDeletionResults, deleteListItems, updateListItem and getselectedListItemObjects functions', function() {
+		expect(scope.listItemController.processAndDisplayDeletionResults).toBeDefined();
+		expect(scope.listItemController.deleteListItems).toBeDefined();
+		expect(scope.listItemController.updateListItem).toBeDefined();
+		expect(scope.listItemController.getselectedListItemObjects).toBeDefined();
 	});
 
 	describe('processAndDisplayDeletionResults(): ', function() {
-		it('should take the given results list and create the appropriate messages with the WcAlertConsoleService', function() {
+		it('should take the given results listItem and create the appropriate messages with the WcAlertConsoleService', function() {
 			spyOn(WcAlertConsoleService, 'addMessage');
 
 			var testObj = {
 				successfulResults: [{
-					confirmationNumber: '1'
+					name: '1'
 				}, {
-					confirmationNumber: '2'
+					name: '2'
 				}],
 				failedResults: [{
-					confirmationNumber: '3'
+					name: '3'
 				}, {
-					confirmationNumber: '4'
+					name: '4'
 				}],
 				queuedResults: [{
-					confirmationNumber: '5'
+					name: '5'
 				}]
 			};
-			scope.listController.processAndDisplayDeletionResults(testObj);
+			scope.listItemController.processAndDisplayDeletionResults(testObj);
 			expect(WcAlertConsoleService.addMessage.calls.count()).toEqual(3);
 		});
 
@@ -154,89 +118,45 @@ describe('AfdUiAppListModule ListController:', function() {
 			spyOn(WcAlertConsoleService, 'addMessage');
 
 			var testObj = {successfulResults: [], queuedResults: [], failedResults: []};
-			scope.listController.processAndDisplayDeletionResults(testObj);
+			scope.listItemController.processAndDisplayDeletionResults(testObj);
 			expect(WcAlertConsoleService.addMessage).not.toHaveBeenCalled();
 		});
 	});
 
-	//can't seem to get to the $on function in the unit test case. will have to implicitly test this code through the e2e tests
-	xdescribe('table watches: ', function(){
-		it('should establish the appropriate listeners to trigger booking events from the table', function(){
-			spyOn(scope.listController.$scope, '$on');
-
-			expect(scope.listController.$scope.$on.calls.count()).toEqual(4);
-		});
-	});
-
-	describe('viewBooking(): ', function() {
-		it('should call state.go to navigate to the view-booking state for the given data', function() {
-			spyOn($state, 'go');
-
-			scope.listController.viewBooking(bookingsData[0]);
-
-			expect($state.go).toHaveBeenCalledWith('view-booking', {confirmationNumber: bookingsData[0].confirmationNumber});
-		});
-	});
-
-	describe('updateBooking(): ', function() {
-		it('should set up the BookingService', function() {
-			spyOn($state, 'go');
-
-			scope.listController.updateBooking('options', bookingsData[0]);
-
-			expect(BookingService.isEditing).toBeTruthy();
-			//expect(BookingService.booking).toEqual(new BookingPrototype(bookingsData[0]));
-		});
-		it('should call state.go to navigate to the select-booking-options state', function() {
-			spyOn($state, 'go');
-
-			scope.listController.updateBooking('options', bookingsData[0]);
-
-			expect($state.go).toHaveBeenCalledWith('update-booking.select-booking-options', {confirmationNumber: bookingsData[0].confirmationNumber});
-		});
-		it('should call state.go to navigate to the select-departing-flight state', function() {
-			spyOn($state, 'go');
-
-			scope.listController.updateBooking('flight', bookingsData[0]);
-
-			expect($state.go).toHaveBeenCalledWith('update-booking.select-departing-flight', {confirmationNumber: bookingsData[0].confirmationNumber});
-		});
-	});
-
-	describe('deleteBookings(): ', function() {
+	describe('deleteListItems(): ', function() {
 		it('should find the confirmation number for the link that was clicked and pass it and scope through to the DeleteModalService, and on return of the promise process and display the results', function() {
-			spyOn(DeleteBookingModalService, 'openDeleteModal').and.callFake(function() {
+			spyOn(ListItemService, 'deleteListItems').and.callFake(function() {
 				return $q.when('done');
 			});
-			spyOn(scope.listController, 'processAndDisplayDeletionResults');
-			spyOn(scope.$parent.jabUiAppController, 'reloadState');
+			spyOn(scope.listItemController, 'processAndDisplayDeletionResults');
+			spyOn(scope.$parent.afdUiAppController, 'reloadState');
 
-			scope.listController.deleteBookings(bookingsData);
+			scope.listItemController.deleteListItems(listItemData);
 
 			scope.$apply();
 
-			expect(DeleteBookingModalService.openDeleteModal).toHaveBeenCalledWith(bookingsData);
-			expect(scope.$parent.jabUiAppController.reloadState).toHaveBeenCalled();
+			expect(ListItemService.deleteListItems).toHaveBeenCalledWith(listItemData);
+			expect(scope.$parent.afdUiAppController.reloadState).toHaveBeenCalled();
 		});
 	});
 
-	describe('getSelectedBookingObjects(): ', function(){
-		it('should return an array with a single booking object when given a single uuid', function() {
-			var result = scope.listController.getSelectedBookingObjects('1');
+	describe('getselectedListItemObjects(): ', function(){
+		it('should return an array with a single listItem object when given a single id', function() {
+			var result = scope.listItemController.getselectedListItemObjects('1');
 
-			expect(result).toEqual([bookingsData[0]]);
+			expect(result).toEqual([listItemData[0]]);
 		});
-		it('should return an array of booking objects when given an array of uuids', function() {
-			var result = scope.listController.getSelectedBookingObjects(['1', '2']);
+		it('should return an array of listItem objects when given an array of ids', function() {
+			var result = scope.listItemController.getselectedListItemObjects(['1', '2']);
 
-			expect(result).toEqual(bookingsData);
+			expect(result).toEqual(listItemData);
 		});
-		it('should return an array of booking objects when given nothing by using the bookingsToDelete array', function() {
-			scope.listController.bookingsToDelete = ['1', '2'];
+		it('should return an array of listItem objects when given nothing by using the listItemsToDelete array', function() {
+			scope.listItemController.listItemsToDelete = ['1', '2'];
 
-			var result = scope.listController.getSelectedBookingObjects();
+			var result = scope.listItemController.getselectedListItemObjects();
 
-			expect(result).toEqual(bookingsData);
+			expect(result).toEqual(listItemData);
 		});
 	});
 });

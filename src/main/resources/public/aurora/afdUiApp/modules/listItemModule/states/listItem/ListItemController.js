@@ -17,8 +17,8 @@
 			 * @requires $timeout
 			 * */
 angular.module('AfdUiAppListItemModule')
-	.controller('ListItemController', ['ListItemService', 'listItems', '$scope', 'WcAlertConsoleService', '$translate', '$state', '$stateParams',
-		function(ListItemService, listItems, $scope, WcAlertConsoleService, $translate, $state, $stateParams) {
+	.controller('ListItemController', ['ListItemService', 'listItems', '$scope', 'DeleteListItemModalService', 'WcAlertConsoleService', '$translate', '$state', '$stateParams',
+		function(ListItemService, listItems, $scope, DeleteListItemModalService, WcAlertConsoleService, $translate, $state, $stateParams) {
 
 			//noinspection JSValidateJSDoc
             /**
@@ -68,7 +68,10 @@ angular.module('AfdUiAppListItemModule')
 
 			$scope.$on("delete-listItems", angular.bind(this, function(event, data) { // jshint ignore:line
 
-				this.deleteListItems(this.getselectedListItemObjects(data));
+				//this.deleteListItems(this.getselectedListItemObjects(data));
+				return DeleteListItemModalService.openDeleteModal(this.getselectedListItemObjects(data)).then(angular.bind(this, function(results) {
+					$scope.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+				}));
 			}));
 
             /**

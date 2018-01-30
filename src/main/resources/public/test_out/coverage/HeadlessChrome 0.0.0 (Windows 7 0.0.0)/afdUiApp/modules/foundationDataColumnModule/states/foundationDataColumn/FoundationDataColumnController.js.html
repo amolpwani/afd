@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for afdUiApp\modules\foundationDataColumnModule\states\foundationDataColumn\FoundationDataColumnController.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">all files</a> / <a href="index.html">afdUiApp/modules/foundationDataColumnModule/states/foundationDataColumn/</a> FoundationDataColumnController.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0.86% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/116</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/26</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0.86% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/116</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+//noinspection JSValidateJSDoc
+/**
+ * @ngdoc controller
+ * @module AfdUiAppFoundationDataColumnModule
+ * @name FoundationDataColumnController
+ * @description This controller holds the methods and properties for foundationDataColumns.
+ * @requires FoundationDataColumnService
+ * @requires $filter
+ * @requires foundationDataColumns
+ * @requires $scope
+ * @requires WcAlertConsoleService
+ * @requires $translate
+ * @requires $state
+ * @requires WcDataTableService
+ * @requires $timeout
+ * */
+angular.module('AfdUiAppFoundationDataColumnModule')
+	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', '$scope', 'WcAlertConsoleService', '$translate', '$state',
+<span class="fstat-no" title="function not covered" >		function(FoundationDataColumnService, foundationDataColumns, $scope, WcAlertConsoleService, $translate, $state) {</span>
+&nbsp;
+			//noinspection JSValidateJSDoc
+            /**
+			 * @ngdoc property
+			 * @name foundationDataColumns
+			 * @propertyOf FoundationDataColumnController
+			 * @type {array}
+			 * @description This property holds the foundationDataColumn of foundationDataColumns.
+			 */
+<span class="cstat-no" title="statement not covered" >			this.foundationDataColumns = foundationDataColumns;</span>
+			
+			/**
+			 * @ngdoc method
+			 * @name getSelectedFoundationDataColumnObjects
+			 * @methodOf FoundationDataColumnController
+			 * @params {integer} id
+			 * @returns {object} selectedFoundationDataColumns
+			 * @description Helper function to use in tandem with the datatable selection api.
+			 */
+<span class="cstat-no" title="statement not covered" >			this.getSelectedFoundationDataColumnObjects = <span class="fstat-no" title="function not covered" >function(id) {</span></span>
+<span class="cstat-no" title="statement not covered" >				var selectedId = id;</span>
+<span class="cstat-no" title="statement not covered" >				if(selectedId === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >					selectedId = this.foundationDataColumnsToDelete;</span>
+				}
+				else { //noinspection NodeModulesDependencies
+<span class="cstat-no" title="statement not covered" >					if(!angular.isArray(selectedId)) {</span>
+<span class="cstat-no" title="statement not covered" >                        selectedId = [].concat(selectedId);</span>
+                    }
+				}
+<span class="cstat-no" title="statement not covered" >				var selectedFoundationDataColumns = [];</span>
+<span class="cstat-no" title="statement not covered" >				angular.forEach(this.foundationDataColumns, <span class="fstat-no" title="function not covered" >function(foundationDataColumn) {</span></span>
+<span class="cstat-no" title="statement not covered" >					for(var i = 0; i &lt; selectedId.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >						if(foundationDataColumn.id === selectedId[i]) {</span>
+<span class="cstat-no" title="statement not covered" >							selectedFoundationDataColumns.push(foundationDataColumn);</span>
+						}
+					}
+				});
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				return selectedFoundationDataColumns;</span>
+			};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			$scope.$on("update-foundationDataColumn", angular.bind(this, <span class="fstat-no" title="function not covered" >function(event, data) {</span> // jshint ignore:line</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				this.updateFoundationDataColumn(this.getSelectedFoundationDataColumnObjects(data)[0]);</span>
+			}));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			$scope.$on("delete-foundationDataColumns", angular.bind(this, <span class="fstat-no" title="function not covered" >function(event, data) {</span> // jshint ignore:line</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				this.deleteFoundationDataColumns(this.getSelectedFoundationDataColumnObjects(data));</span>
+			}));
+&nbsp;
+			/**
+			 * @ngdoc method
+			 * @name getSelectedFoundationDataColumnObjects
+			 * @methodOf FoundationDataColumnController
+			 * @params {string} updateType
+			 * @params {string} selectedFoundationDataColumn
+			 * @description The method updates the foundationDataColumn details to database based on updateType and selectedFoundationDataColumn.
+			 */
+<span class="cstat-no" title="statement not covered" >			this.updateFoundationDataColumn = <span class="fstat-no" title="function not covered" >function(selectedFoundationDataColumn) {</span></span>
+<span class="cstat-no" title="statement not covered" >				FoundationDataColumnService.isEditing = true;</span>
+<span class="cstat-no" title="statement not covered" >                FoundationDataColumnService.foundationDataColumn = selectedFoundationDataColumn;</span>
+<span class="cstat-no" title="statement not covered" >				$state.go('create-foundationDataColumn');</span>
+			};
+			
+			/**
+			 * @ngdoc method
+			 * @name processResultsForDisplay
+			 * @methodOf DeleteBookingModalService
+			 * @params {object} results
+			 * @description This method is to process the results for display
+			 */
+<span class="cstat-no" title="statement not covered" >			this.processResultsForDisplay = <span class="fstat-no" title="function not covered" >function(results) {</span></span>
+				//take the results array and process it into an object with a collection of successes, queued requests and failures
+<span class="cstat-no" title="statement not covered" >				var successfulResults = [];</span>
+<span class="cstat-no" title="statement not covered" >				var queuedResults = [];</span>
+<span class="cstat-no" title="statement not covered" >				var failedResults = [];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				for(var i=0; i&lt;results.length; i++){</span>
+<span class="cstat-no" title="statement not covered" >					if(results[i].success === true){</span>
+<span class="cstat-no" title="statement not covered" >						successfulResults.push(results[i]);</span>
+					}
+					else <span class="cstat-no" title="statement not covered" >if(results[i].success === 'queue') {</span>
+<span class="cstat-no" title="statement not covered" >						queuedResults.push(results[i]);</span>
+					}
+					else {
+<span class="cstat-no" title="statement not covered" >						failedResults.push(results[i]);</span>
+					}
+				}
+<span class="cstat-no" title="statement not covered" >				return {'successfulResults': successfulResults, 'queuedResults': queuedResults, 'failedResults': failedResults};</span>
+			};
+			
+<span class="cstat-no" title="statement not covered" >			this.deleteFoundationDataColumn = <span class="fstat-no" title="function not covered" >function(selectedId) {</span></span>
+<span class="cstat-no" title="statement not covered" >				var selectedFoundationDataColumns = [];</span>
+<span class="cstat-no" title="statement not covered" >				angular.forEach(this.foundationDataColumns, <span class="fstat-no" title="function not covered" >function(foundationDataColumn) {</span></span>
+<span class="cstat-no" title="statement not covered" >					if(foundationDataColumn.id === selectedId) {</span>
+<span class="cstat-no" title="statement not covered" >						selectedFoundationDataColumns.push(foundationDataColumn);</span>
+					}
+				});
+				
+				//this.deleteFoundationDataColumns(selectedFoundationDataColumns);
+				
+<span class="cstat-no" title="statement not covered" >				return DeleteFoundationDataColumnModalService.openDeleteModal(selectedFoundationDataColumns).then(angular.bind(this, <span class="fstat-no" title="function not covered" >function(results) {</span></span>
+<span class="cstat-no" title="statement not covered" >					$scope.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);</span>
+				}));
+			}
+			
+			/**
+			 * @ngdoc method
+			 * @name deleteFoundationDataColumnsAndProcessResults
+			 * @methodOf FoundationDataColumnService
+			 * @params {object} foundationDataColumnsToDelete
+			 * @description This method is to delete the bookings and processed deleted results
+			 */
+<span class="cstat-no" title="statement not covered" >			this.deleteFoundationDataColumnsAndProcessResults = <span class="fstat-no" title="function not covered" >function(foundationDataColumnsToDelete) {</span></span>
+<span class="cstat-no" title="statement not covered" >				return FoundationDataColumnService.deleteFoundationDataColumns(foundationDataColumnsToDelete).then(angular.bind(this, <span class="fstat-no" title="function not covered" >function(results) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >					return this.processResultsForDisplay(results);</span>
+				}));
+			};
+			
+&nbsp;
+			/**
+			 * @ngdoc method
+			 * @name deleteFoundationDataColumns
+			 * @methodOf FoundationDataColumnController
+			 * @params {object} foundationDataColumns
+			 * @description This method is for delete the foundationDataColumn from database
+			 */
+<span class="cstat-no" title="statement not covered" >			this.deleteFoundationDataColumns = <span class="fstat-no" title="function not covered" >function(foundationDataColumns) {</span></span>
+<span class="cstat-no" title="statement not covered" >				return this.deleteFoundationDataColumnsAndProcessResults(foundationDataColumns).then(angular.bind(this, <span class="fstat-no" title="function not covered" >function(results) {</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >					$scope.$parent.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);</span>
+				}));
+<span class="cstat-no" title="statement not covered" >				return null;</span>
+			};
+			/**
+			 * @ngdoc method
+			 * @name processAndDisplayDeletionResults
+			 * @methodOf FoundationDataColumnController
+			 * @params {object} results
+			 * @description This method is to process and display the deleted results
+			 */
+<span class="cstat-no" title="statement not covered" >			this.processAndDisplayDeletionResults = <span class="fstat-no" title="function not covered" >function(results) {</span></span>
+<span class="cstat-no" title="statement not covered" >				var createDisplayStr = <span class="fstat-no" title="function not covered" >function(array) {</span></span>
+<span class="cstat-no" title="statement not covered" >					var displayStr = '';</span>
+<span class="cstat-no" title="statement not covered" >					for(var i = 0; i &lt; array.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >						displayStr += array[i].name;</span>
+<span class="cstat-no" title="statement not covered" >						if(i != array.length - 1) {</span>
+<span class="cstat-no" title="statement not covered" >							displayStr += ', ';</span>
+						}
+					}
+<span class="cstat-no" title="statement not covered" >					return displayStr;</span>
+				};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				if(results.successfulResults.length) {</span>
+<span class="cstat-no" title="statement not covered" >					WcAlertConsoleService.addMessage({</span>
+						message: results.successfulResults.length + ' foundationDataColumn(s) were deleted. [' + createDisplayStr(results.successfulResults) + ']',
+						type: 'success',
+						multiple: false,
+                        timeout: 15
+					});
+				}
+<span class="cstat-no" title="statement not covered" >				if(results.queuedResults.length) {</span>
+<span class="cstat-no" title="statement not covered" >					WcAlertConsoleService.addMessage({</span>
+						message: results.queuedResults.length + ' foundationDataColumn(s) queued for deletion when network connectivity is restored. [' + createDisplayStr(results.queuedResults) + ']',
+						type: 'success',
+						multiple: false,
+                        timeout: 15
+					});
+				}
+<span class="cstat-no" title="statement not covered" >				if(results.failedResults.length) {</span>
+<span class="cstat-no" title="statement not covered" >					WcAlertConsoleService.addMessage({</span>
+						message: results.failedResults.length + ' foundationDataColumn(s) failed to be deleted. [' + createDisplayStr(results.failedResults) + ']',
+						type: 'danger',
+						multiple: false
+					});
+				}
+			};
+			
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes = [];</span>
+<span class="cstat-no" title="statement not covered" >			var actionsJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var uiColumnNameJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var hoverHelpJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var uniqueJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var inputTypeJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var valueJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var mandatoryJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var sortOrderJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var editableJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var lengthJson = {};</span>
+<span class="cstat-no" title="statement not covered" >			var idJson = {};</span>
+			
+<span class="cstat-no" title="statement not covered" >			var uiColumnName = {</span>
+				name: 'Actions',
+				binding: 'row.Actions',
+				useNgBind: true,
+				sort: {
+					enabled: false
+				},
+				filter: {
+					enabled: false,
+				}
+			};
+<span class="cstat-no" title="statement not covered" >			var uiColumnNames = [];</span>
+<span class="cstat-no" title="statement not covered" >			uiColumnNames.push(uiColumnName);</span>
+			
+<span class="cstat-no" title="statement not covered" >			angular.forEach(this.foundationDataColumns, <span class="fstat-no" title="function not covered" >function(foundationDataColumn) {</span></span>
+<span class="cstat-no" title="statement not covered" >				uiColumnName = {</span>
+					name: foundationDataColumn.uiColumnName,
+					id: foundationDataColumn.id,
+					binding: 'row.' + foundationDataColumn.uiColumnName,
+					useNgBind: true,
+					sort: {
+						enabled: false,
+					},
+					filter: {
+						enabled: true,
+						label: '&lt;label for="name" class="sr-only"&gt;' + foundationDataColumn.uiColumnName + ' Filter&lt;/label&gt;',
+						field: '&lt;input class="form-control input-sm" id="'+ foundationDataColumn.uiColumnName +
+								'" name="' + foundationDataColumn.uiColumnName + '" type="text" wc-column-filter="' + foundationDataColumn.uiColumnName + '"/&gt;'
+					}
+				};
+				
+<span class="cstat-no" title="statement not covered" >				uiColumnNames.push(uiColumnName);</span>
+				
+<span class="cstat-no" title="statement not covered" >				uiColumnNameJson[foundationDataColumn.uiColumnName] = foundationDataColumn.uiColumnName;</span>
+<span class="cstat-no" title="statement not covered" >				hoverHelpJson[foundationDataColumn.uiColumnName] = foundationDataColumn.hoverHelp;</span>
+<span class="cstat-no" title="statement not covered" >				uniqueJson[foundationDataColumn.uiColumnName] = foundationDataColumn.uniqueColumn ? 'Y' : 'N';</span>
+<span class="cstat-no" title="statement not covered" >				inputTypeJson[foundationDataColumn.uiColumnName] = foundationDataColumn.inputType;</span>
+<span class="cstat-no" title="statement not covered" >				valueJson[foundationDataColumn.uiColumnName] = foundationDataColumn.value;</span>
+<span class="cstat-no" title="statement not covered" >				mandatoryJson[foundationDataColumn.uiColumnName] = foundationDataColumn.mandatory ? 'Y' : 'N';</span>
+<span class="cstat-no" title="statement not covered" >				sortOrderJson[foundationDataColumn.uiColumnName] = foundationDataColumn.sortOrder;</span>
+<span class="cstat-no" title="statement not covered" >				editableJson[foundationDataColumn.uiColumnName] = foundationDataColumn.editable ? 'Y' : 'N';</span>
+<span class="cstat-no" title="statement not covered" >				lengthJson[foundationDataColumn.uiColumnName] = foundationDataColumn.length;</span>
+			});
+			
+<span class="cstat-no" title="statement not covered" >			uiColumnNameJson['Actions'] = 'UI Column Name';</span>
+<span class="cstat-no" title="statement not covered" >			hoverHelpJson['Actions'] = 'Hover Help';</span>
+<span class="cstat-no" title="statement not covered" >			uniqueJson['Actions'] = 'Unique Column';</span>
+<span class="cstat-no" title="statement not covered" >			inputTypeJson['Actions'] = 'Input Type';</span>
+<span class="cstat-no" title="statement not covered" >			valueJson['Actions'] = 'Value';</span>
+<span class="cstat-no" title="statement not covered" >			mandatoryJson['Actions'] = 'Mandatory';</span>
+<span class="cstat-no" title="statement not covered" >			sortOrderJson['Actions'] = 'Sort Order';</span>
+<span class="cstat-no" title="statement not covered" >			editableJson['Actions'] = 'Editable';</span>
+<span class="cstat-no" title="statement not covered" >			lengthJson['Actions'] = 'Length';</span>
+			
+<span class="cstat-no" title="statement not covered" >			uiColumnNameJson['id'] = 1;</span>
+<span class="cstat-no" title="statement not covered" >			hoverHelpJson['id'] = 2;</span>
+<span class="cstat-no" title="statement not covered" >			uniqueJson['id'] = 3;</span>
+<span class="cstat-no" title="statement not covered" >			inputTypeJson['id'] = 4;</span>
+<span class="cstat-no" title="statement not covered" >			valueJson['id'] = 5;</span>
+<span class="cstat-no" title="statement not covered" >			mandatoryJson['id'] = 6;</span>
+<span class="cstat-no" title="statement not covered" >			sortOrderJson['id'] = 7;</span>
+<span class="cstat-no" title="statement not covered" >			editableJson['id'] = 8;</span>
+<span class="cstat-no" title="statement not covered" >			lengthJson['id'] = 9;</span>
+			
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes.push(uiColumnNameJson);</span>
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes.push(hoverHelpJson);</span>
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes.push(uniqueJson);</span>
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes.push(inputTypeJson);</span>
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes.push(valueJson);</span>
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes.push(mandatoryJson);</span>
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes.push(sortOrderJson);</span>
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes.push(editableJson);</span>
+<span class="cstat-no" title="statement not covered" >			this.columnsAtrributes.push(lengthJson);</span>
+<span class="cstat-no" title="statement not covered" >			this.uiColumnNames = uiColumnNames;</span>
+			
+		}
+	]);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 30 2018 01:32:19 GMT+0530 (India Standard Time)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

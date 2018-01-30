@@ -11,7 +11,6 @@
  * @requires $translate
  * @requires WcHttpEndpointPrototype
  * @requires WcAlertConsoleService
- * @requires ConflictNotificationModalService
  * */
 angular.module('AfdUiAppListComponentsModule').service('ListService', ['$q', '$state', '$translate', 'WcHttpEndpointPrototype', 'WcAlertConsoleService',
 	function ($q, $state, $translate, WcHttpEndpointPrototype, WcAlertConsoleService) {
@@ -73,7 +72,7 @@ angular.module('AfdUiAppListComponentsModule').service('ListService', ['$q', '$s
 			var addResultToArray = function (index, success) {
 				//replace the initial promise with a new one that resolves with the data we just created
 				deleteResults[index] = {
-					'name': listsToDelete[index].code,
+					'name': listsToDelete[index].name,
 					'success': success
 				};
 			};
