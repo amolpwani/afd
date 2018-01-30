@@ -2,23 +2,23 @@
 
 //noinspection JSValidateJSDoc
 /**
-			 * @ngdoc controller
-			 * @module AfdUiAppFoundationDataColumnModule
-			 * @name FoundationDataColumnController
-			 * @description This controller holds the methods and properties for foundationDataColumns.
-			 * @requires FoundationDataColumnService
-			 * @requires $filter
-			 * @requires foundationDataColumns
-			 * @requires $scope
-			 * @requires WcAlertConsoleService
-			 * @requires $translate
-			 * @requires $state
-			 * @requires WcDataTableService
-			 * @requires $timeout
-			 * */
+ * @ngdoc controller
+ * @module AfdUiAppFoundationDataColumnModule
+ * @name FoundationDataColumnController
+ * @description This controller holds the methods and properties for foundationDataColumns.
+ * @requires FoundationDataColumnService
+ * @requires $filter
+ * @requires foundationDataColumns
+ * @requires $scope
+ * @requires WcAlertConsoleService
+ * @requires $translate
+ * @requires $state
+ * @requires WcDataTableService
+ * @requires $timeout
+ * */
 angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', '$scope', 'WcAlertConsoleService', '$translate', '$state',
-		function(FoundationDataColumnService, foundationDataColumns, $scope, WcAlertConsoleService, $translate, $state) {
+	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', '$scope', 'DeleteFoundationDataColumnModalService', 'WcAlertConsoleService', '$translate', '$state',
+		function(FoundationDataColumnService, foundationDataColumns, $scope, DeleteFoundationDataColumnModalService, WcAlertConsoleService, $translate, $state) {
 
 			//noinspection JSValidateJSDoc
             /**
@@ -29,7 +29,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			 * @description This property holds the foundationDataColumn of foundationDataColumns.
 			 */
 			this.foundationDataColumns = foundationDataColumns;
-
+			
 			/**
 			 * @ngdoc method
 			 * @name getSelectedFoundationDataColumnObjects
@@ -111,6 +111,21 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				return {'successfulResults': successfulResults, 'queuedResults': queuedResults, 'failedResults': failedResults};
 			};
 			
+			this.deleteFoundationDataColumn = function(selectedId) {
+				var selectedFoundationDataColumns = [];
+				angular.forEach(this.foundationDataColumns, function(foundationDataColumn) {
+					if(foundationDataColumn.id === selectedId) {
+						selectedFoundationDataColumns.push(foundationDataColumn);
+					}
+				});
+				
+				//this.deleteFoundationDataColumns(selectedFoundationDataColumns);
+				
+				return DeleteFoundationDataColumnModalService.openDeleteModal(selectedFoundationDataColumns).then(angular.bind(this, function(results) {
+					$scope.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+				}));
+			}
+			
 			/**
 			 * @ngdoc method
 			 * @name deleteFoundationDataColumnsAndProcessResults
@@ -124,6 +139,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 					return this.processResultsForDisplay(results);
 				}));
 			};
+			
 
 			/**
 			 * @ngdoc method
@@ -182,5 +198,94 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 					});
 				}
 			};
+			
+			this.columnsAtrributes = [];
+			var actionsJson = {};
+			var uiColumnNameJson = {};
+			var hoverHelpJson = {};
+			var uniqueJson = {};
+			var inputTypeJson = {};
+			var valueJson = {};
+			var mandatoryJson = {};
+			var sortOrderJson = {};
+			var editableJson = {};
+			var lengthJson = {};
+			var idJson = {};
+			
+			var uiColumnName = {
+				name: 'Actions',
+				binding: 'row.Actions',
+				useNgBind: true,
+				sort: {
+					enabled: false
+				},
+				filter: {
+					enabled: false,
+				}
+			};
+			var uiColumnNames = [];
+			uiColumnNames.push(uiColumnName);
+			
+			angular.forEach(this.foundationDataColumns, function(foundationDataColumn) {
+				uiColumnName = {
+					name: foundationDataColumn.uiColumnName,
+					id: foundationDataColumn.id,
+					binding: 'row.' + foundationDataColumn.uiColumnName,
+					useNgBind: true,
+					sort: {
+						enabled: false,
+					},
+					filter: {
+						enabled: true,
+						label: '<label for="name" class="sr-only">' + foundationDataColumn.uiColumnName + ' Filter</label>',
+						field: '<input class="form-control input-sm" id="'+ foundationDataColumn.uiColumnName +
+								'" name="' + foundationDataColumn.uiColumnName + '" type="text" wc-column-filter="' + foundationDataColumn.uiColumnName + '"/>'
+					}
+				};
+				
+				uiColumnNames.push(uiColumnName);
+				
+				uiColumnNameJson[foundationDataColumn.uiColumnName] = foundationDataColumn.uiColumnName;
+				hoverHelpJson[foundationDataColumn.uiColumnName] = foundationDataColumn.hoverHelp;
+				uniqueJson[foundationDataColumn.uiColumnName] = foundationDataColumn.uniqueColumn ? 'Y' : 'N';
+				inputTypeJson[foundationDataColumn.uiColumnName] = foundationDataColumn.inputType;
+				valueJson[foundationDataColumn.uiColumnName] = foundationDataColumn.value;
+				mandatoryJson[foundationDataColumn.uiColumnName] = foundationDataColumn.mandatory ? 'Y' : 'N';
+				sortOrderJson[foundationDataColumn.uiColumnName] = foundationDataColumn.sortOrder;
+				editableJson[foundationDataColumn.uiColumnName] = foundationDataColumn.editable ? 'Y' : 'N';
+				lengthJson[foundationDataColumn.uiColumnName] = foundationDataColumn.length;
+			});
+			
+			uiColumnNameJson['Actions'] = 'UI Column Name';
+			hoverHelpJson['Actions'] = 'Hover Help';
+			uniqueJson['Actions'] = 'Unique Column';
+			inputTypeJson['Actions'] = 'Input Type';
+			valueJson['Actions'] = 'Value';
+			mandatoryJson['Actions'] = 'Mandatory';
+			sortOrderJson['Actions'] = 'Sort Order';
+			editableJson['Actions'] = 'Editable';
+			lengthJson['Actions'] = 'Length';
+			
+			uiColumnNameJson['id'] = 1;
+			hoverHelpJson['id'] = 2;
+			uniqueJson['id'] = 3;
+			inputTypeJson['id'] = 4;
+			valueJson['id'] = 5;
+			mandatoryJson['id'] = 6;
+			sortOrderJson['id'] = 7;
+			editableJson['id'] = 8;
+			lengthJson['id'] = 9;
+			
+			this.columnsAtrributes.push(uiColumnNameJson);
+			this.columnsAtrributes.push(hoverHelpJson);
+			this.columnsAtrributes.push(uniqueJson);
+			this.columnsAtrributes.push(inputTypeJson);
+			this.columnsAtrributes.push(valueJson);
+			this.columnsAtrributes.push(mandatoryJson);
+			this.columnsAtrributes.push(sortOrderJson);
+			this.columnsAtrributes.push(editableJson);
+			this.columnsAtrributes.push(lengthJson);
+			this.uiColumnNames = uiColumnNames;
+			
 		}
 	]);

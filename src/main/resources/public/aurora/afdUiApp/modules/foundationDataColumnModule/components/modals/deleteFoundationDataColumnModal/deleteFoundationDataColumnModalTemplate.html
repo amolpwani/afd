@@ -1,0 +1,16 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="deleteFoundationDataColumnInstanceController.reject()">&times;</button>
+	<h3 class="modal-title" translate>foundationDataColumn.deleteFoundationDataColumn.title</h3>
+</div>
+<div class="modal-body">
+	<p translate>foundationDataColumn.deleteFoundationDataColumn.instructions</p>
+	<ul>
+		<li ng-repeat="foundationDataColumn in ::deleteFoundationDataColumnInstanceController.foundationDataColumns">
+			{{foundationDataColumn.uiColumnName}}
+		</li>
+	</ul>
+</div>
+<div class="modal-footer form-actions">
+	<button id="modal-submit" class="btn btn-primary-default" ng-click="deleteFoundationDataColumnInstanceController.resolve()" translate>application.buttons.yes</button>
+	<button id="modal-cancel" class="btn btn-secondary" ng-click="deleteFoundationDataColumnInstanceController.reject()" translate>application.buttons.no</button>
+</div>

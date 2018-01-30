@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
     <div wc-responsive-table data="foundationDataColumnController.foundationDataColumns" data-table-name="foundationDataColumns" row-key="id"
          exporttopdf-enabled exporttoexcel-enabled pagination-enabled responsive-view="foundationDataColumn" id="foundationDataColumntable"
          class="col-xs-12 wc-table" ng-model="foundationDataColumnController.foundationDataColumnsToDelete">
@@ -100,6 +100,14 @@
             </tr>
             </tbody>
         </table>
+	</div>
+</div> -->
+
+
+<div class="row" dynamic-table-wrapper>
+	<div class="col-xs-12" wc-responsive-table dynamic-table="foundationDataColumnController.uiColumnNames" id="foundation-column-table"
+		 row-key="id" data="foundationDataColumnController.columnsAtrributes" exporttopdf-enabled exporttoexcel-enabled >
+
 	</div>
 </div>
 

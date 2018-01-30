@@ -13,8 +13,8 @@
 		 * @requires $stateParams
 		 * */
 angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('CreateFoundationDataColumnController', ['$state', 'FoundationDataColumnService', 'ListService', 'lists', 'FoundationDataColumnPrototype',
-		function($state, FoundationDataColumnService, ListService, lists, FoundationDataColumnPrototype) {
+	.controller('CreateFoundationDataColumnController', ['$state', 'FoundationDataColumnService', 'ListService', 'lists', 'updateFoundationDataColumn', 'FoundationDataColumnPrototype',
+		function($state, FoundationDataColumnService, ListService, lists, updateFoundationDataColumn, FoundationDataColumnPrototype) {
 
 		/**
 		 * @ngdoc property
@@ -35,6 +35,8 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		 */
 		this.foundationDataColumn = new FoundationDataColumnPrototype();
 		
+		this.updateFoundationDataColumn = updateFoundationDataColumn;
+		
 		/**
 		 * Input types which will used for creation of Foundational column.
 		 */
@@ -52,12 +54,17 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		 * @description This property holds the boolean value, by default it is set to false.
 		 */
 		this.isEditing = FoundationDataColumnService.isEditing;
-
+		
 		if (this.isEditing) {
             this.foundationDataColumn = FoundationDataColumnService.foundationDataColumn;
             FoundationDataColumnService.isEditing = false;
 		} else {
 			this.foundationDataColumn.active = true;
+		}
+		
+		if (this.updateFoundationDataColumn) {
+			this.isEditing = true;
+			this.foundationDataColumn = this.updateFoundationDataColumn;
 		}
 		
 		/**

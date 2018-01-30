@@ -120,7 +120,7 @@
 			<div class="form-group">
 				<label for="editable" translate>foundationDataColumn.createFoundationDataColumn.editable
 				</label>
-				<input type="checkbox" name="editable" id="editable" ng-disabled="createFoundationDataColumnController.foundationDataColumn.uniqueColumn"
+				<input type="checkbox" name="editable" id="editable" ng-disabled="createFoundationDataColumnController.foundationDataColumn.uniqueColumn && createFoundationDataColumnController.foundationDataColumn.inputType == 'List'"
 					   ng-model="createFoundationDataColumnController.foundationDataColumn.editable"/>
 			</div>
 		</div>
