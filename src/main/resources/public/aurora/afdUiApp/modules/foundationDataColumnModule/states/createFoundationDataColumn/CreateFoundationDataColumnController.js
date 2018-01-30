@@ -13,8 +13,8 @@
 		 * @requires $stateParams
 		 * */
 angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('CreateFoundationDataColumnController', ['$state', 'FoundationDataColumnService', 'ListService', 'lists', 'updateFoundationDataColumn', 'FoundationDataColumnPrototype',
-		function($state, FoundationDataColumnService, ListService, lists, updateFoundationDataColumn, FoundationDataColumnPrototype) {
+	.controller('CreateFoundationDataColumnController', ['$state', 'FoundationDataColumnService', 'ListService', 'lists', 'FoundationDataColumnPrototype',
+		function($state, FoundationDataColumnService, ListService, lists, FoundationDataColumnPrototype) {
 
 		/**
 		 * @ngdoc property
@@ -34,8 +34,6 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		 * @description This property holds the object for FoundationDataColumnPrototype service.
 		 */
 		this.foundationDataColumn = new FoundationDataColumnPrototype();
-		
-		this.updateFoundationDataColumn = updateFoundationDataColumn;
 		
 		/**
 		 * Input types which will used for creation of Foundational column.
@@ -60,11 +58,6 @@ angular.module('AfdUiAppFoundationDataColumnModule')
             FoundationDataColumnService.isEditing = false;
 		} else {
 			this.foundationDataColumn.active = true;
-		}
-		
-		if (this.updateFoundationDataColumn) {
-			this.isEditing = true;
-			this.foundationDataColumn = this.updateFoundationDataColumn;
 		}
 		
 		/**
@@ -115,29 +108,27 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		 * @methodOf CreateFoundationDataColumnController
 		 * @description The method submit the foundationDataColumn details to database.
 		 */
-		this.submitFoundationDataColumn = function(createFoundationDataColumnForm) {
-			if (createFoundationDataColumnForm.$valid) {
-				this.submitInProgress = true;
-				if(this.isEditing) {
-	
-					FoundationDataColumnService.updateFoundationDataColumn(this.foundationDataColumn).then(angular.bind(this, function() {
-						$state.go('foundationDataColumn');
-					}), angular.bind(this, function(errorObj) {
-						if(errorObj.updatedFoundationDataColumn) {
-							this.foundationDataColumn = errorObj.updatedFoundationDataColumn;
-						}
-	
-						this.submitInProgress = false;
-					}));
-				} else {
-					FoundationDataColumnService.createFoundationDataColumn(this.foundationDataColumn).then(function() {
-							//noinspection JSCheckFunctionSignatures
-						$state.go('foundationDataColumn');
-					}, angular.bind(this, function() {
-	
-						this.submitInProgress = false;
-					}));
-				}
+		this.submitFoundationDataColumn = function() {
+			this.submitInProgress = true;
+			if(this.isEditing) {
+
+				FoundationDataColumnService.updateFoundationDataColumn(this.foundationDataColumn).then(angular.bind(this, function() {
+					$state.go('foundationDataColumn');
+				}), angular.bind(this, function(errorObj) {
+					if(errorObj.updatedFoundationDataColumn) {
+						this.foundationDataColumn = errorObj.updatedFoundationDataColumn;
+					}
+
+					this.submitInProgress = false;
+				}));
+			} else {
+				FoundationDataColumnService.createFoundationDataColumn(this.foundationDataColumn).then(function() {
+						//noinspection JSCheckFunctionSignatures
+					$state.go('foundationDataColumn');
+				}, angular.bind(this, function() {
+
+					this.submitInProgress = false;
+				}));
 			}
 		};
 

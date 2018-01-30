@@ -24,6 +24,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule')
          */
         function FoundationDataColumnPrototype(foundationDataColumnObject) {
             
+        	this.id = '';
     	    this.uiColumnName = '';
     	    this.hoverHelp = '';
     	    this.uniqueColumn = false;

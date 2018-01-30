@@ -69,6 +69,20 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 
 				this.deleteFoundationDataColumns(this.getSelectedFoundationDataColumnObjects(data));
 			}));
+			
+			this.updateSelectedFoundationDataColumn = function(selectedId) {
+				
+				var selectedFoundationDataColumn = {};
+				angular.forEach(this.foundationDataColumns, function(foundationDataColumn) {
+					if(foundationDataColumn.id === selectedId) {
+						selectedFoundationDataColumn = foundationDataColumn;
+					}
+				});
+				
+				FoundationDataColumnService.isEditing = true;
+                FoundationDataColumnService.foundationDataColumn = selectedFoundationDataColumn;
+				$state.go('create-foundationDataColumn');
+			};
 
 			/**
 			 * @ngdoc method

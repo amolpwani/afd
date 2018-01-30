@@ -1,4 +1,4 @@
-<form class="well" role="form" name="createFoundationDataColumnForm" id="createFoundationDataColumnForm" novalidate wc-form-submit>
+<form class="well" role="form" name="createFoundationDataColumnForm" id="createFoundationDataColumnForm" ng-submit="createFoundationDataColumnForm.$valid && createFoundationDataColumnController.submitFoundationDataColumn()" novalidate wc-form-submit>
 	<h2 ng-hide="createFoundationDataColumnController.isEditing" translate>foundationDataColumn.createFoundationDataColumn.title</h2>
 	<h2 ng-show="createFoundationDataColumnController.isEditing" translate>foundationDataColumn.editFoundationDataColumn.title</h2>
 	<div class="row">
@@ -132,8 +132,7 @@
 				<label for="length" class="control-label" translate>foundationDataColumn.createFoundationDataColumn.length </label>
 				<input ng-model="createFoundationDataColumnController.foundationDataColumn.length" id="length"
 					   name="length" type="number" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-					   ng-disabled="(createFoundationDataColumnController.foundationDataColumn.inputType == 'List')"
-					   wc-validation-indicator="{{'foundationDataColumn.createFoundationDataColumn.length' | translate}}" required/>
+					   ng-disabled="(createFoundationDataColumnController.foundationDataColumn.inputType == 'List')"/>
 			</div>
 		</div>
 	</div>
@@ -145,7 +144,8 @@
 			</button>
 		</div>
 		<div class="col-xs-6 text-center">
-			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" ng-click="createFoundationDataColumnController.submitFoundationDataColumn(createFoundationDataColumnForm)" translate>
+			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" 
+				wc-continue-if-valid wc-click-once translate>
 				foundationDataColumn.createFoundationDataColumn.save
 			</button>
 		</div>

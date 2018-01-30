@@ -7,6 +7,7 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 	FoundationDataColumnService, ListService, lists, FoundationDataColumnPrototype, $q, $httpBackend, $templateCache;
 
 	var createFoundationDataColumnController;
+	lists = [{'id':1, 'name':'List1'},{'id':2, 'name':'List2'}];
 
 	beforeEach(function(){
 		module('AfdUiAppFoundationDataColumnModule');
@@ -19,7 +20,6 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 			$state = $injector.get('$state');
 			FoundationDataColumnService = $injector.get('FoundationDataColumnService');
 			ListService = $injector.get('ListService');
-			lists = ListService.getLists();
 			FoundationDataColumnPrototype = $injector.get('FoundationDataColumnPrototype');
 			$q = $injector.get('$q');
 			$httpBackend = $injector.get('$httpBackend');
@@ -34,7 +34,8 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 
 				CreateFoundationDataColumnController = $controller(
 					'CreateFoundationDataColumnController as createFoundationDataColumnController', {
-						$scope : scope
+						$scope : scope,
+						lists: lists,
 					});
 			}
 			else {
@@ -74,11 +75,11 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 			expect(scope.createFoundationDataColumnController.foundationDataColumn).toBeDefined();
 		});
 
-		it('should initialize the list object to a new list', function() {
+		it('should initialize the foundationDataColumn object to a new foundationDataColumn', function() {
 			scope.createFoundationDataColumnController.isEditing = false;
 			var emptyFoundationDataColumn = new FoundationDataColumnPrototype();
 			emptyFoundationDataColumn.active = true;
-			expect(scope.createFoundationDataColumnController.foundationdataColumn).toEqual(emptyFoundationDataColumn);
+			expect(scope.createFoundationDataColumnController.foundationDataColumn).toEqual(emptyFoundationDataColumn);
 		});
 
 	});
@@ -88,7 +89,7 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 			spyOn($state, 'go');
 		});
 
-		it('should navigate back to list table view if list creation is cancelled', function(){
+		it('should navigate back to foundationDataColumn table view if foundationDataColumn creation is cancelled', function(){
 			scope.createFoundationDataColumnController.cancel();
 
 			expect($state.go).toHaveBeenCalledWith('foundationDataColumn');
@@ -97,7 +98,7 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 
 	describe('submitFoundationDataColumn():', function(){
 
-		it('should call createFoundationDataColumn and navigate to list if the creation is successful', function(){
+		it('should call createFoundationDataColumn and navigate to foundationDataColumn table if the creation is successful', function(){
 
 			spyOn($state,'go').and.callFake(function(){
 				return true;
@@ -168,10 +169,10 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 			expect(scope.createFoundationDataColumnController.submitInProgress).toEqual(false);
 		});
 
-		it('in update error case, it should set the list object to the updated foundationdataColumn if one is available', function(){
+		it('in update error case, it should set the list object to the updated foundationDataColumn if one is available', function(){
 
 			spyOn(FoundationDataColumnService,'updateFoundationDataColumn').and.callFake(function(){
-				return $q.reject({error: 'test', updatedList: 'thing'});
+				return $q.reject({error: 'test', updatedFoundationDataColumn: 'thing'});
 			});
 			spyOn($state, 'go').and.returnValue(true);
 			scope.createFoundationDataColumnController.isEditing = true;
@@ -179,7 +180,7 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 			scope.createFoundationDataColumnController.submitFoundationDataColumn();
 
 			scope.$apply();
-			expect(scope.createFoundationDataColumnController.foundationdataColumn).toEqual('thing');
+			expect(scope.createFoundationDataColumnController.foundationDataColumn).toEqual('thing');
 		});
 	});
 

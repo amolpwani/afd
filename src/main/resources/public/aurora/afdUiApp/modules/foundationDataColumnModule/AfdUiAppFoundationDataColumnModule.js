@@ -42,24 +42,6 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			resolve: {
 				lists: ['ListService', function(ListService) {
 					return ListService.getLists();
-				}],
-				updateFoundationDataColumn: ['FoundationDataColumnService', function(FoundationDataColumnService) {
-					return null;
-				}]
-			}
-		})
-		.state('update-foundationDataColumn', {
-			url: '/update-foundationDataColumn:id',
-			templateUrl: 'afdUiApp/modules/foundationDataColumnModule/states/createFoundationDataColumn/createFoundationDataColumnTemplate.html',
-			controller: 'CreateFoundationDataColumnController',
-			controllerAs: 'createFoundationDataColumnController',
-			parent: 'afd-ui-app',
-			resolve: {
-				lists: ['ListService', function(ListService) {
-					return ListService.getLists();
-				}],
-				updateFoundationDataColumn: ['FoundationDataColumnService', '$stateParams', function(FoundationDataColumnService, $stateParams) {
-					return FoundationDataColumnService.getFoundationDataColumn($stateParams.id);
 				}]
 			}
 		});
@@ -97,7 +79,7 @@ angular.module('AfdUiAppFoundationDataColumnModule').directive('dynamicTable', f
 				}
             	
             	if (column.name !== 'Actions') {
-	            	tableHeaderCell.append('<div><a style="color: #fff;" ui-sref="update-foundationDataColumn({id:' + column.id + '})">Edit</a> <a style="color: #fff;" ng-click="foundationDataColumnController.deleteFoundationDataColumn(' + column.id + ')">Delete</a></div>');
+	            	tableHeaderCell.append('<div><a style="color: #fff;" ng-click="foundationDataColumnController.updateSelectedFoundationDataColumn(' + column.id + ')">Edit</a> <a style="color: #fff;" ng-click="foundationDataColumnController.deleteFoundationDataColumn(' + column.id + ')">Delete</a></div>');
             		//tableHeaderCell.append('<div><a style="color: #fff;" ui-sref="update-foundationDataColumn({id:' + column.id + '})">Edit</a></div>');
             	}
 

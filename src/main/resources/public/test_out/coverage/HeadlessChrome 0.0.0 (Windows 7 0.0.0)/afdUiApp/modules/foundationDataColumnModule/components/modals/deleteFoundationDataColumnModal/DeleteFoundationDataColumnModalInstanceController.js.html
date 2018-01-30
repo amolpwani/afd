@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>6/6</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -117,7 +117,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,8 +126,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -137,8 +137,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
@@ -147,7 +147,7 @@
 /**
 		 * @ngdoc controller
 		 * @module AfdUiAppFoundationDataColumnComponentsModule
-		 * @name DeleteFoundationDataColumnInstanceController
+		 * @name DeleteFoundationDataColumnModalInstanceController
 		 * @description
 		 * This controller is mainly responsible for all booking  deletion related operations
 		 * @requires $uibModalInstance
@@ -155,39 +155,39 @@
 		 *
 		 */
 angular.module('AfdUiAppFoundationDataColumnComponentsModule')
-	.controller('DeleteFoundationDataColumnInstanceController', ['$uibModalInstance', 'foundationDataColumns', <span class="fstat-no" title="function not covered" >function ($uibModalInstance, foundationDataColumns) {</span>
+	.controller('DeleteFoundationDataColumnModalInstanceController', ['$uibModalInstance', 'foundationDataColumns', function ($uibModalInstance, foundationDataColumns) {
 &nbsp;
 		//noinspection JSValidateJSDoc
         /**
 		 * @ngdoc property
 		 * @name foundationDataColumns
-		 * @propertyOf DeleteFoundationDataColumnInstanceController
+		 * @propertyOf DeleteFoundationDataColumnModalInstanceController
 		 * @description Holds the foundationDataColumns in an array
 		 * @type {array}
 		 */
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	this.foundationDataColumns = foundationDataColumns;</span>
+	this.foundationDataColumns = foundationDataColumns;
 &nbsp;
 		/**
 		 * @ngdoc method
 		 * @name resolve
-		 * @methodOf DeleteFoundationDataColumnInstanceController
+		 * @methodOf DeleteFoundationDataColumnModalInstanceController
 		 * @description The method is to close the model instance object
 		 */
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	this.resolve = <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >		$uibModalInstance.close();</span>
+	this.resolve = function () {
+		$uibModalInstance.close();
 	};
 &nbsp;
 		/**
 		 * @ngdoc method
 		 * @name reject
-		 * @methodOf DeleteFoundationDataColumnInstanceController
+		 * @methodOf DeleteFoundationDataColumnModalInstanceController
 		 * @description The method is to reject the changes
 		 */
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	this.reject = <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >		$uibModalInstance.dismiss();</span>
+	this.reject = function () {
+		$uibModalInstance.dismiss();
 	};
 }]);
 &nbsp;</pre></td></tr>
@@ -196,7 +196,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule')
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 30 2018 01:32:19 GMT+0530 (India Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 30 2018 15:22:58 GMT+0530 (India Standard Time)
 </div>
 </div>
 <script src="../../../../../../prettify.js"></script>
