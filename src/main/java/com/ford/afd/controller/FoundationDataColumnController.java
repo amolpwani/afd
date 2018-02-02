@@ -17,23 +17,41 @@ import com.ford.afd.service.FoundationDataColumnService;
 /**
  * Created by dchiruma on 12/26/2017.
  */
-
+/**
+ * This Controller is Used to interact with FoundationDatColumn Table.
+ *
+ */
 @RestController
 @RequestMapping("/foundationdatacolumn")
 public class FoundationDataColumnController {
     @Autowired
     private FoundationDataColumnService foundationDataColumnService;
 
+    /**
+     * To get all FoundationDataColumns.
+     * @return List<FoundationDataColumn>
+     */
 	@RequestMapping(value = "getFoundationColumn",method = RequestMethod.GET)
 	public List<FoundationDataColumn> directFoundationDataColumnList(){
 		return foundationDataColumnService.allFoundationDataColumn();
 	}
 
+	/**
+	 * To get FoundationDataColumn using id 
+	 * @param id
+	 * @return FoundationDataColumn
+	 */
 	@RequestMapping(value = "getFoundationColumn/{id}",method = RequestMethod.GET)
 	public FoundationDataColumn foundationDataColumnById(@PathVariable long id ) {
 		return foundationDataColumnService.findFoundationDataColumnById(id);
 	}
 
+	/**
+	 * Update Foundationdatacolumn for given foundationdatacolumn in RequestBody.
+	 * @param id 
+	 * @param foundationDataColumn
+	 * @return
+	 */
 	@RequestMapping(value="getFoundationColumn/{id}",method=RequestMethod.PUT)
 	public FoundationDataColumn updateFoundationDataColumn(@PathVariable long id, @RequestBody FoundationDataColumn foundationDataColumn){
 		return foundationDataColumnService.saveFoundationDataColumn(foundationDataColumn);

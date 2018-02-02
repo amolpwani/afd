@@ -168,7 +168,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule').service('Foundati
 				if (response.status == 'queue') {
 					WcAlertConsoleService.addMessage({
 						message: $translate.instant('foundationDataColumn.editFoundationDataColumn.updateQueued', {
-							name: foundationDataColumn.name
+							name: foundationDataColumn.uiColumnName
 						}),
 						type: 'success',
 						multiple: false
@@ -177,7 +177,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule').service('Foundati
 				else {
 					WcAlertConsoleService.addMessage({
 						message: $translate.instant('foundationDataColumn.editFoundationDataColumn.updateSuccess', {
-                            name: foundationDataColumn.name
+                            name: foundationDataColumn.uiColumnName
 						}),
 						type: 'success',
 						multiple: false

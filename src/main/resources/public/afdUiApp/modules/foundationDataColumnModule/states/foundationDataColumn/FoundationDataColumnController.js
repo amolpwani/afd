@@ -17,8 +17,8 @@
  * @requires $timeout
  * */
 angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', '$scope', 'DeleteFoundationDataColumnModalService', 'WcAlertConsoleService', '$translate', '$state',
-		function(FoundationDataColumnService, foundationDataColumns, $scope, DeleteFoundationDataColumnModalService, WcAlertConsoleService, $translate, $state) {
+	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', 'lists', '$scope', 'DeleteFoundationDataColumnModalService', 'WcAlertConsoleService', '$translate', '$state',
+		function(FoundationDataColumnService, foundationDataColumns, lists, $scope, DeleteFoundationDataColumnModalService, WcAlertConsoleService, $translate, $state) {
 
 			//noinspection JSValidateJSDoc
             /**
@@ -29,6 +29,8 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			 * @description This property holds the foundationDataColumn of foundationDataColumns.
 			 */
 			this.foundationDataColumns = foundationDataColumns;
+			
+			var lists = lists;
 			
 			/**
 			 * @ngdoc method
@@ -241,33 +243,47 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			uiColumnNames.push(uiColumnName);
 			
 			angular.forEach(this.foundationDataColumns, function(foundationDataColumn) {
+				var columnName = foundationDataColumn.uiColumnName.replace(/ /g, '_');
+				var selectedList = '';
+				
 				uiColumnName = {
 					name: foundationDataColumn.uiColumnName,
 					id: foundationDataColumn.id,
-					binding: 'row.' + foundationDataColumn.uiColumnName,
+					binding: 'row.' + columnName,
 					useNgBind: true,
 					sort: {
 						enabled: false,
 					},
 					filter: {
-						enabled: true,
-						label: '<label for="name" class="sr-only">' + foundationDataColumn.uiColumnName + ' Filter</label>',
-						field: '<input class="form-control input-sm" id="'+ foundationDataColumn.uiColumnName +
-								'" name="' + foundationDataColumn.uiColumnName + '" type="text" wc-column-filter="' + foundationDataColumn.uiColumnName + '"/>'
+						enabled: false,
+						label: '<label for="name" class="sr-only">' + columnName + ' Filter</label>',
+						field: '<input class="form-control input-sm" id="'+ columnName +
+								'" name="' + columnName + '" type="text" wc-column-filter="' + columnName + '"/>'
 					}
 				};
 				
 				uiColumnNames.push(uiColumnName);
 				
-				uiColumnNameJson[foundationDataColumn.uiColumnName] = foundationDataColumn.uiColumnName;
-				hoverHelpJson[foundationDataColumn.uiColumnName] = foundationDataColumn.hoverHelp;
-				uniqueJson[foundationDataColumn.uiColumnName] = foundationDataColumn.uniqueColumn ? 'Y' : 'N';
-				inputTypeJson[foundationDataColumn.uiColumnName] = foundationDataColumn.inputType;
-				valueJson[foundationDataColumn.uiColumnName] = foundationDataColumn.value;
-				mandatoryJson[foundationDataColumn.uiColumnName] = foundationDataColumn.mandatory ? 'Y' : 'N';
-				sortOrderJson[foundationDataColumn.uiColumnName] = foundationDataColumn.sortOrder;
-				editableJson[foundationDataColumn.uiColumnName] = foundationDataColumn.editable ? 'Y' : 'N';
-				lengthJson[foundationDataColumn.uiColumnName] = foundationDataColumn.length;
+				uiColumnNameJson[columnName] = foundationDataColumn.uiColumnName;
+				hoverHelpJson[columnName] = foundationDataColumn.hoverHelp;
+				uniqueJson[columnName] = foundationDataColumn.uniqueColumn ? 'Y' : 'N';
+				if (foundationDataColumn.inputType === 'List') {
+					
+					angular.forEach(lists, function(list) {
+						if(list.id === foundationDataColumn.selectedListId) {
+							selectedList = list.description;
+						}
+					});
+					
+					inputTypeJson[columnName] = foundationDataColumn.inputType + '-' + selectedList + '-' + foundationDataColumn.listDisplayType;
+				} else {
+					inputTypeJson[columnName] = foundationDataColumn.inputType;
+				}
+				valueJson[columnName] = foundationDataColumn.value;
+				mandatoryJson[columnName] = foundationDataColumn.mandatory ? 'Y' : 'N';
+				sortOrderJson[columnName] = foundationDataColumn.sortOrder;
+				editableJson[columnName] = foundationDataColumn.editable ? 'Y' : 'N';
+				lengthJson[columnName] = foundationDataColumn.length;
 			});
 			
 			uiColumnNameJson['Actions'] = 'UI Column Name';
@@ -276,7 +292,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			inputTypeJson['Actions'] = 'Input Type';
 			valueJson['Actions'] = 'Value';
 			mandatoryJson['Actions'] = 'Mandatory';
-			sortOrderJson['Actions'] = 'Sort Order';
+			sortOrderJson['Actions'] = 'Display Order';
 			editableJson['Actions'] = 'Editable';
 			lengthJson['Actions'] = 'Length';
 			

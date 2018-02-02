@@ -1,0 +1,6 @@
+{
+  "ENV": {
+    "BACKEND_URL": "https://swt-middlelayer-dev.apps-pcf02i.cf.ford.com",
+    "EnvName":"dev"
+  }
+}

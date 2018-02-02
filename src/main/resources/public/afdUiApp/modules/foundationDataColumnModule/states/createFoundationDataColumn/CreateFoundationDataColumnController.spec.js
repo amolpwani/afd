@@ -4,10 +4,11 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 
 	// Dependencies
 	var scope, $rootScope, $controller, CreateFoundationDataColumnController, createFoundationDataColumnForm, $compile, $state, 
-	FoundationDataColumnService, ListService, lists, FoundationDataColumnPrototype, $q, $httpBackend, $templateCache;
+	FoundationDataColumnService, ListService, lists, foundationDataColumns, FoundationDataColumnPrototype, $q, $httpBackend, $templateCache, $translate;
 
 	var createFoundationDataColumnController;
 	lists = [{'id':1, 'name':'List1'},{'id':2, 'name':'List2'}];
+	foundationDataColumns = [{'id':1, 'uiColumnName':'Column1'},{'id':2, 'uiColumnName':'Column2'}]
 
 	beforeEach(function(){
 		module('AfdUiAppFoundationDataColumnModule');
@@ -24,6 +25,7 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 			$q = $injector.get('$q');
 			$httpBackend = $injector.get('$httpBackend');
 			$templateCache = $injector.get('$templateCache');
+			$translate = $injector.get('$translate');
 		});
 
 
@@ -36,6 +38,7 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 					'CreateFoundationDataColumnController as createFoundationDataColumnController', {
 						$scope : scope,
 						lists: lists,
+						foundationDataColumns: foundationDataColumns
 					});
 			}
 			else {

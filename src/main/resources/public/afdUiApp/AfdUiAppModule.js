@@ -12,7 +12,8 @@
  * @requires AfdUiAppFoundationDataColumnComponentsModule
  */
 angular.module('AfdUiAppModule', [
-    'WebCoreModule', 
+    'WebCoreModule',
+    'afdEnvConfig',
     'AfdUiAppComponentsModule',
     'AfdUiAppListModule',
     'AfdUiAppListItemModule',
@@ -50,22 +51,15 @@ angular.module('AfdUiAppModule')
             WcTranslateConfiguratorServiceProvider.configureTranslateService({loaderObj: {urlTemplate: '../translations/{lang}/{part}.json'},});
         }
     ])
-    .run(['WcHttpRequestService', 'WcWebtrendsService', 'WcTranslateConfiguratorService',
-        function(WcHttpRequestService, WcWebtrendsService, WcTranslateConfiguratorService) {
+    .run(['WcHttpRequestService', 'WcWebtrendsService', 'WcTranslateConfiguratorService', 'ENV',
+        function(WcHttpRequestService, WcWebtrendsService, WcTranslateConfiguratorService, ENV) {
 
-            WcHttpRequestService.configureDefaults({baseUrl: '/'});
+            WcHttpRequestService.configureDefaults({baseUrl: ENV.BACKEND_URL});
 
             WcTranslateConfiguratorService.loadPartAndRefresh('AfdUiApp');
+            WcHttpRequestService.configuration.timeout = 300000;
 
             // Enable Webtrends for App
             WcWebtrendsService.enable();
-            
-            //cache resources needed for list creation flow. do it here so it only happens once
-//			var precacheRequests = ['ListService',
-//				function(ListService){
-//					ListService.getLists();
-//				}];
-//			
-//			$injector.invoke(precacheRequests);
         }]);
 

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.82% </span>
+        <span class="strong">13.16% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/39</span>
+        <span class='fraction'>5/38</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">8.33% </span>
+        <span class="strong">9.09% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/12</span>
+        <span class='fraction'>1/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.82% </span>
+        <span class="strong">13.16% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/39</span>
+        <span class='fraction'>5/38</span>
       </div>
     </div>
   </div>
@@ -202,19 +202,7 @@
 157
 158
 159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+160</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -243,23 +231,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -412,6 +388,9 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			resolve: {
 				foundationDataColumns: ['FoundationDataColumnService', <span class="fstat-no" title="function not covered" >function(FoundationDataColumnService) {</span>
 <span class="cstat-no" title="statement not covered" >					return FoundationDataColumnService.getFoundationDataColumns();</span>
+				}],
+				lists: ['ListService', <span class="fstat-no" title="function not covered" >function(ListService) {</span>
+<span class="cstat-no" title="statement not covered" >					return ListService.getLists();</span>
 				}]
 			},
 			onEnter: ['$state', <span class="fstat-no" title="function not covered" >function($state) {</span>
@@ -430,23 +409,8 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				lists: ['ListService', <span class="fstat-no" title="function not covered" >function(ListService) {</span>
 <span class="cstat-no" title="statement not covered" >					return ListService.getLists();</span>
 				}],
-				updateFoundationDataColumn: ['FoundationDataColumnService', <span class="fstat-no" title="function not covered" >function(FoundationDataColumnService) {</span>
-<span class="cstat-no" title="statement not covered" >					return null;</span>
-				}]
-			}
-		})
-		.state('update-foundationDataColumn', {
-			url: '/update-foundationDataColumn:id',
-			templateUrl: 'afdUiApp/modules/foundationDataColumnModule/states/createFoundationDataColumn/createFoundationDataColumnTemplate.html',
-			controller: 'CreateFoundationDataColumnController',
-			controllerAs: 'createFoundationDataColumnController',
-			parent: 'afd-ui-app',
-			resolve: {
-				lists: ['ListService', <span class="fstat-no" title="function not covered" >function(ListService) {</span>
-<span class="cstat-no" title="statement not covered" >					return ListService.getLists();</span>
-				}],
-				updateFoundationDataColumn: ['FoundationDataColumnService', '$stateParams', <span class="fstat-no" title="function not covered" >function(FoundationDataColumnService, $stateParams) {</span>
-<span class="cstat-no" title="statement not covered" >					return FoundationDataColumnService.getFoundationDataColumn($stateParams.id);</span>
+				foundationDataColumns: ['FoundationDataColumnService', <span class="fstat-no" title="function not covered" >function(FoundationDataColumnService) {</span>
+<span class="cstat-no" title="statement not covered" >					return FoundationDataColumnService.getFoundationDataColumns();</span>
 				}]
 			}
 		});
@@ -562,7 +526,7 @@ angular.module('AfdUiAppFoundationDataColumnModule').directive('dynamicTableWrap
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 30 2018 15:22:58 GMT+0530 (India Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Feb 01 2018 22:20:56 GMT+0530 (India Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

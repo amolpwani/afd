@@ -25,6 +25,9 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			resolve: {
 				foundationDataColumns: ['FoundationDataColumnService', function(FoundationDataColumnService) {
 					return FoundationDataColumnService.getFoundationDataColumns();
+				}],
+				lists: ['ListService', function(ListService) {
+					return ListService.getLists();
 				}]
 			},
 			onEnter: ['$state', function($state) {
@@ -42,6 +45,9 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			resolve: {
 				lists: ['ListService', function(ListService) {
 					return ListService.getLists();
+				}],
+				foundationDataColumns: ['FoundationDataColumnService', function(FoundationDataColumnService) {
+					return FoundationDataColumnService.getFoundationDataColumns();
 				}]
 			}
 		});

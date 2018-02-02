@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.06% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>103/124</span>
+        <span class='fraction'>110/132</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>21/28</span>
+        <span class='fraction'>24/32</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">57.89% </span>
+        <span class="strong">60% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>11/19</span>
+        <span class='fraction'>12/20</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.06% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>103/124</span>
+        <span class='fraction'>110/132</span>
       </div>
     </div>
   </div>
@@ -348,7 +348,23 @@
 303
 304
 305
-306</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -377,6 +393,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -592,6 +610,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -613,6 +634,17 @@
 <span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-yes">20×</span>
 <span class="cline-any cline-yes">20×</span>
@@ -672,8 +704,8 @@
  * @requires $timeout
  * */
 angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', '$scope', 'DeleteFoundationDataColumnModalService', 'WcAlertConsoleService', '$translate', '$state',
-		function(FoundationDataColumnService, foundationDataColumns, $scope, DeleteFoundationDataColumnModalService, WcAlertConsoleService, $translate, $state) {
+	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', 'lists', '$scope', 'DeleteFoundationDataColumnModalService', 'WcAlertConsoleService', '$translate', '$state',
+		function(FoundationDataColumnService, foundationDataColumns, lists, $scope, DeleteFoundationDataColumnModalService, WcAlertConsoleService, $translate, $state) {
 &nbsp;
 			//noinspection JSValidateJSDoc
             /**
@@ -684,6 +716,8 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			 * @description This property holds the foundationDataColumn of foundationDataColumns.
 			 */
 			this.foundationDataColumns = foundationDataColumns;
+			
+			var lists = lists;
 			
 			/**
 			 * @ngdoc method
@@ -896,33 +930,47 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			uiColumnNames.push(uiColumnName);
 			
 			angular.forEach(this.foundationDataColumns, function(foundationDataColumn) {
+				var columnName = foundationDataColumn.uiColumnName.replace(/ /g, '_');
+				var selectedList = '';
+				
 				uiColumnName = {
 					name: foundationDataColumn.uiColumnName,
 					id: foundationDataColumn.id,
-					binding: 'row.' + foundationDataColumn.uiColumnName,
+					binding: 'row.' + columnName,
 					useNgBind: true,
 					sort: {
 						enabled: false,
 					},
 					filter: {
-						enabled: true,
-						label: '&lt;label for="name" class="sr-only"&gt;' + foundationDataColumn.uiColumnName + ' Filter&lt;/label&gt;',
-						field: '&lt;input class="form-control input-sm" id="'+ foundationDataColumn.uiColumnName +
-								'" name="' + foundationDataColumn.uiColumnName + '" type="text" wc-column-filter="' + foundationDataColumn.uiColumnName + '"/&gt;'
+						enabled: false,
+						label: '&lt;label for="name" class="sr-only"&gt;' + columnName + ' Filter&lt;/label&gt;',
+						field: '&lt;input class="form-control input-sm" id="'+ columnName +
+								'" name="' + columnName + '" type="text" wc-column-filter="' + columnName + '"/&gt;'
 					}
 				};
 				
 				uiColumnNames.push(uiColumnName);
 				
-				uiColumnNameJson[foundationDataColumn.uiColumnName] = foundationDataColumn.uiColumnName;
-				hoverHelpJson[foundationDataColumn.uiColumnName] = foundationDataColumn.hoverHelp;
-				uniqueJson[foundationDataColumn.uiColumnName] = foundationDataColumn.uniqueColumn ? 'Y' : 'N';
-				inputTypeJson[foundationDataColumn.uiColumnName] = foundationDataColumn.inputType;
-				valueJson[foundationDataColumn.uiColumnName] = foundationDataColumn.value;
-				mandatoryJson[foundationDataColumn.uiColumnName] = foundationDataColumn.mandatory ? 'Y' : <span class="branch-1 cbranch-no" title="branch not covered" >'N';</span>
-				sortOrderJson[foundationDataColumn.uiColumnName] = foundationDataColumn.sortOrder;
-				editableJson[foundationDataColumn.uiColumnName] = foundationDataColumn.editable ? 'Y' : 'N';
-				lengthJson[foundationDataColumn.uiColumnName] = foundationDataColumn.length;
+				uiColumnNameJson[columnName] = foundationDataColumn.uiColumnName;
+				hoverHelpJson[columnName] = foundationDataColumn.hoverHelp;
+				uniqueJson[columnName] = foundationDataColumn.uniqueColumn ? 'Y' : 'N';
+				if (foundationDataColumn.inputType === 'List') {
+					
+					angular.forEach(lists, function(list) {
+						<span class="missing-if-branch" title="if path not taken" >I</span>if(list.id === foundationDataColumn.selectedListId) {
+<span class="cstat-no" title="statement not covered" >							selectedList = list.description;</span>
+						}
+					});
+					
+					inputTypeJson[columnName] = foundationDataColumn.inputType + '-' + selectedList + '-' + foundationDataColumn.listDisplayType;
+				} else {
+					inputTypeJson[columnName] = foundationDataColumn.inputType;
+				}
+				valueJson[columnName] = foundationDataColumn.value;
+				mandatoryJson[columnName] = foundationDataColumn.mandatory ? 'Y' : <span class="branch-1 cbranch-no" title="branch not covered" >'N';</span>
+				sortOrderJson[columnName] = foundationDataColumn.sortOrder;
+				editableJson[columnName] = foundationDataColumn.editable ? 'Y' : 'N';
+				lengthJson[columnName] = foundationDataColumn.length;
 			});
 			
 			uiColumnNameJson['Actions'] = 'UI Column Name';
@@ -931,7 +979,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			inputTypeJson['Actions'] = 'Input Type';
 			valueJson['Actions'] = 'Value';
 			mandatoryJson['Actions'] = 'Mandatory';
-			sortOrderJson['Actions'] = 'Sort Order';
+			sortOrderJson['Actions'] = 'Display Order';
 			editableJson['Actions'] = 'Editable';
 			lengthJson['Actions'] = 'Length';
 			
@@ -964,7 +1012,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 30 2018 15:22:58 GMT+0530 (India Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Feb 01 2018 22:20:56 GMT+0530 (India Standard Time)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

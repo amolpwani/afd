@@ -3,7 +3,8 @@
 describe('AfdUiAppFoundationDataColumnModule FoundationDataColumnController:', function() {
 
 	// Dependencies
-	var foundationDataColumnController, $timeout, WcDataTableService, scope, $rootScope, $controller, WcHttpEndpointPrototype, FoundationDataColumnService, $translate, WcAlertConsoleService, $q, $httpBackend, $templateCache, $state;
+	var foundationDataColumnController, $timeout, WcDataTableService, scope, $rootScope, $controller, WcHttpEndpointPrototype, FoundationDataColumnService, lists, $translate, WcAlertConsoleService, $q, $httpBackend, $templateCache, $state;
+	lists = [{'id':1, 'name':'List1'},{'id':2, 'name':'List2'}];
 
 	// Test data
 	var foundationDataColumn = [
@@ -73,7 +74,8 @@ describe('AfdUiAppFoundationDataColumnModule FoundationDataColumnController:', f
 			$controller(
 				'FoundationDataColumnController as foundationDataColumnController', {
 					$scope: scope,
-					foundationDataColumns: foundationDataColumn
+					foundationDataColumns: foundationDataColumn,
+					lists: lists,
 				});
 		};
 

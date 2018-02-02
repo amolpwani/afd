@@ -1,0 +1,6 @@
+{
+    "ENV": {
+        "BACKEND_URL": "https://swt-middlelayer-e2e.apps-pcf02i.cf.ford.com",
+        "EnvName":"e2e"
+    }
+}

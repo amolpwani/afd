@@ -10,6 +10,10 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'org.codehaus.groovy:groovy-json:2.4.11'
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.2.RELEASE'
+        classpath "org.liquibase:liquibase-gradle-plugin:1.2.4"
+        classpath 'com.microsoft.sqlserver:mssql-jdbc:6.1.0.jre7'
 	}
 }
 
@@ -37,12 +41,23 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-jetty")
 	compile("org.springframework.boot:spring-boot-starter-actuator")
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
-	runtime('com.h2database:h2')
-	compile('org.liquibase:liquibase-core:3.3.5')
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	testCompile("junit:junit")
-	testCompile('org.assertj:assertj-core:3.8.0')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.apache.poi:poi:3.11'
+    compile 'org.apache.poi:poi-ooxml:3.11'
+    compile 'com.amazonaws:aws-java-sdk-s3'
+    compile 'org.springframework.cloud:spring-cloud-spring-service-connector:1.2.4.RELEASE'
+    compile 'org.springframework.cloud:spring-cloud-cloudfoundry-connector:1.2.4.RELEASE'
+    compile 'mysql:mysql-connector-java:5.1.38'
+    compile 'com.microsoft.sqlserver:mssql-jdbc:6.1.0.jre7'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-devtools'
+    compile 'org.apache.commons:commons-lang3:3.6'
+    compile 'commons-io:commons-io:2.5'
+    runtime 'com.h2database:h2'
+    testCompile 'org.apache.commons:commons-text:1.1'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.assertj:assertj-core:3.8.0'
+    testCompile 'org.awaitility:awaitility:2.0.0'
 }
 dependencyManagement {
 	imports {

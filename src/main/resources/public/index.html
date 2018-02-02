@@ -1,100 +1,87 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="app">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link rel="icon" href="favicon.ico" />
+<!doctype html>
+<html lang="en">
+    <head>
+        <base href=""/>
 
-    <title>AFD - Aurora Foundational Data</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-    body {
-	    margin-left: 10px;
-	    margin-top: 10px;
-	    margin-right: 10px;
-	    margin-bottom: 10px;
-    }
-    .nav.nav-tabs.nav-tabs-justified .active {
-	    color: #7F1B1D;
-	    background-color: #138CB4;
-    }
-    [ui-view] {
-    height: 30px!important;
-    }
-</style>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"/>
 
-    <!-- Bootstrap core CSS -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Bootstrap theme -->
-    <link href="lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
-    <!-- Angular CSP-->
-    <link href="lib/angular/css/angular-csp.css" rel="stylesheet" />
+        <link rel="stylesheet" href="webCore/assets/css/FRF-Vendor.v1.3.0.min.css">
+        <link rel="stylesheet" href="webCore/assets/css/FRF-webCore.v1.3.0.min.css">
+        
+<!--         <link rel="stylesheet" href="webCore/assets/css/FRF-Vendor.v1.2.2.min.css">
+		<link rel="stylesheet" href="webCore/assets/css/FRF-webCore.v1.2.2.min.css"> -->
 
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
+        <!-- build:css afdUiApp/assets/css/afdUiApp.min.css -->
+        <link rel="stylesheet" href="afdUiApp/assets/css/app.css">
+        <!-- endbuild -->
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="lib/html5shiv/html5shiv.min.js"></script>
-      <script src="lib/respond/respond.min.js"></script>
-    <![endif]-->
 
-    <!-- require -->
-    <script src="lib/require/require.js"></script>
+        <link rel="shortcut icon" href="webCore/assets/image/ford_favicon16_32_64_256.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="webCore/assets/image/ford_favicon16_32_64_256.ico">
 
-    <!-- angularjs -->
-    <link href="lib/angular/css/angular-csp.css" rel="stylesheet" />
-    <script src="lib/angular/js/angular.js"></script>
-    <script src="lib/angular/js/angular-animate.js"></script>
-    <script src="lib/angular/js/angular-resource.js"></script>
-    <script src="lib/angular/js/angular-ui-router.js"></script>
-    <script src="lib/angular/js/angular-ui-bootstrap-tpls.js"></script>
+        <meta name="msapplication-square150x150logo" content="../ford_icon.ico">
+        <meta name="msapplication-square70x70logo" content="../ford_icon.ico">
+        <meta name="msapplication-square310x310logo" content="../ford_icon.ico">
+        <meta name="msapplication-TileColor" content="#003e7d">
+        <meta name="format-detection" content="telephone=no">
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/nav-controller.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-  </head>
+        <title>Aurora</title>
 
-  <body>
-    <nav ng-controller="nav">
-      <div class="top"  ng-include="'views/top.html'"></div>
-      <div role="tabpanel">
-        <script type="text/ng-template" id="nav-item.html">
-          <span ng-if="page.name && !page.url">{{page.name}}</span>
-          <a ng-if="page.name && page.url && !(page.subPages && page.subPages.length)" href="{{page.url}}">{{page.name}}</a>
-          <a ng-if="page.name && page.url && page.subPages && page.subPages.length" href="{{page.url}}" data-toggle="dropdown" role="button" aria-expanded="false"
-             class="dropdown-toggle">{{page.name}} <span class="caret"></span>
-          </a>
-          <ul ng-if="page.subPages && page.subPages.length" class="nav nav-tabs nav-tabs-justified" role="tablist">
-            <li ng-class="{'divider': !page.name && !page.url, 'dropdown-header': page.name && !page.url, active: isUrl(page.url)}" ng-repeat="page in page.subPages" ng-include="'nav-item.html'">
-            </li>
-          </ul>
-        </script>
-        <div id="navbar">
-          <ul class="nav nav-tabs nav-tabs-justified" role="tablist">
-            <li ng-repeat="page in pages" ng-class="{active: isUrl(page.url)}" ng-include="'nav-item.html'">
-            </li>
-          </ul>
+    </head>
+
+    <body>
+
+        <div ng-app="AfdUiAppModule" class="container-fluid" id="ng-app">
+            <div wc-loading-indicator></div>
+            <div ui-view wc-page-title></div>
         </div>
-      </div>
-    </nav>
-    <div class="ui-view-container">
-      <div class="tab-content" ui-view>
-        <!-- default content can go here but there will be a flicker on some pages loading -->
-      </div>
-    </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="lib/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+<!--         <script src="webCore/FRF-Vendor.v1.3.0.min.js"></script>
+        <script src="webCore/FRF-webCore.v1.3.0.min.js"></script> -->
+
+        <!-- script src="node_modules/angular-mocks/angular-mocks.js"></script-->
+        
+		<script src="webCore/FRF-Vendor.v1.2.2.min.js"></script>
+		<script src="webCore/FRF-webCore.v1.2.2.min.js"></script>
+
+
+        <!-- build:js afdUiApp/afdUiApp.min.js -->
+        <!-- insert application script tags here  -->
+        <script src="afdUiApp/AfdUiAppModule.js"></script>
+        <script src="afdUiApp/AfdUiAppController.js"></script>
+        <script src="afdUiApp/afdEnvConfig.js"></script>
+        <script src="afdUiApp/components/AfdUiAppComponentsModule.js"></script>
+        <script src="afdUiApp/states/home/HomeController.js"></script>
+        
+		<script src="afdUiApp/modules/foundationDataColumnModule/components/AfdUiAppFoundationDataColumnComponentsModule.js"></script>
+        <script src="afdUiApp/modules/foundationDataColumnModule/components/modals/deleteFoundationDataColumnModal/DeleteFoundationDataColumnModalService.js"></script>
+		<script src="afdUiApp/modules/foundationDataColumnModule/components/modals/deleteFoundationDataColumnModal/DeleteFoundationDataColumnModalInstanceController.js"></script>
+ 	    <script src="afdUiApp/modules/foundationDataColumnModule/components/services/FoundationDataColumnService.js"></script>
+ 	    <script src="afdUiApp/modules/foundationDataColumnModule/components/prototypes/FoundationDataColumnPrototype.js"></script>
+        <script src="afdUiApp/modules/foundationDataColumnModule/AfdUiAppFoundationDataColumnModule.js"></script>
+        <script src="afdUiApp/modules/foundationDataColumnModule/states/foundationDataColumn/FoundationDataColumnController.js"></script>
+        <script src="afdUiApp/modules/foundationDataColumnModule/states/createFoundationDataColumn/CreateFoundationDataColumnController.js"></script>
+        
+        <script src="afdUiApp/modules/listItemModule/components/AfdUiAppListItemComponentsModule.js"></script>
+        <script src="afdUiApp/modules/listItemModule/components/modals/deleteListItemModal/DeleteListItemModalService.js"></script>
+		<script src="afdUiApp/modules/listItemModule/components/modals/deleteListItemModal/DeleteListItemModalInstanceController.js"></script>
+ 	    <script src="afdUiApp/modules/listItemModule/components/services/ListItemService.js"></script>
+ 	    <script src="afdUiApp/modules/listItemModule/components/prototypes/ListItemPrototype.js"></script>
+        <script src="afdUiApp/modules/listItemModule/AfdUiAppListItemModule.js"></script>
+        <script src="afdUiApp/modules/listItemModule/states/listItem/ListItemController.js"></script>
+        <script src="afdUiApp/modules/listItemModule/states/createListItem/CreateListItemController.js"></script>
+        
+        <script src="afdUiApp/modules/listModule/components/AfdUiAppListComponentsModule.js"></script>
+        <script src="afdUiApp/modules/listModule/components/modals/deleteListModal/DeleteListModalService.js"></script>
+		<script src="afdUiApp/modules/listModule/components/modals/deleteListModal/DeleteListModalInstanceController.js"></script>
+ 	    <script src="afdUiApp/modules/listModule/components/services/ListService.js"></script>
+ 	    <script src="afdUiApp/modules/listModule/components/prototypes/ListPrototype.js"></script>
+        <script src="afdUiApp/modules/listModule/AfdUiAppListModule.js"></script>
+        <script src="afdUiApp/modules/listModule/states/list/ListController.js"></script>
+        <script src="afdUiApp/modules/listModule/states/createList/CreateListController.js"></script>
+        <script src="afdUiApp/modules/listModule/states/activeList/ActiveListController.js"></script>
+        <!-- endbuild -->
+    </body>
 </html>

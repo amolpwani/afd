@@ -13,8 +13,8 @@
 		 * @requires $stateParams
 		 * */
 angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('CreateFoundationDataColumnController', ['$state', 'FoundationDataColumnService', 'ListService', 'lists', 'FoundationDataColumnPrototype',
-		function($state, FoundationDataColumnService, ListService, lists, FoundationDataColumnPrototype) {
+	.controller('CreateFoundationDataColumnController', ['$scope', '$state', 'FoundationDataColumnService', 'foundationDataColumns', 'WcAlertConsoleService', 'ListService', 'lists', 'FoundationDataColumnPrototype', '$translate',
+		function($scope, $state, FoundationDataColumnService, foundationDataColumns, WcAlertConsoleService, ListService, lists, FoundationDataColumnPrototype, $translate) {
 
 		/**
 		 * @ngdoc property
@@ -34,6 +34,8 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		 * @description This property holds the object for FoundationDataColumnPrototype service.
 		 */
 		this.foundationDataColumn = new FoundationDataColumnPrototype();
+		
+		this.foundationDataColumns = foundationDataColumns;
 		
 		/**
 		 * Input types which will used for creation of Foundational column.
@@ -79,6 +81,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		
 		this.initValue = function() {
 			this.foundationDataColumn.value = '';
+			this.foundationDataColumn.length = 0;
 		};
 
 		/**
@@ -110,25 +113,49 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		 */
 		this.submitFoundationDataColumn = function() {
 			this.submitInProgress = true;
-			if(this.isEditing) {
-
-				FoundationDataColumnService.updateFoundationDataColumn(this.foundationDataColumn).then(angular.bind(this, function() {
-					$state.go('foundationDataColumn');
-				}), angular.bind(this, function(errorObj) {
-					if(errorObj.updatedFoundationDataColumn) {
-						this.foundationDataColumn = errorObj.updatedFoundationDataColumn;
-					}
-
-					this.submitInProgress = false;
-				}));
-			} else {
-				FoundationDataColumnService.createFoundationDataColumn(this.foundationDataColumn).then(function() {
-						//noinspection JSCheckFunctionSignatures
-					$state.go('foundationDataColumn');
-				}, angular.bind(this, function() {
-
-					this.submitInProgress = false;
-				}));
+			var foundationColumn = this.foundationDataColumn;
+			
+			if (foundationColumn.inputType === 'List') {
+				foundationColumn.value = '';
+				foundationColumn.length = 0;
+			}
+			var duplicateColumn = false;
+			
+			angular.forEach(this.foundationDataColumns, function(column) {
+				if (column.id != foundationColumn.id
+						&& column.uiColumnName === foundationColumn.uiColumnName) {
+					duplicateColumn = true;
+					WcAlertConsoleService.addMessage({
+						message: $translate.instant('foundationDataColumn.createFoundationDataColumn.duplicateUIColumn', {
+							name: column.uiColumnName
+						}),
+						type: 'danger',
+						multiple: false
+					});
+				}
+			});
+			
+			if (!duplicateColumn) {
+				if(this.isEditing) {
+	
+					FoundationDataColumnService.updateFoundationDataColumn(foundationColumn).then(angular.bind(this, function() {
+						$state.go('foundationDataColumn');
+					}), angular.bind(this, function(errorObj) {
+						if(errorObj.updatedFoundationDataColumn) {
+							this.foundationDataColumn = errorObj.updatedFoundationDataColumn;
+						}
+	
+						this.submitInProgress = false;
+					}));
+				} else {
+					FoundationDataColumnService.createFoundationDataColumn(foundationColumn).then(function() {
+							//noinspection JSCheckFunctionSignatures
+						$state.go('foundationDataColumn');
+					}, angular.bind(this, function() {
+	
+						this.submitInProgress = false;
+					}));
+				}
 			}
 		};
 

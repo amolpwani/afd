@@ -179,7 +179,7 @@
 			"listDisplayType" : "Display Type",
 		    "value" : "Value",
 		    "mandatory" : "Mandatory?",
-		    "sortOrder" : "Sort Order",
+		    "sortOrder" : "Display Order",
 		    "editable" : "Editable",
 		    "length" : "Length",
 		    "code" : "Code",
@@ -187,7 +187,8 @@
 			"createSuccess": "{{name}} has been successfully created.",
 			"createQueued": "Foundational Data Column creation has been queued for later processing due to being offline.",
 			"createFailed": "Failed to create Foundational Data Column: {{error}}",
-			"validationErrors": "Errors found on this page. Please see below for details."
+			"validationErrors": "Errors found on this page. Please see below for details.",
+			"duplicateUIColumn": "{{name}} is already availaable in Foundation data columns."
 		},
 		"editFoundationDataColumn": {
 			"title": "Edit Foundational Data Column",
@@ -219,7 +220,7 @@
 		"listDisplayType" : "Display Type",
 	    "value" : "Value",
 	    "mandatory" : "Mandatory?",
-	    "sortOrder" : "Sort Order",
+	    "sortOrder" : "Display Order",
 	    "editable" : "Editable",
 	    "length" : "Length"
 	}
