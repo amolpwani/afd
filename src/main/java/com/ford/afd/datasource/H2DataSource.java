@@ -1,15 +1,15 @@
 package com.ford.afd.datasource;
 
-import liquibase.integration.spring.SpringLiquibase;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Component;
-
-import javax.sql.DataSource;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 @Component
 public class H2DataSource implements AfdDataSource {
@@ -32,11 +32,11 @@ public class H2DataSource implements AfdDataSource {
         LOGGER.info("url : "+url+" , username : "+username+ " , password : "+password);
         DataSource dataSource = new SimpleDriverDataSource(DriverManager.getDriver(url), url, username, password);
         LOGGER.info("Executing SQL liquibase scripts");
-        executeLiquibaseScript(dataSource);
+        //executeLiquibaseScript(dataSource);
         return dataSource;
     }
-
-    private void executeLiquibaseScript(DataSource dataSource) throws SQLException {
-        new SpringLiquibase().setDataSource(dataSource);
-    }
+//
+//    private void executeLiquibaseScript(DataSource dataSource) throws SQLException {
+//        new SpringLiquibase().setDataSource(dataSource);
+//    }
 }

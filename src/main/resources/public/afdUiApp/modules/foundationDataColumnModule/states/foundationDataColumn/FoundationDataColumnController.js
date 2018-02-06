@@ -17,8 +17,8 @@
  * @requires $timeout
  * */
 angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', 'lists', '$scope', 'DeleteFoundationDataColumnModalService', 'WcAlertConsoleService', '$translate', '$state',
-		function(FoundationDataColumnService, foundationDataColumns, lists, $scope, DeleteFoundationDataColumnModalService, WcAlertConsoleService, $translate, $state) {
+	.controller('FoundationDataColumnController', ['FoundationDataColumnService', 'foundationDataColumns', 'masterDataList', '$scope', 'DeleteModalService', 'WcAlertConsoleService', '$translate', '$state',
+		function(FoundationDataColumnService, foundationDataColumns, masterDataList, $scope, DeleteModalService, WcAlertConsoleService, $translate, $state) {
 
 			//noinspection JSValidateJSDoc
             /**
@@ -30,7 +30,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			 */
 			this.foundationDataColumns = foundationDataColumns;
 			
-			var lists = lists;
+			var masterDataList = masterDataList;
 			
 			/**
 			 * @ngdoc method
@@ -137,7 +137,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				
 				//this.deleteFoundationDataColumns(selectedFoundationDataColumns);
 				
-				return DeleteFoundationDataColumnModalService.openDeleteModal(selectedFoundationDataColumns).then(angular.bind(this, function(results) {
+				return DeleteModalService.openDeleteModal(selectedFoundationDataColumns, 'FoundationDataColumn').then(angular.bind(this, function(results) {
 					$scope.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
 				}));
 			}
@@ -244,6 +244,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			
 			angular.forEach(this.foundationDataColumns, function(foundationDataColumn) {
 				var columnName = foundationDataColumn.uiColumnName.replace(/ /g, '_');
+				columnName = columnName.replace(/^\d\s*/, '');
 				var selectedList = '';
 				
 				uiColumnName = {
@@ -269,7 +270,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				uniqueJson[columnName] = foundationDataColumn.uniqueColumn ? 'Y' : 'N';
 				if (foundationDataColumn.inputType === 'List') {
 					
-					angular.forEach(lists, function(list) {
+					angular.forEach(masterDataList, function(list) {
 						if(list.id === foundationDataColumn.selectedListId) {
 							selectedList = list.description;
 						}
@@ -316,6 +317,5 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			this.columnsAtrributes.push(editableJson);
 			this.columnsAtrributes.push(lengthJson);
 			this.uiColumnNames = uiColumnNames;
-			
 		}
 	]);

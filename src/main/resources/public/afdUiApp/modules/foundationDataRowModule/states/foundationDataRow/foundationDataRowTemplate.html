@@ -1,0 +1,14 @@
+<h2 translate>foundationDataRow.title</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <a id="create-foundationDataRow" ui-sref="create-foundationDataRow" class="btn btn-primary btn-sm">
+            <span translate>application.buttons.create </span><span class="hidden-xs" translate>foundationDataRow.type</span>
+        </a>
+    </div>
+</div>
+
+<div class="row" dynamic-table-wrapper-row>
+	<div class="col-xs-12" wc-responsive-table dynamic-table-row="foundationDataRowController.uiColumnNames" id="foundation-row-table"
+		 row-key="id" data="foundationDataRowController.rowData" exporttopdf-enabled exporttoexcel-enabled >
+	</div>
+</div>

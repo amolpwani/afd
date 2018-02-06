@@ -48,11 +48,11 @@
 		
 		<div class="col-sm-3 col-sm-offset-1" ng-show="(createFoundationDataColumnController.foundationDataColumn.inputType == 'List')">
 			<div class="form-group">
-				<label for="selectedList" class="control-label" translate>foundationDataColumn.createFoundationDataColumn.selectedList</label>
+				<label for="selectedList" class="control-label" translate>foundationDataColumn.createFoundationDataColumn.selectedMasterData</label>
 			    <select name="selectedList" id="selectedList" ng-model="createFoundationDataColumnController.foundationDataColumn.selectedListId" 
 			    	class="active-dropdown form-control input-small">
 			      <option ng-repeat="list in createFoundationDataColumnController.activeLists" value="{{list.id}}"
-			      	ng-selected="createFoundationDataColumnController.foundationDataColumn.selectedListId == list.id" >
+			      	ng-selected="createFoundationDataColumnController.foundationDataColumn.selectedListId === list.id" >
 			      		{{list.description}}
 			      </option>
 			    </select>
@@ -61,7 +61,7 @@
 				
 		<div class="form-group col-sm-3 col-sm-offset-2" ng-show="(createFoundationDataColumnController.foundationDataColumn.inputType == 'List')">
 			<fieldset class="form-group">
-				<legend translate>foundationDataColumn.createFoundationDataColumn.listDisplayType</legend>
+				<legend translate>foundationDataColumn.createFoundationDataColumn.masterDataDisplayType</legend>
 				<div class="radio">
 					<label for="code"><input id="code" name="code"
 							  value="Code" type="radio"

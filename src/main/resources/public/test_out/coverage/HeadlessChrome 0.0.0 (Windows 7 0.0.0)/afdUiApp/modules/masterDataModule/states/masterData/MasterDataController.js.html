@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for afdUiApp\modules\masterDataModule\states\masterData\MasterDataController.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">all files</a> / <a href="index.html">afdUiApp/modules/masterDataModule/states/masterData/</a> MasterDataController.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.03% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>47/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">88.89% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>16/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">62.5% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.03% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>47/58</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+//noinspection JSValidateJSDoc
+/**
+			 * @ngdoc controller
+			 * @module AfdUiAppMasterDataModule
+			 * @name MasterDataController
+			 * @description This controller holds the methods and properties for list masterDataList.
+			 * @requires MasterDataService
+			 * @requires $filter
+			 * @requires masterDataList
+			 * @requires $scope
+			 * @requires WcAlertConsoleService
+			 * @requires $translate
+			 * @requires $state
+			 * @requires WcDataTableService
+			 * @requires $timeout
+			 * */
+angular.module('AfdUiAppMasterDataModule')
+	.controller('MasterDataController', ['MasterDataService', 'masterDataList', 'DeleteModalService', '$scope', 'WcAlertConsoleService', '$translate', '$state',
+		function(MasterDataService, masterDataList, DeleteModalService, $scope, WcAlertConsoleService, $translate, $state) {
+&nbsp;
+			//noinspection JSValidateJSDoc
+            /**
+			 * @ngdoc property
+			 * @name masterDataList
+			 * @propertyOf MasterDataController
+			 * @type {array}
+			 * @description This property holds the list of masterDataList.
+			 */
+			this.masterDataList = masterDataList;
+&nbsp;
+			/**
+			 * @ngdoc method
+			 * @name getSelectedMasterDataObjects
+			 * @methodOf MasterDataController
+			 * @params {integer} id
+			 * @returns {object} selectedMasterDatas
+			 * @description Helper function to use in tandem with the datatable selection api.
+			 */
+			this.getSelectedMasterDataObjects = function(id) {
+				var selectedUUID = id;
+				if(selectedUUID === undefined) {
+					selectedUUID = this.masterDataListToDelete;
+				}
+				else { //noinspection NodeModulesDependencies
+					if(!angular.isArray(selectedUUID)) {
+                                        selectedUUID = [].concat(selectedUUID);
+                                    }
+				}
+				var selectedMasterDatas = [];
+				angular.forEach(this.masterDataList, function(list) {
+					for(var i = 0; i &lt; selectedUUID.length; i++) {
+						if(list.id === selectedUUID[i]) {
+							selectedMasterDatas.push(list);
+						}
+					}
+				});
+&nbsp;
+				return selectedMasterDatas;
+			};
+&nbsp;
+			$scope.$on("update-masterData", angular.bind(this, <span class="fstat-no" title="function not covered" >function(event, data) {</span> // jshint ignore:line
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				this.updateMasterData(this.getSelectedMasterDataObjects(data)[0]);</span>
+			}));
+&nbsp;
+			$scope.$on("delete-masterDataList", angular.bind(this, <span class="fstat-no" title="function not covered" >function(event, data) {</span> // jshint ignore:line
+&nbsp;
+				//this.deleteMasterDatas(this.getSelectedMasterDataObjects(data));
+<span class="cstat-no" title="statement not covered" >				return DeleteModalService.openDeleteModal(this.getSelectedMasterDataObjects(data), 'MasterData').then(angular.bind(this, <span class="fstat-no" title="function not covered" >function(results) {</span></span>
+<span class="cstat-no" title="statement not covered" >					$scope.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);</span>
+				}));
+			}));
+&nbsp;
+			/**
+			 * @ngdoc method
+			 * @name getSelectedMasterDataObjects
+			 * @methodOf MasterDataController
+			 * @params {string} updateType
+			 * @params {string} selectedMasterData
+			 * @description The method updates the list details to database based on updateType and selectedMasterData.
+			 */
+			this.updateMasterData = <span class="fstat-no" title="function not covered" >function(selectedMasterData) {</span>
+<span class="cstat-no" title="statement not covered" >				MasterDataService.isEditing = true;</span>
+<span class="cstat-no" title="statement not covered" >                MasterDataService.masterData = selectedMasterData;</span>
+<span class="cstat-no" title="statement not covered" >				$state.go('create-masterData');</span>
+			};
+			
+			
+			
+			/**
+			 * @ngdoc method
+			 * @name deleteMasterDatas
+			 * @params {array} bookingConfirmationNumbers
+			 * @description The method is for delete the bookings from the database.
+			 */
+			this.deleteSelectedMasterData = <span class="fstat-no" title="function not covered" >function(ids) {</span>
+<span class="cstat-no" title="statement not covered" >				return DeleteModalService.openDeleteModal(this.getSelectedMasterDataObjects(ids), 'MasterData').then(angular.bind(this, <span class="fstat-no" title="function not covered" >function(results) {</span></span>
+<span class="cstat-no" title="statement not covered" >					$scope.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);</span>
+				}));
+			};
+			
+			/**
+			 * @ngdoc method
+			 * @name processResultsForDisplay
+			 * @methodOf DeleteModalService
+			 * @params {object} results
+			 * @description This method is to process the results for display
+			 */
+			this.processResultsForDisplay = function(results) {
+				//take the results array and process it into an object with a collection of successes, queued requests and failures
+				var successfulResults = [];
+				var queuedResults = [];
+				var failedResults = [];
+&nbsp;
+				for(var i=0; i&lt;results.length; i++){
+					<span class="missing-if-branch" title="if path not taken" >I</span>if(results[i].success === true){
+<span class="cstat-no" title="statement not covered" >						successfulResults.push(results[i]);</span>
+					}
+					else <span class="missing-if-branch" title="if path not taken" >I</span>if(results[i].success === 'queue') {
+<span class="cstat-no" title="statement not covered" >						queuedResults.push(results[i]);</span>
+					}
+					else {
+						failedResults.push(results[i]);
+					}
+				}
+				return {'successfulResults': successfulResults, 'queuedResults': queuedResults, 'failedResults': failedResults};
+			};
+			
+			/**
+			 * @ngdoc method
+			 * @name deleteMasterDatasAndProcessResults
+			 * @methodOf MasterDataService
+			 * @params {object} masterDataListToDelete
+			 * @description This method is to delete the bookings and processed deleted results
+			 */
+			this.deleteMasterDatasAndProcessResults = function(masterDataListToDelete) {
+				return MasterDataService.deleteMasterDatas(masterDataListToDelete).then(angular.bind(this, function(results) {
+&nbsp;
+					return this.processResultsForDisplay(results);
+				}));
+			};
+&nbsp;
+			/**
+			 * @ngdoc method
+			 * @name deleteMasterDatas
+			 * @methodOf MasterDataController
+			 * @params {object} masterDataList
+			 * @description This method is for delete the list from database
+			 */
+			this.deleteMasterDatas = function(masterDataList) {
+				return this.deleteMasterDatasAndProcessResults(masterDataList).then(angular.bind(this, function(results) {
+&nbsp;
+					$scope.$parent.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+				}));
+<span class="cstat-no" title="statement not covered" >				return null;</span>
+			};
+			/**
+			 * @ngdoc method
+			 * @name processAndDisplayDeletionResults
+			 * @methodOf MasterDataController
+			 * @params {object} results
+			 * @description This method is to process and display the deleted results
+			 */
+			this.processAndDisplayDeletionResults = function(results) {
+				var createDisplayStr = function(array) {
+					var displayStr = '';
+					for(var i = 0; i &lt; array.length; i++) {
+						displayStr += array[i].name;
+						if(i != array.length - 1) {
+							displayStr += ', ';
+						}
+					}
+					return displayStr;
+				};
+&nbsp;
+				if(results.successfulResults.length) {
+					WcAlertConsoleService.addMessage({
+						message: results.successfulResults.length + ' list(s) were deleted. [' + createDisplayStr(results.successfulResults) + ']',
+						type: 'success',
+						multiple: false,
+                        timeout: 15
+					});
+				}
+				if(results.queuedResults.length) {
+					WcAlertConsoleService.addMessage({
+						message: results.queuedResults.length + ' list(s) queued for deletion when network connectivity is restored. [' + createDisplayStr(results.queuedResults) + ']',
+						type: 'success',
+						multiple: false,
+                        timeout: 15
+					});
+				}
+				if(results.failedResults.length) {
+					WcAlertConsoleService.addMessage({
+						message: results.failedResults.length + ' list(s) failed to be deleted. [' + createDisplayStr(results.failedResults) + ']',
+						type: 'danger',
+						multiple: false
+					});
+				}
+			};
+		}
+	]);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Feb 04 2018 18:58:14 GMT+0530 (India Standard Time)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

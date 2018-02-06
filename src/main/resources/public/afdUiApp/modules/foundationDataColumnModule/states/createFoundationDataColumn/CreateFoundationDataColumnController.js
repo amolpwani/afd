@@ -9,12 +9,12 @@
 		 * @requires $state
 		 * @requires FoundationDataColumnService
 		 * @requires FoundationDataColumnPrototype
-		 * @requires ListService
+		 * @requires MasterDataService
 		 * @requires $stateParams
 		 * */
 angular.module('AfdUiAppFoundationDataColumnModule')
-	.controller('CreateFoundationDataColumnController', ['$scope', '$state', 'FoundationDataColumnService', 'foundationDataColumns', 'WcAlertConsoleService', 'ListService', 'lists', 'FoundationDataColumnPrototype', '$translate',
-		function($scope, $state, FoundationDataColumnService, foundationDataColumns, WcAlertConsoleService, ListService, lists, FoundationDataColumnPrototype, $translate) {
+	.controller('CreateFoundationDataColumnController', ['$scope', '$state', 'FoundationDataColumnService', 'foundationDataColumns', 'WcAlertConsoleService', 'MasterDataService', 'masterDataList', 'FoundationDataColumnPrototype', '$translate',
+		function($scope, $state, FoundationDataColumnService, foundationDataColumns, WcAlertConsoleService, MasterDataService, masterDataList, FoundationDataColumnPrototype, $translate) {
 
 		/**
 		 * @ngdoc property
@@ -42,7 +42,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		 */
 		this.inputTypes = ['List', 'Text', 'TextArea'];
 		
-		this.activeLists = lists.filter(function (list) {
+		this.activeLists = masterDataList.filter(function (list) {
 		    return (list.active == true);
 		});
 

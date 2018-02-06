@@ -1,9 +1,0 @@
-<h2 translate="list.activeList.title"></h2>
-<h5 translate="list.activeList.subTitle"></h5>
-<div class="row">
-     <div ng-repeat="list in activeListController.lists | filter:{active:true}">
-     	 <div align="center">&nbsp;<a ui-sref="listItem({id:list.id})">{{list.description}}</a></div>
-     </div>
-</div>
-
-

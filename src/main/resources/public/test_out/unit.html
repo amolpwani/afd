@@ -10,9 +10,9 @@
     <section>
       <header class="overview">
         <div class="browser">Browser: HeadlessChrome 0.0.0 (Windows 7 0.0.0)</div>
-        <div class="timestamp">Timestamp: 2/1/2018, 10:20:54 PM</div>
+        <div class="timestamp">Timestamp: 2/4/2018, 6:58:12 PM</div>
         <p class="results">
-          202 tests / 
+          177 tests / 
           0 errors / 
           0 failures / 
           0 skipped / 
@@ -58,24 +58,6 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppFoundationDataColumnModule:</p>
-            <em class="spec__descrip">should be registered</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">AfdUiAppFoundationDataColumnComponentsModule:</p>
-            <em class="spec__descrip">should be registered</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
             <p class="spec__suite"/>
             <em class="spec__descrip">should be registered</em>
           </div>
@@ -86,7 +68,7 @@
         <h3 class="spec__header">
           <div class="spec__title">
             <p class="spec__suite"/>
-            <em class="spec__descrip">should put the resolved list of foundationDataColumns onto the controller's foundationDataColumns object</em>
+            <em class="spec__descrip">should put the resolved list of records onto the controller's records object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -121,8 +103,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppFoundationDataColumnComponentsModule DeleteFoundationDataColumnModalService:</p>
-            <em class="spec__descrip">defines a DeleteFoundationDataColumnModalService</em>
+            <p class="spec__suite">AfdUiAppComponentsModule DeleteModalService:</p>
+            <em class="spec__descrip">defines a DeleteModalService</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -130,8 +112,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppFoundationDataColumnComponentsModule DeleteFoundationDataColumnModalService:</p>
-            <em class="spec__descrip">should have an openDeleteModal, processResultsForDisplay and deleteFoundationDataColumnsAndProcessResults function</em>
+            <p class="spec__suite">AfdUiAppComponentsModule DeleteModalService:</p>
+            <em class="spec__descrip">should have an openDeleteModal, processResultsForDisplay and deleteAndProcessResults function</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -149,7 +131,7 @@
         <h3 class="spec__header">
           <div class="spec__title">
             <p class="spec__suite">openDeleteModal(): </p>
-            <em class="spec__descrip">should return the result promise from the modal instance and chain a call to deleteFoundationDataColumnsAndProcessResults</em>
+            <em class="spec__descrip">should return the result promise from the modal instance and chain a call to deleteAndProcessResults</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -166,8 +148,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteFoundationDataColumnsAndProcessResults(): </p>
-            <em class="spec__descrip">should call to the deleteFoundationDataColumns function in the FoundationDataColumnService with the given list of foundationDataColumnsToDelete</em>
+            <p class="spec__suite">deleteAndProcessResults(): </p>
+            <em class="spec__descrip">should call to the processResultsForDisplay function with the results of the delete call and return the processed results</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -175,8 +157,17 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteFoundationDataColumnsAndProcessResults(): </p>
-            <em class="spec__descrip">should call to the processResultsForDisplay function with the results of the delete call and return the processed results</em>
+            <p class="spec__suite">AfdUiAppFoundationDataColumnModule:</p>
+            <em class="spec__descrip">should be registered</em>
+          </div>
+          <div class="spec__status">Passed in 0s</div>
+        </h3>
+      </div>
+      <div class="spec spec--pass" style="">
+        <h3 class="spec__header">
+          <div class="spec__title">
+            <p class="spec__suite">AfdUiAppFoundationDataColumnComponentsModule:</p>
+            <em class="spec__descrip">should be registered</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -634,116 +625,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListComponentsModule:</p>
+            <p class="spec__suite">AfdUiAppMasterDataItemComponentsModule:</p>
             <em class="spec__descrip">should be registered</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"/>
-            <em class="spec__descrip">should be registered</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"/>
-            <em class="spec__descrip">should put the resolved list of listItems onto the controller's listItems object</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"/>
-            <em class="spec__descrip">should define functions for the submit and cancel buttons</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"> &raquo; resolve(): </p>
-            <em class="spec__descrip">should call through to the $uibModalInstance and close the window</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"> &raquo; reject(): </p>
-            <em class="spec__descrip">should call through to the $uibModalInstance and dismiss the window</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListItemComponentsModule DeleteListItemModalService:</p>
-            <em class="spec__descrip">defines a DeleteListItemModalService</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListItemComponentsModule DeleteListItemModalService:</p>
-            <em class="spec__descrip">should have an openDeleteModal, processResultsForDisplay and deleteListItemsAndProcessResults function</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">openDeleteModal(): </p>
-            <em class="spec__descrip">should call to $uibModal.open</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">openDeleteModal(): </p>
-            <em class="spec__descrip">should return the result promise from the modal instance and chain a call to deleteListItemsAndProcessResults</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">processResultsForDisplay(): </p>
-            <em class="spec__descrip">should take the results array and process it into an object with a collection of successes, queued requests and failures</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">deleteListItemsAndProcessResults(): </p>
-            <em class="spec__descrip">should call to the deleteListItems function in the ListItemService with the given list of listsToDelete</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">deleteListItemsAndProcessResults(): </p>
-            <em class="spec__descrip">should call to the processResultsForDisplay function with the results of the delete call and return the processed results</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -913,8 +796,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListItemComponentsModule ListItemService:</p>
-            <em class="spec__descrip">defines a ListItemService</em>
+            <p class="spec__suite">AfdUiAppMasterDataItemComponentsModule MasterDataItemService:</p>
+            <em class="spec__descrip">defines a MasterDataItemService</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -922,8 +805,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getListItems(): </p>
-            <em class="spec__descrip">should use the WcHttpEndpointPrototype to request a list of listItems</em>
+            <p class="spec__suite">getMasterDataItems(): </p>
+            <em class="spec__descrip">should use the WcHttpEndpointPrototype to request a masterDataItem of masterDataItems</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -931,8 +814,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getListItems(): </p>
-            <em class="spec__descrip">should return an error if the request for listItem data fails</em>
+            <p class="spec__suite">getMasterDataItems(): </p>
+            <em class="spec__descrip">should return an error if the request for masterDataItem data fails</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -940,8 +823,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getListItem(): </p>
-            <em class="spec__descrip">should add a subroute onto the listItemEndpoint using the passed in id</em>
+            <p class="spec__suite">getMasterDataItem(): </p>
+            <em class="spec__descrip">should add a subroute onto the masterDataItemEndpoint using the passed in id</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -949,8 +832,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteListItems(): </p>
-            <em class="spec__descrip">should loop through the passed in list of listItems, calling the delete endpoint for each</em>
+            <p class="spec__suite">deleteMasterDataItems(): </p>
+            <em class="spec__descrip">should loop through the passed in masterDataItem of masterDataItems, calling the delete endpoint for each</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -958,7 +841,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteListItems(): </p>
+            <p class="spec__suite">deleteMasterDataItems(): </p>
             <em class="spec__descrip">in the success case, should return the appropriate array of deletion results wrapped in a promise object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -967,7 +850,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteListItems(): </p>
+            <p class="spec__suite">deleteMasterDataItems(): </p>
             <em class="spec__descrip">in the error case, should return the appropriate array of deletion results wrapped in a promise object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -976,7 +859,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteListItems(): </p>
+            <p class="spec__suite">deleteMasterDataItems(): </p>
             <em class="spec__descrip">in offline queue case, should return the appropriate array of deletion results wrapped in a promise object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -985,8 +868,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">createListItem():</p>
-            <em class="spec__descrip">should send a POST to save a listItem, and when successful clear the listItem object</em>
+            <p class="spec__suite">createMasterDataItem():</p>
+            <em class="spec__descrip">should send a POST to save a masterDataItem, and when successful clear the masterDataItem object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -994,8 +877,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">createListItem():</p>
-            <em class="spec__descrip">should send a POST to save a listItem, and when the request is queued clear the listItem object</em>
+            <p class="spec__suite">createMasterDataItem():</p>
+            <em class="spec__descrip">should send a POST to save a masterDataItem, and when the request is queued clear the masterDataItem object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1003,8 +886,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">createListItem():</p>
-            <em class="spec__descrip">should add an error message to the message queue if the post fails, and should not clear the listItem object</em>
+            <p class="spec__suite">createMasterDataItem():</p>
+            <em class="spec__descrip">should add an error message to the message queue if the post fails, and should not clear the masterDataItem object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1012,8 +895,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">updateListItem():</p>
-            <em class="spec__descrip">should attempt to update a list and create a success alert if the request succeeds</em>
+            <p class="spec__suite">updateMasterDataItem():</p>
+            <em class="spec__descrip">should attempt to update a masterDataItem and create a success alert if the request succeeds</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1021,8 +904,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">updateListItem():</p>
-            <em class="spec__descrip">should attempt to update a list and create a queued alert if the request is queued</em>
+            <p class="spec__suite">updateMasterDataItem():</p>
+            <em class="spec__descrip">should attempt to update a masterDataItem and create a queued alert if the request is queued</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1030,7 +913,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">updateListItem():</p>
+            <p class="spec__suite">updateMasterDataItem():</p>
             <em class="spec__descrip">should put a message on the screen in the error case if the status code is not 409 and should reject the promise with the error object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1039,7 +922,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListItemModule CreateListItemController:</p>
+            <p class="spec__suite">AfdUiAppMasterDataItemModule CreateMasterDataItemController:</p>
             <em class="spec__descrip">should be registered</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1048,7 +931,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">listItem selection storage and state management:</p>
+            <p class="spec__suite">masterDataItem selection storage and state management:</p>
             <em class="spec__descrip">should have an object to store values in</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1057,8 +940,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">listItem selection storage and state management:</p>
-            <em class="spec__descrip">should initialize the list object to a new listItem</em>
+            <p class="spec__suite">masterDataItem selection storage and state management:</p>
+            <em class="spec__descrip">should initialize the masterDataItem object to a new masterDataItem</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1067,7 +950,7 @@
         <h3 class="spec__header">
           <div class="spec__title">
             <p class="spec__suite">cancel():</p>
-            <em class="spec__descrip">should navigate back to list table view if list creation is cancelled</em>
+            <em class="spec__descrip">should navigate back to masterDataItem table view if masterDataItem creation is cancelled</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1075,8 +958,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitListItem():</p>
-            <em class="spec__descrip">should call createListItem and navigate to list if the creation is successful</em>
+            <p class="spec__suite">submitMasterDataItem():</p>
+            <em class="spec__descrip">should call createMasterDataItem and navigate to masterDataItem if the creation is successful</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1084,8 +967,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitListItem():</p>
-            <em class="spec__descrip">should call updateListItem and navigate to list if the update is successful and we came from list</em>
+            <p class="spec__suite">submitMasterDataItem():</p>
+            <em class="spec__descrip">should call updateMasterDataItem and navigate to masterDataItem if the update is successful and we came from masterDataItem</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1093,7 +976,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitListItem():</p>
+            <p class="spec__suite">submitMasterDataItem():</p>
             <em class="spec__descrip">should not transition states if the creation is unsuccessful and should set submitInProgess to false</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1102,7 +985,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitListItem():</p>
+            <p class="spec__suite">submitMasterDataItem():</p>
             <em class="spec__descrip">should not transition states if the update is unsuccessful and should set submitInProgess to false</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1111,8 +994,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitListItem():</p>
-            <em class="spec__descrip">in update error case, it should set the list object to the updated list if one is available</em>
+            <p class="spec__suite">submitMasterDataItem():</p>
+            <em class="spec__descrip">in update error case, it should set the masterDataItem object to the updated masterDataItem if one is available</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1120,7 +1003,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListItemModule ListItemController:</p>
+            <p class="spec__suite">AfdUiAppMasterDataItemModule MasterDataItemController:</p>
             <em class="spec__descrip">should be registered</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1129,8 +1012,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListItemModule ListItemController:</p>
-            <em class="spec__descrip">should have listItems data</em>
+            <p class="spec__suite">AfdUiAppMasterDataItemModule MasterDataItemController:</p>
+            <em class="spec__descrip">should have masterDataItems data</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1138,8 +1021,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListItemModule ListItemController:</p>
-            <em class="spec__descrip">should add a name property to each of the listItemData in the list</em>
+            <p class="spec__suite">AfdUiAppMasterDataItemModule MasterDataItemController:</p>
+            <em class="spec__descrip">should add a name property to each of the masterDataItemData in the list</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1147,8 +1030,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListItemModule ListItemController:</p>
-            <em class="spec__descrip">should have processAndDisplayDeletionResults, deleteListItems, updateListItem and getselectedListItemObjects functions</em>
+            <p class="spec__suite">AfdUiAppMasterDataItemModule MasterDataItemController:</p>
+            <em class="spec__descrip">should have processAndDisplayDeletionResults, deleteMasterDataItems, updateMasterDataItem and getselectedMasterDataItemObjects functions</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1157,7 +1040,7 @@
         <h3 class="spec__header">
           <div class="spec__title">
             <p class="spec__suite">processAndDisplayDeletionResults(): </p>
-            <em class="spec__descrip">should take the given results listItem and create the appropriate messages with the WcAlertConsoleService</em>
+            <em class="spec__descrip">should take the given results masterDataItem and create the appropriate messages with the WcAlertConsoleService</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1174,7 +1057,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteListItems(): </p>
+            <p class="spec__suite">deleteMasterDataItems(): </p>
             <em class="spec__descrip">should find the confirmation number for the link that was clicked and pass it and scope through to the DeleteModalService, and on return of the promise process and display the results</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1183,8 +1066,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getselectedListItemObjects(): </p>
-            <em class="spec__descrip">should return an array with a single listItem object when given a single id</em>
+            <p class="spec__suite">getselectedMasterDataItemObjects(): </p>
+            <em class="spec__descrip">should return an array with a single masterDataItem object when given a single id</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1192,8 +1075,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getselectedListItemObjects(): </p>
-            <em class="spec__descrip">should return an array of listItem objects when given an array of ids</em>
+            <p class="spec__suite">getselectedMasterDataItemObjects(): </p>
+            <em class="spec__descrip">should return an array of masterDataItem objects when given an array of ids</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1201,8 +1084,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getselectedListItemObjects(): </p>
-            <em class="spec__descrip">should return an array of listItem objects when given nothing by using the listItemsToDelete array</em>
+            <p class="spec__suite">getselectedMasterDataItemObjects(): </p>
+            <em class="spec__descrip">should return an array of masterDataItem objects when given nothing by using the masterDataItemsToDelete array</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1210,7 +1093,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListModule:</p>
+            <p class="spec__suite">AfdUiAppMasterDataModule:</p>
             <em class="spec__descrip">should be registered</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1219,116 +1102,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListComponentsModule:</p>
+            <p class="spec__suite">AfdUiAppMasterDataComponentsModule:</p>
             <em class="spec__descrip">should be registered</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"/>
-            <em class="spec__descrip">should be registered</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"/>
-            <em class="spec__descrip">should put the resolved list of lists onto the controller's lists object</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"/>
-            <em class="spec__descrip">should define functions for the submit and cancel buttons</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"> &raquo; resolve(): </p>
-            <em class="spec__descrip">should call through to the $uibModalInstance and close the window</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite"> &raquo; reject(): </p>
-            <em class="spec__descrip">should call through to the $uibModalInstance and dismiss the window</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListComponentsModule DeleteListModalService:</p>
-            <em class="spec__descrip">defines a DeleteListModalService</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListComponentsModule DeleteListModalService:</p>
-            <em class="spec__descrip">should have an openDeleteModal, processResultsForDisplay and deleteListsAndProcessResults function</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">openDeleteModal(): </p>
-            <em class="spec__descrip">should call to $uibModal.open</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">openDeleteModal(): </p>
-            <em class="spec__descrip">should return the result promise from the modal instance and chain a call to deleteListsAndProcessResults</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">processResultsForDisplay(): </p>
-            <em class="spec__descrip">should take the results array and process it into an object with a collection of successes, queued requests and failures</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">deleteListsAndProcessResults(): </p>
-            <em class="spec__descrip">should call to the deleteLists function in the ListService with the given list of listsToDelete</em>
-          </div>
-          <div class="spec__status">Passed in 0s</div>
-        </h3>
-      </div>
-      <div class="spec spec--pass" style="">
-        <h3 class="spec__header">
-          <div class="spec__title">
-            <p class="spec__suite">deleteListsAndProcessResults(): </p>
-            <em class="spec__descrip">should call to the processResultsForDisplay function with the results of the delete call and return the processed results</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1498,8 +1273,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListComponentsModule ListService:</p>
-            <em class="spec__descrip">defines a ListService</em>
+            <p class="spec__suite">AfdUiAppMasterDataComponentsModule MasterDataService:</p>
+            <em class="spec__descrip">defines a MasterDataService</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1507,8 +1282,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getLists(): </p>
-            <em class="spec__descrip">should use the WcHttpEndpointPrototype to request a list of lists</em>
+            <p class="spec__suite">getMasterDatas(): </p>
+            <em class="spec__descrip">should use the WcHttpEndpointPrototype to request a list of masterdata</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1516,8 +1291,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getLists(): </p>
-            <em class="spec__descrip">should return an error if the request for list data fails</em>
+            <p class="spec__suite">getMasterDatas(): </p>
+            <em class="spec__descrip">should return an error if the request for masterdata fails</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1525,8 +1300,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getList(): </p>
-            <em class="spec__descrip">should add a subroute onto the listEndpoint using the passed in id</em>
+            <p class="spec__suite">getMasterData(): </p>
+            <em class="spec__descrip">should add a subroute onto the masterDataEndpoint using the passed in id</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1534,8 +1309,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteLists(): </p>
-            <em class="spec__descrip">should loop through the passed in list of lists, calling the delete endpoint for each</em>
+            <p class="spec__suite">deleteMasterDatas(): </p>
+            <em class="spec__descrip">should loop through the passed in list of masterdata, calling the delete endpoint for each</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1543,7 +1318,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteLists(): </p>
+            <p class="spec__suite">deleteMasterDatas(): </p>
             <em class="spec__descrip">in the success case, should return the appropriate array of deletion results wrapped in a promise object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1552,7 +1327,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteLists(): </p>
+            <p class="spec__suite">deleteMasterDatas(): </p>
             <em class="spec__descrip">in the error case, should return the appropriate array of deletion results wrapped in a promise object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1561,7 +1336,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteLists(): </p>
+            <p class="spec__suite">deleteMasterDatas(): </p>
             <em class="spec__descrip">in offline queue case, should return the appropriate array of deletion results wrapped in a promise object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1570,7 +1345,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">createList():</p>
+            <p class="spec__suite">createMasterData():</p>
             <em class="spec__descrip">should send a POST to save a list, and when successful clear the list object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1579,7 +1354,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">createList():</p>
+            <p class="spec__suite">createMasterData():</p>
             <em class="spec__descrip">should send a POST to save a list, and when the request is queued clear the list object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1588,8 +1363,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">createList():</p>
-            <em class="spec__descrip">should add an error message to the message queue if the post fails, and should not clear the list object</em>
+            <p class="spec__suite">createMasterData():</p>
+            <em class="spec__descrip">should add an error message to the message queue if the post fails, and should not clear the masterdata object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1597,8 +1372,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">updateList():</p>
-            <em class="spec__descrip">should attempt to update a list and create a success alert if the request succeeds</em>
+            <p class="spec__suite">updateMasterData():</p>
+            <em class="spec__descrip">should attempt to update a masterdata and create a success alert if the request succeeds</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1606,8 +1381,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">updateList():</p>
-            <em class="spec__descrip">should attempt to update a list and create a queued alert if the request is queued</em>
+            <p class="spec__suite">updateMasterData():</p>
+            <em class="spec__descrip">should attempt to update a masterData and create a queued alert if the request is queued</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1615,7 +1390,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">updateList():</p>
+            <p class="spec__suite">updateMasterData():</p>
             <em class="spec__descrip">should put a message on the screen in the error case if the status code is not 409 and should reject the promise with the error object</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1624,7 +1399,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListModule ActiveListController:</p>
+            <p class="spec__suite">AfdUiAppMasterDataModule ActiveMasterDataController:</p>
             <em class="spec__descrip">should be registered</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1633,8 +1408,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListModule ActiveListController:</p>
-            <em class="spec__descrip">should have lists data</em>
+            <p class="spec__suite">AfdUiAppMasterDataModule ActiveMasterDataController:</p>
+            <em class="spec__descrip">should have masterDatas data</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1642,8 +1417,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListModule ActiveListController:</p>
-            <em class="spec__descrip">should add a name property to each of the listData in the list</em>
+            <p class="spec__suite">AfdUiAppMasterDataModule ActiveMasterDataController:</p>
+            <em class="spec__descrip">should add a name property to each of the masterData in the list</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1651,7 +1426,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListModule CreateListController:</p>
+            <p class="spec__suite">AfdUiAppMasterDataModule CreateMasterDataController:</p>
             <em class="spec__descrip">should be registered</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1670,7 +1445,7 @@
         <h3 class="spec__header">
           <div class="spec__title">
             <p class="spec__suite">list selection storage and state management:</p>
-            <em class="spec__descrip">should initialize the list object to a new list</em>
+            <em class="spec__descrip">should initialize the masterData object to a new masterData</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1687,8 +1462,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitList():</p>
-            <em class="spec__descrip">should call createList and navigate to list if the creation is successful</em>
+            <p class="spec__suite">submitMasterData():</p>
+            <em class="spec__descrip">should call createMasterData and navigate to masterData if the creation is successful</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1696,8 +1471,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitList():</p>
-            <em class="spec__descrip">should call updateList and navigate to list if the update is successful and we came from list</em>
+            <p class="spec__suite">submitMasterData():</p>
+            <em class="spec__descrip">should call updateMasterData and navigate to masterData if the update is successful and we came redirect to masterData page</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1705,7 +1480,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitList():</p>
+            <p class="spec__suite">submitMasterData():</p>
             <em class="spec__descrip">should not transition states if the creation is unsuccessful and should set submitInProgess to false</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1714,7 +1489,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitList():</p>
+            <p class="spec__suite">submitMasterData():</p>
             <em class="spec__descrip">should not transition states if the update is unsuccessful and should set submitInProgess to false</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1723,8 +1498,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">submitList():</p>
-            <em class="spec__descrip">in update error case, it should set the list object to the updated list if one is available</em>
+            <p class="spec__suite">submitMasterData():</p>
+            <em class="spec__descrip">in update error case, it should set the masterData object to the updated masterData if one is available</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1732,7 +1507,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListModule ListController:</p>
+            <p class="spec__suite">AfdUiAppMasterDataModule MasterDataController:</p>
             <em class="spec__descrip">should be registered</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1741,8 +1516,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListModule ListController:</p>
-            <em class="spec__descrip">should have lists data</em>
+            <p class="spec__suite">AfdUiAppMasterDataModule MasterDataController:</p>
+            <em class="spec__descrip">should have masterDataList data</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1750,8 +1525,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListModule ListController:</p>
-            <em class="spec__descrip">should add a name property to each of the listData in the list</em>
+            <p class="spec__suite">AfdUiAppMasterDataModule MasterDataController:</p>
+            <em class="spec__descrip">should add a name property to each of the masterDataList in the list</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1759,8 +1534,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">AfdUiAppListModule ListController:</p>
-            <em class="spec__descrip">should have processAndDisplayDeletionResults, deleteLists, updateList and getSelectedListObjects functions</em>
+            <p class="spec__suite">AfdUiAppMasterDataModule MasterDataController:</p>
+            <em class="spec__descrip">should have processAndDisplayDeletionResults, deleteMasterDatas, updateList and getSelectedMasterDataObjects functions</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1786,7 +1561,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">deleteLists(): </p>
+            <p class="spec__suite">deleteMasterDatas(): </p>
             <em class="spec__descrip">should find the confirmation number for the link that was clicked and pass it and scope through to the DeleteModalService, and on return of the promise process and display the results</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1795,7 +1570,7 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getSelectedListObjects(): </p>
+            <p class="spec__suite">getSelectedMasterDataObjects(): </p>
             <em class="spec__descrip">should return an array with a single list object when given a single id</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
@@ -1804,8 +1579,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getSelectedListObjects(): </p>
-            <em class="spec__descrip">should return an array of list objects when given an array of ids</em>
+            <p class="spec__suite">getSelectedMasterDataObjects(): </p>
+            <em class="spec__descrip">should return an array of matserData objects when given an array of ids</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>
@@ -1813,8 +1588,8 @@
       <div class="spec spec--pass" style="">
         <h3 class="spec__header">
           <div class="spec__title">
-            <p class="spec__suite">getSelectedListObjects(): </p>
-            <em class="spec__descrip">should return an array of list objects when given nothing by using the listsToDelete array</em>
+            <p class="spec__suite">getSelectedMasterDataObjects(): </p>
+            <em class="spec__descrip">should return an array of matserData objects when given nothing by using the masterDataListToDelete array</em>
           </div>
           <div class="spec__status">Passed in 0s</div>
         </h3>

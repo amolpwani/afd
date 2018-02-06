@@ -4,15 +4,15 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 
 	// Dependencies
 	var scope, $rootScope, $controller, CreateFoundationDataColumnController, createFoundationDataColumnForm, $compile, $state, 
-	FoundationDataColumnService, ListService, lists, foundationDataColumns, FoundationDataColumnPrototype, $q, $httpBackend, $templateCache, $translate;
+	FoundationDataColumnService, MasterDataService, masterDataList, foundationDataColumns, FoundationDataColumnPrototype, $q, $httpBackend, $templateCache, $translate;
 
 	var createFoundationDataColumnController;
-	lists = [{'id':1, 'name':'List1'},{'id':2, 'name':'List2'}];
+	masterDataList = [{'id':1, 'name':'List1'},{'id':2, 'name':'List2'}];
 	foundationDataColumns = [{'id':1, 'uiColumnName':'Column1'},{'id':2, 'uiColumnName':'Column2'}]
 
 	beforeEach(function(){
 		module('AfdUiAppFoundationDataColumnModule');
-		module('AfdUiAppListComponentsModule');
+		module('AfdUiAppMasterDataComponentsModule');
 
 		inject(function($injector) {
 			$rootScope = $injector.get('$rootScope');
@@ -20,7 +20,7 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 			$compile = $injector.get('$compile');
 			$state = $injector.get('$state');
 			FoundationDataColumnService = $injector.get('FoundationDataColumnService');
-			ListService = $injector.get('ListService');
+			MasterDataService = $injector.get('MasterDataService');
 			FoundationDataColumnPrototype = $injector.get('FoundationDataColumnPrototype');
 			$q = $injector.get('$q');
 			$httpBackend = $injector.get('$httpBackend');
@@ -37,7 +37,7 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 				CreateFoundationDataColumnController = $controller(
 					'CreateFoundationDataColumnController as createFoundationDataColumnController', {
 						$scope : scope,
-						lists: lists,
+						masterDataList: masterDataList,
 						foundationDataColumns: foundationDataColumns
 					});
 			}
@@ -62,7 +62,7 @@ describe('AfdUiAppFoundationDataColumnModule CreateFoundationDataColumnControlle
 		createFoundationDataColumnForm = scope.createFoundationDataColumnForm;
 
 		$httpBackend.when('GET','foundationdatacolumn/getFoundationColumn').respond(200);
-		$httpBackend.when('GET','listdata/getList').respond(200);
+		$httpBackend.when('GET','masterdata/getMasterData').respond(200);
 		$httpBackend.when('GET','afdUiApp/modules/foundationDataColumnModule/states/foundationDataColumn/foundationDataColumnTemplate.html').respond(200);
 		$templateCache.put('afdUiApp/modules/foundationDataColumnModule/states/foundationDataColumn/foundationDataColumnTemplate.html');
 

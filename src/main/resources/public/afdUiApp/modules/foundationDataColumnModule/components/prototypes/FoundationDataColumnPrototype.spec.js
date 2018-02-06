@@ -64,7 +64,7 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			expect(testObject.uniqueColumn).toEqual(false);
 			expect(testObject.inputType).toEqual('Text');
 			expect(testObject.selectedList).toEqual('');
-			expect(testObject.listDisplayType).toEqual('');
+			expect(testObject.listDisplayType).toEqual('Code');
 			expect(testObject.mandatory).toEqual(false);
 			expect(testObject.sortOrder).toEqual(0);
 			expect(testObject.editable).toEqual(false);
@@ -81,7 +81,7 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			expect(testObject.uniqueColumn).toEqual(false);
 			expect(testObject.inputType).toEqual('Text');
 			expect(testObject.selectedList).toEqual('');
-			expect(testObject.listDisplayType).toEqual('');
+			expect(testObject.listDisplayType).toEqual('Code');
 			expect(testObject.mandatory).toEqual(false);
 			expect(testObject.sortOrder).toEqual(0);
 			expect(testObject.editable).toEqual(false);
@@ -98,7 +98,7 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			expect(testObject.uniqueColumn).toEqual(false);
 			expect(testObject.inputType).toEqual('Text');
 			expect(testObject.selectedList).toEqual('');
-			expect(testObject.listDisplayType).toEqual('');
+			expect(testObject.listDisplayType).toEqual('Code');
 			expect(testObject.mandatory).toEqual(false);
 			expect(testObject.sortOrder).toEqual(0);
 			expect(testObject.editable).toEqual(false);
@@ -115,7 +115,7 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			expect(testObject.uniqueColumn).toEqual(false);
 			expect(testObject.inputType).toEqual('Text');
 			expect(testObject.selectedList).toEqual('');
-			expect(testObject.listDisplayType).toEqual('');
+			expect(testObject.listDisplayType).toEqual('Code');
 			expect(testObject.mandatory).toEqual(false);
 			expect(testObject.sortOrder).toEqual(0);
 			expect(testObject.editable).toEqual(false);

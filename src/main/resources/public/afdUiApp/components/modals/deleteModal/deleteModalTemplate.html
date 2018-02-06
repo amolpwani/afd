@@ -1,0 +1,24 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="deleteModalInstanceController.reject()">&times;</button>
+	<h3 class="modal-title" translate>foundationDataColumn.deleteFoundationDataColumn.title</h3>
+</div>
+<div class="modal-body">
+	<p ng-show="deleteModalInstanceController.typeOfRecords == 'FoundationDataColumn'" translate>foundationDataColumn.deleteFoundationDataColumn.instructions</p>
+	<p ng-show="deleteModalInstanceController.typeOfRecords == 'MasterDataItem'" translate>masterDataItem.deleteMasterData.title</p>
+	<p ng-show="deleteModalInstanceController.typeOfRecords == 'MasterData'" translate>masterData.deleteMasterDataItem.title</p>
+	<ul>
+		<li ng-show="deleteModalInstanceController.typeOfRecords == 'FoundationDataColumn'" ng-repeat="record in ::deleteModalInstanceController.records">
+			{{record.uiColumnName}}
+		</li>
+		<li ng-show="deleteModalInstanceController.typeOfRecords == 'MasterDataItem'" ng-repeat="record in ::deleteModalInstanceController.records">
+			{{record.code}}
+		</li>
+		<li ng-show="deleteModalInstanceController.typeOfRecords == 'MasterData'" ng-repeat="record in ::deleteModalInstanceController.records">
+			{{record.name}}
+		</li>
+	</ul>
+</div>
+<div class="modal-footer form-actions">
+	<button id="modal-submit" class="btn btn-primary-default" ng-click="deleteModalInstanceController.resolve()" translate>application.buttons.yes</button>
+	<button id="modal-cancel" class="btn btn-secondary" ng-click="deleteModalInstanceController.reject()" translate>application.buttons.no</button>
+</div>

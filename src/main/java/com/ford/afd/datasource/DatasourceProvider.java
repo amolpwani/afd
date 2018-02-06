@@ -32,10 +32,6 @@ public class DatasourceProvider {
     private Map<String, Class<? extends AfdDataSource>> dataSourceContainer() {
         Map<String, Class<? extends AfdDataSource>> dataSources = new HashMap<>();
         dataSources.put("local", H2DataSource.class);
-        dataSources.put("e2e", MySqlDataSource.class);
-        dataSources.put("dev", SqlServerDataSource.class);
-        dataSources.put("qa", SqlServerDataSource.class);
-        dataSources.put("prod", SqlServerDataSource.class);
         return dataSources;
     }
 }

@@ -1,4 +1,4 @@
-package com.ford.swt.datasource;
+package com.ford.afd.datasource;
 
 import org.springframework.stereotype.Component;
 

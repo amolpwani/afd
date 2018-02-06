@@ -1,0 +1,50 @@
+<form class="well" role="form" name="createMasterDataItemForm" ng-submit="createMasterDataItemForm.$valid && createMasterDataItemController.submitMasterDataItem()" id="createMasterDataItemForm" novalidate wc-form-submit>
+	<h2 ng-hide="createMasterDataItemController.isEditing" translate>masterDataItem.createMasterDataItem.title</h2>
+	<h2 ng-show="createMasterDataItemController.isEditing" translate>masterDataItem.editMasterDataItem.title</h2>
+
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="code" class="control-label" translate>masterDataItem.createMasterDataItem.code </label>
+				<input ng-model="createMasterDataItemController.masterDataItem.code" id="code"
+					   name="name" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
+					   wc-validation-indicator="{{'masterDataItem.createMasterDataItem.code' | translate}}" required/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="description" class="control-label" translate>masterDataItem.createMasterDataItem.description </label>
+				<input ng-model="createMasterDataItemController.masterDataItem.description" id="description"
+					   name="description" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
+					   wc-validation-indicator="{{'masterDataItem.createMasterDataItem.description' | translate}}" required/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="active" translate>	masterDataItem.createMasterDataItem.active
+				</label>
+				<input type="checkbox" name="checkbox" id="active"
+					   ng-model="createMasterDataItemController.masterDataItem.active"/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row form-actions">
+		<div class="col-xs-6 text-center">
+			<button type="button" id="cancel" ng-click="createMasterDataItemController.cancel()" class="btn btn-secondary" translate>
+				masterDataItem.createMasterDataItem.cancel
+			</button>
+		</div>
+		<div class="col-xs-6 text-center">
+			<button type="submit" id="save" class="btn btn-primary-default" wc-click-once wc-continue-if-valid translate>
+				masterDataItem.createMasterDataItem.save
+			</button>
+		</div>
+	</div>
+</form>

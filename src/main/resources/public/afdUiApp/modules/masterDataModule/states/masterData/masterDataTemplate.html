@@ -1,0 +1,56 @@
+<!--<h2 translate="masterData.listmasterData.subTitle"></h2>-->
+<h2 translate>masterData.masterData.title</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <a id="create-masterData" ui-sref="create-masterData" class="btn btn-primary btn-sm">
+            <span translate>application.buttons.create </span><span class="hidden-xs" translate>masterData.type</span>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div wc-responsive-table data="masterDataController.masterDataList" data-table-name="masterDataList" row-key="id"
+         exporttopdf-enabled exporttoexcel-enabled pagination-enabled responsive-view="list" id="masterData-table"
+         class="col-xs-12 wc-table" ng-model="masterDataController.masterDataListToDelete">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th translate>masterData.actions</th>
+                <th wc-column-sort="name" wc-column-sort-default="asc">{{'masterData.name' | translate}}
+                    <label for="name" class="sr-only">{{'masterData.name' | translate}}</label>
+                    <input id="name" class="form-control input-sm" type="text" wc-column-filter="name" title="{{'masterData.name' | translate}}"/></th>
+                <th wc-column-sort="description">{{'masterData.description' | translate}}
+                    <label for="description" class="sr-only">{{'masterData.description' | translate}}</label>
+                    <input id="description" class="form-control input-sm" type="text" wc-column-filter="description" title="{{'masterData.description' | translate}}"/></th>
+                <th wc-column-sort="active">{{'masterData.active' | translate}}
+                    <label for="active" class="sr-only">{{'masterData.active' | translate}}</label>
+                    <input id="active" class="form-control input-sm" type="text" wc-column-filter="active" title="{{'masterData.active' | translate}}"/></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="col-hide text-center">
+                    <a ui-sref="masterDataItem({id:row.id})" >
+        				<span class="glyphicon glyphicon-ok" style='font-size: 17px'></span>
+        			</a>
+                    <a wc-row-action-single="update-masterData">
+        				<span class="glyphicon glyphicon-pencil" style='font-size: 17px'></span>
+        			</a>
+        			
+ 					<!-- a wc-row-action-single="delete-masterDatas">
+        				<span class="glyphicon glyphicon-trash" style='font-size: 17px'></span>
+        			</a-->
+                </td>
+                <td ng-bind="row.name" ng-class="$parent.columnData.column1.class">
+                    {{::row.name}}
+                </td>
+                <td ng-bind="row.description" >{{::row.description}}</td>
+                <td >
+                	<div ng-show={{::row.active}}>Y</div>
+                	<div ng-hide={{::row.active}}>N</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+	</div>
+</div>

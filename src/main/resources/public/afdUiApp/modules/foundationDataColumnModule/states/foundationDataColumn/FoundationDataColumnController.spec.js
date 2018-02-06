@@ -3,8 +3,8 @@
 describe('AfdUiAppFoundationDataColumnModule FoundationDataColumnController:', function() {
 
 	// Dependencies
-	var foundationDataColumnController, $timeout, WcDataTableService, scope, $rootScope, $controller, WcHttpEndpointPrototype, FoundationDataColumnService, lists, $translate, WcAlertConsoleService, $q, $httpBackend, $templateCache, $state;
-	lists = [{'id':1, 'name':'List1'},{'id':2, 'name':'List2'}];
+	var foundationDataColumnController, $timeout, WcDataTableService, scope, $rootScope, $controller, WcHttpEndpointPrototype, FoundationDataColumnService, DeleteModalService, MasterDataItemService, MasterDataService, masterDataList, $translate, WcAlertConsoleService, $q, $httpBackend, $templateCache, $state;
+	masterDataList = [{'id':1, 'name':'List1'},{'id':2, 'name':'List2'}];
 
 	// Test data
 	var foundationDataColumn = [
@@ -36,12 +36,17 @@ describe('AfdUiAppFoundationDataColumnModule FoundationDataColumnController:', f
 
 	beforeEach(function() {
 		module('AfdUiAppFoundationDataColumnModule');
+		module('AfdUiAppMasterDataModule');
+		module('AfdUiAppMasterDataItemModule');
 
 		inject(function($injector) {
 			$rootScope = $injector.get('$rootScope');
 			$controller = $injector.get('$controller');
 			WcHttpEndpointPrototype = $injector.get('WcHttpEndpointPrototype');
 			FoundationDataColumnService = $injector.get('FoundationDataColumnService');
+			DeleteModalService = $injector.get('DeleteModalService');
+			MasterDataItemService = $injector.get('MasterDataItemService');
+			MasterDataService = $injector.get('MasterDataService');
 			$translate = $injector.get('$translate');
 			WcAlertConsoleService = $injector.get('WcAlertConsoleService');
 			$q = $injector.get('$q');
@@ -75,7 +80,7 @@ describe('AfdUiAppFoundationDataColumnModule FoundationDataColumnController:', f
 				'FoundationDataColumnController as foundationDataColumnController', {
 					$scope: scope,
 					foundationDataColumns: foundationDataColumn,
-					lists: lists,
+					masterDataList: masterDataList
 				});
 		};
 

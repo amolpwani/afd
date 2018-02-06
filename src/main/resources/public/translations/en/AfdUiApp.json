@@ -5,7 +5,7 @@
 		"navigation": {
 			"links": {
 				"home": "Home",
-				"list": "Master Data",
+				"masterData": "Master Data",
 				"admin": {
 					"main": "Admin",
 					"manageMasterData": "Manage Master Data",
@@ -54,21 +54,21 @@
 		"yes": "Yes",
 		"no": "No"
 	},
-	"list": {
-		"type": "List",
-		"types": "Lists",
-		"selectedTypes": "Selected Lists",
-		"list": {
+	"masterData": {
+		"type": "MasterData",
+		"types": "MasterDatas",
+		"selectedTypes": "Selected MasterDatas",
+		"masterData": {
 			"title": "Manage Master Data",
-			"instructions": "The existing bookings are listed below. You may create new bookings or search for existing ones.",
-			"subTitle": "Lists"
+			"instructions": "The existing bookings are masterDataed below. You may create new bookings or search for existing ones.",
+			"subTitle": "MasterDatas"
 		},
-		"activeList": {
-			"title": "Master Data Lists",
-			"subTitle": "Please select the master data list you want to manage "
+		"activeMasterData": {
+			"title": "Master Data MasterDatas",
+			"subTitle": "Please select the master data masterData you want to manage "
 		},
-		"createList": {
-			"title": "Create List",
+		"createMasterData": {
+			"title": "Create MasterData",
 			"previous": "Previous",
 			"cancel": "Cancel",
 			"continue": "Continue",
@@ -79,84 +79,84 @@
 			"description": "Description",
 			"active": "Active?",
 			"createSuccess": "{{name}} has been successfully created.",
-			"createQueued": "List creation has been queued for later processing due to being offline.",
-			"createFailed": "Failed to create List: {{error}}",
+			"createQueued": "MasterData creation has been queued for later processing due to being offline.",
+			"createFailed": "Failed to create MasterData: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
-		"editList": {
-			"title": "Edit List",
+		"editMasterData": {
+			"title": "Edit MasterData",
 			"previous": "Previous",
 			"cancel": "Cancel",
 			"continue": "Continue",
 			"saveAndContinue": "Save and Continue",
 			"save": "Save",
 			"pleaseWait": "Please wait...",
-			"name": "List Name",
-			"description": "List Description",
+			"name": "MasterData Name",
+			"description": "MasterData Description",
 			"active": "Active?",
 			"updateSuccess": "{{name}} has been successfully edited.",
-			"updateQueued": "List edition has been queued for later processing due to being offline.",
-			"updateFailed": "Failed to edit List: {{error}}",
+			"updateQueued": "MasterData edition has been queued for later processing due to being offline.",
+			"updateFailed": "Failed to edit MasterData: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
-		"deleteList": {
-			"title": "Delete Lists",
-			"instructions": "The following lists will be deleted. This action cannot be undone. Are you sure you wish to continue?",
+		"deleteMasterData": {
+			"title": "Delete MasterDatas",
+			"instructions": "The following masterDatas will be deleted. This action cannot be undone. Are you sure you wish to continue?",
 			"deleteSuccess": "{{name}} has been successfully deleted."
 		},
 		"actions": "Actions",
-		"name": "List Name",
-		"description": "List description",
+		"name": "MasterData Name",
+		"description": "MasterData description",
 		"active": "Active?"
 	},
-	"listItem": {
-		"type": "List Item",
-		"types": "List Items",
-		"selectedTypes": "Selected Lists",
-		"listItem": {
-			"title": "Manage List Item",
-			"subTitle": "Lists"
+	"masterDataItem": {
+		"type": "MasterData Item",
+		"types": "MasterData Items",
+		"selectedTypes": "Selected MasterDatas",
+		"masterDataItem": {
+			"title": "Manage MasterData Item",
+			"subTitle": "MasterDatas"
 		},
-		"createListItem": {
-			"title": "Create List Item",
+		"createMasterDataItem": {
+			"title": "Create MasterData Item",
 			"previous": "Previous",
 			"cancel": "Cancel",
 			"continue": "Continue",
 			"saveAndContinue": "Save and Continue",
 			"save": "Save",
 			"pleaseWait": "Please wait...",
-			"code": "List Item Code",
-			"description": "List Item Description",
+			"code": "MasterData Item Code",
+			"description": "MasterData Item Description",
 			"active": "Active?",
 			"createSuccess": "{{name}} has been successfully created.",
-			"createQueued": "List Item creation has been queued for later processing due to being offline.",
-			"createFailed": "Failed to create List Item: {{error}}",
+			"createQueued": "MasterData Item creation has been queued for later processing due to being offline.",
+			"createFailed": "Failed to create MasterData Item: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
-		"editListItem": {
-			"title": "Edit List Item",
+		"editMasterDataItem": {
+			"title": "Edit MasterData Item",
 			"previous": "Previous",
 			"cancel": "Cancel",
 			"continue": "Continue",
 			"saveAndContinue": "Save and Continue",
 			"save": "Save",
 			"pleaseWait": "Please wait...",
-			"code": "List Item Code",
-			"description": "List Item Description",
+			"code": "MasterData Item Code",
+			"description": "MasterData Item Description",
 			"active": "Active?",
 			"updateSuccess": "{{name}} has been successfully edited.",
-			"updateQueued": "List Item edition has been queued for later processing due to being offline.",
-			"updateFailed": "Failed to edit List Item: {{error}}",
+			"updateQueued": "MasterData Item edition has been queued for later processing due to being offline.",
+			"updateFailed": "Failed to edit MasterData Item: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details."
 		},
-		"deleteListItem": {
-			"title": "Delete List Items",
-			"instructions": "The following listItems will be deleted. This action cannot be undone. Are you sure you wish to continue?",
+		"deleteMasterDataItem": {
+			"title": "Delete MasterData Items",
+			"instructions": "The following masterDataItems will be deleted. This action cannot be undone. Are you sure you wish to continue?",
 			"deleteSuccess": "{{name}} has been successfully deleted."
 		},
 		"actions": "Actions",
-		"code": "List Item Code",
-		"description": "List Item Description",
+		"code": "MasterData Item Code",
+		"description": "MasterData Item Description",
 		"active": "Active?"
 	},
 	"foundationDataColumn": {
@@ -175,8 +175,8 @@
 			"hoverHelp" : "Hover Help",
 			"uniqueColumn" : "Unique?",
 			"inputType" : "Input Type",
-			"selectedList" : "Select List",
-			"listDisplayType" : "Display Type",
+			"selectedMasterData" : "Select MasterData",
+			"masterDataDisplayType" : "Display Type",
 		    "value" : "Value",
 		    "mandatory" : "Mandatory?",
 		    "sortOrder" : "Display Order",
@@ -188,7 +188,7 @@
 			"createQueued": "Foundational Data Column creation has been queued for later processing due to being offline.",
 			"createFailed": "Failed to create Foundational Data Column: {{error}}",
 			"validationErrors": "Errors found on this page. Please see below for details.",
-			"duplicateUIColumn": "{{name}} is already availaable in Foundation data columns."
+			"duplicateUIColumn": "{{name}} is already available in Foundation data columns."
 		},
 		"editFoundationDataColumn": {
 			"title": "Edit Foundational Data Column",
@@ -198,8 +198,8 @@
 			"saveAndContinue": "Save and Continue",
 			"save": "Save",
 			"pleaseWait": "Please wait...",
-			"name": "List Name",
-			"description": "List Description",
+			"name": "MasterData Name",
+			"description": "MasterData Description",
 			"active": "Active?",
 			"updateSuccess": "{{name}} has been successfully edited.",
 			"updateQueued": "Foundational Data Column edition has been queued for later processing due to being offline.",
@@ -216,12 +216,48 @@
 		"hoverHelp" : "Hover Help",
 		"uniqueColumn" : "Unique?",
 		"inputType" : "Input Type",
-		"selectedList" : "Select List",
-		"listDisplayType" : "Display Type",
+		"selectedMasterData" : "Select MasterData",
+		"masterDataDisplayType" : "Display Type",
 	    "value" : "Value",
 	    "mandatory" : "Mandatory?",
 	    "sortOrder" : "Display Order",
 	    "editable" : "Editable",
 	    "length" : "Length"
+	},
+	"foundationDataRow": {
+		"title": "Foundational Data Row",
+		"type": "Foundational Data Row",
+		"selectedFoundationDataRow": "Selected Foundational Data Row",
+		"createFoundationDataRow": {
+			"title": "Create Foundation Data Row",
+			"previous": "Previous",
+			"cancel": "Cancel",
+			"continue": "Continue",
+			"saveAndContinue": "Save and Continue",
+			"save": "Save",
+			"pleaseWait": "Please wait...",
+			"createSuccess": "{{name}} has been successfully created.",
+			"createQueued": "Foundational Data Row creation has been queued for later processing due to being offline.",
+			"createFailed": "Failed to create Foundational Data Row: {{error}}",
+			"validationErrors": "Errors found on this page. Please see below for details."
+		},
+		"editFoundationDataRow": {
+			"title": "Edit Foundational Data Row",
+			"previous": "Previous",
+			"cancel": "Cancel",
+			"continue": "Continue",
+			"saveAndContinue": "Save and Continue",
+			"save": "Save",
+			"pleaseWait": "Please wait...",
+			"updateSuccess": "{{name}} has been successfully edited.",
+			"updateQueued": "Foundational Data Row edition has been queued for later processing due to being offline.",
+			"updateFailed": "Failed to edit Foundational Data Row: {{error}}",
+			"validationErrors": "Errors found on this page. Please see below for details."
+		},
+		"deleteFoundationDataRow": {
+			"title": "Delete Foundation Data Rows",
+			"instructions": "The following foundation data rows will be deleted. This action cannot be undone. Are you sure you wish to continue?",
+			"deleteSuccess": "{{name}} has been successfully deleted."
+		}
 	}
 }

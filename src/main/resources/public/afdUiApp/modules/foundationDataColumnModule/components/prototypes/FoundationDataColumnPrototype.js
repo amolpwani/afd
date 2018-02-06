@@ -30,7 +30,7 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule')
     	    this.uniqueColumn = false;
     	    this.inputType = 'Text';
     	    this.selectedList = '';
-    	    this.listDisplayType = '';
+    	    this.listDisplayType = 'Code';
     	    this.value = '';
     	    this.mandatory = false;
     	    this.sortOrder = 0;

@@ -26,8 +26,8 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				foundationDataColumns: ['FoundationDataColumnService', function(FoundationDataColumnService) {
 					return FoundationDataColumnService.getFoundationDataColumns();
 				}],
-				lists: ['ListService', function(ListService) {
-					return ListService.getLists();
+				masterDataList: ['MasterDataService', function(MasterDataService) {
+					return MasterDataService.getMasterDatas();
 				}]
 			},
 			onEnter: ['$state', function($state) {
@@ -43,8 +43,8 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 			controllerAs: 'createFoundationDataColumnController',
 			parent: 'afd-ui-app',
 			resolve: {
-				lists: ['ListService', function(ListService) {
-					return ListService.getLists();
+				masterDataList: ['MasterDataService', function(MasterDataService) {
+					return MasterDataService.getMasterDatas();
 				}],
 				foundationDataColumns: ['FoundationDataColumnService', function(FoundationDataColumnService) {
 					return FoundationDataColumnService.getFoundationDataColumns();

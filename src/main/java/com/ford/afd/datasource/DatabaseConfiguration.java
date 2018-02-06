@@ -1,15 +1,15 @@
 package com.ford.afd.datasource;
 
-import org.apache.commons.lang.StringUtils;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-
-import javax.sql.DataSource;
-import java.io.IOException;
-import java.sql.SQLException;
 
 @Configuration
 public class DatabaseConfiguration {
@@ -20,7 +20,7 @@ public class DatabaseConfiguration {
 
     String getEnvVariable(String parameterName) {
         String environment = System.getenv(parameterName);
-        return (StringUtils.isNotBlank(environment) ? environment : "local");
+        return (!org.springframework.util.StringUtils.isEmpty(environment) ? environment : "local");
     }
 
     @Bean

@@ -6,8 +6,8 @@
  * @description The root application module
  * @requires WebCoreModule
  * @requires AfdUiAppComponentsModule
- * @requires AfdUiAppListModule
- * @requires AfdUiAppListComponentsModule
+ * @requires AfdUiAppMasterDataModule
+ * @requires AfdUiAppMasterDataComponentsModule
  * @requires AfdUiAppFoundationDataColumnModule
  * @requires AfdUiAppFoundationDataColumnComponentsModule
  */
@@ -15,9 +15,10 @@ angular.module('AfdUiAppModule', [
     'WebCoreModule',
     'afdEnvConfig',
     'AfdUiAppComponentsModule',
-    'AfdUiAppListModule',
-    'AfdUiAppListItemModule',
-    'AfdUiAppFoundationDataColumnModule'
+    'AfdUiAppMasterDataModule',
+    'AfdUiAppMasterDataItemModule',
+    'AfdUiAppFoundationDataColumnModule',
+    'AfdUiAppFoundationDataRowModule'
 ]);
 
 /*

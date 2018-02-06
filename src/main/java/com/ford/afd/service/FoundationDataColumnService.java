@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import com.ford.afd.model.FoundationDataColumn;
 import com.ford.afd.repository.FoundationDataColumnRepository;
 
+/**
+ * 
+ * Service class to perform add, remove, update,search operation in FoundationDataColumn table.
+ */
 @Service
 public class FoundationDataColumnService {
     @Autowired

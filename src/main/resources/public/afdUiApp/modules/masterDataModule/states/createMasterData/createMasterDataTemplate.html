@@ -1,0 +1,50 @@
+<form class="well" role="form" name="createMasterDataForm" ng-submit="createMasterDataForm.$valid && createMasterDataController.submitMasterData()" id="createMasterDataForm" novalidate wc-form-submit>
+	<h2 ng-hide="createMasterDataController.isEditing" translate>masterData.createMasterData.title</h2>
+	<h2 ng-show="createMasterDataController.isEditing" translate>masterData.editMasterData.title</h2>
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="name" class="control-label" translate>masterData.createMasterData.name </label>
+				<input ng-model="createMasterDataController.masterData.name" id="name"
+					   name="name" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
+					   wc-validation-indicator="{{'masterData.createMasterData.name' | translate}}" required/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="description" class="control-label" translate>masterData.createMasterData.description </label>
+				<input ng-model="createMasterDataController.masterData.description" id="description"
+					   name="description" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
+					   wc-validation-indicator="{{'masterData.createMasterData.description' | translate}}" required/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="active" translate>	masterData.createMasterData.active
+				</label>
+				<input type="checkbox" name="checkbox" id="active"
+					   ng-model="createMasterDataController.masterData.active"/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row form-actions">
+		<div class="col-xs-6 text-center">
+			<button type="button" id="cancel" ng-click="createMasterDataController.cancel()" class="btn btn-secondary" wc-click-once translate>
+				masterData.createMasterData.cancel
+			</button>
+		</div>
+		<div class="col-xs-6 text-center">
+			<button type="submit" id="save" class="btn btn-primary-default" 
+				wc-continue-if-valid wc-click-once  translate>
+				masterData.createMasterData.save
+			</button>
+		</div>
+	</div>
+</form>

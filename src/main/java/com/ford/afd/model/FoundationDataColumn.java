@@ -1,5 +1,6 @@
 package com.ford.afd.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,23 +9,45 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames="uiColumnName"))
+@Table(name = "TADF005_FOUNDATION_DATA_CLMN", uniqueConstraints=@UniqueConstraint(columnNames="TADF005_CLMN_N"))
 public class FoundationDataColumn {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "TADF005_CLMN_D")
     private long id;
+    
+    @Column(name = "TADF005_CLMN_N")
     private String uiColumnName;
+    
+    @Column(name = "TADF005_CLMN_CMT")
 	private String hoverHelp;
+    
+    @Column(name = "TADF005_UNIQUE_F")
 	private boolean uniqueColumn;
+    
+    @Column(name = "TADF005_INPUT_TYPE")
 	private String inputType;
+    
+    @Column(name = "TADF005_VAL")
     private String value;
+    
+    @Column(name = "TADF005_MANDATORY_F")
     private boolean mandatory;
+    
+    @Column(name = "TADF005_SORT_ORDER")
     private int sortOrder;
+    
+    @Column(name = "TADF005_EDITABLE_F")
     private boolean editable;
+    
+    @Column(name = "TADF005_LNTH")
     private int length;
     
+    @Column(name = "TADF005_SELECTED_LIST_ID")
     private long selectedListId;
+    
+    @Column(name = "TADF005_LIST_DISPLAY_TYPE")
     private String listDisplayType;
     
     public FoundationDataColumn(String uiColumnName, String hoverHelp, boolean unique, String inputType, String value,
