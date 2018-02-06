@@ -6,10 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "TADF005_FOUNDATION_DATA_CLMN", uniqueConstraints=@UniqueConstraint(columnNames="TADF005_CLMN_N"))
+@Table(name = "TADF005_FOUNDATION_DATA_CLMN")
 public class FoundationDataColumn {
 
     @Id

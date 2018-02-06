@@ -169,7 +169,7 @@ public class FoundationDataColumnRepositoryTest {
 	}
 	
 	@Test
-	public void createListData() {
+	public void createFoundationDataColumn() {
 		FoundationDataColumn foundationDataColumn1 = new FoundationDataColumn();
 		foundationDataColumn1.setUiColumnName("Column1");
 		foundationDataColumn1.setHoverHelp("Column1 Help");

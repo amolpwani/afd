@@ -85,4 +85,12 @@ public class MasterDataItem {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	public MasterData getMasterData() {
+		return masterData;
+	}
+
+	public void setMasterData(MasterData masterData) {
+		this.masterData = masterData;
+	}
 }

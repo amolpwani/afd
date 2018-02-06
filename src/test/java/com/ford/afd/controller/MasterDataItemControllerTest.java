@@ -22,8 +22,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ford.afd.model.MasterData;
 import com.ford.afd.model.MasterDataItem;
 import com.ford.afd.service.MasterDataItemService;
+import com.ford.afd.service.MasterDataService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -39,16 +41,30 @@ public class MasterDataItemControllerTest {
 
 	@Autowired
 	private MasterDataItemService masterDataItemService;
+	
+	@Autowired
+	private MasterDataService masterDataService;
 
 	private List<Long> testEntitiesId = new ArrayList<>();
+	
+	private MasterData masterData;
 
 	@Before
 	public void setUp() throws Exception {
-		MasterDataItem listDataItem1 = masterDataItemService.saveMasterDataItem(buildListDataItem("BU1", "description 1", 100));
-		MasterDataItem listDataItem2 = masterDataItemService.saveMasterDataItem(buildListDataItem("BU2", "description 2", 100));
+		MasterData listData = getMasterData();
+		masterData = masterDataService.saveMasterData(listData);
+		
+		MasterDataItem listDataItem1 = masterDataItemService.saveMasterDataItem(buildListDataItem("BU1", "description 1", masterData.getId(), listData));
+		MasterDataItem listDataItem2 = masterDataItemService.saveMasterDataItem(buildListDataItem("BU2", "description 2", masterData.getId(), listData));
+		
 		testEntitiesId.add(listDataItem1.getId());
 		testEntitiesId.add(listDataItem2.getId());
 		this.base = new URL("http://localhost:" + port);
+	}
+
+	private MasterData getMasterData() {
+		MasterData listData = new MasterData("List1", "Description1", true);
+		return listData;
 	}
 
 	@After
@@ -58,8 +74,9 @@ public class MasterDataItemControllerTest {
 		}
 	}
 
-	private MasterDataItem buildListDataItem(String code, String description, long listId) {
-		return new MasterDataItem(code, description, true, listId);
+	private MasterDataItem buildListDataItem(String code, String description, long listId, MasterData item) {
+		MasterDataItem masterDataItem = new MasterDataItem(code, description, true, listId);
+		return masterDataItem;
 	}
 
 	@Test
@@ -74,8 +91,9 @@ public class MasterDataItemControllerTest {
 				returnType);
 
 		//Assert
+		
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		MasterDataItem expectedListData = new MasterDataItem("BU1", "description 1", true, 100);
+		MasterDataItem expectedListData = new MasterDataItem("BU1", "description 1", true, masterData.getId());
 
 		expectedListData.setId(testEntitiesId.get(0));
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedListData);
@@ -102,7 +120,7 @@ public class MasterDataItemControllerTest {
 		ParameterizedTypeReference<MasterDataItem> returnType = new ParameterizedTypeReference<MasterDataItem>() {
 		};
 
-		MasterDataItem updateListDataItem = new MasterDataItem("BU2", "updated description 1", false, 100);
+		MasterDataItem updateListDataItem = new MasterDataItem("BU2", "updated description 1", false, masterData.getId());
 		updateListDataItem.setId(testEntitiesId.get(0));
 
 		ResponseEntity<MasterDataItem> actualResponse =  template.exchange(
@@ -115,8 +133,10 @@ public class MasterDataItemControllerTest {
 		//Assert
 		MasterDataItem actualBody = actualResponse.getBody();
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
+		
 		MasterDataItem expectedListData = new MasterDataItem("BU2", "updated description 1", false, 100);
 		expectedListData.setId(testEntitiesId.get(0));
+		
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedListData);
 		assertThat(masterDataItemService.findMasterDataItemById(actualBody.getId())).isEqualToComparingFieldByField(expectedListData);
 	}
@@ -148,7 +168,7 @@ public class MasterDataItemControllerTest {
 		ParameterizedTypeReference<MasterDataItem> returnType = new ParameterizedTypeReference<MasterDataItem>() {
 		};
 
-		MasterDataItem createListData = new MasterDataItem("BU3", "description 3", false, 100);
+		MasterDataItem createListData = new MasterDataItem("BU3", "description 3", false, masterData.getId());
 
 		ResponseEntity<MasterDataItem> actualResponse =  template.exchange(
 				base.toString() + "/masterdataitem/getMasterDataItem",
@@ -160,9 +180,11 @@ public class MasterDataItemControllerTest {
 		//Assert
 		MasterDataItem actualBody = actualResponse.getBody();
 		testEntitiesId.add(actualBody.getId());
+		
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		MasterDataItem expectedListData = new MasterDataItem("BU3", "description 3", false, 100);
+		MasterDataItem expectedListData = new MasterDataItem("BU3", "description 3", false, masterData.getId());
 		expectedListData.setId(actualBody.getId());
+		
 		assertThat(actualBody).isEqualToComparingFieldByField(expectedListData);
 		assertThat(masterDataItemService.findMasterDataItemById(actualBody.getId())).isEqualToComparingFieldByField(expectedListData);
 	}

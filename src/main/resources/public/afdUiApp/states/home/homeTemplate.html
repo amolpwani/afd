@@ -1,2 +1,15 @@
-<h1>{{'application.home.title'| translate}}</h1>
-<img src="../../webCore/assets/image/opt.jpg" width="100%" class="img-rounded img-responsive"/>
+<div align = "center" >
+    <h1>{{'application.home.title'| translate}}</h1>
+   <div>
+
+
+    <select
+            ng-model="selectedItem"
+            ng-options="S.value as S.label for S in selectables" ng-change="fun()">
+    </select>
+       <div>
+       </div>
+    <img src='{{selectedItem}}'/>
+</div>
+<!--<img src="../../webCore/assets/image/opt.jpg"  class="img-rounded img-responsive"/>-->
+</div>
