@@ -76,7 +76,7 @@ public class MasterDataControllerTest {
 		//Assert
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 		MasterData expectedListData = new MasterData("list data 1", "description 1", true);
-		expectedListData.setMasterDataItemList(new ArrayList<>());
+		//expectedListData.setMasterDataItemList(new ArrayList<>());
 
 		expectedListData.setId(testEntitiesId.get(0));
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedListData);
@@ -118,7 +118,7 @@ public class MasterDataControllerTest {
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 		MasterData expectedMasterData = new MasterData("updated list data 1", "updated description 1", false);
 		expectedMasterData.setId(testEntitiesId.get(0));
-		expectedMasterData.setMasterDataItemList(new ArrayList<>());
+		//expectedMasterData.setMasterDataItemList(new ArrayList<>());
 		assertThat(masterDataService.findMasterDataById(actualBody.getId()).getName()).isEqualTo(expectedMasterData.getName());
 	}
 

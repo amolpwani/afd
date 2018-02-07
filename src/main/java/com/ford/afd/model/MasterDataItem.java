@@ -31,9 +31,9 @@ public class MasterDataItem {
     @Column(name = "TAFD001_MSTR_DATA_D")
     private long parentMasterDataId;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TAFD001_MSTR_DATA_D", referencedColumnName = "TAFD001_MSTR_DATA_D", nullable = false, unique = true, insertable = false, updatable = false)
-    private MasterData masterData;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "TAFD001_MSTR_DATA_D", referencedColumnName = "TAFD001_MSTR_DATA_D", nullable = false, unique = true, insertable = false, updatable = false)
+//    private MasterData masterData;
 
     public MasterDataItem(String code, String description, boolean active, long parentMasterDataId) {
         this.code = code;
@@ -86,11 +86,11 @@ public class MasterDataItem {
 		this.active = active;
 	}
 
-	public MasterData getMasterData() {
-		return masterData;
-	}
-
-	public void setMasterData(MasterData masterData) {
-		this.masterData = masterData;
-	}
+//	public MasterData getMasterData() {
+//		return masterData;
+//	}
+//
+//	public void setMasterData(MasterData masterData) {
+//		this.masterData = masterData;
+//	}
 }

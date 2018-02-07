@@ -121,7 +121,6 @@ public class MasterDataItemControllerTest {
 		};
 
 		MasterDataItem updateListDataItem = new MasterDataItem("BU2", "updated description 1", false, masterData.getId());
-		updateListDataItem.setId(testEntitiesId.get(0));
 
 		ResponseEntity<MasterDataItem> actualResponse =  template.exchange(
 				base.toString() + "/masterdataitem/getMasterDataItem/" + testEntitiesId.get(0),
@@ -134,8 +133,8 @@ public class MasterDataItemControllerTest {
 		MasterDataItem actualBody = actualResponse.getBody();
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 		
-		MasterDataItem expectedListData = new MasterDataItem("BU2", "updated description 1", false, 100);
-		expectedListData.setId(testEntitiesId.get(0));
+		MasterDataItem expectedListData = new MasterDataItem("BU2", "updated description 1", false, masterData.getId());
+		expectedListData.setId(actualBody.getId());
 		
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedListData);
 		assertThat(masterDataItemService.findMasterDataItemById(actualBody.getId())).isEqualToComparingFieldByField(expectedListData);

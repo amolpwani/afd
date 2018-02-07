@@ -30,8 +30,8 @@ public class MasterData {
     @Column(name = "TAFD001_MSTR_DATA_ACTV_F")
     private boolean active;
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "masterData", cascade = CascadeType.ALL)
-    private List<MasterDataItem> masterDataItemList;
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "masterData", cascade = CascadeType.ALL)
+//    private List<MasterDataItem> masterDataItemList;
 
     public MasterData(String name, String description, boolean active) {
         this.name = name;
@@ -74,12 +74,12 @@ public class MasterData {
 		this.description = description;
 	}
 
-	public List<MasterDataItem> getMasterDataItemList() {
-		return masterDataItemList;
-	}
-
-	public void setMasterDataItemList(List<MasterDataItem> masterDataItemList) {
-		this.masterDataItemList = masterDataItemList;
-	}
+//	public List<MasterDataItem> getMasterDataItemList() {
+//		return masterDataItemList;
+//	}
+//
+//	public void setMasterDataItemList(List<MasterDataItem> masterDataItemList) {
+//		this.masterDataItemList = masterDataItemList;
+//	}
 }
 
