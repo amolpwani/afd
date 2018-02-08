@@ -81,7 +81,8 @@
 			"createSuccess": "{{name}} has been successfully created.",
 			"createQueued": "MasterData creation has been queued for later processing due to being offline.",
 			"createFailed": "Failed to create MasterData: {{error}}",
-			"validationErrors": "Errors found on this page. Please see below for details."
+			"validationErrors": "Errors found on this page. Please see below for details.",
+			"duplicateName": "{{name}} is already available in Master datas."
 		},
 		"editMasterData": {
 			"title": "Edit MasterData",
@@ -131,7 +132,8 @@
 			"createSuccess": "{{name}} has been successfully created.",
 			"createQueued": "MasterData Item creation has been queued for later processing due to being offline.",
 			"createFailed": "Failed to create MasterData Item: {{error}}",
-			"validationErrors": "Errors found on this page. Please see below for details."
+			"validationErrors": "Errors found on this page. Please see below for details.",
+			"duplicateCode": "{{name}} is already available in Master data Items."
 		},
 		"editMasterDataItem": {
 			"title": "Edit MasterData Item",

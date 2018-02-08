@@ -1,5 +1,6 @@
 package com.ford.afd.service;
 
+import com.ford.afd.model.FoundationDataColumn;
 import com.ford.afd.model.MasterDataItem;
 import com.ford.afd.repository.MasterDataItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import java.util.List;
  */
 @Service
 public class MasterDataItemService {
+	private static final String DUPLICATE_MASTERDATA_ITEM_CODE = "duplicateCode";
+	
     @Autowired
     private MasterDataItemRepository masterDataItemRepository;
 
@@ -27,8 +30,20 @@ public class MasterDataItemService {
         return masterDataItemRepository.findByParentMasterDataId(listId);
     }
 
-    public MasterDataItem saveMasterDataItem(MasterDataItem masterDataItem) { 
-    	return masterDataItemRepository.save(masterDataItem); 
+    public MasterDataItem saveMasterDataItem(MasterDataItem masterDataItem) {
+    	MasterDataItem creaOrUpMasterDataItem = null;
+    	if (masterDataItem.getId() != 0) {
+    		creaOrUpMasterDataItem = masterDataItemRepository.save(masterDataItem);
+    	} else {
+    		if (!masterDataItemRepository.existsByCode(masterDataItem.getCode())) {
+    			creaOrUpMasterDataItem = masterDataItemRepository.save(masterDataItem);
+    		} else {
+    			masterDataItem.setCode(DUPLICATE_MASTERDATA_ITEM_CODE);
+    			creaOrUpMasterDataItem = masterDataItem;
+    		}
+    	}
+    	
+        return creaOrUpMasterDataItem;
     }
 
     public void deleteMasterDataItem(MasterDataItem masterDataItems) {

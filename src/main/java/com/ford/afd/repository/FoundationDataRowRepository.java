@@ -2,6 +2,7 @@ package com.ford.afd.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,4 +13,11 @@ public interface FoundationDataRowRepository extends CrudRepository<FoundationDa
 	
 	@Transactional
 	void removeByRowId(long rowId);
+	
+	@Query("select distinct rowId from FoundationDataRow")
+	List<Long> findDistinctRowIds();
+	
+	@Query("select coalesce(max(rowId), 0) from FoundationDataRow")
+	Long getMaxRowId();
+
 }

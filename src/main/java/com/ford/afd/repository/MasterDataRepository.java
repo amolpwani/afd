@@ -4,4 +4,11 @@ import com.ford.afd.model.MasterData;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MasterDataRepository extends JpaRepository<MasterData, Long> {
+	
+	/**
+	 * Checks if name already existing in MasterData table..
+	 * @param name
+	 * @return
+	 */
+	 boolean existsByName(String name);
 }

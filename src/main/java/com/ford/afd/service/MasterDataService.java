@@ -1,6 +1,7 @@
 package com.ford.afd.service;
 
 import com.ford.afd.model.MasterData;
+import com.ford.afd.model.MasterDataItem;
 import com.ford.afd.repository.MasterDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import java.util.List;
  */
 @Service
 public class MasterDataService {
+	private static final String DUPLICATE_MASTERDATA_NAME = "duplicateName";
+	
     @Autowired
     private MasterDataRepository masterDataRepository;
 
@@ -25,7 +28,19 @@ public class MasterDataService {
     }
 
     public MasterData saveMasterData(MasterData masterData) {
-        return masterDataRepository.save(masterData);
+    	MasterData creaOrUpMasterDataItem = null;
+    	if (masterData.getId() != 0) {
+    		creaOrUpMasterDataItem = masterDataRepository.save(masterData);
+    	} else {
+    		if (!masterDataRepository.existsByName(masterData.getName())) {
+    			creaOrUpMasterDataItem = masterDataRepository.save(masterData);
+    		} else {
+    			masterData.setName(DUPLICATE_MASTERDATA_NAME);
+    			creaOrUpMasterDataItem = masterData;
+    		}
+    	}
+    	
+        return creaOrUpMasterDataItem;
     }
 
     public void deleteMasterData(MasterData masterData) {

@@ -34,9 +34,9 @@ public class MasterDataRepositoryTest {
 	
 	@Test
 	public void directMasterData() {
-
+		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
-		masterData1.setName("JunitTesting");
+		masterData1.setName(masterData1Name);
 		masterData1.setActive(true);
 		entityManager.persist(masterData1);
 		entityManager.flush();
@@ -62,8 +62,9 @@ public class MasterDataRepositoryTest {
 
 	@Test
 	public void masterDataById() {
+		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
-		masterData1.setName("JunitTesting");
+		masterData1.setName(masterData1Name);
 		masterData1.setActive(true);
 		entityManager.persist(masterData1);
 		entityManager.flush();
@@ -80,9 +81,9 @@ public class MasterDataRepositoryTest {
 	
 	@Test
 	public void updateMasterData() {
-
+		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
-		masterData1.setName("JunitTesting");
+		masterData1.setName(masterData1Name);
 		masterData1.setActive(true);
 		entityManager.persist(masterData1);
 		entityManager.flush();
@@ -103,8 +104,9 @@ public class MasterDataRepositoryTest {
 	
 	@Test
 	public void deleteListDataById() {
+		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
-		masterData1.setName("JunitTesting");
+		masterData1.setName(masterData1Name);
 		masterData1.setActive(true);
 		entityManager.persist(masterData1);
 		entityManager.flush();
@@ -122,8 +124,9 @@ public class MasterDataRepositoryTest {
 	
 	@Test
 	public void createMasterData() {
+		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
-		masterData1.setName("JunitTesting");
+		masterData1.setName(masterData1Name);
 		masterData1.setActive(true);
 		entityManager.persist(masterData1);
 		entityManager.flush();

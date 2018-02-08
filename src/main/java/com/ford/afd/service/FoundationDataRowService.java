@@ -28,6 +28,10 @@ public class FoundationDataRowService {
     	
     	return list;
     }
+    
+    public List<Long> allFoundationDataRowIds() {
+    	return foundationDataRowRepository.findDistinctRowIds();
+    }
 
     public FoundationDataRow findFoundationDataRowById(long id) {
         return foundationDataRowRepository.findOne(id);
@@ -47,5 +51,9 @@ public class FoundationDataRowService {
     
     public void deleteFoundationDataRowByRowId(long rowId) {
         foundationDataRowRepository.removeByRowId(rowId);
+    }
+    
+    public long findNewRowId() {
+    	return foundationDataRowRepository.getMaxRowId() + 1;
     }
 }

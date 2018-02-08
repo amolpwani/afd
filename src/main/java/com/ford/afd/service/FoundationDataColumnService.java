@@ -14,7 +14,9 @@ import com.ford.afd.repository.FoundationDataColumnRepository;
  */
 @Service
 public class FoundationDataColumnService {
-    @Autowired
+    private static final String DUPLICATE_COLUMN = "duplicateColumn";
+    
+	@Autowired
     private FoundationDataColumnRepository foundationDataColumnRepository;
 
     public List<FoundationDataColumn> allFoundationDataColumn() {
@@ -26,10 +28,21 @@ public class FoundationDataColumnService {
     }
 
     public FoundationDataColumn saveFoundationDataColumn(FoundationDataColumn foundationDataColumn) {
-        return foundationDataColumnRepository.save(foundationDataColumn);
+    	FoundationDataColumn creaOrUpFoundationDataColumn = null;
+    	if (foundationDataColumn.getId() != 0) {
+    		creaOrUpFoundationDataColumn = foundationDataColumnRepository.save(foundationDataColumn);
+    	} else {
+    		if (!foundationDataColumnRepository.existsByUiColumnName(foundationDataColumn.getUiColumnName())) {
+    			creaOrUpFoundationDataColumn = foundationDataColumnRepository.save(foundationDataColumn);
+    		} else {
+    			foundationDataColumn.setUiColumnName(DUPLICATE_COLUMN);
+    			creaOrUpFoundationDataColumn = foundationDataColumn;
+    		}
+    	}
+        return creaOrUpFoundationDataColumn;
     }
 
-    public void deleteFoundationDataColumn(FoundationDataColumn listData) {
-        foundationDataColumnRepository.delete(listData);
+    public void deleteFoundationDataColumn(FoundationDataColumn foundationData) {
+        foundationDataColumnRepository.delete(foundationData);
     }
 }

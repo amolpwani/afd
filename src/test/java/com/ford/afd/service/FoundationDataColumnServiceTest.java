@@ -42,7 +42,8 @@ public class FoundationDataColumnServiceTest {
 	public void allFoundationDataColumn_shouldReturnValuesWhenFoundationDataColumnFound() {
 		//Arrange
 		List<FoundationDataColumn> foundationDataColumn = new ArrayList<>(1);
-		foundationDataColumn.add(buildFoundationDataColumn());
+		String column1Name = "Column" + System.nanoTime();
+		foundationDataColumn.add(buildFoundationDataColumn(column1Name));
 		when(foundationDataColumnRepositoryMock.findAll()).thenReturn(foundationDataColumn);
 		//Act
 		List<FoundationDataColumn> actualResult = foundationDataColumnService.allFoundationDataColumn();
@@ -55,13 +56,14 @@ public class FoundationDataColumnServiceTest {
 		//Arrange
 		ArgumentCaptor<FoundationDataColumn> foundationDataColumnCaptor = ArgumentCaptor.forClass(FoundationDataColumn.class);
 
+		String column1Name = "Column" + System.nanoTime();
 		when(foundationDataColumnRepositoryMock.save(foundationDataColumnCaptor.capture()))
-		.thenReturn(buildFoundationDataColumn());
+		.thenReturn(buildFoundationDataColumn(column1Name));
 
 		//Act
-		foundationDataColumnService.saveFoundationDataColumn(buildFoundationDataColumn());
+		foundationDataColumnService.saveFoundationDataColumn(buildFoundationDataColumn(column1Name));
 
-		FoundationDataColumn expectedEntity = buildFoundationDataColumn();
+		FoundationDataColumn expectedEntity = buildFoundationDataColumn(column1Name);
 		expectedEntity.setId(1);
 
 		//Assert
@@ -74,7 +76,8 @@ public class FoundationDataColumnServiceTest {
 		ArgumentCaptor<FoundationDataColumn> foundationDataColumnCaptor = ArgumentCaptor.forClass(FoundationDataColumn.class);
 		doNothing().when(foundationDataColumnRepositoryMock).delete(foundationDataColumnCaptor.capture());
 		//Act
-		foundationDataColumnService.deleteFoundationDataColumn(buildFoundationDataColumn());
+		String column1Name = "Column" + System.nanoTime();
+		foundationDataColumnService.deleteFoundationDataColumn(buildFoundationDataColumn(column1Name));
 		//Assert
 		assertThat(foundationDataColumnCaptor.equals(foundationDataColumnCaptor));
 	}
@@ -83,19 +86,20 @@ public class FoundationDataColumnServiceTest {
 	public void allFoundationDataColumn_shouldRetrieveAllFoundationDataColumn() {
 		//Arrange
 		List<FoundationDataColumn> foundationDataColumn = new ArrayList<>(1);
-		foundationDataColumn.add(buildFoundationDataColumn());
+		String column1Name = "Column" + System.nanoTime();
+		foundationDataColumn.add(buildFoundationDataColumn(column1Name));
 		when(foundationDataColumnRepositoryMock.findAll()).thenReturn(foundationDataColumn);
 		//Act
 		List<FoundationDataColumn> actualFoundationDataColumn = foundationDataColumnService.allFoundationDataColumn();
 		//Assert
 		assertThat(actualFoundationDataColumn).isNotNull();
 		assertThat(actualFoundationDataColumn).hasSize(1);
-		assertThat(actualFoundationDataColumn.get(0).getUiColumnName()).isEqualTo("Column1");
+		assertThat(actualFoundationDataColumn.get(0).getUiColumnName()).isEqualTo(column1Name);
 		assertThat(actualFoundationDataColumn.get(0).getHoverHelp()).isEqualTo("Column1 Help");
 	}
 
-	private FoundationDataColumn buildFoundationDataColumn() {
-		FoundationDataColumn entity = new FoundationDataColumn("Column1", "Column1 Help", true, "List", "BU", true, 1, false, 10);
+	private FoundationDataColumn buildFoundationDataColumn(String columName) {
+		FoundationDataColumn entity = new FoundationDataColumn(columName, "Column1 Help", true, "List", "BU", true, 1, false, 10);
 		entity.setId(1);
 		return entity;
 	}

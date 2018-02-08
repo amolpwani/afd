@@ -43,8 +43,8 @@ angular.module('AfdUiAppFoundationDataRowModule')
 				controllerAs: 'createFoundationDataRowController',
 				parent: 'afd-ui-app',
 				resolve: {
-					lists: ['ListService', function(ListService) {
-						return ListService.getLists();
+					foundationDataColumnList: ['FoundationDataColumnService', function(FoundationDataColumnService) {
+						return FoundationDataColumnService.getFoundationDataColumns();
 					}]
 				}
 			});

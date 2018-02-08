@@ -120,13 +120,25 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule').service('Foundati
 					});
 				}
 				else {
-					WcAlertConsoleService.addMessage({
-						message: $translate.instant('foundationDataColumn.createFoundationDataColumn.createSuccess', {
-							name: response.data.uiColumnName
-						}),
-						type: 'success',
-						multiple: false
-					});
+					
+					if (response.data.uiColumnName === 'duplicateColumn') {
+						WcAlertConsoleService.addMessage({
+							message: $translate.instant('foundationDataColumn.createFoundationDataColumn.duplicateUIColumn', {
+								name: foundationDataColumn.uiColumnName
+							}),
+							type: 'danger',
+							multiple: false
+						});
+						return $q.reject('');
+					} else {
+						WcAlertConsoleService.addMessage({
+							message: $translate.instant('foundationDataColumn.createFoundationDataColumn.createSuccess', {
+								name: response.data.uiColumnName
+							}),
+							type: 'success',
+							multiple: false
+						});
+					}
 				}
 				return $q.when(response.data);
 			}), function (errorMsg) {

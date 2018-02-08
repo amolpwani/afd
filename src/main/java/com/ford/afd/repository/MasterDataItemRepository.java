@@ -9,9 +9,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface MasterDataItemRepository extends JpaRepository<MasterDataItem, Long> {
 	
 	/**
-	 * Retrieves MasterDataDataItem for given masterDataId.
+	 * Retrieves MasterDataItem for given masterDataId.
 	 * @param masterDataId
 	 * @return
 	 */
 	List<MasterDataItem> findByParentMasterDataId(long masterDataId);
+	
+	/**
+	 * Checks if code already existing in MasterDataItem table.
+	 * @param code
+	 * @return
+	 */
+	 boolean existsByCode(String code);
 }

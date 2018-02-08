@@ -41,11 +41,14 @@ public class MasterDataControllerTest {
 	private MasterDataService masterDataService;
 
 	private List<Long> testEntitiesId = new ArrayList<>();
+	
+	private final String masterData1Name = "MasterData" + System.nanoTime();
+	private final String masterData2Name = "MasterData" + System.nanoTime();
 
 	@Before
 	public void setUp() throws Exception {
-		MasterData masterData1 = masterDataService.saveMasterData(buildListData("list data 1", "description 1"));
-		MasterData masterData2 = masterDataService.saveMasterData(buildListData("list data 2", "description 2"));
+		MasterData masterData1 = masterDataService.saveMasterData(buildListData(masterData1Name, "description 1"));
+		MasterData masterData2 = masterDataService.saveMasterData(buildListData(masterData2Name, "description 2"));
 		testEntitiesId.add(masterData1.getId());
 		testEntitiesId.add(masterData2.getId());
 		this.base = new URL("http://localhost:" + port);
@@ -75,7 +78,7 @@ public class MasterDataControllerTest {
 
 		//Assert
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		MasterData expectedListData = new MasterData("list data 1", "description 1", true);
+		MasterData expectedListData = new MasterData(masterData1Name, "description 1", true);
 		//expectedListData.setMasterDataItemList(new ArrayList<>());
 
 		expectedListData.setId(testEntitiesId.get(0));
@@ -103,7 +106,8 @@ public class MasterDataControllerTest {
 		ParameterizedTypeReference<MasterData> returnType = new ParameterizedTypeReference<MasterData>() {
 		};
 
-		MasterData updateMasterData = new MasterData("updated list data 1", "updated description 1", false);
+		String masterData1Name = "UpdatedMasterData" + System.nanoTime();
+		MasterData updateMasterData = new MasterData(masterData1Name, "updated description 1", false);
 		updateMasterData.setId(testEntitiesId.get(0));
 
 		ResponseEntity<MasterData> actualResponse =  template.exchange(
@@ -116,7 +120,7 @@ public class MasterDataControllerTest {
 		//Assert
 		MasterData actualBody = actualResponse.getBody();
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		MasterData expectedMasterData = new MasterData("updated list data 1", "updated description 1", false);
+		MasterData expectedMasterData = new MasterData(masterData1Name, "updated description 1", false);
 		expectedMasterData.setId(testEntitiesId.get(0));
 		//expectedMasterData.setMasterDataItemList(new ArrayList<>());
 		assertThat(masterDataService.findMasterDataById(actualBody.getId()).getName()).isEqualTo(expectedMasterData.getName());
@@ -149,7 +153,8 @@ public class MasterDataControllerTest {
 		ParameterizedTypeReference<MasterData> returnType = new ParameterizedTypeReference<MasterData>() {
 		};
 
-		MasterData createMasterData = new MasterData("list data 3", "description 3", false);
+		String masterData1Name = "CreateMasterData" + System.nanoTime();
+		MasterData createMasterData = new MasterData(masterData1Name, "description 3", false);
 
 		ResponseEntity<MasterData> actualResponse =  template.exchange(
 				base.toString() + "/masterdata/getMasterData/",
@@ -162,7 +167,7 @@ public class MasterDataControllerTest {
 		MasterData actualBody = actualResponse.getBody();
 		testEntitiesId.add(actualBody.getId());
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		MasterData expectedMasterData = new MasterData("list data 3", "description 3", false);
+		MasterData expectedMasterData = new MasterData(masterData1Name, "description 3", false);
 		expectedMasterData.setId(actualBody.getId());
 		assertThat(actualBody).isEqualToComparingFieldByField(expectedMasterData);
 		assertThat(masterDataService.findMasterDataById(actualBody.getId()).getName()).isEqualTo(expectedMasterData.getName());

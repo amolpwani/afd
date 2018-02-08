@@ -41,11 +41,14 @@ public class FoundationDataColumnControllerTest {
 	private FoundationDataColumnService foundationDataColumnService;
 
 	private List<Long> testEntitiesId = new ArrayList<>();
+	
+	private final String column1Name = "Column" + System.nanoTime();
+	private final String column2Name = "Column" + System.nanoTime();
 
 	@Before
 	public void setUp() throws Exception {
-		FoundationDataColumn foundationDataColumn1 = foundationDataColumnService.saveFoundationDataColumn(buildFoundationDataColumn("Column1", "Column1 Help", true, "List", "BU", true, 1, false, 10));
-		FoundationDataColumn foundationDataColumn2 = foundationDataColumnService.saveFoundationDataColumn(buildFoundationDataColumn("Column2", "Column2 Help", false, "List", "BU1", false, 2, true, 10));
+		FoundationDataColumn foundationDataColumn1 = foundationDataColumnService.saveFoundationDataColumn(buildFoundationDataColumn(column1Name, "Column1 Help", true, "List", "BU", true, 1, false, 10));
+		FoundationDataColumn foundationDataColumn2 = foundationDataColumnService.saveFoundationDataColumn(buildFoundationDataColumn(column2Name, "Column2 Help", false, "List", "BU1", false, 2, true, 10));
 		testEntitiesId.add(foundationDataColumn1.getId());
 		testEntitiesId.add(foundationDataColumn2.getId());
 		this.base = new URL("http://localhost:" + port);
@@ -76,7 +79,7 @@ public class FoundationDataColumnControllerTest {
 
 		//Assert
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		FoundationDataColumn expectedFoundationDataColumn = new FoundationDataColumn("Column1", "Column1 Help", true, "List", "BU", true, 1, false, 10);
+		FoundationDataColumn expectedFoundationDataColumn = new FoundationDataColumn(column1Name, "Column1 Help", true, "List", "BU", true, 1, false, 10);
 
 		expectedFoundationDataColumn.setId(testEntitiesId.get(0));
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedFoundationDataColumn);
@@ -102,8 +105,10 @@ public class FoundationDataColumnControllerTest {
 		//Act
 		ParameterizedTypeReference<FoundationDataColumn> returnType = new ParameterizedTypeReference<FoundationDataColumn>() {
 		};
+		
+		String updatedColumn1Name = "Column" + System.nanoTime();
 
-		FoundationDataColumn updateFoundationDataColumn = new FoundationDataColumn("Updated Column1", "Updated Column1 Help", true, "List", "BU", true, 1, false, 10);
+		FoundationDataColumn updateFoundationDataColumn = new FoundationDataColumn(updatedColumn1Name, "Updated Column1 Help", true, "List", "BU", true, 1, false, 10);
 		updateFoundationDataColumn.setId(testEntitiesId.get(0));
 
 		ResponseEntity<FoundationDataColumn> actualResponse =  template.exchange(
@@ -116,7 +121,7 @@ public class FoundationDataColumnControllerTest {
 		//Assert
 		FoundationDataColumn actualBody = actualResponse.getBody();
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		FoundationDataColumn expectedFoundationDataColumn = new FoundationDataColumn("Updated Column1", "Updated Column1 Help", true, "List", "BU", true, 1, false, 10);
+		FoundationDataColumn expectedFoundationDataColumn = new FoundationDataColumn(updatedColumn1Name, "Updated Column1 Help", true, "List", "BU", true, 1, false, 10);
 		expectedFoundationDataColumn.setId(testEntitiesId.get(0));
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedFoundationDataColumn);
 		assertThat(foundationDataColumnService.findFoundationDataColumnById(actualBody.getId())).isEqualToComparingFieldByField(expectedFoundationDataColumn);
@@ -149,7 +154,8 @@ public class FoundationDataColumnControllerTest {
 		ParameterizedTypeReference<FoundationDataColumn> returnType = new ParameterizedTypeReference<FoundationDataColumn>() {
 		};
 
-		FoundationDataColumn createFoundationDataColumn = new FoundationDataColumn("Column3", "Column3 Help", true, "List", "BU", true, 1, false, 10);
+		String column3Name = "Column" + System.nanoTime();
+		FoundationDataColumn createFoundationDataColumn = new FoundationDataColumn(column3Name, "Column3 Help", true, "List", "BU", true, 1, false, 10);
 
 		ResponseEntity<FoundationDataColumn> actualResponse =  template.exchange(
 				base.toString() + "/foundationdatacolumn/getFoundationColumn/",
@@ -162,7 +168,7 @@ public class FoundationDataColumnControllerTest {
 		FoundationDataColumn actualBody = actualResponse.getBody();
 		testEntitiesId.add(actualBody.getId());
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		FoundationDataColumn expectedFoundationDataColumn = new FoundationDataColumn("Column3", "Column3 Help", true, "List", "BU", true, 1, false, 10);
+		FoundationDataColumn expectedFoundationDataColumn = new FoundationDataColumn(column3Name, "Column3 Help", true, "List", "BU", true, 1, false, 10);
 		expectedFoundationDataColumn.setId(actualBody.getId());
 		assertThat(actualBody).isEqualToComparingFieldByField(expectedFoundationDataColumn);
 		assertThat(foundationDataColumnService.findFoundationDataColumnById(actualBody.getId())).isEqualToComparingFieldByField(expectedFoundationDataColumn);

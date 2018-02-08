@@ -135,13 +135,24 @@ angular.module('AfdUiAppMasterDataItemComponentsModule').service('MasterDataItem
 					});
 				}
 				else {
-					WcAlertConsoleService.addMessage({
-						message: $translate.instant('masterDataItem.createMasterDataItem.createSuccess', {
-							name: response.data.code
-						}),
-						type: 'success',
-						multiple: false
-					});
+					if (response.data.code === 'duplicateCode') {
+						WcAlertConsoleService.addMessage({
+							message: $translate.instant('masterDataItem.createMasterDataItem.duplicateCode', {
+								name: masterDataItem.code
+							}),
+							type: 'danger',
+							multiple: false
+						});
+						return $q.reject('');
+					} else {
+						WcAlertConsoleService.addMessage({
+							message: $translate.instant('masterDataItem.createMasterDataItem.createSuccess', {
+								name: response.data.code
+							}),
+							type: 'success',
+							multiple: false
+						});
+					}
 				}
 				return $q.when(response.data);
 			}), function (errorMsg) {

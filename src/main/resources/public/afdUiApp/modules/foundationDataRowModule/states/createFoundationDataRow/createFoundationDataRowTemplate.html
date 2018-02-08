@@ -1,152 +1,62 @@
-<form class="well" role="form" name="createFoundationDataForm" id="createFoundationDataForm" novalidate wc-form-submit>
-	<h2 ng-hide="createFoundationDataController.isEditing" translate>foundationData.createfoundationData.title</h2>
-	<h2 ng-show="createFoundationDataController.isEditing" translate>foundationData.editfoundationData.title</h2>
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="uiColumnName" class="control-label" translate>foundationData.createfoundationData.uiColumnName </label>
-				<input ng-model="createFoundationDataController.foundationData.uiColumnName" id="uiColumnName"
-					   name="uiColumnName" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-					   wc-validation-indicator="{{'foundationData.createfoundationData.uiColumnName' | translate}}" required/>
-			</div>
-		</div>
-	</div>
+<form class="well" role="form" name="createFoundationDataRowForm" id="createFoundationDataRowForm" ng-submit="createFoundationDataRowForm.$valid && createFoundationDataRowController.submitFoundationDataRow()" novalidate wc-form-submit>
+	<h2 ng-hide="createFoundationDataRowController.isEditing" translate>foundationDataRow.createFoundationDataRow.title</h2>
+	<h2 ng-show="createFoundationDataRowController.isEditing" translate>foundationDataRow.editfoundationDataRow.title</h2>
 	
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="hoverHelp" class="control-label" translate>foundationData.createfoundationData.hoverHelp </label>
-				<input ng-model="createFoundationDataController.foundationData.hoverHelp" id="hoverHelp"
-					   name="hoverHelp" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-					   wc-validation-indicator="{{'foundationData.createfoundationData.hoverHelp' | translate}}" required/>
-			</div>
-		</div>
-	</div>
-		
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="uniqueColumn" translate>foundationData.createfoundationData.uniqueColumn
-				</label>
-				<input type="checkbox" name="uniqueColumn" id="uniqueColumn"
-					   ng-model="createFoundationDataController.foundationData.uniqueColumn"/>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="inputType" class="control-label" translate>foundationData.createfoundationData.inputType</label>
-				<select name="inputType" id="inputType" ng-model="createFoundationDataController.foundationData.inputType" 
-														ng-options="inputType for inputType in createFoundationDataController.inputTypes"
-														ng-change="createFoundationDataController.initValue()" 
-														class="active-dropdown form-control input-small">
-				</select>
-			</div>
-		</div>
-		
-		<div class="col-sm-3 col-sm-offset-1" ng-show="(createFoundationDataController.foundationData.inputType == 'List')">
-			<div class="form-group">
-				<label for="selectedList" class="control-label" translate>foundationData.createfoundationData.selectedList</label>
-			    <select name="selectedList" id="selectedList" ng-model="createFoundationDataController.foundationData.selectedListId" 
-			    	class="active-dropdown form-control input-small">
-			      <option ng-repeat="list in createFoundationDataController.activeLists" value="{{list.id}}"
-			      	ng-selected="createFoundationDataController.foundationData.selectedListId == list.id" >
-			      		{{list.name}}
-			      </option>
-			    </select>
-			</div>
-		</div>	
-				
-		<div class="form-group col-sm-3 col-sm-offset-2" ng-show="(createFoundationDataController.foundationData.inputType == 'List')">
-			<fieldset class="form-group">
-				<legend translate>foundationData.createfoundationData.listDisplayType</legend>
-				<div class="radio">
-					<label for="code"><input id="code" name="code"
-							  value="Code" type="radio"
-							  ng-model="createFoundationDataController.foundationData.listDisplayType">
-						<span translate>foundationData.createfoundationData.code</span>
-					</label>
+	<div ng-repeat="foundationDataColumn in createFoundationDataRowController.foundationDataColumnList" class="row">
+		<div ng-if="foundationDataColumn.inputType == 'Text'">
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label for="foundationDataColumn.uiColumnName" class="control-label">{{foundationDataColumn.uiColumnName}}</label>
+					<input ng-model="createFoundationDataRowController.foundationDataRowObj[$index].columnValue" id="foundationDataColumn.id"
+						   name="foundationDataColumn.id" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
+						   required/>
 				</div>
-				<div class="description">
-					<label for="description"><input id="description" name="description" 
-							   value="Description" type="radio"
-							   ng-model="createFoundationDataController.foundationData.listDisplayType">
-						<span translate>foundationData.createfoundationData.description</span>
-					</label>
+			</div>
+		</div>
+
+		<!-- div ng-if="foundationDataColumn.inputType == 'List'">
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label for="foundationDataColumn.uiColumnName" class="control-label">{{foundationDataColumn.uiColumnName}}</label>
+					<select name="inputType" id="inputType" ng-model="createFoundationDataRowController.foundationDataRowObj[$index].columnValue" 
+															ng-options="inputType for inputType in createFoundationDataRowController.inputTypes"
+															ng-change="createFoundationDataRowController.initValue()" 
+															class="active-dropdown form-control input-small">
+					</select>
 				</div>
-			</fieldset>
-		</div>
-		
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="value" class="control-label" translate>foundationData.createfoundationData.value </label>
-				<input ng-model="createFoundationDataController.foundationData.value" id="value"
-					   name="value" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-					   ng-disabled="(createFoundationDataController.foundationData.inputType == 'List')"
-					   wc-validation-indicator="{{'foundationData.createfoundationData.value' | translate}}" />
 			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="mandatory" translate>foundationData.createfoundationData.mandatory
-				</label>
-				<input type="checkbox" name="mandatory" id="mandatory"
-					   ng-model="createFoundationDataController.foundationData.mandatory"/>
+					
+			<div class="form-group col-sm-3 col-sm-offset-2" ng-show="(createFoundationDataRowController.foundationDataRow.inputType == 'List')">
+				<fieldset class="form-group">
+					<legend translate>foundationDataRow.createFoundationDataRow.listDisplayType</legend>
+					<div class="radio">
+						<label for="code"><input id="code" name="code"
+								  value="Code" type="radio"
+								  ng-model="createFoundationDataRowController.foundationDataRow.listDisplayType">
+							<span translate>foundationDataRow.createFoundationDataRow.code</span>
+						</label>
+					</div>
+					<div class="description">
+						<label for="description"><input id="description" name="description" 
+								   value="Description" type="radio"
+								   ng-model="createFoundationDataRowController.foundationDataRow.listDisplayType">
+							<span translate>foundationDataRow.createFoundationDataRow.description</span>
+						</label>
+					</div>
+				</fieldset>
 			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="sortOrder" class="control-label" translate>foundationData.createfoundationData.sortOrder </label>
-				<input ng-model="createFoundationDataController.foundationData.sortOrder" id="sortOrder"
-					   name="sortOrder" type="number" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-					   wc-validation-indicator="{{'foundationData.createfoundationData.sortOrder' | translate}}" required/>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="editable" translate>foundationData.createfoundationData.editable
-				</label>
-				<input type="checkbox" name="editable" id="editable" ng-disabled="createFoundationDataController.foundationData.uniqueColumn"
-					   ng-model="createFoundationDataController.foundationData.editable"/>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="length" class="control-label" translate>foundationData.createfoundationData.length </label>
-				<input ng-model="createFoundationDataController.foundationData.length" id="length"
-					   name="length" type="number" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-					   ng-disabled="(createFoundationDataController.foundationData.inputType == 'List')"
-					   wc-validation-indicator="{{'foundationData.createfoundationData.length' | translate}}" required/>
-			</div>
-		</div>
+		</div-->
 	</div>
 	
 	<div class="row form-actions">
 		<div class="col-xs-6 text-center">
-			<button type="button" id="cancel" ng-click="createFoundationDataController.cancel()" class="btn btn-secondary" translate>
-				foundationData.createfoundationData.cancel
+			<button type="button" id="cancel" ng-click="createFoundationDataRowController.cancel()" class="btn btn-secondary" translate>
+				foundationDataRow.createFoundationDataRow.cancel
 			</button>
 		</div>
 		<div class="col-xs-6 text-center">
-			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" ng-click="createFoundationDataController.submitFoundationDataColumn(createFoundationDataForm)" translate>
-				foundationData.createfoundationData.save
+			<button type="submit" id="save" wc-click-once class="btn btn-primary-default" translate>
+				foundationDataRow.createFoundationDataRow.save
 			</button>
 		</div>
 	</div>

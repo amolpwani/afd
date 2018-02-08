@@ -41,7 +41,8 @@ public class MasterDataServiceTest {
     public void allMasterData_shouldReturnValuesWhenMasterDataFound() {
         //Arrange
         List<MasterData> masterData = new ArrayList<>(1);
-        masterData.add(buildMasterData());
+        String masterData1Name = "MasterData" + System.nanoTime();
+        masterData.add(buildMasterData(masterData1Name));
         when(masterDataRepositoryMock.findAll()).thenReturn(masterData);
         //Act
         List<MasterData> actualResult = masterDataService.allMasterData();
@@ -54,13 +55,14 @@ public class MasterDataServiceTest {
         //Arrange
         ArgumentCaptor<MasterData> masterDataCaptor = ArgumentCaptor.forClass(MasterData.class);
 
+        String masterData1Name = "MasterData" + System.nanoTime();
         when(masterDataRepositoryMock.save(masterDataCaptor.capture()))
-                .thenReturn(buildMasterData());
+                .thenReturn(buildMasterData(masterData1Name));
 
         //Act
-        masterDataService.saveMasterData(buildMasterData());
+        masterDataService.saveMasterData(buildMasterData(masterData1Name));
 
-        MasterData expectedEntity = buildMasterData();
+        MasterData expectedEntity = buildMasterData(masterData1Name);
         expectedEntity.setId(1);
 
         //Assert
@@ -73,7 +75,8 @@ public class MasterDataServiceTest {
         ArgumentCaptor<MasterData> masterDataCaptor = ArgumentCaptor.forClass(MasterData.class);
         doNothing().when(masterDataRepositoryMock).delete(masterDataCaptor.capture());
         //Act
-        masterDataService.deleteMasterData(buildMasterData());
+        String masterData1Name = "MasterData" + System.nanoTime();
+        masterDataService.deleteMasterData(buildMasterData(masterData1Name));
         //Assert
         assertThat(masterDataCaptor.equals(masterDataCaptor));
     }
@@ -82,19 +85,20 @@ public class MasterDataServiceTest {
     public void allMasterData_shouldRetrieveAllMasterData() {
         //Arrange
         List<MasterData> masterData = new ArrayList<>(1);
-        masterData.add(buildMasterData());
+        String masterData1Name = "MasterData" + System.nanoTime();
+        masterData.add(buildMasterData(masterData1Name));
         when(masterDataRepositoryMock.findAll()).thenReturn(masterData);
         //Act
         List<MasterData> actualMasterData = masterDataService.allMasterData();
         //Assert
         assertThat(actualMasterData).isNotNull();
         assertThat(actualMasterData).hasSize(1);
-        assertThat(actualMasterData.get(0).getName()).isEqualTo("name");
+        assertThat(actualMasterData.get(0).getName()).isEqualTo(masterData1Name);
         assertThat(actualMasterData.get(0).getDescription()).isEqualTo("description");
     }
 
-    private MasterData buildMasterData() {
-        MasterData entity = new MasterData("name", "description", true);
+    private MasterData buildMasterData(String name) {
+        MasterData entity = new MasterData(name, "description", true);
         entity.setId(1);
         return entity;
     }

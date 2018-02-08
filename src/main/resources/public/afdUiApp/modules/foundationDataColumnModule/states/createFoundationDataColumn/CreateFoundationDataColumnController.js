@@ -119,43 +119,26 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				foundationColumn.value = '';
 				foundationColumn.length = 0;
 			}
-			var duplicateColumn = false;
 			
-			angular.forEach(this.foundationDataColumns, function(column) {
-				if (column.id != foundationColumn.id
-						&& column.uiColumnName === foundationColumn.uiColumnName) {
-					duplicateColumn = true;
-					WcAlertConsoleService.addMessage({
-						message: $translate.instant('foundationDataColumn.createFoundationDataColumn.duplicateUIColumn', {
-							name: column.uiColumnName
-						}),
-						type: 'danger',
-						multiple: false
-					});
-				}
-			});
-			
-			if (!duplicateColumn) {
-				if(this.isEditing) {
-	
-					FoundationDataColumnService.updateFoundationDataColumn(foundationColumn).then(angular.bind(this, function() {
-						$state.go('foundationDataColumn');
-					}), angular.bind(this, function(errorObj) {
-						if(errorObj.updatedFoundationDataColumn) {
-							this.foundationDataColumn = errorObj.updatedFoundationDataColumn;
-						}
-	
-						this.submitInProgress = false;
-					}));
-				} else {
-					FoundationDataColumnService.createFoundationDataColumn(foundationColumn).then(function() {
-							//noinspection JSCheckFunctionSignatures
-						$state.go('foundationDataColumn');
-					}, angular.bind(this, function() {
-	
-						this.submitInProgress = false;
-					}));
-				}
+			if(this.isEditing) {
+
+				FoundationDataColumnService.updateFoundationDataColumn(foundationColumn).then(angular.bind(this, function() {
+					$state.go('foundationDataColumn');
+				}), angular.bind(this, function(errorObj) {
+					if(errorObj.updatedFoundationDataColumn) {
+						this.foundationDataColumn = errorObj.updatedFoundationDataColumn;
+					}
+
+					this.submitInProgress = false;
+				}));
+			} else {
+				FoundationDataColumnService.createFoundationDataColumn(foundationColumn).then(function() {
+						//noinspection JSCheckFunctionSignatures
+					$state.go('foundationDataColumn');
+				}, angular.bind(this, function() {
+
+					this.submitInProgress = false;
+				}));
 			}
 		};
 

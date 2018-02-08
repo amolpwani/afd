@@ -34,9 +34,9 @@ public class FoundationDataColumnRepositoryTest {
 	private FoundationDataColumnRepository foundationDataColumnRepository;
 	@Test
 	public void directFoundationDataColumn() {
-
+		String column1Name = "Column" + System.nanoTime();
 		FoundationDataColumn foundationDataColumn1 = new FoundationDataColumn();
-		foundationDataColumn1.setUiColumnName("Column1");
+		foundationDataColumn1.setUiColumnName(column1Name);
 		foundationDataColumn1.setHoverHelp("Column1 Help");
 		foundationDataColumn1.setUniqueColumn(true);
 		foundationDataColumn1.setValue("List");
@@ -48,8 +48,9 @@ public class FoundationDataColumnRepositoryTest {
 		entityManager.persist(foundationDataColumn1);
 		entityManager.flush();
 		
+		column1Name = "Column" + System.nanoTime();
 		FoundationDataColumn foundationDataColumn2 = new FoundationDataColumn();
-		foundationDataColumn2.setUiColumnName("Column2");
+		foundationDataColumn2.setUiColumnName(column1Name);
 		foundationDataColumn2.setHoverHelp("Column2 Help");
 		foundationDataColumn2.setUniqueColumn(false);
 		foundationDataColumn2.setValue("List");
@@ -78,8 +79,9 @@ public class FoundationDataColumnRepositoryTest {
 
 	@Test
 	public void foundationDataColumnById() {
+		String column1Name = "Column" + System.nanoTime();
 		FoundationDataColumn foundationDataColumn1 = new FoundationDataColumn();
-		foundationDataColumn1.setUiColumnName("Column1");
+		foundationDataColumn1.setUiColumnName(column1Name);
 		foundationDataColumn1.setHoverHelp("Column1 Help");
 		foundationDataColumn1.setUniqueColumn(true);
 		foundationDataColumn1.setValue("List");
@@ -104,8 +106,9 @@ public class FoundationDataColumnRepositoryTest {
 	@Test
 	public void updateFoundationDataColumn() {
 
+		String column1Name = "Column" + System.nanoTime();
 		FoundationDataColumn foundationDataColumn1 = new FoundationDataColumn();
-		foundationDataColumn1.setUiColumnName("Column1");
+		foundationDataColumn1.setUiColumnName(column1Name);
 		foundationDataColumn1.setHoverHelp("Column1 Help");
 		foundationDataColumn1.setUniqueColumn(true);
 		foundationDataColumn1.setValue("List");
@@ -143,8 +146,10 @@ public class FoundationDataColumnRepositoryTest {
 	
 	@Test
 	public void deleteListDataById() {
+		
+		String column1Name = "Column" + System.nanoTime();
 		FoundationDataColumn foundationDataColumn1 = new FoundationDataColumn();
-		foundationDataColumn1.setUiColumnName("Column1");
+		foundationDataColumn1.setUiColumnName(column1Name);
 		foundationDataColumn1.setHoverHelp("Column1 Help");
 		foundationDataColumn1.setUniqueColumn(true);
 		foundationDataColumn1.setValue("List");
@@ -170,8 +175,9 @@ public class FoundationDataColumnRepositoryTest {
 	
 	@Test
 	public void createFoundationDataColumn() {
+		String column1Name = "Column" + System.nanoTime();
 		FoundationDataColumn foundationDataColumn1 = new FoundationDataColumn();
-		foundationDataColumn1.setUiColumnName("Column1");
+		foundationDataColumn1.setUiColumnName(column1Name);
 		foundationDataColumn1.setHoverHelp("Column1 Help");
 		foundationDataColumn1.setUniqueColumn(true);
 		foundationDataColumn1.setValue("List");

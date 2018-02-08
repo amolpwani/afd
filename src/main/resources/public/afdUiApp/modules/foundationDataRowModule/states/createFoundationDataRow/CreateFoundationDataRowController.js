@@ -4,66 +4,61 @@
 /**
 		 * @ngdoc controller
 		 * @module AfdUiAppFoundationDataRowModule
-		 * @name AfdUiAppFoundationDataRowModule
+		 * @name CreateFoundationDataRowController
 		 * @description This controller mainly holds the methods and properties for foundationData.
 		 * @requires $state
-		 * @requires FoundationDataService
+		 * @requires FoundationDataRowService
 		 * @requires FoundationDataPrototype
 		 * @requires ListService
 		 * @requires $stateParams
 		 * */
 angular.module('AfdUiAppFoundationDataRowModule')
-	.controller('AfdUiAppFoundationDataRowModule', ['$state', 'FoundationDataService', 'ListService', 'lists', 'FoundationDataPrototype',
-		function($state, FoundationDataService, ListService, lists, FoundationDataPrototype) {
+	.controller('CreateFoundationDataRowController', ['$state', 'FoundationDataRowService', 'foundationDataColumnList',
+		function($state, FoundationDataRowService, foundationDataColumnList) {
 
 		/**
 		 * @ngdoc property
-		 * @name FoundationDataService
+		 * @name FoundationDataRowService
 		 * @name FoundationDataPrototype
 		 * @propertyOf AfdUiAppFoundationDataRowModule
 		 * @type {object}
 		 * @description This property holds the returning flights information.
 		 */
-		this.FoundationDataService = FoundationDataService;
-
-		/**
-		 * @ngdoc property
-		 * @name foundationDataColumn
-		 * @propertyOf FoundationDataService
-		 * @type {object}
-		 * @description This property holds the object for FoundationDataPrototype service.
-		 */
-		this.foundationDataColumn = new FoundationDataPrototype();
+		this.FoundationDataRowService = FoundationDataRowService;
 		
+		this.foundationDataColumnList = foundationDataColumnList;
+		
+		this.foundationDataRowObj = [];
+
 		/**
 		 * Input types which will used for creation of Foundational column.
 		 */
 		this.inputTypes = ['List', 'Text', 'TextArea'];
 		
-		this.activeLists = lists.filter(function (list) {
-		    return (list.active == true);
-		});
-
-		/**
-		 * @ngdoc property
-		 * @name isEditing
-		 * @propertyOf FoundationDataService
-		 * @type {boolean}
-		 * @description This property holds the boolean value, by default it is set to false.
-		 */
-		this.isEditing = FoundationDataService.isEditing;
-
-		if (this.isEditing) {
-            this.foundationDataColumn = FoundationDataService.foundationDataColumn;
-            FoundationDataService.isEditing = false;
-		} else {
-			this.foundationDataColumn.active = true;
-		}
+//		this.activeLists = lists.filter(function (list) {
+//		    return (list.active == true);
+//		});
+//
+//		/**
+//		 * @ngdoc property
+//		 * @name isEditing
+//		 * @propertyOf FoundationDataRowService
+//		 * @type {boolean}
+//		 * @description This property holds the boolean value, by default it is set to false.
+//		 */
+//		this.isEditing = FoundationDataRowService.isEditing;
+//
+//		if (this.isEditing) {
+//            this.foundationDataColumn = FoundationDataRowService.foundationDataColumnList;
+//            FoundationDataRowService.isEditing = false;
+//		} else {
+//			this.foundationDataColumn.active = true;
+//		}
 		
 		/**
 		 * @ngdoc property
 		 * @name isEditFromView
-		 * @propertyOf FoundationDataService
+		 * @propertyOf FoundationDataRowService
 		 * @type {boolean}
 		 * @description This property holds the boolean value, by default it is set to false.
 		 */
@@ -71,7 +66,7 @@ angular.module('AfdUiAppFoundationDataRowModule')
 		/**
 		 * @ngdoc property
 		 * @name isEditFromSearchResults
-		 * @propertyOf FoundationDataService
+		 * @propertyOf FoundationDataRowService
 		 * @type {boolean}
 		 * @description This property holds the boolean value, by default it is set to false.
 		 */
@@ -90,7 +85,7 @@ angular.module('AfdUiAppFoundationDataRowModule')
 		this.cancel = function() {
 
 			//noinspection JSCheckFunctionSignatures
-			$state.go('foundationDataColumn');
+			$state.go('foundationDataRow');
 		};
 
 		/**
@@ -104,33 +99,31 @@ angular.module('AfdUiAppFoundationDataRowModule')
 
 		/**
 		 * @ngdoc method
-		 * @name submitFoundationDataColumn
+		 * @name submitFoundationDataRow
 		 * @methodOf AfdUiAppFoundationDataRowModule
 		 * @description The method submit the foundationDataColumn details to database.
 		 */
-		this.submitFoundationDataColumn = function(createFoundationDataColumnForm) {
-			if (createFoundationDataColumnForm.$valid) {
-				this.submitInProgress = true;
-				if(this.isEditing) {
-	
-					FoundationDataService.updateFoundationDataColumn(this.foundationDataColumn).then(angular.bind(this, function() {
-						$state.go('foundationDataColumn');
-					}), angular.bind(this, function(errorObj) {
-						if(errorObj.updatedFoundationDataColumn) {
-							this.foundationDataColumn = errorObj.updatedFoundationDataColumn;
-						}
-	
-						this.submitInProgress = false;
-					}));
-				} else {
-					FoundationDataService.createFoundationDataColumn(this.foundationDataColumn).then(function() {
-							//noinspection JSCheckFunctionSignatures
-						$state.go('foundationDataColumn');
-					}, angular.bind(this, function() {
-	
-						this.submitInProgress = false;
-					}));
-				}
+		this.submitFoundationDataRow = function() {
+			this.submitInProgress = true;
+			if(this.isEditing) {
+
+				FoundationDataRowService.updateFoundationDataRow(this.foundationDataRowObj).then(angular.bind(this, function() {
+					$state.go('foundationDataRow');
+				}), angular.bind(this, function(errorObj) {
+					if(errorObj.updatedFoundationDataRowObj) {
+						this.foundationDataColumn = errorObj.updatedFoundationDataRowObj;
+					}
+
+					this.submitInProgress = false;
+				}));
+			} else {
+				FoundationDataRowService.createFoundationDataRow(this.foundationDataRowObj).then(function() {
+						//noinspection JSCheckFunctionSignatures
+					$state.go('foundationDataRow');
+				}, angular.bind(this, function() {
+
+					this.submitInProgress = false;
+				}));
 			}
 		};
 
