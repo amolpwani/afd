@@ -28,16 +28,6 @@ angular.module('AfdUiAppFoundationDataRowModule')
 		
 		this.foundationDataColumnList = foundationDataColumnList;
 		
-		this.foundationDataRowObj = [];
-
-		/**
-		 * Input types which will used for creation of Foundational column.
-		 */
-		this.inputTypes = ['List', 'Text', 'TextArea'];
-		
-//		this.activeLists = lists.filter(function (list) {
-//		    return (list.active == true);
-//		});
 //
 //		/**
 //		 * @ngdoc property
@@ -104,10 +94,11 @@ angular.module('AfdUiAppFoundationDataRowModule')
 		 * @description The method submit the foundationDataColumn details to database.
 		 */
 		this.submitFoundationDataRow = function() {
+			
 			this.submitInProgress = true;
 			if(this.isEditing) {
 
-				FoundationDataRowService.updateFoundationDataRow(this.foundationDataRowObj).then(angular.bind(this, function() {
+				FoundationDataRowService.updateFoundationDataRow(this.foundationDataColumnList).then(angular.bind(this, function() {
 					$state.go('foundationDataRow');
 				}), angular.bind(this, function(errorObj) {
 					if(errorObj.updatedFoundationDataRowObj) {
@@ -117,7 +108,7 @@ angular.module('AfdUiAppFoundationDataRowModule')
 					this.submitInProgress = false;
 				}));
 			} else {
-				FoundationDataRowService.createFoundationDataRow(this.foundationDataRowObj).then(function() {
+				FoundationDataRowService.createFoundationDataRow(this.foundationDataColumnList).then(function() {
 						//noinspection JSCheckFunctionSignatures
 					$state.go('foundationDataRow');
 				}, angular.bind(this, function() {

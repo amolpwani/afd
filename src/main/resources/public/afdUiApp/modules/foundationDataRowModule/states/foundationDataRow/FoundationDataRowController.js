@@ -29,6 +29,8 @@ angular.module('AfdUiAppFoundationDataRowModule')
 			 * @description This property holds the foundationDataColumn of foundationDataColumnList.
 			 */
 			this.foundationDataColumnList = foundationDataColumnList;
+			
+			this.foundationDataRows = foundationDataRows;
 
 			/**
 			 * @ngdoc method
@@ -173,8 +175,6 @@ angular.module('AfdUiAppFoundationDataRowModule')
 				}
 			};
 			
-			this.rowData = [];
-			
 			var uiColumnName = {
 				name: 'Actions',
 				binding: 'row.Actions',
@@ -189,8 +189,11 @@ angular.module('AfdUiAppFoundationDataRowModule')
 			var uiColumnNames = [];
 			uiColumnNames.push(uiColumnName);
 			
+			var simpleColumnNames  = [];
+			
 			angular.forEach(this.foundationDataColumnList, function(foundationDataColumn) {
 				var columnName = foundationDataColumn.uiColumnName.replace(/ /g, '_');
+				simpleColumnNames.push(columnName);
 				
 				uiColumnName = {
 					name: foundationDataColumn.uiColumnName,
@@ -200,9 +203,13 @@ angular.module('AfdUiAppFoundationDataRowModule')
 					useNgBind: true,
 					sort: {
 						enabled: false,
+						attributes: {
+							'wc-column-sort': 'columnName',
+							'wc-column-sort-default': 'asc'
+						}
 					},
 					filter: {
-						enabled: false,
+						enabled: true,
 						label: '<label for="name" class="sr-only">' + columnName + ' Filter</label>',
 						field: '<input class="form-control input-sm" id="'+ columnName +
 								'" name="' + columnName + '" type="text" wc-column-filter="' + columnName + '"/>'
@@ -212,6 +219,26 @@ angular.module('AfdUiAppFoundationDataRowModule')
 				uiColumnNames.push(uiColumnName);
 			});
 			
+			
+			var foundationDataColumnList = this.foundationDataColumnList;
+			this.rowDataList = [];
+			var tempRowDatList = [];
+			angular.forEach(this.foundationDataRows, function (foundationDataRow) {
+				var rowData = {};
+				rowData['id'] = foundationDataRow.rowId; //'<div><a ng-click="foundationDataRowController.updateFoundationData(' + foundationDataRow.id + ')">Edit</a> <a ng-click="foundationDataColumnController.deletefoundationDataRows(' + foundationDataRow.id + ')">Delete</a></div>';
+				angular.forEach(foundationDataColumnList, function(foundationDataColumn) {
+					angular.forEach(foundationDataRow, function(columnInfo) {
+						if (foundationDataColumn.id == columnInfo.columnId) {
+							rowData[columnInfo.uiColumnName] = columnInfo.columnValue;
+						}
+					});
+				});
+				
+				tempRowDatList.push(rowData);
+			});
+			
+			this.rowDataList = tempRowDatList;
 			this.uiColumnNames = uiColumnNames;
+			this.simpleColumnNames = simpleColumnNames;
 		}
 	]);

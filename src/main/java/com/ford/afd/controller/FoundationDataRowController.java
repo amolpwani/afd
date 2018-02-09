@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ford.afd.model.FoundationDataColumn;
 import com.ford.afd.model.FoundationDataRow;
+import com.ford.afd.model.MasterDataItem;
 import com.ford.afd.service.FoundationDataColumnService;
 import com.ford.afd.service.FoundationDataRowService;
+import com.ford.afd.service.MasterDataItemService;
 
 @CrossOrigin
 @RestController
@@ -30,6 +32,9 @@ public class FoundationDataRowController {
     
     @Autowired
     private FoundationDataColumnService foundationDataColumnService;
+    
+    @Autowired
+    private MasterDataItemService masterDataItemService;
 
 	@RequestMapping(value = "getFoundationDataRow",method = RequestMethod.GET)
 	public String directFoundationDataRows() throws JSONException {
@@ -45,47 +50,56 @@ public class FoundationDataRowController {
 
 	@RequestMapping(value = "getFoundationDataRow/{rowId}",method = RequestMethod.GET)
 	public String foundationDataByRowId(@PathVariable long rowId) throws JSONException {
-		JSONObject foundationDataRowObj = geFoundationDataRowObj(rowId);
+		JSONArray foundationDataRowObj = geFoundationDataRowObj(rowId);
 		
 		return foundationDataRowObj.toString();
 	}
 
-	private JSONObject geFoundationDataRowObj(long rowId) throws JSONException {
-		List<FoundationDataRow> foundartionDataListForRowId = foundationDataRowService.findFoundationDataRowByRowId(rowId);
+	private JSONArray geFoundationDataRowObj(long rowId) throws JSONException {
+		List<FoundationDataRow> foundationDataListForRowId = foundationDataRowService.findFoundationDataRowByRowId(rowId);
 		List<FoundationDataColumn> columns = foundationDataColumnService.allFoundationDataColumn();
+		Map<Long, String> columnIdValueMap = new HashMap<Long, String>();
 		
-		Map<Long, FoundationDataColumn> columnMap = new HashMap<Long, FoundationDataColumn>();
-		for (FoundationDataColumn column : columns) {
-			columnMap.put(column.getId(), column);
+		for (FoundationDataRow foundationDataRow : foundationDataListForRowId) {
+			columnIdValueMap.put(foundationDataRow.getColumnId(), foundationDataRow.getColumnValue());
 		}
 		
 		JSONArray foundationDataColumns = new JSONArray();
-		for (FoundationDataRow data : foundartionDataListForRowId) {
-			if (columnMap.containsKey(data.getColumnId())) {
-				FoundationDataColumn column = columnMap.get(data.getColumnId());
+		for (FoundationDataColumn column : columns) {
+			
+			JSONObject foundationDataColumnObj = new JSONObject();
+			foundationDataColumnObj.put("uiColumnName", column.getUiColumnName());
+			foundationDataColumnObj.put("hoverHelp", column.getHoverHelp());
+			foundationDataColumnObj.put("inputType", column.getInputType());
+			foundationDataColumnObj.put("value", column.getValue());
+			foundationDataColumnObj.put("uniqueColumn", column.isUniqueColumn());
+			foundationDataColumnObj.put("mandatory", column.isMandatory());
+			foundationDataColumnObj.put("sortOrder", column.getSortOrder());
+			foundationDataColumnObj.put("editable", column.isEditable());
+			foundationDataColumnObj.put("length", column.getLength());
+			foundationDataColumnObj.put("selectedListId", column.getSelectedListId());
+			foundationDataColumnObj.put("listDisplayType", column.getListDisplayType());
+			foundationDataColumnObj.put("columnValue", columnIdValueMap.get(column.getId()));
+			foundationDataColumnObj.put("columnId", column.getId());
+			
+			if ("List".equals(column.getInputType())) {
+				List<MasterDataItem> masterDataItems = masterDataItemService.findMasterDataItemByMasterDataId(column.getSelectedListId());
+				JSONArray masterDataItemsArr = new JSONArray();
+				for (MasterDataItem item : masterDataItems) {
+					JSONObject masterDataItemObj = new JSONObject();
+					masterDataItemObj.put("code", item.getCode());
+					masterDataItemObj.put("description", item.getDescription());
+					masterDataItemObj.put("id", item.getId());
+					masterDataItemsArr.put(masterDataItemObj);
+				}
 				
-				JSONObject foundationDataColumnObj = new JSONObject();
-				foundationDataColumnObj.put(column.getUiColumnName(), data.getColumnValue());
-				foundationDataColumnObj.put("hoverHelp", column.getHoverHelp());
-				foundationDataColumnObj.put("inputType", column.getInputType());
-				foundationDataColumnObj.put("value", column.getValue());
-				foundationDataColumnObj.put("uniqueColumn", column.isUniqueColumn());
-				foundationDataColumnObj.put("mandatory", column.isMandatory());
-				foundationDataColumnObj.put("sortOrder", column.getSortOrder());
-				foundationDataColumnObj.put("editable", column.isEditable());
-				foundationDataColumnObj.put("length", column.getLength());
-				foundationDataColumnObj.put("selectedListId", column.getSelectedListId());
-				foundationDataColumnObj.put("listDisplayType", column.getListDisplayType());
-				foundationDataColumnObj.put("columnValue", data.getColumnValue());
-				
-				foundationDataColumns.put(foundationDataColumnObj);
+				foundationDataColumnObj.put("masterDataItems", masterDataItemsArr);
 			}
+			
+			foundationDataColumns.put(foundationDataColumnObj);
 		}
 		
-		JSONObject foundationDataRowObj1 = new JSONObject();
-		foundationDataRowObj1.put(rowId + "", foundationDataColumns);
-		
-		return foundationDataRowObj1;
+		return foundationDataColumns;
 	}
 
 	@RequestMapping(value="getFoundationDataRow/{id}",method=RequestMethod.PUT)

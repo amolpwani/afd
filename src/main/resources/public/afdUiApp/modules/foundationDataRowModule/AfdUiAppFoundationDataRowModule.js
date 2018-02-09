@@ -43,8 +43,8 @@ angular.module('AfdUiAppFoundationDataRowModule')
 				controllerAs: 'createFoundationDataRowController',
 				parent: 'afd-ui-app',
 				resolve: {
-					foundationDataColumnList: ['FoundationDataColumnService', function(FoundationDataColumnService) {
-						return FoundationDataColumnService.getFoundationDataColumns();
+					foundationDataColumnList:['FoundationDataRowService', function(FoundationDataRowService) {
+						return FoundationDataRowService.getFoundationDataRow(0);
 					}]
 				}
 			});
@@ -72,7 +72,6 @@ angular.module('AfdUiAppFoundationDataRowModule').directive('dynamicTableRow', f
 				//Create the header cell
                 var tableHeaderCell = $('<th />');
                 if (column.mandatory) {
-                	//tableHeaderCell.append('<abbr class="required h6" title="Required">*</abbr>');
                 	tableHeaderCell.append('<div><abbr class="required h3" title="Required">*</abbr>' + column.name + '</div>');
                 } else {
 	                //Add the appropriate content for the cell
