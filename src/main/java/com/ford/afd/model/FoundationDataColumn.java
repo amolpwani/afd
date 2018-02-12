@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TADF005_FOUNDATION_DATA_CLMN")
-public class FoundationDataColumn {
+public class FoundationDataColumn extends BaseEntity<String> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

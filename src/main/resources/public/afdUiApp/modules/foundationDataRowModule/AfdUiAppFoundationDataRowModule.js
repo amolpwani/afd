@@ -44,7 +44,7 @@ angular.module('AfdUiAppFoundationDataRowModule')
 				parent: 'afd-ui-app',
 				resolve: {
 					foundationDataColumnList:['FoundationDataRowService', function(FoundationDataRowService) {
-						return FoundationDataRowService.getFoundationDataRow(0);
+						return FoundationDataRowService.getFoundationDataRow(-1);
 					}]
 				}
 			});
@@ -93,8 +93,14 @@ angular.module('AfdUiAppFoundationDataRowModule').directive('dynamicTableRow', f
 
 				//Add the appropriate attributes/content for the cell if you want to use ngBind or the expression language for the data binging
                 if(column.useNgBind) {
-                    tableBodyCell.attr('ng-bind', column.binding);
+                	if (column.name === 'Actions') {
+                		tableBodyCell.append('<a wc-row-action-single="update-foundationDataRow"><span class="glyphicon glyphicon-pencil" style="font-size: 17px"></span></a>' +
+             								 '<a wc-row-action-single="delete-foundationDataRowList"><span class="glyphicon glyphicon-trash" style="font-size: 17px"></span></a>');
+                	} else {
+                    	tableBodyCell.attr('ng-bind', column.binding);
+                	}
 				} else {
+					
                 	//This assumes the binding is defined using the double curly braces syntax
                     tableBodyCell.append(column.binding);
 				}

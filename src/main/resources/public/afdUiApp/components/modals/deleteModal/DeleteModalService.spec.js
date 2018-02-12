@@ -2,7 +2,7 @@
 
 describe('AfdUiAppComponentsModule DeleteModalService:', function() {
 
-	var DeleteModalService, FoundationDataColumnService, MasterDataItemService, MasterDataService, $uibModal, $q, $rootScope;
+	var DeleteModalService, FoundationDataColumnService, MasterDataItemService, MasterDataService, FoundationDataRowService, $uibModal, $q, $rootScope;
 
 	var deleteResults = [{uiColumnName: '1', success: true},{uiColumnName: '2', success: true}, {uiColumnName: '3', success: false},{uiColumnName: '4', success: false}];
 
@@ -10,6 +10,7 @@ describe('AfdUiAppComponentsModule DeleteModalService:', function() {
 		// Module & Providers
 		module('AfdUiAppComponentsModule');
 		module('AfdUiAppFoundationDataColumnModule');
+		module('AfdUiAppFoundationDataRowModule');
 		module('AfdUiAppMasterDataItemModule');
 		module('AfdUiAppMasterDataModule');
 
@@ -18,6 +19,7 @@ describe('AfdUiAppComponentsModule DeleteModalService:', function() {
 			FoundationDataColumnService = $injector.get('FoundationDataColumnService');
 			MasterDataItemService = $injector.get('MasterDataItemService');
 			MasterDataService = $injector.get('MasterDataService');
+			FoundationDataRowService = $injector.get('FoundationDataRowService');
 			$uibModal = $injector.get('$uibModal');
 			$q = $injector.get('$q');
 			$rootScope = $injector.get('$rootScope');

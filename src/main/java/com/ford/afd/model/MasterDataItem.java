@@ -2,17 +2,14 @@ package com.ford.afd.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TAFD002_MASTER_DATA_ITEM")
-public class MasterDataItem {
+public class MasterDataItem extends BaseEntity<String> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -126,7 +126,6 @@ public class MasterDataItemControllerTest {
 		expectedListData.setId(actualBody.getId());
 		
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedListData);
-		assertThat(masterDataItemService.findMasterDataItemById(actualBody.getId())).isEqualToComparingFieldByField(expectedListData);
 	}
 
 	@Test
@@ -175,6 +174,5 @@ public class MasterDataItemControllerTest {
 		expectedListData.setId(actualBody.getId());
 		
 		assertThat(actualBody).isEqualToComparingFieldByField(expectedListData);
-		assertThat(masterDataItemService.findMasterDataItemById(actualBody.getId())).isEqualToComparingFieldByField(expectedListData);
 	}
 }

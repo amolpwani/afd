@@ -1,24 +1,24 @@
 <form class="well" role="form" name="createFoundationDataRowForm" id="createFoundationDataRowForm" ng-submit="createFoundationDataRowForm.$valid && createFoundationDataRowController.submitFoundationDataRow()" novalidate wc-form-submit>
 	<h2 ng-hide="createFoundationDataRowController.isEditing" translate>foundationDataRow.createFoundationDataRow.title</h2>
-	<h2 ng-show="createFoundationDataRowController.isEditing" translate>foundationDataRow.editfoundationDataRow.title</h2>
+	<h2 ng-show="createFoundationDataRowController.isEditing" translate>foundationDataRow.editFoundationDataRow.title</h2>
 	
 	<div ng-repeat="foundationDataColumn in createFoundationDataRowController.foundationDataColumnList" class="row">
 		<div ng-if="foundationDataColumn.inputType == 'Text'">
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label for="textField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
 					<div ng-if="foundationDataColumn.mandatory">
+						<label for="textField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
 						<input ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue" id="textField{{foundationDataColumn.id}}"
 							   name="textField{{foundationDataColumn.id}}" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-							   ng-enabled="foundationDataColumn.editable"
-							   wc-validation-indicator="Please fill up {{foundationDataColumn.uiColumnName}} value" required/>
+							   ng-enabled="foundationDataColumn.editable" required
+							   wc-validation-indicator="Please fill up {{foundationDataColumn.uiColumnName}} value"/>
 					</div>
 					
 					<div ng-if="!foundationDataColumn.mandatory">
+						<label for="textField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
 						<input ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue" id="textField{{foundationDataColumn.id}}"
 							   name="textField{{foundationDataColumn.id}}" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-							   ng-enabled="foundationDataColumn.editable"
-							   required/>
+							   ng-enabled="foundationDataColumn.editable"/>
 					</div>
 				</div>
 			</div>
@@ -27,8 +27,8 @@
 		<div ng-if="foundationDataColumn.inputType == 'TextArea'">
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label for="text-areaField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
 					<div ng-if="foundationDataColumn.mandatory">
+						<label for="text-areaField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
 						<textarea ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue" id="text-areaField{{foundationDataColumn.id}}"
 							   name="text-areaField{{foundationDataColumn.id}}" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
 							   ng-enabled="foundationDataColumn.editable" value="foundationDataColumn.value" 
@@ -36,6 +36,7 @@
 					</div>
 					
 					<div ng-if="!foundationDataColumn.mandatory">
+						<label for="text-areaField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
 						<textarea ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue" id="text-areaField{{foundationDataColumn.id}}"
 							   name="text-areaField{{foundationDataColumn.id}}" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
 							   ng-enabled="foundationDataColumn.editable" value="foundationDataColumn.value"/>
@@ -47,8 +48,8 @@
 		<div ng-if="foundationDataColumn.inputType == 'List'">
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label for="list{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
 					<div ng-if="foundationDataColumn.mandatory">
+						<label for="list{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
 						<select name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
 					    	class="active-dropdown form-control input-small" wc-validation-indicator="Please fill up {{foundationDataColumn.uiColumnName}} value" required>
 					      <option ng-repeat="masterDataItem in foundationDataColumn.masterDataItems" value="{{foundationDataColumn.listDisplayType == 'Code' ? masterDataItem.code : masterDataItem.description}}"
@@ -57,7 +58,9 @@
 					      </option>
 					    </select>
 					</div>
+					
 					<div ng-if="!foundationDataColumn.mandatory">
+						<label for="list{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
 						<select name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
 					    	class="active-dropdown form-control input-small" required>
 					      <option ng-repeat="masterDataItem in foundationDataColumn.masterDataItems" value="{{foundationDataColumn.listDisplayType == 'Code' ? masterDataItem.code : masterDataItem.description}}"

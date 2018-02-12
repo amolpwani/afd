@@ -28,22 +28,20 @@ angular.module('AfdUiAppFoundationDataRowModule')
 		
 		this.foundationDataColumnList = foundationDataColumnList;
 		
-//
-//		/**
-//		 * @ngdoc property
-//		 * @name isEditing
-//		 * @propertyOf FoundationDataRowService
-//		 * @type {boolean}
-//		 * @description This property holds the boolean value, by default it is set to false.
-//		 */
-//		this.isEditing = FoundationDataRowService.isEditing;
-//
-//		if (this.isEditing) {
-//            this.foundationDataColumn = FoundationDataRowService.foundationDataColumnList;
-//            FoundationDataRowService.isEditing = false;
-//		} else {
-//			this.foundationDataColumn.active = true;
-//		}
+
+		/**
+		 * @ngdoc property
+		 * @name isEditing
+		 * @propertyOf FoundationDataRowService
+		 * @type {boolean}
+		 * @description This property holds the boolean value, by default it is set to false.
+		 */
+		this.isEditing = FoundationDataRowService.isEditing;
+
+		if (this.isEditing) {
+            this.foundationDataColumnList = FoundationDataRowService.foundationDataRow;
+            FoundationDataRowService.isEditing = false;
+		}
 		
 		/**
 		 * @ngdoc property

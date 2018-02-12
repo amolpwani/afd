@@ -1,18 +1,28 @@
 package com.ford.afd.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class FoundationDataRow {
+@Table(name = "TAFD004_FOUNDATION_DATA")
+public class FoundationDataRow extends BaseEntity<String>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "TAFD004_FDN_DATA_D")
     private long id;
+    
+    @Column(name = "TAFD004_FDN_DATA_ROW_D")
     private long rowId;
+    
+    @Column(name = "TAFD004_FDN_DATA_COL_D")
 	private long columnId;
+    
+    @Column(name = "TAFD004_FDN_DATA_COL_V")
     private String columnValue;
   
     public FoundationDataRow(long rowId, long columnId, String columnValue) {

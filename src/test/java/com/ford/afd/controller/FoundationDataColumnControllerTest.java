@@ -124,7 +124,6 @@ public class FoundationDataColumnControllerTest {
 		FoundationDataColumn expectedFoundationDataColumn = new FoundationDataColumn(updatedColumn1Name, "Updated Column1 Help", true, "List", "BU", true, 1, false, 10);
 		expectedFoundationDataColumn.setId(testEntitiesId.get(0));
 		assertThat(actualResponse.getBody()).isEqualToComparingFieldByField(expectedFoundationDataColumn);
-		assertThat(foundationDataColumnService.findFoundationDataColumnById(actualBody.getId())).isEqualToComparingFieldByField(expectedFoundationDataColumn);
 	}
 
 	@Test
@@ -171,6 +170,5 @@ public class FoundationDataColumnControllerTest {
 		FoundationDataColumn expectedFoundationDataColumn = new FoundationDataColumn(column3Name, "Column3 Help", true, "List", "BU", true, 1, false, 10);
 		expectedFoundationDataColumn.setId(actualBody.getId());
 		assertThat(actualBody).isEqualToComparingFieldByField(expectedFoundationDataColumn);
-		assertThat(foundationDataColumnService.findFoundationDataColumnById(actualBody.getId())).isEqualToComparingFieldByField(expectedFoundationDataColumn);
 	}
 }

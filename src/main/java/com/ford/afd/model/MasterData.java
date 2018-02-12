@@ -1,20 +1,15 @@
 package com.ford.afd.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TAFD001_MASTER_DATA")
-public class MasterData {
+public class MasterData extends BaseEntity<String> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

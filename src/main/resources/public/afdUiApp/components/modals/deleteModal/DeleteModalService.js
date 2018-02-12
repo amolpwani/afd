@@ -12,8 +12,8 @@
 		 * @requires $uibModal
 		 * */
 angular.module('AfdUiAppComponentsModule')
-	.service('DeleteModalService', ['FoundationDataColumnService', 'MasterDataItemService', 'MasterDataService', '$uibModal', 
-		function(FoundationDataColumnService, MasterDataItemService, MasterDataService, $uibModal) {
+	.service('DeleteModalService', ['FoundationDataColumnService', 'MasterDataItemService', 'MasterDataService', 'FoundationDataRowService', '$uibModal', 
+		function(FoundationDataColumnService, MasterDataItemService, MasterDataService, FoundationDataRowService, $uibModal) {
 
 		/**
 		 * @ngdoc method
@@ -65,6 +65,10 @@ angular.module('AfdUiAppComponentsModule')
 				}));
 			} else if (typeOfRecordsTodelete === 'MasterDataItem') {
 				records = MasterDataItemService.deleteMasterDataItems(recordsToDelete).then(angular.bind(this, function(results) {
+					return this.processResultsForDisplay(results);
+				}));
+			} else if (typeOfRecordsTodelete === 'FoundationDataRow') {
+				records = FoundationDataRowService.deleteFoundationDataRows(recordsToDelete).then(angular.bind(this, function(results) {
 					return this.processResultsForDisplay(results);
 				}));
 			} 

@@ -69,18 +69,20 @@ angular.module('AfdUiAppFoundationDataRowComponentsModule').service('FoundationD
 			//since sending a body on DELETE is frowned upon, iterate through and send separate requests for each foundationDataRow to delete
 			var deletePromises = [];
 			var deleteResults = [];
+			var rowsToDelete = [];
+			rowsToDelete.push(FoundationDataRowsToDelete);
 
 			var addResultToArray = function (index, success) {
 				//replace the initial promise with a new one that resolves with the data we just created
 				deleteResults[index] = {
-					'name': FoundationDataRowsToDelete[index].uiColumnName,
+					'name': rowsToDelete[index].uiColumnName,
 					'success': success
 				};
 			};
 
 			var doDeleteForIndex = angular.bind(this, function (index) {
 
-				deletePromises[index] = this.foundationDataRowEndPoint.delete(FoundationDataRowsToDelete[index].id, {offline: 'queue'}).then(function (response) {
+				deletePromises[index] = this.foundationDataRowEndPoint.delete(rowsToDelete[index].rowId, {offline: 'queue'}).then(function (response) {
 					if (response.status == 'queue') {
 						addResultToArray(index, 'queue');
 					}
@@ -92,7 +94,7 @@ angular.module('AfdUiAppFoundationDataRowComponentsModule').service('FoundationD
 				});
 			});
 
-			for (var i = 0; i < FoundationDataRowsToDelete.length; i++) {
+			for (var i = 0; i < rowsToDelete.length; i++) {
 				doDeleteForIndex(i);
 			}
 
@@ -161,7 +163,7 @@ angular.module('AfdUiAppFoundationDataRowComponentsModule').service('FoundationD
 		 * @description The method updates the FoundationDataRows information to database.
 		 */
 		this.updateFoundationDataRow = function (foundationDataRow) {
-			var id = foundationDataRow.id;
+			var id = foundationDataRow[0].rowId;
 			
 			return this.foundationDataRowEndPoint.put(id, foundationDataRow, {offline: 'queue'}).then(angular.bind(this, function (response) {
 

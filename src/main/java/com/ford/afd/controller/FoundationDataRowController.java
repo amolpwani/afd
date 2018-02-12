@@ -1,6 +1,7 @@
 package com.ford.afd.controller;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,19 +50,24 @@ public class FoundationDataRowController {
 	}
 
 	@RequestMapping(value = "getFoundationDataRow/{rowId}",method = RequestMethod.GET)
-	public String foundationDataByRowId(@PathVariable long rowId) throws JSONException {
+	public String foundationDataByRowId(@PathVariable Long rowId) throws JSONException {
 		JSONArray foundationDataRowObj = geFoundationDataRowObj(rowId);
 		
 		return foundationDataRowObj.toString();
 	}
 
-	private JSONArray geFoundationDataRowObj(long rowId) throws JSONException {
-		List<FoundationDataRow> foundationDataListForRowId = foundationDataRowService.findFoundationDataRowByRowId(rowId);
+	private JSONArray geFoundationDataRowObj(Long rowId) throws JSONException {
+		List<FoundationDataRow> foundationDataListForRowId = new ArrayList<FoundationDataRow>();
+		if (rowId != null) {
+			foundationDataListForRowId = foundationDataRowService.findFoundationDataRowByRowId(rowId);
+		}
+		
 		List<FoundationDataColumn> columns = foundationDataColumnService.allFoundationDataColumn();
-		Map<Long, String> columnIdValueMap = new HashMap<Long, String>();
+		Map<String, String> columnIdValueMap = new HashMap<String, String>();
 		
 		for (FoundationDataRow foundationDataRow : foundationDataListForRowId) {
-			columnIdValueMap.put(foundationDataRow.getColumnId(), foundationDataRow.getColumnValue());
+			columnIdValueMap.put(foundationDataRow.getColumnId() + "", foundationDataRow.getColumnValue());
+			columnIdValueMap.put(foundationDataRow.getColumnId() + "_rowId", foundationDataRow.getId() + "");
 		}
 		
 		JSONArray foundationDataColumns = new JSONArray();
@@ -79,8 +85,10 @@ public class FoundationDataRowController {
 			foundationDataColumnObj.put("length", column.getLength());
 			foundationDataColumnObj.put("selectedListId", column.getSelectedListId());
 			foundationDataColumnObj.put("listDisplayType", column.getListDisplayType());
-			foundationDataColumnObj.put("columnValue", columnIdValueMap.get(column.getId()));
+			foundationDataColumnObj.put("columnValue", columnIdValueMap.get(column.getId() + ""));
 			foundationDataColumnObj.put("columnId", column.getId());
+			foundationDataColumnObj.put("rowId", rowId);
+			foundationDataColumnObj.put("id", columnIdValueMap.get(column.getId()+ "_rowId"));
 			
 			if ("List".equals(column.getInputType())) {
 				List<MasterDataItem> masterDataItems = masterDataItemService.findMasterDataItemByMasterDataId(column.getSelectedListId());

@@ -17,8 +17,8 @@
 			 * @requires $timeout
 			 * */
 angular.module('AfdUiAppFoundationDataRowModule')
-	.controller('FoundationDataRowController', ['FoundationDataRowService', 'FoundationDataColumnService', 'foundationDataColumnList', 'foundationDataRows', '$scope', 'WcAlertConsoleService', '$translate', '$state',
-		function(FoundationDataRowService, FoundationDataColumnService, foundationDataColumnList, foundationDataRows, $scope, WcAlertConsoleService, $translate, $state) {
+	.controller('FoundationDataRowController', ['FoundationDataRowService', 'FoundationDataColumnService', 'foundationDataColumnList', 'foundationDataRows', 'DeleteModalService', '$scope', 'WcAlertConsoleService', '$translate', '$state',
+		function(FoundationDataRowService, FoundationDataColumnService, foundationDataColumnList, foundationDataRows, DeleteModalService, $scope, WcAlertConsoleService, $translate, $state) {
 
 			//noinspection JSValidateJSDoc
             /**
@@ -42,35 +42,38 @@ angular.module('AfdUiAppFoundationDataRowModule')
 			 */
 			this.getSelectedFoundationDataObjects = function(id) {
 				var selectedId = id;
-				if(selectedId === undefined) {
-					selectedId = this.foundationDataRowsToDelete;
-				}
-				else { //noinspection NodeModulesDependencies
-					if(!angular.isArray(selectedId)) {
-                        selectedId = [].concat(selectedId);
-                    }
-				}
 				var selectedfoundationDataRows = [];
 				angular.forEach(this.foundationDataRows, function(foundationDataRow) {
-					for(var i = 0; i < selectedId.length; i++) {
-						if(foundationDataRow.id === selectedId[i]) {
-							selectedfoundationDataRows.push(foundationDataRow);
-						}
+					if(foundationDataRow[0].rowId === selectedId) {
+						selectedfoundationDataRows.push(foundationDataRow);
 					}
 				});
 
 				return selectedfoundationDataRows;
 			};
+			
+			$scope.$on("update-foundationDataRow", angular.bind(this, function(event, data) { // jshint ignore:line
+				if (data[0] != undefined) {
+					this.updateFoundationDataRow(this.getSelectedFoundationDataObjects(data[0])[0]);
+				}
+			}));
+
+			$scope.$on("delete-foundationDataRowList", angular.bind(this, function(event, data) { // jshint ignore:line
+				if (data[0] != undefined) {
+					return DeleteModalService.openDeleteModal(this.getSelectedFoundationDataObjects(data[0])[0][0], 'FoundationDataRow').then(angular.bind(this, function(results) {
+						$scope.afdUiAppController.reloadState(this.processAndDisplayDeletionResults, results);
+					}));
+				}
+			}));
 
 			/**
 			 * @ngdoc method
-			 * @name getSelectedFoundationDataObjects
+			 * @name updateFoundationDataRow
 			 * @methodOf FoundationDataRowController
-			 * @params {string} updateType
 			 * @params {string} selectedfoundationDataRow
 			 * @description The method updates the foundationDataRow details to database based on updateType and selectedfoundationDataRow.
 			 */
-			this.updateFoundationData = function(selectedfoundationDataRow) {
+			this.updateFoundationDataRow = function(selectedfoundationDataRow) {
 				FoundationDataRowService.isEditing = true;
                 FoundationDataRowService.foundationDataRow = selectedfoundationDataRow;
 				$state.go('create-foundationDataRow');
@@ -193,7 +196,6 @@ angular.module('AfdUiAppFoundationDataRowModule')
 			
 			angular.forEach(this.foundationDataColumnList, function(foundationDataColumn) {
 				var columnName = foundationDataColumn.uiColumnName.replace(/ /g, '_');
-				simpleColumnNames.push(columnName);
 				
 				uiColumnName = {
 					name: foundationDataColumn.uiColumnName,
@@ -225,11 +227,12 @@ angular.module('AfdUiAppFoundationDataRowModule')
 			var tempRowDatList = [];
 			angular.forEach(this.foundationDataRows, function (foundationDataRow) {
 				var rowData = {};
-				rowData['id'] = foundationDataRow.rowId; //'<div><a ng-click="foundationDataRowController.updateFoundationData(' + foundationDataRow.id + ')">Edit</a> <a ng-click="foundationDataColumnController.deletefoundationDataRows(' + foundationDataRow.id + ')">Delete</a></div>';
 				angular.forEach(foundationDataColumnList, function(foundationDataColumn) {
 					angular.forEach(foundationDataRow, function(columnInfo) {
 						if (foundationDataColumn.id == columnInfo.columnId) {
-							rowData[columnInfo.uiColumnName] = columnInfo.columnValue;
+							var columnName = columnInfo.uiColumnName.replace(/ /g, '_');
+							rowData[columnName] = columnInfo.columnValue;
+							rowData['id'] = columnInfo.rowId;
 						}
 					});
 				});
@@ -239,6 +242,5 @@ angular.module('AfdUiAppFoundationDataRowModule')
 			
 			this.rowDataList = tempRowDatList;
 			this.uiColumnNames = uiColumnNames;
-			this.simpleColumnNames = simpleColumnNames;
 		}
 	]);
