@@ -40,7 +40,7 @@ public class FoundationDataColumnControllerTest {
 	@Autowired
 	private FoundationDataColumnService foundationDataColumnService;
 
-	private List<Long> testEntitiesId = new ArrayList<>();
+	private List<Integer> testEntitiesId = new ArrayList<>();
 	
 	private final String column1Name = "Column" + System.nanoTime();
 	private final String column2Name = "Column" + System.nanoTime();
@@ -56,7 +56,7 @@ public class FoundationDataColumnControllerTest {
 
 	@After
 	public void tearDown() {
-		for (Long foundationDataColumnId : testEntitiesId) {
+		for (Integer foundationDataColumnId : testEntitiesId) {
 			foundationDataColumnService.deleteFoundationDataColumn(foundationDataColumnService.findFoundationDataColumnById(foundationDataColumnId));
 		}
 	}

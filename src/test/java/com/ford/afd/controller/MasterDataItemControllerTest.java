@@ -40,7 +40,7 @@ public class MasterDataItemControllerTest {
 	@Autowired
 	private MasterDataItemService masterDataItemService;
 
-	private List<Long> testEntitiesId = new ArrayList<>();
+	private List<Integer> testEntitiesId = new ArrayList<>();
 	
 	private final String masterDataItem1Code = "MasterDataItem" + System.nanoTime();
 	private final String masterDataItem2Code = "MasterDataItem" + System.nanoTime();
@@ -57,12 +57,12 @@ public class MasterDataItemControllerTest {
 
 	@After
 	public void tearDown() {
-		for (Long listDataId : testEntitiesId) {
+		for (Integer listDataId : testEntitiesId) {
 			masterDataItemService.deleteMasterDataItem(masterDataItemService.findMasterDataItemById(listDataId));
 		}
 	}
 
-	private MasterDataItem buildListDataItem(String code, String description, long listId) {
+	private MasterDataItem buildListDataItem(String code, String description, Integer listId) {
 		MasterDataItem masterDataItem = new MasterDataItem(code, description, true, listId);
 		return masterDataItem;
 	}

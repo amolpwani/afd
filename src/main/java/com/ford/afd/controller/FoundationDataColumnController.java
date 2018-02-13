@@ -39,7 +39,7 @@ public class FoundationDataColumnController {
 	 * @return FoundationDataColumn
 	 */
 	@RequestMapping(value = "getFoundationColumn/{id}",method = RequestMethod.GET)
-	public FoundationDataColumn foundationDataColumnById(@PathVariable long id ) {
+	public FoundationDataColumn foundationDataColumnById(@PathVariable int id ) {
 		return foundationDataColumnService.findFoundationDataColumnById(id);
 	}
 
@@ -59,7 +59,7 @@ public class FoundationDataColumnController {
 	 * @param id
 	 */
 	@RequestMapping(value = "getFoundationColumn/{id}",method = RequestMethod.DELETE)
-	public void deleteFoundationDataColumnById(@PathVariable long id ){
+	public void deleteFoundationDataColumnById(@PathVariable int id ){
 		foundationDataColumnService.deleteFoundationDataColumn(foundationDataColumnService.findFoundationDataColumnById(id));
 	}
 

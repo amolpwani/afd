@@ -84,6 +84,15 @@ angular.module('AfdUiAppFoundationDataRowModule')
 		 * @description This property holds the boolean value, the default value will be set to false.
 		 */
 		this.submitInProgress = false;
+		
+		this.isFieldDisabled = function(foundationDataColumn) {
+			return this.isEditing && !foundationDataColumn.editable;
+		};
+		
+		this.isValueFieldDisabled = function(foundationDataColumn) {
+			return (this.isEditing && !foundationDataColumn.editable) || (!this.isEditing && foundationDataColumn.uniqueColumn);
+		};
+
 
 		/**
 		 * @ngdoc method

@@ -1,11 +1,12 @@
 package com.ford.afd.service;
 
-import com.ford.afd.model.FoundationDataColumn;
-import com.ford.afd.model.MasterDataItem;
-import com.ford.afd.repository.MasterDataItemRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
+
+import com.ford.afd.model.MasterDataItem;
+import com.ford.afd.repository.MasterDataItemRepository;
 
 /**
  * 
@@ -22,11 +23,11 @@ public class MasterDataItemService {
         return masterDataItemRepository.findAll();
     }
 
-    public MasterDataItem findMasterDataItemById(long id) {
+    public MasterDataItem findMasterDataItemById(int id) {
         return masterDataItemRepository.findOne(id);
     }
     
-    public List<MasterDataItem> findMasterDataItemByMasterDataId(long listId) {
+    public List<MasterDataItem> findMasterDataItemByMasterDataId(int listId) {
         return masterDataItemRepository.findByParentMasterDataId(listId);
     }
 

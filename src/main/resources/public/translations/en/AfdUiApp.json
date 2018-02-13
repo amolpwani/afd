@@ -241,7 +241,8 @@
 			"createSuccess": "New FoundationDataRow has been successfully created.",
 			"createQueued": "Foundational Data Row creation has been queued for later processing due to being offline.",
 			"createFailed": "Failed to create Foundational Data Row: {{error}}",
-			"validationErrors": "Errors found on this page. Please see below for details."
+			"validationErrors": "Errors found on this page. Please see below for details.",
+			"duplicateColumnValues": "Duplicate values are entered for columns {{name}} ."
 		},
 		"editFoundationDataRow": {
 			"title": "Edit Foundational Data Row",
@@ -254,7 +255,8 @@
 			"updateSuccess": "Selected FoundationDataRow has been successfully edited.",
 			"updateQueued": "Foundational Data Row edition has been queued for later processing due to being offline.",
 			"updateFailed": "Failed to edit Foundational Data Row: {{error}}",
-			"validationErrors": "Errors found on this page. Please see below for details."
+			"validationErrors": "Errors found on this page. Please see below for details.",
+			"duplicateColumnValues": "Duplicate values are entered for columns {{name}} ."
 		},
 		"deleteFoundationDataRow": {
 			"title": "Delete Foundation Data Rows",

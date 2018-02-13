@@ -39,7 +39,7 @@ public class MasterDataController {
 	 * @return MasterData
 	 */
 	@RequestMapping(value = "getMasterData/{id}",method = RequestMethod.GET)
-	public MasterData getMasterDataById(@PathVariable long id) {
+	public MasterData getMasterDataById(@PathVariable Integer id) {
 		return masterDataService.findMasterDataById(id);
 	}
 
@@ -59,7 +59,7 @@ public class MasterDataController {
 	 * @param id
 	 */
 	@RequestMapping(value = "getMasterData/{id}",method = RequestMethod.DELETE)
-	public void deleteMasterDataById(@PathVariable long id) {
+	public void deleteMasterDataById(@PathVariable Integer id) {
 		masterDataService.deleteMasterData(masterDataService.findMasterDataById(id));
 	}
 

@@ -122,13 +122,25 @@ angular.module('AfdUiAppFoundationDataRowComponentsModule').service('FoundationD
 					});
 				}
 				else {
-					WcAlertConsoleService.addMessage({
-						message: $translate.instant('foundationDataRow.createFoundationDataRow.createSuccess', {
-							name: response.data.uiColumnName
-						}),
-						type: 'success',
-						multiple: false
-					});
+					
+					if (response.data.length > 0) {
+						WcAlertConsoleService.addMessage({
+							message: $translate.instant('foundationDataRow.createFoundationDataRow.duplicateColumnValues', {
+								name: response.data.toString()
+							}),
+							type: 'danger',
+							multiple: false
+						});
+						return $q.reject('');
+					} else {
+						WcAlertConsoleService.addMessage({
+							message: $translate.instant('foundationDataRow.createFoundationDataRow.createSuccess', {
+								name: response.data.uiColumnName
+							}),
+							type: 'success',
+							multiple: false
+						});
+					}
 				}
 				return $q.when(response.data);
 			}), function (errorMsg) {
@@ -177,13 +189,25 @@ angular.module('AfdUiAppFoundationDataRowComponentsModule').service('FoundationD
 					});
 				}
 				else {
-					WcAlertConsoleService.addMessage({
-						message: $translate.instant('foundationDataRow.editFoundationDataRow.updateSuccess', {
-                            name: foundationDataRow.name
-						}),
-						type: 'success',
-						multiple: false
-					});
+					
+					if (response.data.length > 0) {
+						WcAlertConsoleService.addMessage({
+							message: $translate.instant('foundationDataRow.editFoundationDataRow.duplicateColumnValues', {
+								name: response.data.toString()
+							}),
+							type: 'danger',
+							multiple: false
+						});
+						return $q.reject('');
+					} else {
+						WcAlertConsoleService.addMessage({
+							message: $translate.instant('foundationDataRow.editFoundationDataRow.updateSuccess', {
+	                            name: foundationDataRow.name
+							}),
+							type: 'success',
+							multiple: false
+						});
+					}
 				}
 				return $q.when(response.data);
 			}), angular.bind(this, function (error) {

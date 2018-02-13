@@ -7,18 +7,23 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<div ng-if="foundationDataColumn.mandatory">
-						<label for="textField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
+						<label for="textField{{foundationDataColumn.id}}" class="control-label">{{foundationDataColumn.uiColumnName}}</label>
+						<span class="glyphicon glyphicon-question-sign" style="font-size: 17px" uib-tooltip="{{foundationDataColumn.hoverHelp}}"></span>
 						<input ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue" id="textField{{foundationDataColumn.id}}"
 							   name="textField{{foundationDataColumn.id}}" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-							   ng-enabled="foundationDataColumn.editable" required
-							   wc-validation-indicator="Please fill up {{foundationDataColumn.uiColumnName}} value"/>
+							   ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)" 
+							   wc-validation-indicator="Please fill up {{foundationDataColumn.uiColumnName}} value"
+							   ng-maxlength="foundationDataColumn.length" 
+							   required/>
 					</div>
 					
 					<div ng-if="!foundationDataColumn.mandatory">
-						<label for="textField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
+						<label for="textField{{foundationDataColumn.id}}" class="control-label">{{foundationDataColumn.uiColumnName}}</label>
+						<span class="glyphicon glyphicon-question-sign" style="font-size: 17px" uib-tooltip="{{foundationDataColumn.hoverHelp}}"></span>
 						<input ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue" id="textField{{foundationDataColumn.id}}"
 							   name="textField{{foundationDataColumn.id}}" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-							   ng-enabled="foundationDataColumn.editable"/>
+							   ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)"
+							   ng-maxlength="foundationDataColumn.length"/>
 					</div>
 				</div>
 			</div>
@@ -28,18 +33,25 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<div ng-if="foundationDataColumn.mandatory">
-						<label for="text-areaField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
+						<label for="text-areaField{{foundationDataColumn.id}}" class="control-label">{{foundationDataColumn.uiColumnName}}</label>
+						<span class="glyphicon glyphicon-question-sign" style="font-size: 17px" uib-tooltip="{{foundationDataColumn.hoverHelp}}"></span>
 						<textarea ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue" id="text-areaField{{foundationDataColumn.id}}"
 							   name="text-areaField{{foundationDataColumn.id}}" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-							   ng-enabled="foundationDataColumn.editable" value="foundationDataColumn.value" 
-							   wc-validation-indicator="Please fill up {{foundationDataColumn.uiColumnName}} value" required/>
+							   ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)"
+							   wc-validation-indicator="Please fill up {{foundationDataColumn.uiColumnName}} value"
+							   maxlength="{{foundationDataColumn.length}}"
+							   required/>
+						<p class="text-right">{{ foundationDataColumn.length - createFoundationDataRowController.foundationDataColumnList[$index].columnValue.length + ' Char' }}</p>
 					</div>
 					
 					<div ng-if="!foundationDataColumn.mandatory">
-						<label for="text-areaField{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
+						<label for="text-areaField{{foundationDataColumn.id}}" class="control-label">{{foundationDataColumn.uiColumnName}}</label>
+						<span class="glyphicon glyphicon-question-sign" style="font-size: 17px" uib-tooltip="{{foundationDataColumn.hoverHelp}}"></span>
 						<textarea ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue" id="text-areaField{{foundationDataColumn.id}}"
 							   name="text-areaField{{foundationDataColumn.id}}" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-							   ng-enabled="foundationDataColumn.editable" value="foundationDataColumn.value"/>
+							   maxlength="{{foundationDataColumn.length}}"
+							   ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)"/>
+						<p class="text-right">{{ foundationDataColumn.length - createFoundationDataRowController.foundationDataColumnList[$index].columnValue.length + ' Char' }}</p>
 					</div>
 				</div>
 			</div>
@@ -49,9 +61,11 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<div ng-if="foundationDataColumn.mandatory">
-						<label for="list{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
+						<label for="list{{foundationDataColumn.id}}" class="control-label">{{foundationDataColumn.uiColumnName}}</label>
+						<span class="glyphicon glyphicon-question-sign" style="font-size: 17px" uib-tooltip="{{foundationDataColumn.hoverHelp}}"></span>
 						<select name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
-					    	class="active-dropdown form-control input-small" wc-validation-indicator="Please fill up {{foundationDataColumn.uiColumnName}} value" required>
+					    	class="active-dropdown form-control input-small" wc-validation-indicator="Please fill up {{foundationDataColumn.uiColumnName}} value" 
+					    	ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)" required>
 					      <option ng-repeat="masterDataItem in foundationDataColumn.masterDataItems" value="{{foundationDataColumn.listDisplayType == 'Code' ? masterDataItem.code : masterDataItem.description}}"
 						      	ng-selected="foundationDataColumn.columnValue === masterDataItem.id" >
 						      		{{foundationDataColumn.listDisplayType == 'Code' ? masterDataItem.code : masterDataItem.description}}
@@ -60,9 +74,11 @@
 					</div>
 					
 					<div ng-if="!foundationDataColumn.mandatory">
-						<label for="list{{foundationDataColumn.id}}" class="control-label" uib-tooltip="{{foundationDataColumn.hoverHelp}}">{{foundationDataColumn.uiColumnName}}</label>
+						<label for="list{{foundationDataColumn.id}}" class="control-label">{{foundationDataColumn.uiColumnName}}</label>
+						<span class="glyphicon glyphicon-question-sign" style="font-size: 17px" uib-tooltip="{{foundationDataColumn.hoverHelp}}"></span>
 						<select name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
-					    	class="active-dropdown form-control input-small" required>
+					    	class="active-dropdown form-control input-small" 
+					    	ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)" required>
 					      <option ng-repeat="masterDataItem in foundationDataColumn.masterDataItems" value="{{foundationDataColumn.listDisplayType == 'Code' ? masterDataItem.code : masterDataItem.description}}"
 						      	ng-selected="foundationDataColumn.columnValue === masterDataItem.id" >
 						      		{{foundationDataColumn.listDisplayType == 'Code' ? masterDataItem.code : masterDataItem.description}}
@@ -77,7 +93,7 @@
 				<div class="form-group">
 					<input ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue" id="foundationDataColumn.id"
 						   name="foundationDataColumn.id" type="text" placeholder="" class="form-control ng-empty ng-invalid ng-invalid-required"
-						   ng-disabled="foundationDataColumn.uniqueColumn"/>
+						   ng-disabled="createFoundationDataRowController.isValueFieldDisabled(foundationDataColumn)"/>
 				</div>
 			</div>
 		</div>

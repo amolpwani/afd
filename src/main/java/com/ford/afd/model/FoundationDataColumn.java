@@ -1,20 +1,32 @@
 package com.ford.afd.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "TADF005_FOUNDATION_DATA_CLMN")
-public class FoundationDataColumn extends BaseEntity<String> {
+@EntityListeners(AuditingEntityListener.class)
+public class FoundationDataColumn {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "TADF005_CLMN_D")
-    private long id;
+    private int id;
     
     @Column(name = "TADF005_CLMN_N")
     private String uiColumnName;
@@ -44,10 +56,28 @@ public class FoundationDataColumn extends BaseEntity<String> {
     private int length;
     
     @Column(name = "TADF005_SELECTED_LIST_ID")
-    private long selectedListId;
-    
+    private int selectedListId;
+
     @Column(name = "TADF005_LIST_DISPLAY_TYPE")
     private String listDisplayType;
+    
+    @CreatedBy
+    @Column(name = "TADF005_CREATE_USER_C", updatable =  false)
+    protected String createdBy;
+    
+    @CreatedDate
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "TADF005_CREATE_S", updatable =  false)
+    protected Date creationDate;
+    
+    @LastModifiedBy
+    @Column(name = "TADF005_LAST_UPDT_USER_C")
+    protected String lastModifiedBy;
+    
+    @LastModifiedDate
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "TADF005_LAST_UPDT_S")
+    protected Date lastModifiedDate;
     
     public FoundationDataColumn(String uiColumnName, String hoverHelp, boolean unique, String inputType, String value,
 			boolean mandatory, int sortOrder, boolean editable, int length) {
@@ -63,7 +93,7 @@ public class FoundationDataColumn extends BaseEntity<String> {
 	}
 
     public FoundationDataColumn(String uiColumnName, String hoverHelp, boolean unique, String inputType, String value,
-			boolean mandatory, int sortOrder, boolean editable, int length, long selectedListId, String listDisplayType) {
+			boolean mandatory, int sortOrder, boolean editable, int length, int selectedListId, String listDisplayType) {
 		this.uiColumnName = uiColumnName;
 		this.hoverHelp = hoverHelp;
 		this.uniqueColumn = unique;
@@ -80,11 +110,11 @@ public class FoundationDataColumn extends BaseEntity<String> {
 	public FoundationDataColumn() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     
@@ -160,11 +190,11 @@ public class FoundationDataColumn extends BaseEntity<String> {
 		this.inputType = inputType;
 	}
 
-	public long getSelectedListId() {
+	public int getSelectedListId() {
 		return selectedListId;
 	}
 
-	public void setSelectedListId(long selectedListId) {
+	public void setSelectedListId(int selectedListId) {
 		this.selectedListId = selectedListId;
 	}
 

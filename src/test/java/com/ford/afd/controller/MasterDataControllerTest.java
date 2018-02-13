@@ -40,7 +40,7 @@ public class MasterDataControllerTest {
 	@Autowired
 	private MasterDataService masterDataService;
 
-	private List<Long> testEntitiesId = new ArrayList<>();
+	private List<Integer> testEntitiesId = new ArrayList<>();
 	
 	private final String masterData1Name = "MasterData" + System.nanoTime();
 	private final String masterData2Name = "MasterData" + System.nanoTime();
@@ -56,7 +56,7 @@ public class MasterDataControllerTest {
 
 	@After
 	public void tearDown() {
-		for (Long listDataId : testEntitiesId) {
+		for (Integer listDataId : testEntitiesId) {
 			masterDataService.deleteMasterData(masterDataService.findMasterDataById(listDataId));
 		}
 	}

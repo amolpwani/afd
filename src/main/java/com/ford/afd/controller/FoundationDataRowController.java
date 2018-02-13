@@ -37,26 +37,26 @@ public class FoundationDataRowController {
     @Autowired
     private MasterDataItemService masterDataItemService;
 
-	@RequestMapping(value = "getFoundationDataRow",method = RequestMethod.GET)
+	@RequestMapping(value = "getFoundationDataRow", method = RequestMethod.GET)
 	public String directFoundationDataRows() throws JSONException {
-		List<Long> rowIds = foundationDataRowService.allFoundationDataRowIds();
+		List<Integer> rowIds = foundationDataRowService.allFoundationDataRowIds();
 		JSONArray foundationDataRows = new JSONArray();
 		
-		for (Long row : rowIds) {
+		for (Integer row : rowIds) {
 			foundationDataRows.put(geFoundationDataRowObj(row));
 		}
 		
 		return foundationDataRows.toString();
 	}
 
-	@RequestMapping(value = "getFoundationDataRow/{rowId}",method = RequestMethod.GET)
-	public String foundationDataByRowId(@PathVariable Long rowId) throws JSONException {
+	@RequestMapping(value = "getFoundationDataRow/{rowId}", method = RequestMethod.GET)
+	public String foundationDataByRowId(@PathVariable Integer rowId) throws JSONException {
 		JSONArray foundationDataRowObj = geFoundationDataRowObj(rowId);
 		
 		return foundationDataRowObj.toString();
 	}
 
-	private JSONArray geFoundationDataRowObj(Long rowId) throws JSONException {
+	private JSONArray geFoundationDataRowObj(Integer rowId) throws JSONException {
 		List<FoundationDataRow> foundationDataListForRowId = new ArrayList<FoundationDataRow>();
 		if (rowId != null) {
 			foundationDataListForRowId = foundationDataRowService.findFoundationDataRowByRowId(rowId);
@@ -94,11 +94,13 @@ public class FoundationDataRowController {
 				List<MasterDataItem> masterDataItems = masterDataItemService.findMasterDataItemByMasterDataId(column.getSelectedListId());
 				JSONArray masterDataItemsArr = new JSONArray();
 				for (MasterDataItem item : masterDataItems) {
-					JSONObject masterDataItemObj = new JSONObject();
-					masterDataItemObj.put("code", item.getCode());
-					masterDataItemObj.put("description", item.getDescription());
-					masterDataItemObj.put("id", item.getId());
-					masterDataItemsArr.put(masterDataItemObj);
+					if (item.isActive()) {
+						JSONObject masterDataItemObj = new JSONObject();
+						masterDataItemObj.put("code", item.getCode());
+						masterDataItemObj.put("description", item.getDescription());
+						masterDataItemObj.put("id", item.getId());
+						masterDataItemsArr.put(masterDataItemObj);
+					}
 				}
 				
 				foundationDataColumnObj.put("masterDataItems", masterDataItemsArr);
@@ -110,24 +112,40 @@ public class FoundationDataRowController {
 		return foundationDataColumns;
 	}
 
-	@RequestMapping(value="getFoundationDataRow/{id}",method=RequestMethod.PUT)
-	public void updateFoundationDataRow(@PathVariable long id, @RequestBody List<FoundationDataRow> foundationDataRowList){
-		for (FoundationDataRow foundationDataRow : foundationDataRowList) {		
-			foundationDataRowService.saveFoundationDataRow(foundationDataRow);
+	@RequestMapping(value = "getFoundationDataRow/{id}", method = RequestMethod.PUT)
+	public List<String> updateFoundationDataRow(@PathVariable Integer id, @RequestBody List<FoundationDataRow> foundationDataRowList) {
+		
+		List<String> columNamesHavingDuplicateValues = new ArrayList<String>();
+		columNamesHavingDuplicateValues = foundationDataRowService.getColumnNamesHavingDuplicateValues(foundationDataRowList, true);
+		
+		if (columNamesHavingDuplicateValues.size() == 0) {
+			for (FoundationDataRow foundationDataRow : foundationDataRowList) {		
+				foundationDataRowService.saveFoundationDataRow(foundationDataRow);
+			}
 		}
+		
+		return columNamesHavingDuplicateValues;
 	}
 
 	@RequestMapping(value = "getFoundationDataRow/{rowId}",method = RequestMethod.DELETE)
-	public void deleteFoundationDataRowByRowId(@PathVariable long rowId ){
+	public void deleteFoundationDataRowByRowId(@PathVariable int rowId ){
 		foundationDataRowService.deleteFoundationDataRowByRowId(rowId);
 	}
 
-	@RequestMapping(value="getFoundationDataRow",method=RequestMethod.POST)
-	public void createFoundationDataRow(@RequestBody List<FoundationDataRow> foundationDataRowList) {
-		Long rowId = foundationDataRowService.findNewRowId();
-		for (FoundationDataRow foundationDataRow : foundationDataRowList) {	
-			foundationDataRow.setRowId(rowId);
-			foundationDataRowService.saveFoundationDataRow(foundationDataRow);
+	@RequestMapping(value = "getFoundationDataRow", method = RequestMethod.POST)
+	public List<String> createFoundationDataRow(@RequestBody List<FoundationDataRow> foundationDataRowList) {
+		
+		List<String> columNamesHavingDuplicateValues = new ArrayList<String>();
+		columNamesHavingDuplicateValues = foundationDataRowService.getColumnNamesHavingDuplicateValues(foundationDataRowList, false);
+		
+		if (columNamesHavingDuplicateValues.size() == 0) {
+			Integer rowId = foundationDataRowService.findNewRowId();
+			for (FoundationDataRow foundationDataRow : foundationDataRowList) {	
+				foundationDataRow.setRowId(rowId);
+				foundationDataRowService.saveFoundationDataRow(foundationDataRow);
+			}
 		}
+		
+		return columNamesHavingDuplicateValues;
 	}
 }

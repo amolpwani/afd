@@ -39,7 +39,7 @@ public class MasterDataItemController {
 	 * @return MasterDataItem
 	 */
 	@RequestMapping(value = "getMasterDataItem/{id}", method = RequestMethod.GET)
-	public MasterDataItem getMasterDataItemById(@PathVariable long id ) {
+	public MasterDataItem getMasterDataItemById(@PathVariable Integer id ) {
 		return masterDataItemService.findMasterDataItemById(id);
 	}
 
@@ -48,7 +48,7 @@ public class MasterDataItemController {
      * @return List<MasterDataDataItem>
      */
 	@RequestMapping(value = "getMasterDataItemByMasterDataId/{masterDataId}", method = RequestMethod.GET)
-	public List<MasterDataItem> listMasterDataItemByMasterDataId(@PathVariable long masterDataId) {
+	public List<MasterDataItem> listMasterDataItemByMasterDataId(@PathVariable Integer masterDataId) {
 		return masterDataItemService.findMasterDataItemByMasterDataId(masterDataId);
 	}
 
@@ -68,7 +68,7 @@ public class MasterDataItemController {
 	 * @param id
 	 */
 	@RequestMapping(value = "getMasterDataItem/{id}", method = RequestMethod.DELETE)
-	public void deleteMasterDataItemById(@PathVariable long id ){
+	public void deleteMasterDataItemById(@PathVariable Integer id ){
 		masterDataItemService.deleteMasterDataItem(masterDataItemService.findMasterDataItemById(id));
 	}
 

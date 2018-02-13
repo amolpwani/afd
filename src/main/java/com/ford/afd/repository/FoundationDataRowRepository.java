@@ -8,16 +8,31 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ford.afd.model.FoundationDataRow;
 
-public interface FoundationDataRowRepository extends CrudRepository<FoundationDataRow, Long> {
-	List<FoundationDataRow> findByRowId(long rowId);
+public interface FoundationDataRowRepository extends CrudRepository<FoundationDataRow, Integer> {
+	List<FoundationDataRow> findByRowId(int rowId);
 	
 	@Transactional
-	void removeByRowId(long rowId);
+	void removeByRowId(int rowId);
 	
 	@Query("select distinct rowId from FoundationDataRow")
-	List<Long> findDistinctRowIds();
+	List<Integer> findDistinctRowIds();
 	
 	@Query("select coalesce(max(rowId), 0) from FoundationDataRow")
-	Long getMaxRowId();
-
+	Integer getMaxRowId();
+	
+	/**
+	 * Checks if columnValue already existing for given column in FoundationDataRow table.
+	 * @param columnId
+	 * @param columnValue
+	 * @return
+	 */
+	 boolean existsByColumnIdAndColumnValue(int columnId, String columnValue);
+	 
+	 /**
+	  * For retrieving record using columnId and columnValue.
+	  * @param columnId
+	  * @param columnValue
+	  * @return
+	  */
+	 List<FoundationDataRow> findByColumnIdAndColumnValue(int columnId, String columnValue);
 }

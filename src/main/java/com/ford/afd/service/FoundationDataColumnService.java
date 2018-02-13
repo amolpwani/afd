@@ -23,7 +23,7 @@ public class FoundationDataColumnService {
         return foundationDataColumnRepository.findAll();
     }
 
-    public FoundationDataColumn findFoundationDataColumnById(long id) {
+    public FoundationDataColumn findFoundationDataColumnById(int id) {
         return foundationDataColumnRepository.findOne(id);
     }
 
