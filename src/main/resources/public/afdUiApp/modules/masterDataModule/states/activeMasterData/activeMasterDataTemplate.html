@@ -1,7 +1,7 @@
 <h2 translate="masterData.activeMasterData.title"></h2>
 <h5 translate="masterData.activeMasterData.subTitle"></h5>
 <div class="row">
-     <div ng-repeat="masterData in activeMasterDataController.masterDatas | filter:{active:true}">
+     <div ng-repeat="masterData in activeMasterDataController.masterDatas | filter:{active:'Y'}">
      	 <div align="center">&nbsp;<a ui-sref="masterDataItem({id:masterData.id})">{{masterData.description}}</a></div>
      </div>
 </div>

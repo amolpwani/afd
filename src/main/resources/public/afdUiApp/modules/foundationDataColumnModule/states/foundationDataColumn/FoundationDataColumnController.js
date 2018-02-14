@@ -267,7 +267,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 				
 				uiColumnNameJson[columnName] = foundationDataColumn.uiColumnName;
 				hoverHelpJson[columnName] = foundationDataColumn.hoverHelp;
-				uniqueJson[columnName] = foundationDataColumn.uniqueColumn ? 'Y' : 'N';
+				uniqueJson[columnName] = foundationDataColumn.uniqueColumn;
 				if (foundationDataColumn.inputType === 'List') {
 					
 					angular.forEach(masterDataList, function(list) {
@@ -281,9 +281,9 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 					inputTypeJson[columnName] = foundationDataColumn.inputType;
 				}
 				valueJson[columnName] = foundationDataColumn.value;
-				mandatoryJson[columnName] = foundationDataColumn.mandatory ? 'Y' : 'N';
+				mandatoryJson[columnName] = foundationDataColumn.mandatory;
 				sortOrderJson[columnName] = foundationDataColumn.sortOrder;
-				editableJson[columnName] = foundationDataColumn.editable ? 'Y' : 'N';
+				editableJson[columnName] = foundationDataColumn.editable;
 				lengthJson[columnName] = foundationDataColumn.length;
 			});
 			

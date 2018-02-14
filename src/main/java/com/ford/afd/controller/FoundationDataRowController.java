@@ -78,10 +78,10 @@ public class FoundationDataRowController {
 			foundationDataColumnObj.put("hoverHelp", column.getHoverHelp());
 			foundationDataColumnObj.put("inputType", column.getInputType());
 			foundationDataColumnObj.put("value", column.getValue());
-			foundationDataColumnObj.put("uniqueColumn", column.isUniqueColumn());
-			foundationDataColumnObj.put("mandatory", column.isMandatory());
+			foundationDataColumnObj.put("uniqueColumn", column.getUniqueColumn() + "");
+			foundationDataColumnObj.put("mandatory", column.getMandatory() + "");
 			foundationDataColumnObj.put("sortOrder", column.getSortOrder());
-			foundationDataColumnObj.put("editable", column.isEditable());
+			foundationDataColumnObj.put("editable", column.getEditable() + "");
 			foundationDataColumnObj.put("length", column.getLength());
 			foundationDataColumnObj.put("selectedListId", column.getSelectedListId());
 			foundationDataColumnObj.put("listDisplayType", column.getListDisplayType());
@@ -94,7 +94,7 @@ public class FoundationDataRowController {
 				List<MasterDataItem> masterDataItems = masterDataItemService.findMasterDataItemByMasterDataId(column.getSelectedListId());
 				JSONArray masterDataItemsArr = new JSONArray();
 				for (MasterDataItem item : masterDataItems) {
-					if (item.isActive()) {
+					if ('Y' == item.getActive()) {
 						JSONObject masterDataItemObj = new JSONObject();
 						masterDataItemObj.put("code", item.getCode());
 						masterDataItemObj.put("description", item.getDescription());

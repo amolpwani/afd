@@ -92,7 +92,7 @@ public class MasterDataItemServiceTest {
 	}
 
 	private MasterDataItem buildMasterDataItem(String code) {
-		MasterDataItem entity = new MasterDataItem(code, "TestingBusiness", true, 1 );
+		MasterDataItem entity = new MasterDataItem(code, "TestingBusiness", 'Y', 1 );
 		entity.setId(1);
 		return entity;
 	}

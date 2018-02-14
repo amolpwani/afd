@@ -99,7 +99,7 @@ public class FoundationDataColumnServiceTest {
 	}
 
 	private FoundationDataColumn buildFoundationDataColumn(String columName) {
-		FoundationDataColumn entity = new FoundationDataColumn(columName, "Column1 Help", true, "List", "BU", true, 1, false, 10);
+		FoundationDataColumn entity = new FoundationDataColumn(columName, "Column1 Help", 'Y', "List", "BU", 'Y', 1, 'N', 10);
 		entity.setId(1);
 		return entity;
 	}

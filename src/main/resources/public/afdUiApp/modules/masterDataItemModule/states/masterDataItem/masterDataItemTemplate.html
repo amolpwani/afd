@@ -36,14 +36,9 @@
         				<span class="glyphicon glyphicon-trash" style='font-size: 17px'></span>
         			</a>
                 </td>
-                <td ng-class="$parent.columnData.column1.class">
-                    {{::row.code}}
-                </td>
-                <td>{{::row.description}}</td>
-                <td>
-                	<div ng-show={{::row.active}}>Y</div>
-                	<div ng-hide={{::row.active}}>N</div>
-                </td>
+                <td ng-bind="row.code">{{::row.code}}</td>
+                <td  ng-bind="row.description">{{::row.description}}</td>
+                <td ng-bind="row.active" >{{::row.active}}</td>
             </tr>
             </tbody>
         </table>

@@ -30,9 +30,10 @@ public interface FoundationDataRowRepository extends CrudRepository<FoundationDa
 	 
 	 /**
 	  * For retrieving record using columnId and columnValue.
+	  * @param rowIds
 	  * @param columnId
 	  * @param columnValue
 	  * @return
 	  */
-	 List<FoundationDataRow> findByColumnIdAndColumnValue(int columnId, String columnValue);
+	 List<FoundationDataRow> findByRowIdNotInAndColumnIdAndColumnValue(List<Integer> rowIds, int columnId, String columnValue);
 }

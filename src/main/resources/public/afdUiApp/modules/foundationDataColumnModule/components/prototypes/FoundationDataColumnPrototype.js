@@ -27,14 +27,14 @@ angular.module('AfdUiAppFoundationDataColumnComponentsModule')
         	this.id = '';
     	    this.uiColumnName = '';
     	    this.hoverHelp = '';
-    	    this.uniqueColumn = false;
+    	    this.uniqueColumn = 'N';
     	    this.inputType = 'Text';
     	    this.selectedList = '';
     	    this.listDisplayType = 'Code';
     	    this.value = '';
-    	    this.mandatory = false;
+    	    this.mandatory = 'N';
     	    this.sortOrder = 0;
-    	    this.editable = false;
+    	    this.editable = 'N';
     	    this.length = 0;
     	    this.selectedListId = 1;
 

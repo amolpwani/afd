@@ -18,7 +18,7 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			uiColumnName: 'Column1'
 		});
 
-		fullObject = new FoundationDataColumnPrototype({"id":"7","uiColumnName":"Column1","hoverHelp":"Column1 help","uniqueColumn":false});
+		fullObject = new FoundationDataColumnPrototype({"id":"7","uiColumnName":"Column1","hoverHelp":"Column1 help","uniqueColumn":'N'});
 	});
 
 	describe('Constructor:', function() {
@@ -61,13 +61,13 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			expect(testObject.id).toEqual('');
 			expect(testObject.uiColumnName).toEqual('');
 			expect(testObject.hoverHelp).toEqual('');
-			expect(testObject.uniqueColumn).toEqual(false);
+			expect(testObject.uniqueColumn).toEqual('N');
 			expect(testObject.inputType).toEqual('Text');
 			expect(testObject.selectedList).toEqual('');
 			expect(testObject.listDisplayType).toEqual('Code');
-			expect(testObject.mandatory).toEqual(false);
+			expect(testObject.mandatory).toEqual('N');
 			expect(testObject.sortOrder).toEqual(0);
-			expect(testObject.editable).toEqual(false);
+			expect(testObject.editable).toEqual('N');
 			expect(testObject.length).toEqual(0);
 			expect(testObject.selectedListId).toEqual(1);
 		});
@@ -78,13 +78,13 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			expect(testObject.id).toEqual('');
 			expect(testObject.uiColumnName).toEqual('');
 			expect(testObject.hoverHelp).toEqual('');
-			expect(testObject.uniqueColumn).toEqual(false);
+			expect(testObject.uniqueColumn).toEqual('N');
 			expect(testObject.inputType).toEqual('Text');
 			expect(testObject.selectedList).toEqual('');
 			expect(testObject.listDisplayType).toEqual('Code');
-			expect(testObject.mandatory).toEqual(false);
+			expect(testObject.mandatory).toEqual('N');
 			expect(testObject.sortOrder).toEqual(0);
-			expect(testObject.editable).toEqual(false);
+			expect(testObject.editable).toEqual('N');
 			expect(testObject.length).toEqual(0);
 			expect(testObject.selectedListId).toEqual(1);
 		});
@@ -95,13 +95,13 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			expect(testObject.id).toEqual('');
 			expect(testObject.uiColumnName).toEqual('');
 			expect(testObject.hoverHelp).toEqual('');
-			expect(testObject.uniqueColumn).toEqual(false);
+			expect(testObject.uniqueColumn).toEqual('N');
 			expect(testObject.inputType).toEqual('Text');
 			expect(testObject.selectedList).toEqual('');
 			expect(testObject.listDisplayType).toEqual('Code');
-			expect(testObject.mandatory).toEqual(false);
+			expect(testObject.mandatory).toEqual('N');
 			expect(testObject.sortOrder).toEqual(0);
-			expect(testObject.editable).toEqual(false);
+			expect(testObject.editable).toEqual('N');
 			expect(testObject.length).toEqual(0);
 			expect(testObject.selectedListId).toEqual(1);
 		});
@@ -112,13 +112,13 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			expect(testObject.id).toEqual('');
 			expect(testObject.uiColumnName).toEqual('');
 			expect(testObject.hoverHelp).toEqual('');
-			expect(testObject.uniqueColumn).toEqual(false);
+			expect(testObject.uniqueColumn).toEqual('N');
 			expect(testObject.inputType).toEqual('Text');
 			expect(testObject.selectedList).toEqual('');
 			expect(testObject.listDisplayType).toEqual('Code');
-			expect(testObject.mandatory).toEqual(false);
+			expect(testObject.mandatory).toEqual('N');
 			expect(testObject.sortOrder).toEqual(0);
-			expect(testObject.editable).toEqual(false);
+			expect(testObject.editable).toEqual('N');
 			expect(testObject.length).toEqual(0);
 			expect(testObject.selectedListId).toEqual(1);
 		});
@@ -184,7 +184,7 @@ describe('AfdUiAppFoundationDataColumnComponentsModule FoundationDataColumnProto
 			expect(compareObject1.compareTo(compareObject2)).toBeTruthy();
 		});
 
-		it('should return false when the names are not equal', function() {
+		it('should return 'N' when the names are not equal', function() {
 			var compareObject1 = new FoundationDataColumnPrototype({
 				id: '1',
 				uiColumnName: 'Column1'

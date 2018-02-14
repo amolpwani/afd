@@ -35,7 +35,7 @@ public class MasterData {
     private String description;
     
     @Column(name = "TAFD001_MSTR_DATA_ACTV_F")
-    private boolean active;
+    private char active;
     
     @CreatedBy
     @Column(name = "TADF001_CREATE_USER_C", updatable =  false)
@@ -58,7 +58,7 @@ public class MasterData {
 //    @OneToMany(fetch = FetchType.EAGER, mappedBy = "masterData", cascade = CascadeType.ALL)
 //    private List<MasterDataItem> masterDataItemList;
 
-    public MasterData(String name, String description, boolean active) {
+    public MasterData(String name, String description, char active) {
         this.name = name;
         this.description = description;
         this.active = active;
@@ -83,11 +83,11 @@ public class MasterData {
         this.name = name;
     }
 
-    public boolean isActive() {
+    public char getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(char active) {
         this.active = active;
     }
 

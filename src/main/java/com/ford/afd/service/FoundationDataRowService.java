@@ -68,14 +68,19 @@ public class FoundationDataRowService {
     	
 		for (FoundationDataRow foundationDataRow : foundationDataRowList) {
 			
+			List<Integer> rowIds = new ArrayList<Integer>();
+			rowIds.add(foundationDataRow.getRowId());
 			FoundationDataColumn foundationDataColumn = foundationDataColumnRepository.findOne(foundationDataRow.getColumnId());
-			if (foundationDataColumn.isUniqueColumn() 
+			if ('Y' == foundationDataColumn.getUniqueColumn() 
 					&& foundationDataRowRepository.existsByColumnIdAndColumnValue(foundationDataRow.getColumnId(), foundationDataRow.getColumnValue())) {
 				if (!updateMode) {
 					duplicateColumnNames.add(foundationDataColumn.getUiColumnName());
-				} else if (updateMode && foundationDataRowRepository.findByColumnIdAndColumnValue(
-						foundationDataRow.getColumnId(), foundationDataRow.getColumnValue()).size() > 1) {
-					duplicateColumnNames.add(foundationDataColumn.getUiColumnName());
+				} else if (updateMode) {
+					
+					List<FoundationDataRow> dataRows = foundationDataRowRepository.findByRowIdNotInAndColumnIdAndColumnValue(rowIds, foundationDataRow.getColumnId(), foundationDataRow.getColumnValue());
+					if (dataRows.size() > 0) {
+						duplicateColumnNames.add(foundationDataColumn.getUiColumnName());
+					} 
 				}			
 			}
 		}

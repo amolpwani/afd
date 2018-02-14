@@ -29,12 +29,12 @@ public class MasterDataItemRepositoryTest {
     public void directMasterData() {
     	String masterDataItem1Code = "MasterDataItem" + System.nanoTime();
         // Arrange
-        MasterDataItem listItem1 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", true , 1);
+        MasterDataItem listItem1 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", 'Y' , 1);
         //listItem1.setMasterData(getMasterData());
 		MasterDataItem masterDataItem1 = masterDataItemRepository.save(listItem1);
 		
 		masterDataItem1Code = "MasterDataItem" + System.nanoTime();
-        MasterDataItem listItem2 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", false, 2);
+        MasterDataItem listItem2 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", 'N', 2);
         //listItem2.setMasterData(getMasterData());
 		MasterDataItem masterDataItem2 = masterDataItemRepository.save(listItem2);
         //Act
@@ -47,7 +47,7 @@ public class MasterDataItemRepositoryTest {
     public void masterDataItemById() {
     	String masterDataItem1Code = "MasterDataItem" + System.nanoTime();
         // Arrange
-        MasterDataItem listItem1 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", true , 1);
+        MasterDataItem listItem1 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", 'Y' , 1);
         //listItem1.setMasterData(getMasterData());
         
         MasterDataItem testMasterDataItem = masterDataItemRepository.save(listItem1);
@@ -61,7 +61,7 @@ public class MasterDataItemRepositoryTest {
     public void updateMasterDataItems() {
     	String masterDataItem1Code = "MasterDataItem" + System.nanoTime();
         // Arrange
-        MasterDataItem listItem1 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", true , 1);
+        MasterDataItem listItem1 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", 'Y' , 1);
         //listItem1.setMasterData(getMasterData());
         
         MasterDataItem testMasterDataItem = masterDataItemRepository.save(listItem1);
@@ -77,7 +77,7 @@ public class MasterDataItemRepositoryTest {
     public void deleteMasterDataItemsById() {
     	String masterDataItem1Code = "MasterDataItem" + System.nanoTime();
         // Arrange
-    	MasterDataItem listItem1 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", true , 1);
+    	MasterDataItem listItem1 = new MasterDataItem(masterDataItem1Code, "TestingBusiness", 'Y' , 1);
         //listItem1.setMasterData(getMasterData());
         MasterDataItem testMasterDataItem = masterDataItemRepository.save(listItem1);
         //Act

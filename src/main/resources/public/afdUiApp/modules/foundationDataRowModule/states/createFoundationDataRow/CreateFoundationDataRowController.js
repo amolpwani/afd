@@ -27,7 +27,6 @@ angular.module('AfdUiAppFoundationDataRowModule')
 		this.FoundationDataRowService = FoundationDataRowService;
 		
 		this.foundationDataColumnList = foundationDataColumnList;
-		
 
 		/**
 		 * @ngdoc property
@@ -63,6 +62,19 @@ angular.module('AfdUiAppFoundationDataRowModule')
 		this.initValue = function() {
 			this.foundationDataColumn.value = '';
 		};
+		
+		this.updateOtherList = function(foundationDataColumn, index) {
+			var selectedListId = foundationDataColumn.selectedListId;
+			var columnValue = foundationDataColumn.columnValue;
+			
+			for (i = 0; i < this.foundationDataColumnList.length; i++) {
+				if (this.foundationDataColumnList[i].inputType === 'List' 
+					&& index != i
+					&& selectedListId == this.foundationDataColumnList[i].selectedListId) {
+					this.foundationDataColumnList[i].columnValue = columnValue;
+				}
+			}
+		};
 
 		/**
 		 * @ngdoc method
@@ -86,11 +98,11 @@ angular.module('AfdUiAppFoundationDataRowModule')
 		this.submitInProgress = false;
 		
 		this.isFieldDisabled = function(foundationDataColumn) {
-			return this.isEditing && !foundationDataColumn.editable;
+			return this.isEditing && foundationDataColumn.editable === 'N';
 		};
 		
 		this.isValueFieldDisabled = function(foundationDataColumn) {
-			return (this.isEditing && !foundationDataColumn.editable) || (!this.isEditing && foundationDataColumn.uniqueColumn);
+			return (this.isEditing && foundationDataColumn.editable === 'N') || (!this.isEditing && foundationDataColumn.uniqueColumn === 'Y');
 		};
 
 

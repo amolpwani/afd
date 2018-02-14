@@ -35,7 +35,7 @@ public class MasterDataItem {
     private String description;
     
     @Column(name = "TAFD002_MSTR_DATA_ITEM_ACTV_F")
-    private boolean active;
+    private char active;
     
     @Column(name = "TAFD001_MSTR_DATA_D")
     private int parentMasterDataId;
@@ -62,7 +62,7 @@ public class MasterDataItem {
 //    @JoinColumn(name = "TAFD001_MSTR_DATA_D", referencedColumnName = "TAFD001_MSTR_DATA_D", nullable = false, unique = true, insertable = false, updatable = false)
 //    private MasterData masterData;
 
-    public MasterDataItem(String code, String description, boolean active, int parentMasterDataId) {
+    public MasterDataItem(String code, String description, char active, int parentMasterDataId) {
         this.code = code;
         this.description = description;
         this.setActive(active);
@@ -105,11 +105,11 @@ public class MasterDataItem {
 		this.parentMasterDataId = parentMasterDataId;
 	}
 
-	public boolean isActive() {
+	public char getActive() {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(char active) {
 		this.active = active;
 	}
 

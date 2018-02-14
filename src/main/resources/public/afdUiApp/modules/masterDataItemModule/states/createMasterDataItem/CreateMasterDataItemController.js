@@ -45,7 +45,7 @@ angular.module('AfdUiAppMasterDataItemModule')
             this.masterDataItem = MasterDataItemService.masterDataItem;
             MasterDataItemService.isEditing = false;
         } else {
-			this.masterDataItem.active = true;
+			this.masterDataItem.active = 'Y';
 		}
 
 		/**

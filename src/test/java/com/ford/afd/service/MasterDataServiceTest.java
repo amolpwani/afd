@@ -98,7 +98,7 @@ public class MasterDataServiceTest {
     }
 
     private MasterData buildMasterData(String name) {
-        MasterData entity = new MasterData(name, "description", true);
+        MasterData entity = new MasterData(name, "description", 'Y');
         entity.setId(1);
         return entity;
     }

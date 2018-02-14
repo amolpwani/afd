@@ -37,12 +37,12 @@ public class MasterDataRepositoryTest {
 		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
 		masterData1.setName(masterData1Name);
-		masterData1.setActive(true);
+		masterData1.setActive('N');
 		entityManager.persist(masterData1);
 		entityManager.flush();
 		MasterData masterData2 = new MasterData();
 		masterData2.setName("JunitTesting1");
-		masterData2.setActive(true);
+		masterData2.setActive('N');
 		entityManager.persist(masterData2);
 		entityManager.flush();
 		//given
@@ -65,7 +65,7 @@ public class MasterDataRepositoryTest {
 		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
 		masterData1.setName(masterData1Name);
-		masterData1.setActive(true);
+		masterData1.setActive('N');
 		entityManager.persist(masterData1);
 		entityManager.flush();
 		
@@ -84,7 +84,7 @@ public class MasterDataRepositoryTest {
 		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
 		masterData1.setName(masterData1Name);
-		masterData1.setActive(true);
+		masterData1.setActive('N');
 		entityManager.persist(masterData1);
 		entityManager.flush();
 
@@ -95,7 +95,7 @@ public class MasterDataRepositoryTest {
 				MasterData masterDatatemp=masterDataRepository.findOne(masterData.getId());
 				MasterData masterData2 = new MasterData();
 				masterData2.setName("JunitTestingupadeted");
-				masterData2.setActive(true);
+				masterData2.setActive('N');
 				BeanUtils.copyProperties(masterData2, masterDatas);
 				assertThat(masterDatatemp.getName()).isEqualTo(masterData1.getName());
 			}
@@ -107,7 +107,7 @@ public class MasterDataRepositoryTest {
 		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
 		masterData1.setName(masterData1Name);
-		masterData1.setActive(true);
+		masterData1.setActive('N');
 		entityManager.persist(masterData1);
 		entityManager.flush();
 		List<MasterData> masterDatas = masterDataRepository.findAll();
@@ -127,7 +127,7 @@ public class MasterDataRepositoryTest {
 		String masterData1Name = "MasterData" + System.nanoTime();
 		MasterData masterData1 = new MasterData();
 		masterData1.setName(masterData1Name);
-		masterData1.setActive(true);
+		masterData1.setActive('N');
 		entityManager.persist(masterData1);
 		entityManager.flush();
 		List<MasterData> masterDatas = masterDataRepository.findAll();

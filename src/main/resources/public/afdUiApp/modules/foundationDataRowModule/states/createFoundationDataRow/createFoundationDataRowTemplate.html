@@ -71,19 +71,47 @@
 						      		{{foundationDataColumn.listDisplayType == 'Code' ? masterDataItem.code : masterDataItem.description}}
 					      </option>
 					    </select>
+					    
+<!-- 					   <select ng-if="foundationDataColumn.listDisplayType == 'Code'" name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" 
+					   		ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
+					    	class="active-dropdown form-control input-small"
+					    	ng-options="masterDataItem.id as masterDataItem.code for masterDataItem in foundationDataColumn.masterDataItems"
+					    	ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)" required>
+					    </select>
+					    
+					    <select ng-if="foundationDataColumn.listDisplayType == 'Description'" name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" 
+					    	ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
+					    	class="active-dropdown form-control input-small"
+					    	ng-options="masterDataItem.id as masterDataItem.description for masterDataItem in foundationDataColumn.masterDataItems"
+					    	ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)" required>
+					    </select> -->
+					    
 					</div>
 					
 					<div ng-if="!foundationDataColumn.mandatory">
 						<label for="list{{foundationDataColumn.id}}" class="control-label">{{foundationDataColumn.uiColumnName}}</label>
 						<span class="glyphicon glyphicon-question-sign" style="font-size: 17px" uib-tooltip="{{foundationDataColumn.hoverHelp}}"></span>
-						<select name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
+ 						<select name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
 					    	class="active-dropdown form-control input-small" 
-					    	ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)" required>
+					    	ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)">
 					      <option ng-repeat="masterDataItem in foundationDataColumn.masterDataItems" value="{{foundationDataColumn.listDisplayType == 'Code' ? masterDataItem.code : masterDataItem.description}}"
 						      	ng-selected="foundationDataColumn.columnValue === masterDataItem.id" >
 						      		{{foundationDataColumn.listDisplayType == 'Code' ? masterDataItem.code : masterDataItem.description}}
 					      </option>
 					    </select>
+<!-- 					    <select ng-if="foundationDataColumn.listDisplayType == 'Code'" name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" 
+					    	ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
+					    	class="active-dropdown form-control input-small"
+					    	ng-options="masterDataItem.id as masterDataItem.code for masterDataItem in foundationDataColumn.masterDataItems"
+					    	ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)">
+					    </select>
+					    
+					    <select ng-if="foundationDataColumn.listDisplayType == 'Description'" name="list{{foundationDataColumn.id}}" id="list{{foundationDataColumn.id}}" 
+					    	ng-model="createFoundationDataRowController.foundationDataColumnList[$index].columnValue"
+					    	class="active-dropdown form-control input-small"
+					    	ng-options="masterDataItem.id as masterDataItem.description for masterDataItem in foundationDataColumn.masterDataItems"
+					    	ng-disabled="createFoundationDataRowController.isFieldDisabled(foundationDataColumn)">
+					    </select> -->
 					</div>
 				</div>
 			</div>

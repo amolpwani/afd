@@ -62,7 +62,7 @@ public class MasterDataControllerTest {
 	}
 
 	private MasterData buildListData(final String name, String description) {
-		return new MasterData(name, description, true);
+		return new MasterData(name, description, 'Y');
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class MasterDataControllerTest {
 
 		//Assert
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		MasterData expectedListData = new MasterData(masterData1Name, "description 1", true);
+		MasterData expectedListData = new MasterData(masterData1Name, "description 1", 'Y');
 		//expectedListData.setMasterDataItemList(new ArrayList<>());
 
 		expectedListData.setId(testEntitiesId.get(0));
@@ -107,7 +107,7 @@ public class MasterDataControllerTest {
 		};
 
 		String masterData1Name = "UpdatedMasterData" + System.nanoTime();
-		MasterData updateMasterData = new MasterData(masterData1Name, "updated description 1", false);
+		MasterData updateMasterData = new MasterData(masterData1Name, "updated description 1", 'N');
 		updateMasterData.setId(testEntitiesId.get(0));
 
 		ResponseEntity<MasterData> actualResponse =  template.exchange(
@@ -120,7 +120,7 @@ public class MasterDataControllerTest {
 		//Assert
 		MasterData actualBody = actualResponse.getBody();
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		MasterData expectedMasterData = new MasterData(masterData1Name, "updated description 1", false);
+		MasterData expectedMasterData = new MasterData(masterData1Name, "updated description 1", 'N');
 		expectedMasterData.setId(testEntitiesId.get(0));
 		//expectedMasterData.setMasterDataItemList(new ArrayList<>());
 		assertThat(masterDataService.findMasterDataById(actualBody.getId()).getName()).isEqualTo(expectedMasterData.getName());
@@ -154,7 +154,7 @@ public class MasterDataControllerTest {
 		};
 
 		String masterData1Name = "CreateMasterData" + System.nanoTime();
-		MasterData createMasterData = new MasterData(masterData1Name, "description 3", false);
+		MasterData createMasterData = new MasterData(masterData1Name, "description 3", 'N');
 
 		ResponseEntity<MasterData> actualResponse =  template.exchange(
 				base.toString() + "/masterdata/getMasterData/",
@@ -167,7 +167,7 @@ public class MasterDataControllerTest {
 		MasterData actualBody = actualResponse.getBody();
 		testEntitiesId.add(actualBody.getId());
 		assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-		MasterData expectedMasterData = new MasterData(masterData1Name, "description 3", false);
+		MasterData expectedMasterData = new MasterData(masterData1Name, "description 3", 'N');
 		expectedMasterData.setId(actualBody.getId());
 		assertThat(actualBody).isEqualToComparingFieldByField(expectedMasterData);
 		assertThat(masterDataService.findMasterDataById(actualBody.getId()).getName()).isEqualTo(expectedMasterData.getName());

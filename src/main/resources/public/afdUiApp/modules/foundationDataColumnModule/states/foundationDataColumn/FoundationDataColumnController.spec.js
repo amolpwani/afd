@@ -12,24 +12,24 @@ describe('AfdUiAppFoundationDataColumnModule FoundationDataColumnController:', f
 				id: '1',
 				uiColumnName: 'Column1',
 				hoverHelp: 'Column 1 Help',
-				uniqueColumn: true,
+				uniqueColumn: 'Y',
 				inputType: 'Text',
 				value: 'Column 1 value',
-				mandatory: true,
+				mandatory: 'Y',
 				sortOrder: 1,
-				editable: true,
+				editable: 'Y',
 				length: 200
 			},
 			{
 				id: '2',
 				uiColumnName: 'Column2',
 				hoverHelp: 'Column 2 Help',
-				uniqueColumn: false,
+				uniqueColumn: 'N',
 				inputType: 'List',
 				value: '',
-				mandatory: true,
+				mandatory: 'Y',
 				sortOrder: 1,
-				editable: false,
+				editable: 'N',
 				length: 200
 			}
 		];
@@ -65,7 +65,7 @@ describe('AfdUiAppFoundationDataColumnModule FoundationDataColumnController:', f
 		scope.$parent.afdUiAppController.reloadState = function() {
 			//noinspection JSCheckFunctionSignatures
             $state.go($state.current.name, $state.params, {
-				reload: true
+				reload: 'Y'
 			});
 		};
 

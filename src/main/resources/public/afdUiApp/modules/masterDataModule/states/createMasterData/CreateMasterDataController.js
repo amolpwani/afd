@@ -45,7 +45,7 @@ angular.module('AfdUiAppMasterDataModule')
             this.masterData = MasterDataService.masterData;
             MasterDataService.isEditing = false;
 		} else {
-			this.masterData.active = true;
+			this.masterData.active = 'Y';
 		}
 
 		/**

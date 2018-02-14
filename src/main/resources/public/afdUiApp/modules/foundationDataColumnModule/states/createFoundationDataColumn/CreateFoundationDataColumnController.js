@@ -43,7 +43,7 @@ angular.module('AfdUiAppFoundationDataColumnModule')
 		this.inputTypes = ['List', 'Text', 'TextArea'];
 		
 		this.activeLists = masterDataList.filter(function (list) {
-		    return (list.active == true);
+		    return (list.active == 'Y');
 		});
 
 		/**

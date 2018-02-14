@@ -35,7 +35,7 @@ public class FoundationDataColumn {
 	private String hoverHelp;
     
     @Column(name = "TADF005_UNIQUE_F")
-	private boolean uniqueColumn;
+	private char uniqueColumn;
     
     @Column(name = "TADF005_INPUT_TYPE")
 	private String inputType;
@@ -44,13 +44,13 @@ public class FoundationDataColumn {
     private String value;
     
     @Column(name = "TADF005_MANDATORY_F")
-    private boolean mandatory;
+    private char mandatory;
     
     @Column(name = "TADF005_SORT_ORDER")
     private int sortOrder;
     
     @Column(name = "TADF005_EDITABLE_F")
-    private boolean editable;
+    private char editable;
     
     @Column(name = "TADF005_LNTH")
     private int length;
@@ -79,8 +79,8 @@ public class FoundationDataColumn {
     @Column(name = "TADF005_LAST_UPDT_S")
     protected Date lastModifiedDate;
     
-    public FoundationDataColumn(String uiColumnName, String hoverHelp, boolean unique, String inputType, String value,
-			boolean mandatory, int sortOrder, boolean editable, int length) {
+    public FoundationDataColumn(String uiColumnName, String hoverHelp, char unique, String inputType, String value,
+			char mandatory, int sortOrder, char editable, int length) {
 		this.uiColumnName = uiColumnName;
 		this.hoverHelp = hoverHelp;
 		this.uniqueColumn = unique;
@@ -92,8 +92,8 @@ public class FoundationDataColumn {
 		this.length = length;
 	}
 
-    public FoundationDataColumn(String uiColumnName, String hoverHelp, boolean unique, String inputType, String value,
-			boolean mandatory, int sortOrder, boolean editable, int length, int selectedListId, String listDisplayType) {
+    public FoundationDataColumn(String uiColumnName, String hoverHelp, char unique, String inputType, String value,
+			char mandatory, int sortOrder, char editable, int length, int selectedListId, String listDisplayType) {
 		this.uiColumnName = uiColumnName;
 		this.hoverHelp = hoverHelp;
 		this.uniqueColumn = unique;
@@ -134,11 +134,11 @@ public class FoundationDataColumn {
 		this.hoverHelp = hoverHelp;
 	}
 
-	public boolean isUniqueColumn() {
+	public char getUniqueColumn() {
 		return uniqueColumn;
 	}
 
-	public void setUniqueColumn(boolean unique) {
+	public void getUniqueColumn(char unique) {
 		this.uniqueColumn = unique;
 	}
 
@@ -150,11 +150,11 @@ public class FoundationDataColumn {
 		this.value = value;
 	}
 
-	public boolean isMandatory() {
+	public char getMandatory() {
 		return mandatory;
 	}
 
-	public void setMandatory(boolean mandatory) {
+	public void setMandatory(char mandatory) {
 		this.mandatory = mandatory;
 	}
 
@@ -166,11 +166,11 @@ public class FoundationDataColumn {
 		this.sortOrder = sortOrder;
 	}
 
-	public boolean isEditable() {
+	public char getEditable() {
 		return editable;
 	}
 
-	public void setEditable(boolean editable) {
+	public void setEditable(char editable) {
 		this.editable = editable;
 	}
 

@@ -29,7 +29,7 @@
 				<label for="uniqueColumn" translate>foundationDataColumn.createFoundationDataColumn.uniqueColumn
 				</label>
 				<input type="checkbox" name="uniqueColumn" id="uniqueColumn"
-					   ng-model="createFoundationDataColumnController.foundationDataColumn.uniqueColumn"/>
+					   ng-model="createFoundationDataColumnController.foundationDataColumn.uniqueColumn"  ng-true-value="'Y'" ng-false-value="'N'"/>
 			</div>
 		</div>
 	</div>
@@ -49,12 +49,17 @@
 		<div class="col-sm-3 col-sm-offset-1" ng-show="(createFoundationDataColumnController.foundationDataColumn.inputType == 'List')">
 			<div class="form-group">
 				<label for="selectedList" class="control-label" translate>foundationDataColumn.createFoundationDataColumn.selectedMasterData</label>
-			    <select name="selectedList" id="selectedList" ng-model="createFoundationDataColumnController.foundationDataColumn.selectedListId" 
+<!--  			    <select name="selectedList" id="selectedList" ng-model="createFoundationDataColumnController.foundationDataColumn.selectedListId" 
 			    	class="active-dropdown form-control input-small">
 			      <option ng-repeat="list in createFoundationDataColumnController.activeLists" value="{{list.id}}"
 			      	ng-selected="createFoundationDataColumnController.foundationDataColumn.selectedListId === list.id" >
 			      		{{list.description}}
 			      </option>
+			    </select>  -->
+			    
+ 			    <select name="selectedList" id="selectedList" ng-model="createFoundationDataColumnController.foundationDataColumn.selectedListId" 
+			    	class="active-dropdown form-control input-small"
+			    	 ng-options="list.id as list.description for list in createFoundationDataColumnController.activeLists">
 			    </select>
 			</div>
 		</div>	
@@ -99,7 +104,7 @@
 				<label for="mandatory" translate>foundationDataColumn.createFoundationDataColumn.mandatory
 				</label>
 				<input type="checkbox" name="mandatory" id="mandatory"
-					   ng-model="createFoundationDataColumnController.foundationDataColumn.mandatory"/>
+					   ng-model="createFoundationDataColumnController.foundationDataColumn.mandatory"  ng-true-value="'Y'" ng-false-value="'N'"/>
 			</div>
 		</div>
 	</div>
@@ -120,8 +125,8 @@
 			<div class="form-group">
 				<label for="editable" translate>foundationDataColumn.createFoundationDataColumn.editable
 				</label>
-				<input type="checkbox" name="editable" id="editable" ng-disabled="createFoundationDataColumnController.foundationDataColumn.uniqueColumn && createFoundationDataColumnController.foundationDataColumn.inputType == 'List'"
-					   ng-model="createFoundationDataColumnController.foundationDataColumn.editable"/>
+				<input type="checkbox" name="editable" id="editable" ng-disabled="createFoundationDataColumnController.foundationDataColumn.uniqueColumn === 'Y' && createFoundationDataColumnController.foundationDataColumn.inputType == 'List'"
+					   ng-model="createFoundationDataColumnController.foundationDataColumn.editable"  ng-true-value="'Y'" ng-false-value="'N'"/>
 			</div>
 		</div>
 	</div>
